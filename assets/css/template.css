@@ -6,27 +6,29 @@ body
   background-attachment: fixed;
   overflow: auto;
   background-repeat: no-repeat;
-  -moz-background-size: 100% 100%;
-  -webkit-background-size: 100% 100%;
-  background-size: 100% 100%;
 }
 
 #header
 {
   background-color: #fff;
   height: 80px;
-  width: 1000px;
+  min-width: 1000px;
+  width: 95%;
   position: absolute;
   left: 0;
   right: 0;
   top: 10px;
   margin: auto;
-  border: 0px;
+  border-radius: 5px;
+  border-color:#000;
+  border-width:2px;
+  border-style:solid;
 }
 
 #contents
 {
-  width: 1000px;
+  min-width: 1000px;
+  width: 95%;
   position: absolute;
   left: 0;
   right: 0;
@@ -44,14 +46,15 @@ body
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 0;
+  left: 0px;
   right: 0;
   margin: auto;
+
 }
 
 .le
 {
-  margin-top: 15px;
+  margin-top: 20px;
   margin-left: 20px;
   float: left;
   height: 40px;
@@ -59,7 +62,7 @@ body
 
 .ld
 {
-  margin-top: 15px;
+  margin-top: 25px;
   margin-right: 20px;
   height: 30px;
   float: right;

@@ -1,0 +1,86 @@
+.areaFormulario
+{
+    height: 280px;
+    width: 500px;
+    position: relative;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: #FFF;
+    opacity: 0.9;
+    border-color:#000;
+    border-width:2px;
+    border-style:solid;
+    border-radius:5px;
+    box-shadow: 5px 10px 5px rgba(0,0,0,0.15);
+}
+
+.areaMensagem
+{
+    text-align: center;
+    font:caption;
+    font-size: 25px;
+}
+
+.areaCampos
+{
+    height: 150px;
+    width: 295px;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    font-size: 20px;
+}
+
+input[type = submit]
+{
+    background: -webkit-linear-gradient(top, #0BA3FD,#0066FF);
+    width: 100px;
+    font-size: 16px;
+    position: relative;
+    border: 3px outset #0BA3FD;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+input[type = button]
+{
+    background: -webkit-linear-gradient(top, #0BA3FD,#0066FF);
+
+    font-size: 16px;
+    position: relative;
+    border: 3px outset #0BA3FD;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+tr
+{
+    height: 30px;
+}
+
+.ultimaLinha
+{
+    height: 80px;
+}
+
+.linkEsqueciMinhaSenha
+{
+    position: relative;
+    top: -10px;
+    left: 5px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    text-align: center;
+}
+
+.linkEsqueciMinhaSenha:hover
+{
+    color: #76ccfb;
+}
