@@ -6,12 +6,18 @@
 
   <head lang = "pt-br">
     <title><?php echo $title; ?> </title>
+    <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery-1.12.0.min.js"></script>
+
     <?php
     echo meta('Content-type', 'text/html; charset=utf-8', 'equiv');
     echo link_tag('assets/css/template.css');
     if(isset($css))
     {
         echo $css; //if it exists, load the extra css.
+    }
+    if(isset($script))
+    {
+        echo $script;
     }
     ?>
 
@@ -26,7 +32,7 @@
     </div>
 
     <div id="contents">
-      <?php echo $contents; ?>
+      <?php echo $contents;?>
     </div>
   </body>
 

@@ -48,9 +48,10 @@
         echo '<td>'.form_password($dataSenha).'</td></tr>';
 
         $dataSubmit = array(
-                'name'          => 'submit',
+                'type'          => 'submit',
                 'value'         => 'Entrar',
                 'id'            => 'loginButton',
+                'class'         => 'botao'
         );
         echo '<tr class="ultimaLinha"><td>'.form_submit($dataSubmit).'</td>';
         echo '<td><a class="linkEsqueciMinhaSenha" href="recuperarSenha.php">Esqueci minha senha</a></td></tr></table>';

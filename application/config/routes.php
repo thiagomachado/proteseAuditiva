@@ -57,3 +57,5 @@ $route['sair'] = 'login/logout';
 $route['menu'] = 'menu';
 $route['atendimento'] = 'menu/menuAtendimento';
 $route['sistema'] = 'menu/menuSistema';
+$route['consultaPaciente'] = 'paciente';
+$route['edicaoPaciente/(:num)'] = 'paciente/edicaoPaciente/$1';
