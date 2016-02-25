@@ -5,11 +5,11 @@
 
 <div class="menuDireito">
     <ul>
-        <a href="CadastroDePacientes.php"><li>CADASTRAR PACIENTE</li></a>
+        <a href="cadastroPaciente"><li>CADASTRAR PACIENTE</li></a>
         <?php
             if($nivel == 1 || $nivel == 2)
             {
-                echo '<a href="CadastroDeProntuario.php"><li>CADASTRAR PRONTUÁRIO</li></a>';
+                echo '<a href="CadastroDeProntuario.php"><li>CADASTRAR CARATERIZAÇÃO</li></a>';
             }
         ?>
 
@@ -20,7 +20,7 @@
 <div class="menuEsquerdo">
     <ul>
         <a href="<?php echo base_url(); ?>index.php/consultaPaciente"><li>CONSULTAR PACIENTE</li></a>
-        <a href="ConsultaDeProntuarios.php"><li>CONSULTAR PRONTUÁRIO</li></a>
+        <a href="ConsultaDeProntuarios.php"><li>CONSULTAR CARATERIZAÇÃO</li></a>
         <a href=""><li>CONSULTAR SOLICITAÇÃO</li></a>
     </ul>
 </div>

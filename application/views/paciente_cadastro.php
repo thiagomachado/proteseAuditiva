@@ -2,10 +2,10 @@
     defined('BASEPATH') OR exit('No direct script access allowed');
     $nivel = $this->session->userdata("nivel");
     //inclui dataset dos inputs
-    include("paciente_edicao_data.php");
+    include("paciente_cadastro_data.php");
 ?>
 <div class="conteudo">
-  <?php echo form_open('paciente/editar',$data_form); ?>
+  <?php echo form_open('paciente/cadastrar',$data_form); ?>
   <div class="areaFormulario">
     <fieldset class="secaoFormulario">
       <legend>Dados Pessoais</legend>
@@ -45,12 +45,12 @@
           </td>
           <td>
             <label>Etnia:</label><br>
-            <?php echo form_dropdown('etnia', $dataEtnia,$paciente->Pc_Etnia, 'id="etnia" required'); ?>
+            <?php echo form_dropdown('etnia', $dataEtnia,1, 'id="etnia" required'); ?>
           </td>
         </tr>
 
         <tr>
-          <td colspan="3">
+          <td colspan="2">
             <label>Nome da Mãe:</label><br>
             <?php echo form_input($dataNomeMaePaciente); ?>
           </td>
@@ -58,7 +58,10 @@
             <label>Nome do Pai:</label><br>
             <?php echo form_input($dataNomePaiPaciente); ?>
           </td>
-
+          <td colspan="3">
+            <label>Tipo Anamenese:</label><br/>
+            <?php echo form_dropdown('anamnese', $dataAnamnese,'adulta', 'id="anamnese" required'); ?>
+          </td>
         </tr>
       </table>
       </fieldset>
@@ -69,7 +72,7 @@
           <tr>
             <td>
                 <label>Escolaridade:</label><br>
-                <?php echo form_dropdown('escolaridade', $dataEscolaridade,$paciente->Pc_GrauEscolar, 'id="escolaridade" required');  ?>
+                <?php echo form_dropdown('escolaridade',$dataEscolaridade ,1, 'id="escolaridade" required');  ?>
             </td>
             <td>
                 <label>Trabalha?</label><br>
@@ -97,11 +100,11 @@
           <tr>
             <td>
               <label>UF:</label><br>
-              <?php echo form_dropdown('estado', $dataEstado, $endereco->End_UF,'onchange="mudarCidades()" id="estado" required'); ?>
+              <?php echo form_dropdown('estado', $dataEstado, 'AC','onchange="mudarCidades()" id="estado" required'); ?>
             </td>
             <td>
               <label>Municipio:</label><br>
-              <?php echo form_dropdown('municipio', $dataMunicipio, $endereco->End_CodIBGE,'onchange="mudarCodigoIBGE()" id="municipio" required'); ?>
+              <?php echo form_dropdown('municipio', $dataMunicipio,'1200013' ,'onchange="mudarCodigoIBGE()" id="municipio" required'); ?>
             </td>
             <td>
               <label>Código IBGE:</label><br>
@@ -125,8 +128,6 @@
   </div>
   <div class="areaBotoesFormulario">
     <?php echo form_submit($dataSubmit) ?>
-    <input class="botao" type="button" onclick="mostrarModal('#modalExcluirPaciente')" value="Excluir"/>
-    <input class="botao" type="button" value="Anamnese"/>
     <input class="botao" type="button" onclick="mostrarModal('#modalSairSemSalvar')" value="Cancelar"/>
   </div>
 
@@ -138,32 +139,33 @@
         <p>Deseja sair sem salvar?</p>
       </div>
       <div class="botoesModal">
-        <a href="<?php echo base_url();?>index.php/consultaPaciente"><input class="botao" value="Sim"/></a>
+        <a href="<?php echo base_url();?>index.php/atendimento"><input type="button" class="botao" value="Sim"/></a>
         <input class="botao" type="button" onclick="esconderModal('#modalSairSemSalvar')" value="Não"/>
       </div>
     </div>
 
-    <div class="modal" id="modalExcluirPaciente">
-      <div class="textoModal">
-        <h1>EXCLUIR</h1>
-        <p>Todos os dados desse paciente serão excluídos, deseja continuar?</p>
-      </div>
-
-      <div class="botoesModal">
-        <a href="<?php echo base_url();?>index.php/excluirPaciente/<?php echo $paciente->Pc_CPF; ?>"><input class="botao" value="Sim"/></a>
-        <input class="botao" onclick="esconderModal('#modalExcluirPaciente')" value="Não"/>
-      </div>
-    </div>
 
     <div class="modal" id="modalSucesso">
       <div class="textoModal">
         <h1>Sucesso!</h1>
-        <p>Os dados foram alterados.</p>
+        <p>O paciente foi cadastrado.</p>
       </div>
 
       <div class="botoesModal">
         <a href="<?php echo base_url();?>index.php/consultaPaciente"><input class="botao" value="Concluir"/></a>
-        <input class="botao" onclick="esconderModal('#modalSucesso'),location.reload()" value="Continuar"/>
+        <input class="botao" onclick="esconderModal('#modalSucesso'),location.reload()" value="Anamnese"/>
+      </div>
+    </div>
+
+    <div class="modal" id="modalErro">
+      <div class="textoModal">
+        <h1>Erro!</h1>
+        <p>Houve um erro inesperado.</p>
+        <p>Verifique se já não existe um paciente com mesmo CPF</p>
+      </div>
+
+      <div class="botoesModal">
+        <input class="botao" onclick="esconderModal('#modalErro')" value="Ok"/>
       </div>
     </div>
   </div>
@@ -174,13 +176,13 @@
 <script type="text/javascript">
 // Ajax post
 $(document).ready(function() {
-    calcularIdade();
+    mudarCodigoIBGE();
     $("#formPaciente").on('submit', function(event) {
         event.preventDefault();
 
         jQuery.ajax({
             type: "POST",
-            url: "<?php echo base_url(); ?>" + "index.php/editarPaciente",
+            url: "<?php echo base_url(); ?>" + "index.php/cadastrarPaciente",
             dataType: 'json',
             data:
             {
@@ -197,6 +199,7 @@ $(document).ready(function() {
               Pc_GrauEscolar:   $("#escolaridade").val(),
               Pc_SeTrabalha:    $("input[name='trabalha']:checked").val(),
               Pc_Profissao:     $("#profissao").val(),
+              Pc_TipoAnamn:     $("#anamnese").val(),
               End_Logradouro:   $("#logradouro").val(),
               End_CodIBGE:      $("#codIBGE").val(),
               End_CEP:          $("#logradouro").val(),
@@ -210,14 +213,16 @@ $(document).ready(function() {
                 if (res)
                 {
                   console.log(res);
-
-                    // Show Entered Value
-
                 }
+            },
+            error: function (xhr, ajaxOptions, thrownError)
+            {
+              mostrarModal('#modalErro');
+              console.log(xhr.status);
+              console.log(thrownError);
             }
 
         });
     });
 });
-
 </script>

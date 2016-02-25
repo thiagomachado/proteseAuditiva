@@ -11,7 +11,7 @@
           parent::__construct();
       }
 
-      public function consultarPacientePorNomeNprontuarioCartaoSUS($nome, $nprontuario, $sus)
+      public function recuperarPacientePorNomeNprontuarioCartaoSUS($nome, $nprontuario, $sus)
       {
         $this->db->like('Pc_Nome', $nome);
         $this->db->like('Pc_NumProntuario', $nprontuario);
@@ -21,12 +21,20 @@
         return $query->result();
       }
 
-      public function consultarPacientePorCPF($cpf)
+      public function recuperarPacientePorCPF($cpf)
       {
         $this->db->where('Pc_CPF', $cpf);
         $query = $this->db->get('tbl_paciente');
         $array = $query->result();
-        $paciente = $array[0];
+        if(sizeof($array)==0)
+        {
+          $paciente = [];
+        }
+        else
+        {
+          $paciente = $array[0];
+        }
+
         return $paciente;
       }
 
@@ -35,6 +43,27 @@
           $this->db->order_by("Pc_nome", "asc");
           $query = $this->db->get('tbl_paciente');
           return $query->result();
+      }
+
+      public function cadastrarPaciente($dataPaciente)
+      {
+        $this->db->insert('tbl_paciente',$dataPaciente);
+      }
+
+      public function editarPacientePorCPF($cpf, $dataPaciente)
+      {
+          if ($this->db->update('tbl_paciente',$dataPaciente, array('Pc_CPF' => $cpf)))
+          {
+            return true;
+          }
+          return mysql_error();
+      }
+
+      public function excluirPacientePorCPF($cpf)
+      {
+          $tabelas = array('tbl_paciente', 'tbl_endereco', 'tbl_telefone', 'tbl_protuario', 'tbl_proteses_pacientes');
+          $where = array('Pc_CPF' => $cpf);
+          $this->db->delete($tabelas, $where);
       }
   }
 ?>

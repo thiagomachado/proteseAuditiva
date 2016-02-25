@@ -49,13 +49,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'menu';
-$route['404_override'] = '';
-$route['translate_uri_dashes'] = FALSE;
-$route['login'] = 'login';
-$route['sair'] = 'login/logout';
-$route['menu'] = 'menu';
-$route['atendimento'] = 'menu/menuAtendimento';
-$route['sistema'] = 'menu/menuSistema';
-$route['consultaPaciente'] = 'paciente';
-$route['edicaoPaciente/(:num)'] = 'paciente/edicaoPaciente/$1';
+$route['default_controller']      = 'menu';
+$route['404_override']            = '';
+$route['translate_uri_dashes']    = FALSE;
+$route['login']                   = 'login';
+$route['sair']                    = 'login/logout';
+$route['menu']                    = 'menu';
+$route['atendimento']             = 'menu/menuAtendimento';
+$route['sistema']                 = 'menu/menuSistema';
+$route['consultaPaciente']        = 'paciente';
+$route['cadastroPaciente']        = 'paciente/cadastroPaciente';
+$route['excluirPaciente/(:num)']  = 'paciente/excluir/$1';
+$route['edicaoPaciente/(:num)']   = 'paciente/edicaoPaciente/$1';
+$route['editarPaciente']          = 'paciente/editar';
+$route['cadastrarPaciente']       = 'paciente/cadastrar';
+$route['municipios/(:any)']       = 'paciente/popularMunicipios/$1';

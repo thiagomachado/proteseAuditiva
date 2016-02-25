@@ -7,7 +7,7 @@
   <head lang = "pt-br">
     <title><?php echo $title; ?> </title>
     <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery-1.12.0.min.js"></script>
-
+    <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>assets/js/functions.js"></script>
     <?php
     echo meta('Content-type', 'text/html; charset=utf-8', 'equiv');
     echo link_tag('assets/css/template.css');
@@ -34,6 +34,7 @@
     <div id="contents">
       <?php echo $contents;?>
     </div>
+
   </body>
 
 </html>

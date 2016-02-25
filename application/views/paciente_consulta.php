@@ -5,28 +5,8 @@
 <div class="conteudo">
   <div class="filtro">
     <?php
-
-        $dataNomePaciente = array(
-                'name'          => 'nomePaciente',
-                'id'            => 'nomePaciente',
-                'size'          => '62'
-        );
-        $dataCartaoSus = array(
-                'name'          => 'cartaoSUS',
-                'id'            => 'cartaoSUS',
-                'size'          => '30'
-        );
-        $dataProntuario = array(
-                'name'          => 'nProntuario',
-                'id'            => 'nProntuario',
-                'size'          => '30'
-        );
-        $dataSubmit = array(
-                'type'          => 'submit',
-                'value'         => 'Consultar',
-                'id'            => 'btnConsultarPaciente',
-                'class'         => 'botao'
-        );
+        //inclui dataset dos inputs
+        include("paciente_consulta_data.php");
 
         echo form_open('paciente/', 'name="pacienteConsulta"');
         echo '<table class="formulario">';
@@ -92,7 +72,7 @@
 
   </div>
   <div class="areaBotoesResultado">
-    <a href="<?php echo base_url()?>index.php/cadastroPaciente"><input type="button" class="botao" value="Cadastrar"></a>
-    <a href="<?php echo base_url()?>index.php/atendimento"><input type="button" class="botao" value="Voltar"></a>
+    <a href="<?php echo site_url("cadastroPaciente")?>"><input type="button" class="botao" value="Cadastrar"></a>
+    <a href="<?php echo site_url("atendimento")?>"><input type="button" class="botao" value="Voltar"></a>
   </div>
 </div>
