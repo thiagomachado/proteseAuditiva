@@ -199,7 +199,7 @@ $(document).ready(function() {
               Pc_Profissao:     $("#profissao").val(),
               End_Logradouro:   $("#logradouro").val(),
               End_CodIBGE:      $("#codIBGE").val(),
-              End_CEP:          $("#logradouro").val(),
+              End_CEP:          $("#cep").val(),
               End_UF:           $("#estado").val(),
               Tel_Tel1:         $("#telefone1").val(),
               Tel_Tel2:         $("#telefone2").val()

@@ -33,11 +33,7 @@
 
         function editarEnderecoPorCPF($cpf,$dataEndereco)
         {
-          if ($this->db->update('tbl_endereco',$dataEndereco, array('Pc_CPF' => $cpf)))
-          {
-            return true;
-          }
-          return mysql_error();
+          $this->db->update('tbl_endereco',$dataEndereco, array('Pc_CPF' => $cpf));                      
         }
     }
 ?>
