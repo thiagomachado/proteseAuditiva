@@ -109,7 +109,7 @@
         {
           extract($_POST);
           $dataPaciente = array(
-            'Pc_CPF'          => $Pc_CPF,            
+            'Pc_CPF'          => $Pc_CPF,
             'Pc_Nome'         => $Pc_Nome,
             'Pc_CartaoSus'    => $Pc_CartaoSus,
             'Pc_NumProntuario'=> $Pc_NumProntuario,
@@ -137,9 +137,9 @@
             'Tel_Tel2'      => $Tel_Tel2
           );
 
-          $editarPaciente = $this->paciente_model->editarPacientePorCPF($Pc_CPF, $dataPaciente);
-          $this->endereco_model->editarEnderecoPorCPF($Pc_CPF, $dataEndereco);
-          $this->telefone_model->editarTelefonePorCPF($Pc_CPF, $dataTelefone);
+          $editarPaciente = $this->paciente_model->editarPacientePorCPF($cpf, $dataPaciente);
+          $this->endereco_model->editarEnderecoPorCPF($cpf, $dataEndereco);
+          $this->telefone_model->editarTelefonePorCPF($cpf, $dataTelefone);
 
           echo json_encode(true);
         }

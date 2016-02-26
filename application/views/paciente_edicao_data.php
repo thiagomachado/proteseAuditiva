@@ -39,6 +39,12 @@
             'title'         => 'Digite apenas números no CPF',
             'value'         => $paciente->Pc_CPF
     );
+    $dataCPFHidden = array(
+            'name'          => 'cpfHidden',
+            'type'          => 'hidden',
+            'id'            => 'cpfHidden',          
+            'value'         => $paciente->Pc_CPF
+    );
     $dataDataNascimento = array(
             'type'          => 'date',
             'name'          => 'dataNascimento',

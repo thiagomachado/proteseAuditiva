@@ -5,7 +5,11 @@
     include("paciente_edicao_data.php");
 ?>
 <div class="conteudo">
-  <?php echo form_open('paciente/editar',$data_form); ?>
+  <?php
+    echo form_open('paciente/editar',$data_form);
+    echo form_input($dataCPFHidden);
+   ?>
+
   <div class="areaFormulario">
     <fieldset class="secaoFormulario">
       <legend>Dados Pessoais</legend>
@@ -138,7 +142,7 @@
         <p>Deseja sair sem salvar?</p>
       </div>
       <div class="botoesModal">
-        <a href="<?php echo base_url();?>index.php/consultaPaciente"><input class="botao" value="Sim"/></a>
+        <a href="<?php echo base_url();?>index.php/consultaPaciente"><input type="button" class="botao" value="Sim"/></a>
         <input class="botao" type="button" onclick="esconderModal('#modalSairSemSalvar')" value="Não"/>
       </div>
     </div>
@@ -150,8 +154,8 @@
       </div>
 
       <div class="botoesModal">
-        <a href="<?php echo base_url();?>index.php/excluirPaciente/<?php echo $paciente->Pc_CPF; ?>"><input class="botao" value="Sim"/></a>
-        <input class="botao" onclick="esconderModal('#modalExcluirPaciente')" value="Não"/>
+        <a href="<?php echo base_url();?>index.php/excluirPaciente/<?php echo $paciente->Pc_CPF; ?>"><input type="button" class="botao" value="Sim"/></a>
+        <input type="button" class="botao" onclick="esconderModal('#modalExcluirPaciente')" value="Não"/>
       </div>
     </div>
 
@@ -162,10 +166,23 @@
       </div>
 
       <div class="botoesModal">
-        <a href="<?php echo base_url();?>index.php/consultaPaciente"><input class="botao" value="Concluir"/></a>
+        <a href="<?php echo base_url();?>index.php/consultaPaciente"><input type="button" class="botao" value="Concluir"/></a>
         <input class="botao" onclick="esconderModal('#modalSucesso'),location.reload()" value="Continuar"/>
       </div>
     </div>
+
+    <div class="modal" id="modalErro">
+      <div class="textoModal">
+        <h1>Erro!</h1>
+        <p>Houve um erro inesperado.</p>
+        <p>Verifique se já não existe um paciente com mesmo CPF</p>
+      </div>
+
+      <div class="botoesModal">
+        <input class="botao" onclick="esconderModal('#modalErro'),location.reload()" value="Ok"/>
+      </div>
+    </div>
+  </div>
   </div>
 
 <?php echo form_close(); ?>
@@ -184,6 +201,7 @@ $(document).ready(function() {
             dataType: 'json',
             data:
             {
+              cpf:              $("#cpfHidden").val(),
               Pc_Nome:          $("#nomePaciente").val(),
               Pc_CartaoSus:     $("#cartaoSUS").val(),
               Pc_NumProntuario: $("#nProntuario").val(),
@@ -210,10 +228,13 @@ $(document).ready(function() {
                 if (res)
                 {
                   console.log(res);
-
-                    // Show Entered Value
-
                 }
+            },
+            error: function (xhr, ajaxOptions, thrownError)
+            {
+              mostrarModal('#modalErro');
+              console.log(xhr.status);
+              console.log(thrownError);
             }
 
         });

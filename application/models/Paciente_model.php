@@ -52,11 +52,7 @@
 
       public function editarPacientePorCPF($cpf, $dataPaciente)
       {
-          if ($this->db->update('tbl_paciente',$dataPaciente, array('Pc_CPF' => $cpf)))
-          {
-            return true;
-          }
-          return mysql_error();
+        $this->db->update('tbl_paciente',$dataPaciente, array('Pc_CPF' => $cpf));
       }
 
       public function excluirPacientePorCPF($cpf)
