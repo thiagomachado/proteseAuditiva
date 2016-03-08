@@ -54,9 +54,11 @@ $route['404_override']            = '';
 $route['translate_uri_dashes']    = FALSE;
 $route['login']                   = 'login';
 $route['sair']                    = 'login/logout';
+
 $route['menu']                    = 'menu';
 $route['atendimento']             = 'menu/menuAtendimento';
 $route['sistema']                 = 'menu/menuSistema';
+
 $route['consultaPaciente']        = 'paciente';
 $route['cadastroPaciente']        = 'paciente/cadastroPaciente';
 $route['excluirPaciente/(:num)']  = 'paciente/excluir/$1';
@@ -64,3 +66,7 @@ $route['edicaoPaciente/(:num)']   = 'paciente/edicaoPaciente/$1';
 $route['editarPaciente']          = 'paciente/editar';
 $route['cadastrarPaciente']       = 'paciente/cadastrar';
 $route['municipios/(:any)']       = 'paciente/popularMunicipios/$1';
+
+$route['cadastroAnamnese/(:num)'] = 'anamnese/cadastroAnamnese/$1';
+$route['edicaoAnamnese/(:num)']   = 'anamnese/edicaoAnamnese/$1';
+$route['editarAnamneseAdulta']    = 'anamnese/editarAdulta';

@@ -30,8 +30,8 @@
         {
           $this->template->set('title', 'CADASTRAR PACIENTE');
 
-          $estados    = $this->uf_model->get_all();
-          $municipios = $this->municipio_model->recuperarMunicipiosPorUf('AC');
+          $estados            = $this->uf_model->get_all();
+          $municipios         = $this->municipio_model->recuperarMunicipiosPorUf('AC');
           $data['estados']    = $estados;
           $data['municipios'] = $municipios;
 
@@ -40,15 +40,15 @@
 
         public function edicaoPaciente($cpf)
         {
-          $paciente   = $this->paciente_model->recuperarPacientePorCPF($cpf);
+          $paciente = $this->paciente_model->recuperarPacientePorCPF($cpf);
           if(sizeof($paciente)== 0)
           {
             redirect('/paciente', 'refresh');
           }
-          $endereco   = $this->endereco_model->recuperarEnderecoPorCPF($cpf);
-          $telefone   = $this->telefone_model->recuperarTelefonePorCPF($cpf);
-          $estados    = $this->uf_model->get_all();
-          $municipios = $this->municipio_model->recuperarMunicipiosPorUf($endereco->End_UF);
+          $endereco           = $this->endereco_model->recuperarEnderecoPorCPF($cpf);
+          $telefone           = $this->telefone_model->recuperarTelefonePorCPF($cpf);
+          $estados            = $this->uf_model->get_all();
+          $municipios         = $this->municipio_model->recuperarMunicipiosPorUf($endereco->End_UF);
           $data['paciente']   = $paciente;
           $data['endereco']   = $endereco;
           $data['telefone']   = $telefone;
@@ -99,10 +99,10 @@
             'Tel_Tel2'      => $Tel_Tel2
           );
 
-          $this->paciente_model->cadastrarPaciente($dataPaciente);
+          $cpfInserido = $this->paciente_model->cadastrarPaciente($dataPaciente);
           $this->endereco_model->cadastrarEndereco($dataEndereco);
           $this->telefone_model->cadastrarTelefone($dataTelefone);
-          echo json_encode(true);
+          echo json_encode($cpfInserido);
         }
 
         public function editar()
@@ -120,7 +120,8 @@
             'Pc_NomePai'      => $Pc_NomePai,
             'Pc_GrauEscolar'  => $Pc_GrauEscolar,
             'Pc_SeTrabalha'   => $Pc_SeTrabalha,
-            'Pc_Profissao'    => $Pc_Profissao
+            'Pc_Profissao'    => $Pc_Profissao,
+            'Pc_TipoAnamn'    => $Pc_TipoAnamn
           );
 
           $dataEndereco = array(
@@ -157,7 +158,7 @@
           $nProntuario  = $this->input->post('nProntuario');
           $cartaoSUS    = $this->input->post('cartaoSUS');
 
-          $pacientes = $this->paciente_model->recuperarPacientePorNomeNprontuarioCartaoSUS($nomePaciente,$nProntuario,$cartaoSUS);
+          $pacientes    = $this->paciente_model->recuperarPacientePorNomeNprontuarioCartaoSUS($nomePaciente,$nProntuario,$cartaoSUS);
 
           //salva os pacientes em um vetor, para poder passar os dados para view
           $listaPacientes["pacientes"] = $pacientes;

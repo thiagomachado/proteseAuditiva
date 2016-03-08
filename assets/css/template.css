@@ -307,6 +307,19 @@ body
   font-style: italic;
 }
 
+.subsecaoFormulario
+{
+  border-width: 1px;
+  border-color: #CCC;
+  border-style: solid;
+  width: auto;
+}
+.subsecaoFormulario legend
+{
+  font-weight: normal;
+  font-style: italic;
+}
+
 .areaBotoesFormulario
 {
   width: 900px;

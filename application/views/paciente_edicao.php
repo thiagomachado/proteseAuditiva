@@ -54,7 +54,7 @@
         </tr>
 
         <tr>
-          <td colspan="3">
+          <td colspan="2">
             <label>Nome da Mãe:</label><br>
             <?php echo form_input($dataNomeMaePaciente); ?>
           </td>
@@ -62,7 +62,10 @@
             <label>Nome do Pai:</label><br>
             <?php echo form_input($dataNomePaiPaciente); ?>
           </td>
-
+          <td colspan="3">
+            <label>Tipo Anamenese:</label><br/>
+            <?php echo form_dropdown('anamnese', $dataAnamnese,$paciente->Pc_TipoAnamn, 'id="anamnese" required'); ?>
+          </td>
         </tr>
       </table>
       </fieldset>
@@ -130,7 +133,7 @@
   <div class="areaBotoesFormulario">
     <?php echo form_submit($dataSubmit) ?>
     <input class="botao" type="button" onclick="mostrarModal('#modalExcluirPaciente')" value="Excluir"/>
-    <input class="botao" type="button" value="Anamnese"/>
+    <a href="<?php echo base_url().'index.php/edicaoAnamnese/'.$paciente->Pc_CPF;?>"><input class="botao" type="button" value="Anamnese"/></a>
     <input class="botao" type="button" onclick="mostrarModal('#modalSairSemSalvar')" value="Cancelar"/>
   </div>
 
@@ -215,6 +218,7 @@ $(document).ready(function() {
               Pc_GrauEscolar:   $("#escolaridade").val(),
               Pc_SeTrabalha:    $("input[name='trabalha']:checked").val(),
               Pc_Profissao:     $("#profissao").val(),
+              Pc_TipoAnamn:     $("#anamnese").val(),
               End_Logradouro:   $("#logradouro").val(),
               End_CodIBGE:      $("#codIBGE").val(),
               End_CEP:          $("#cep").val(),

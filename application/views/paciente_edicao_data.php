@@ -42,7 +42,7 @@
     $dataCPFHidden = array(
             'name'          => 'cpfHidden',
             'type'          => 'hidden',
-            'id'            => 'cpfHidden',          
+            'id'            => 'cpfHidden',
             'value'         => $paciente->Pc_CPF
     );
     $dataDataNascimento = array(
@@ -95,6 +95,12 @@
             'maxlength'     => '100',
             'value'         => $paciente->Pc_NomePai
     );
+
+    $dataAnamnese = array(
+            'adulta'        => 'Adulta',
+            'infantil'      => 'Infantil'
+    );
+    
     $dataEscolaridade = array(
             '1'             => 'Ensino Fundamental (Incompleto)',
             '2'             => 'Ensino Fundamental (Completo)',

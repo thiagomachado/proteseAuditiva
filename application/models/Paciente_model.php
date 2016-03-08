@@ -48,6 +48,7 @@
       public function cadastrarPaciente($dataPaciente)
       {
         $this->db->insert('tbl_paciente',$dataPaciente);
+        return $this->db->insert_id();
       }
 
       public function editarPacientePorCPF($cpf, $dataPaciente)
