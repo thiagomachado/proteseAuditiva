@@ -153,7 +153,7 @@
 
       <div class="botoesModal">
         <a href="<?php echo base_url();?>index.php/consultaPaciente"><input class="botao" value="Concluir"/></a>
-        <input class="botao" onclick="esconderModal('#modalSucesso'),location.reload()" value="Anamnese"/>
+        <a id="linkAnamnese"><input class="botao" onclick="esconderModal('#modalSucesso'),location.reload()" value="Anamnese"/></a>
       </div>
     </div>
 
@@ -212,6 +212,8 @@ $(document).ready(function() {
                 mostrarModal('#modalSucesso');
                 if (res)
                 {
+                  var urlAnamnese = "<?php echo base_url();?>"+"index.php/cadastroAnamnese/"+res;
+                  $("#linkAnamnese").attr("href", urlAnamnese);
                   console.log(res);
                 }
             },

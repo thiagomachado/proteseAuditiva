@@ -99,10 +99,10 @@
             'Tel_Tel2'      => $Tel_Tel2
           );
 
-          $cpfInserido = $this->paciente_model->cadastrarPaciente($dataPaciente);
+          $pacienteInserido = $this->paciente_model->cadastrarPaciente($dataPaciente);
           $this->endereco_model->cadastrarEndereco($dataEndereco);
           $this->telefone_model->cadastrarTelefone($dataTelefone);
-          echo json_encode($cpfInserido);
+          echo json_encode($pacienteInserido->Pc_CPF);
         }
 
         public function editar()
