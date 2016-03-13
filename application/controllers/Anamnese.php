@@ -77,18 +77,32 @@
           $this->template->load('template',$paginaAnamnese, $data);
         }
 
-        public function cadastrar()
+        public function cadastrarAdulta()
         {
+          $anamneseForm = $this->extrairDadosAnamneseAdulta();
+
+          $anamnese = $this->anamnese_model->cadastrarAnamneseAdulta($anamneseForm);
+          echo json_encode($anamnese);
         }
 
         public function editarAdulta()
+        {
+          $anamneseForm = $this->extrairDadosAnamneseAdulta();
+
+          $anamnese = $this->anamnese_model->editarAnamneseAdultaPorCPF($anamneseForm['Pc_CPF'],$anamneseForm);
+          echo json_encode($anamnese);
+        }
+
+        private function extrairDadosAnamneseAdulta()
         {
           extract($_POST);
           if(!isset($AnmAdt_ZumbTipo))
           {
             $AnmAdt_ZumbTipo = 0;
           }
+
           $anamnese = array(
+            'Pc_CPF'                   =>  $cpf,
             'AnmAdt_EncaminhadoPor'    =>  $AnmAdt_EncaminhadoPor,
             'AnmAdt_PrincQueixa'       =>  $AnmAdt_PrincQueixa,
             'AnmAdt_HistQueixa'        =>  $AnmAdt_HistQueixa,
@@ -142,12 +156,7 @@
             }
           }
 
-          $this->anamnese_model->editarAnamneseAdultaPorCPF($cpf,$anamnese);
-          echo json_encode($anamnese);
-        }
-
-        public function excluir()
-        {
+          return $anamnese;
         }
 
     }

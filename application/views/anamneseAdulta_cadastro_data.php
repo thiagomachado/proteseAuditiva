@@ -88,7 +88,6 @@
             'name'          => 'cirurgiaOtologicaDescricao',
             'id'            => 'cirurgiaOtologicaDescricao',
             'size'          => '10',
-            'required'      => '',
             'maxlength'     => '250'
     );
 
@@ -151,7 +150,6 @@
             'name'          => 'perdaAuditivaParentesco',
             'id'            => 'perdaAuditivaParentesco',
             'size'          => '10',
-            'required'      => '',
             'maxlength'     => '25'
     );
 
@@ -196,7 +194,6 @@
             'name'          => 'outrasDoencas',
             'id'            => 'outrasDoencas',
             'size'          => '60',
-            'required'      => '',
             'maxlength'     => '175'
     );
 
@@ -224,7 +221,6 @@
             'name'          => 'medicacao',
             'id'            => 'medicacao',
             'size'          => '55',
-            'required'      => '',
             'maxlength'     => '75'
     );
 
@@ -251,7 +247,6 @@
             'name'          => 'ruidoOcupacionalDesc',
             'id'            => 'ruidoOcupacionalDesc',
             'size'          => '40',
-            'required'      => '',
             'maxlength'     => '45'
     );
 
@@ -259,15 +254,14 @@
             'name'          => 'ruidoOcupacionalTempo',
             'id'            => 'ruidoOcupacionalTempo',
             'size'          => '14',
-            'required'      => '',
             'maxlength'     => '15'
     );
 
     $dataTempoPerdaAudicao = array(
             'name'          => 'tempoPerdaAudicao',
             'id'            => 'tempoPerdaAudicao',
-            'size'          => '70',
             'required'      => '',
+            'size'          => '70',
             'maxlength'     => '45'
     );
 

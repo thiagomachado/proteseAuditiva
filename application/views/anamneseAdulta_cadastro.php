@@ -271,7 +271,7 @@
        </div>
 
        <div class="botoesModal">
-         <input class="botao" onclick="esconderModal('#modalErro'),location.reload()" value="Ok"/>
+         <input class="botao" onclick="esconderModal('#modalErro')" value="Ok"/>
        </div>
      </div>
    </div>
@@ -319,6 +319,7 @@ $(document).ready(function() {
               AnmAdt_SeRuidosOcup:      $("input[name='ruidoOcupacional']:checked").val(),
               AnmAdt_RuidosOcup:        $("#ruidoOcupacionalDesc").val(),
               AnmAdt_TempoRuidosOcup:   $("#ruidoOcupacionalTempo").val(),
+              AnmAdt_TempoDificulAud:   $("#tempoPerdaAudicao" ).val(),
               AnmAdt_CompreenderFala:   $("input[name='compreendeFala']:checked").val(),
               AnmAdt_Zumbido:           $("input[name='zumbido']:checked").val(),
               AnmAdt_ZumbOD:            $("#zumbidoOD" ).prop("checked"),
