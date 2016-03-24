@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: 08/03/2016 às 08:33
--- Versão do servidor: 5.5.46-0ubuntu0.14.04.2
+-- Tempo de Geração: 24/03/2016 às 15:59
+-- Versão do servidor: 5.5.47-0ubuntu0.14.04.1
 -- Versão do PHP: 5.5.9-1ubuntu4.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -112,23 +112,14 @@ CREATE TABLE IF NOT EXISTS `tbl_anamneseadt` (
   `AnmAdt_SonsIntensos` varchar(45) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
   `AnmAdt_Obs` varchar(250) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
   PRIMARY KEY (`AnmAdt_Cod`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci AUTO_INCREMENT=11 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci AUTO_INCREMENT=14 ;
 
 --
 -- Fazendo dump de dados para tabela `tbl_anamneseadt`
 --
 
 INSERT INTO `tbl_anamneseadt` (`AnmAdt_Cod`, `Pc_CPF`, `AnmAdt_EncaminhadoPor`, `AnmAdt_PrincQueixa`, `AnmAdt_HistQueixa`, `AnmAdt_DorOuvido`, `AnmAdt_HistOtite`, `AnmAdt_OtiteOE`, `AnmAdt_OtiteOD`, `AnmAdt_Periodicidade`, `AnmAdt_CirurgiaOtologica`, `AnmAdt_CirurgiaOtolOE`, `AnmAdt_CirurgiaOtolOD`, `AnmAdt_CirurgiaDesc`, `AnmAdt_PerdaAudNaFamilia`, `AnmAdt_FamiliarPerdaAud`, `AnmAdt_Doenca`, `AnmAdt_Caxumba`, `AnmAdt_Meningite`, `AnmAdt_Sifilis`, `AnmAdt_Hipertensao`, `AnmAdt_Sarampo`, `AnmAdt_Circulatorios`, `AnmAdt_Diabetes`, `AnmAdt_UsoMedicacao`, `AnmAdt_Medicacao`, `AnmAdt_SeRuidosOcup`, `AnmAdt_RuidosOcup`, `AnmAdt_TempoRuidosOcup`, `AnmAdt_TempoDificulAud`, `AnmAdt_CompreenderFala`, `AnmAdt_Zumbido`, `AnmAdt_ZumbOD`, `AnmAdt_ZumbOE`, `AnmAdt_ZumbTipo`, `AnmAdt_ZumbTempo`, `AnmAdt_Vertigem`, `AnmAdt_TempoVertigem`, `AnmAdt_IncomSonsIntensos`, `AnmAdt_SonsIntensos`, `AnmAdt_Obs`) VALUES
-(1, '', 'teste', 'teste', 'teste', 1, 0, 0, 0, '', 0, 0, 0, '', 0, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '', 0, '', '', '', 0, 0, 0, 0, '0', '', 0, '', 0, '', ''),
-(2, '33333333333', '3333', '3333', '3333', 0, 0, 0, 0, '', 0, 0, 0, '', 0, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '', 0, '', '', '', 0, 0, 0, 0, '0', '', 0, '', 0, '', ''),
-(3, '33333333333', '123', '123', '123', 1, 0, 0, 0, '', 0, 0, 0, '', 0, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '', 0, '', '', '', 0, 0, 0, 0, '0', '', 0, '', 0, '', ''),
-(4, '46464464655', 'teste 5', 'teste 5', 'tste 5', 1, 0, 0, 0, '', 0, 1, 0, 'teste', 0, 'teste', 'teste', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'teste', 1, 'teste', '2 anos', '', 0, 0, 0, 0, '0', '', 0, '', 0, '', ''),
-(5, '77777777777', 'teste 6', 'teste 6', 'teste 6', 1, 1, 0, 0, '', 0, 0, 0, '', 0, '', 'teste 6', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'teste 6', 1, 'teste 6', 'teste 6', '', 0, 0, 0, 0, '0', '', 0, '', 0, '', ''),
-(6, '77777777799', 'José Mendes', 'Dor no ouvido', 'teste 7 editado', 1, 1, 1, 1, 'a cada 3 dias', 1, 1, 1, 'Implantação de protese', 1, 'Pai', 'Asma', 1, 1, 1, 1, 1, 1, 1, 1, 'Tilenol', 1, 'Maquinas', '8hrs', '5 meses', 2, 1, 1, 1, 'intermitente', '', 0, '', 0, '', 'sem problemas graves'),
-(7, '88888888888', 'teste 8', 'teste 8', 'teste 8', 0, 1, 1, 0, 'teste 8', 1, 1, 1, 'teste 8', 1, 'teste 8', 'meningite, teste 8', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'teste 8', 0, '', '', '', 0, 0, 0, 0, '0', '', 0, '', 0, '', ''),
-(8, '99999999999', 'teste 9', 'teste 9', 'teste 9', 0, 0, 0, 0, '', 0, 0, 0, '', 0, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '', 0, '', '', 'teste 9', 3, 1, 1, 1, 'intermitente', 'teste 9', 1, 'teste 9', 1, 'teste 9', 'teste 9'),
-(9, '10101010101', 'teste 10', '10', '10', 0, 0, 0, 0, '', 0, 0, 0, '', 0, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '', 0, '', '', '10', 0, 0, 0, 0, 'np', '', 0, '', 0, '', '10'),
-(10, '11111111111', '11', '111', '11', 0, 0, 0, 0, '', 0, 0, 0, '', 0, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '', 0, '', '', '', 0, 0, 0, 0, 'np', '', 0, '', 0, '', '');
+(13, '47139481920', 'José Silva', 'Dores de ouvido', 'Dores constantes desde o mês de outubro', 1, 1, 0, 0, '', 0, 0, 0, '  ', 0, '', '', 1, 1, 0, 0, 0, 0, 0, 0, '', 0, '', '', '5 meses', 2, 0, 0, 0, '0', '', 0, '', 1, '', '');
 
 -- --------------------------------------------------------
 
@@ -152,6 +143,11 @@ CREATE TABLE IF NOT EXISTS `tbl_anamneseinf` (
   `AnmInf_Drogas` tinyint(1) DEFAULT NULL,
   `AnmInf_Alcool` tinyint(1) DEFAULT NULL,
   `AnmInf_Parto` varchar(20) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
+  `AnmInf_Caxumba` tinyint(1) DEFAULT NULL,
+  `AnmInf_Meningite` tinyint(1) DEFAULT NULL,
+  `AnmInf_Encefalite` tinyint(1) DEFAULT NULL,
+  `AnmInf_TraumaAcustico` tinyint(1) DEFAULT NULL,
+  `AnmInf_Sarampo` tinyint(1) DEFAULT NULL,
   `AnmInf_Doenca` varchar(175) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
   `AnmInf_HistOtite` tinyint(1) NOT NULL,
   `AnmInf_OtiteOE` tinyint(1) DEFAULT NULL,
@@ -167,9 +163,14 @@ CREATE TABLE IF NOT EXISTS `tbl_anamneseinf` (
   `AnmInf_ComoConf` varchar(45) COLLATE utf8_general_mysql500_ci NOT NULL,
   `AnmInf_IdadeInterv` int(3) DEFAULT NULL,
   `AnmInf_QualInterv` varchar(45) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `AnmInf_ReageQualSom` int(1) NOT NULL,
-  `AnmInf_ReacaoVoz` int(1) NOT NULL,
-  `AnmInf_ComoReage` int(1) NOT NULL,
+  `AnmInf_ReageTrovao` tinyint(4) DEFAULT NULL,
+  `AnmInf_ReageAviao` tinyint(4) DEFAULT NULL,
+  `AnmInf_ReagePorta` tinyint(4) DEFAULT NULL,
+  `AnmInf_ReageBuzina` tinyint(4) DEFAULT NULL,
+  `AnmInf_ReageCachorro` tinyint(4) DEFAULT NULL,
+  `AnmInf_ReageVoz` tinyint(4) DEFAULT NULL,
+  `AnmInf_ReacaoIntensidadeVoz` varchar(20) COLLATE utf8_general_mysql500_ci NOT NULL,
+  `AnmInf_ComoReage` varchar(20) COLLATE utf8_general_mysql500_ci NOT NULL,
   `AnmInf_DesenvolvLing` varchar(45) COLLATE utf8_general_mysql500_ci NOT NULL,
   `AnmInf_ComunicProdom` varchar(45) COLLATE utf8_general_mysql500_ci NOT NULL,
   `AnmInf_DesenvolvMotor` varchar(45) COLLATE utf8_general_mysql500_ci NOT NULL,
@@ -181,19 +182,8 @@ CREATE TABLE IF NOT EXISTS `tbl_anamneseinf` (
 -- Fazendo dump de dados para tabela `tbl_anamneseinf`
 --
 
-INSERT INTO `tbl_anamneseinf` (`AnmInf_Cod`, `Pc_CPF`, `AnmInf_EncaminhaPor`, `AnmInf_PrincQueixa`, `AnmInf_HistQueixa`, `AnmInf_GestAlteracao`, `AnmInf_DescAlteracao`, `AnmInf_Rubeola`, `AnmInf_Toxoplasmose`, `AnmInf_Sifilis`, `AnmInf_Citomegalovirose`, `AnmInf_Herpes`, `AnmInf_Drogas`, `AnmInf_Alcool`, `AnmInf_Parto`, `AnmInf_Doenca`, `AnmInf_HistOtite`, `AnmInf_OtiteOE`, `AnmInf_OtiteOD`, `AnmInf_Periodicidade`, `AnmInf_PerdaAudNaFamilia`, `AnmInf_Familiar`, `AnmInf_UsoMedicacao`, `AnmInf_Medicacao`, `AnmInf_PaisConsag`, `AnmInf_TempoDifculAud`, `AnmInf_IdadeConf`, `AnmInf_ComoConf`, `AnmInf_IdadeInterv`, `AnmInf_QualInterv`, `AnmInf_ReageQualSom`, `AnmInf_ReacaoVoz`, `AnmInf_ComoReage`, `AnmInf_DesenvolvLing`, `AnmInf_ComunicProdom`, `AnmInf_DesenvolvMotor`, `AnmInf_Obs`) VALUES
-(4, '12345657891', 'teste', 'teste', 'teste', 0, 'teste', 1, 1, 1, 1, 1, 1, 1, 'cesaria', 'sarampo, meningite, caxumba, trauma acústico, encefalite, teste', 1, 1, 1, 'teste', 1, 'teste', 1, 'teste', 1, 'teste', 1, 'teste', 2, 'teste', 5, 2, 4, 'teste', 'teste', 'teste', 'teste');
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `tbl_comoreage`
---
-
-CREATE TABLE IF NOT EXISTS `tbl_comoreage` (
-  `ComoReage_Cod` int(1) NOT NULL,
-  `ComoReage_Desc` varchar(45) COLLATE utf8_general_mysql500_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+INSERT INTO `tbl_anamneseinf` (`AnmInf_Cod`, `Pc_CPF`, `AnmInf_EncaminhaPor`, `AnmInf_PrincQueixa`, `AnmInf_HistQueixa`, `AnmInf_GestAlteracao`, `AnmInf_DescAlteracao`, `AnmInf_Rubeola`, `AnmInf_Toxoplasmose`, `AnmInf_Sifilis`, `AnmInf_Citomegalovirose`, `AnmInf_Herpes`, `AnmInf_Drogas`, `AnmInf_Alcool`, `AnmInf_Parto`, `AnmInf_Caxumba`, `AnmInf_Meningite`, `AnmInf_Encefalite`, `AnmInf_TraumaAcustico`, `AnmInf_Sarampo`, `AnmInf_Doenca`, `AnmInf_HistOtite`, `AnmInf_OtiteOE`, `AnmInf_OtiteOD`, `AnmInf_Periodicidade`, `AnmInf_PerdaAudNaFamilia`, `AnmInf_Familiar`, `AnmInf_UsoMedicacao`, `AnmInf_Medicacao`, `AnmInf_PaisConsag`, `AnmInf_TempoDifculAud`, `AnmInf_IdadeConf`, `AnmInf_ComoConf`, `AnmInf_IdadeInterv`, `AnmInf_QualInterv`, `AnmInf_ReageTrovao`, `AnmInf_ReageAviao`, `AnmInf_ReagePorta`, `AnmInf_ReageBuzina`, `AnmInf_ReageCachorro`, `AnmInf_ReageVoz`, `AnmInf_ReacaoIntensidadeVoz`, `AnmInf_ComoReage`, `AnmInf_DesenvolvLing`, `AnmInf_ComunicProdom`, `AnmInf_DesenvolvMotor`, `AnmInf_Obs`) VALUES
+(4, '93849102380', 'teste', 'teste', 'teste', 0, 'teste', 1, 1, 1, 1, 1, 1, 1, 'cesarea', NULL, NULL, NULL, NULL, NULL, 'sarampo, meningite, caxumba, trauma acústico, encefalite, teste', 1, 1, 1, 'teste', 1, 'teste', 1, 'teste', 1, 'teste', 1, 'teste', 2, 'teste', 1, NULL, 1, NULL, 1, 1, 'alta', 'cessaAtividade', 'teste', 'teste', 'teste', 'teste');
 
 -- --------------------------------------------------------
 
@@ -220,8 +210,11 @@ INSERT INTO `tbl_endereco` (`Pc_CPF`, `End_Logradouro`, `End_UF`, `End_CEP`, `En
 ('77777777777', 'Rua teste 5', 'AL', '31873912', '2709301'),
 ('77777777799', 'teste 5', 'AL', '18273817', '2701704'),
 ('88888888889', 'teste 8', 'AL', '82187382', '2200202'),
+('47139481920', 'Rua Sargento João Lópes', 'RJ', '21931-42', '3304557'),
 ('22222222222', 'SJAIJSDIASJI', 'BA', '28712930', '2910727'),
 ('93849102380', 'Rua Sargento João Lópes', 'RN', '21931420', '2400109'),
+('94857102482', 'Rua Sargento João Lópes', 'AC', '21931-42', '1200013'),
+('49375482719', 'Rua Sem Nome, sem numero', 'AC', '31413442', '1200013'),
 ('21736421838', 'Rua acrelandia, numero 204', 'AC', '11111111', '1200013'),
 ('01301493184', 'Rua Sem Nome, sem numero', 'DF', '28187323', '5300108');
 
@@ -317,17 +310,6 @@ INSERT INTO `tbl_grauescolar` (`GEsc_Cod`, `GEsc_Desc`) VALUES
 (4, 'Ensino Médio (Completo)'),
 (5, 'Ensino Superior (Incompleto)'),
 (6, 'Ensino Superior (Completo)');
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `tbl_habcompreenderfala`
---
-
-CREATE TABLE IF NOT EXISTS `tbl_habcompreenderfala` (
-  `HCF_Cod` int(1) NOT NULL,
-  `HCF_Desc` varchar(25) COLLATE utf8_general_mysql500_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 -- --------------------------------------------------------
 
@@ -5977,7 +5959,10 @@ INSERT INTO `tbl_paciente` (`Pc_CPF`, `Pc_Nome`, `Pc_CartaoSus`, `Pc_NumProntuar
 ('93849102380', 'Ana Julia Lima', '203814192841020', '0', '1993-03-12', 21, 'f', 2, 'Ana Maria Lima', 'Antonio Carlos Lima', 5, 0, '', 'infantil'),
 ('21736421838', 'José da Silva Souza', '28189310310319311111', '918', '1966-09-02', NULL, 'm', 1, 'Maria da Silva', 'João Souza', 1, 0, ' ', 'adulta'),
 ('01301493184', 'Lais Damasio', '291303910210', '230', '1995-12-10', NULL, 'f', 2, 'Leticia Damasio', '', 5, 0, 'Estudante', 'adulta'),
-('47293019301', 'Maria Luiza Pinheiro', '21392381394319019029', '8271', '1992-11-13', NULL, 'f', 5, 'Helena Pinheiro', 'nunes', 4, 0, '', 'adulta');
+('47293019301', 'Maria Luiza Pinheiro', '21392381394319019029', '8271', '1992-11-13', NULL, 'f', 5, 'Helena Pinheiro', 'nunes', 4, 0, '', 'adulta'),
+('49375482719', 'Marcos Antonio de Oliveira', '12941939310', '2941', '1996-11-18', NULL, 'm', 2, 'Julia de Oliveira', '', 3, 0, 'Estudante', 'adulta'),
+('94857102482', 'Thiago Leal Damasio Machado', '19219485', '8471', '1992-11-14', NULL, 'm', 3, 'Thiago Leal', 'Machado', 1, 1, 'Estudante', 'adulta'),
+('47139481920', 'Thiago Leal Damasio Machado', '128738192', '2871', '1992-11-14', NULL, 'm', 3, 'Luciana Machado', 'Omar Machado', 5, 1, 'Tecnico Informatica', 'adulta');
 
 -- --------------------------------------------------------
 
@@ -6125,17 +6110,6 @@ INSERT INTO `tbl_protuario` (`Pc_CPF`, `Pront_Cpf_Profissional`, `Pront_Numero`,
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tbl_reacaovoz`
---
-
-CREATE TABLE IF NOT EXISTS `tbl_reacaovoz` (
-  `ReacaoVoz_Cod` int(1) NOT NULL,
-  `ReacaoVoz_Desc` varchar(45) COLLATE utf8_general_mysql500_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
-
--- --------------------------------------------------------
-
---
 -- Estrutura para tabela `tbl_relatfin`
 --
 
@@ -6210,7 +6184,7 @@ CREATE TABLE IF NOT EXISTS `tbl_telefone` (
   `Tel_Tel2` varchar(14) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
   `TipoTel_Cod` int(1) DEFAULT NULL,
   PRIMARY KEY (`telefone_cod`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci AUTO_INCREMENT=20 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci AUTO_INCREMENT=27 ;
 
 --
 -- Fazendo dump de dados para tabela `tbl_telefone`
@@ -6230,7 +6204,10 @@ INSERT INTO `tbl_telefone` (`telefone_cod`, `Pc_CPF`, `Tel_DDD`, `Tel_Tel1`, `Te
 (15, '92188491210', 0, '92101210201', '', 0),
 (16, '93205586029', 0, '29130590121', '', 0),
 (17, '21736421838', NULL, '21839721931000', '', NULL),
-(18, '01301493184', NULL, '21994031981112', '', NULL);
+(18, '01301493184', NULL, '21994031981112', '', NULL),
+(20, '49375482719', NULL, '2739183819201', '1983912831922', NULL),
+(26, '94857102482', NULL, '21994309100', '21994309100', NULL),
+(25, '47139481920', NULL, '21994309100', '21994309100', NULL);
 
 -- --------------------------------------------------------
 
