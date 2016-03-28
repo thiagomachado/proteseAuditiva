@@ -259,8 +259,7 @@
        </div>
 
        <div class="botoesModal">
-         <a href="<?php echo base_url().'index.php/edicaoPaciente/'.$paciente->Pc_CPF;?>"><input type="button" class="botao" value="Concluir"/></a>
-         <input class="botao" onclick="esconderModal('#modalSucesso'),location.reload()" value="Continuar"/>
+         <a href="<?php echo base_url().'index.php/edicaoPaciente/'.$paciente->Pc_CPF;?>"><input type="button" class="botao" value="Concluir"/></a>         
        </div>
      </div>
 

@@ -69,6 +69,11 @@
             $tituloPagina   = 'EDITAR ANAMNESE INFANTIL';
             $anamnese       = $this->anamnese_model->recuperarAnmaneseInfantilPorCPF($cpf);
             //se não houver anamnese redireciona para o cadastro de anamnese infantil
+            if(sizeof($anamnese) == 0)
+            {
+              $tituloPagina   = 'CADASTRAR ANAMNESE INFANTIL';
+              $paginaAnamnese = 'anamneseInfantil_cadastro';
+            }
           }
 
           $data['paciente'] = $paciente;
@@ -93,9 +98,17 @@
           echo json_encode($anamnese);
         }
 
+        public function cadastrarInfantil()
+        {
+          $anamneseForm = $this->extrairDadosAnamneseInfantil();
+
+          $anamnese = $this->anamnese_model->cadastrarAnamneseInfantil($anamneseForm);
+          echo json_encode($anamnese);
+        }
+
         public function editarInfantil()
         {
-          $anamneseForm = $this->extrairDadosAnmneseInfantil();
+          $anamneseForm = $this->extrairDadosAnamneseInfantil();
 
           $anamnese = $this->anamnese_model->editarAnamneseInfantilPorCPF($anamneseForm['Pc_CPF'],$anamneseForm);
           echo json_encode($anamnese);
@@ -167,7 +180,7 @@
           return $anamnese;
         }
 
-        private function extrairDadosAnmneseInfantil()
+        private function extrairDadosAnamneseInfantil()
         {
           extract($_POST);
           $anamnese = array(

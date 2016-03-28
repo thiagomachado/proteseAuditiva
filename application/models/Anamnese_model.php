@@ -58,5 +58,10 @@
           $this->db->insert('tbl_anamneseadt', $anamnese);
         }
 
+        public function cadastrarAnamneseInfantil($anamnese)
+        {
+          $this->db->insert('tbl_anamneseinf', $anamnese);
+        }
+
     }
 ?>
