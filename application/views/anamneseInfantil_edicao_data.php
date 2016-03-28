@@ -200,7 +200,7 @@
     $dataHistoricoOtitePeriodo = array(
             'name'          => 'historicoOtitePeriodo',
             'id'            => 'historicoOtitePeriodo',
-            'size'          => '10',
+            'size'          => '12',
             'maxlength'     => '45',
             'value'         => $anamnese->AnmInf_Periodicidade
     );

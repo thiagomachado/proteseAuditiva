@@ -48,6 +48,11 @@
           $this->db->update('tbl_anamneseadt',$anamnese, array('Pc_CPF' => $cpf));
         }
 
+        public function editarAnamneseInfantilPorCPF($cpf, $anamnese)
+        {
+          $this->db->update('tbl_anamneseinf',$anamnese, array('Pc_CPF' => $cpf));
+        }
+
         public function cadastrarAnamneseAdulta($anamnese)
         {
           $this->db->insert('tbl_anamneseadt', $anamnese);

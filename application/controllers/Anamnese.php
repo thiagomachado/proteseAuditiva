@@ -93,6 +93,14 @@
           echo json_encode($anamnese);
         }
 
+        public function editarInfantil()
+        {
+          $anamneseForm = $this->extrairDadosAnmneseInfantil();
+
+          $anamnese = $this->anamnese_model->editarAnamneseInfantilPorCPF($anamneseForm['Pc_CPF'],$anamneseForm);
+          echo json_encode($anamnese);
+        }
+
         private function extrairDadosAnamneseAdulta()
         {
           extract($_POST);
@@ -142,6 +150,73 @@
             'AnmAdt_IncomSonsIntensos' =>  $AnmAdt_IncomSonsIntensos,
             'AnmAdt_SonsIntensos'      =>  $AnmAdt_SonsIntensos,
             'AnmAdt_Obs'               =>  $AnmAdt_Obs
+          );
+
+          foreach ($anamnese as $key => $value)
+          {
+            if($value == "true")
+            {
+              $anamnese[$key] = 1;
+            }
+            if($value == "false")
+            {
+              $anamnese[$key] = 0;
+            }
+          }
+
+          return $anamnese;
+        }
+
+        private function extrairDadosAnmneseInfantil()
+        {
+          extract($_POST);
+          $anamnese = array(
+            'Pc_CPF'                      => $cpf,
+            'AnmInf_EncaminhaPor'         => $AnmInf_EncaminhaPor,
+            'AnmInf_PrincQueixa'          => $AnmInf_PrincQueixa,
+            'AnmInf_HistQueixa'           => $AnmInf_HistQueixa,
+            'AnmInf_GestAlteracao'        => $AnmInf_GestAlteracao,
+            'AnmInf_DescAlteracao'        => $AnmInf_DescAlteracao,
+            'AnmInf_Rubeola'              => $AnmInf_Rubeola,
+            'AnmInf_Toxoplasmose'         => $AnmInf_Toxoplasmose,
+            'AnmInf_Sifilis'              => $AnmInf_Sifilis,
+            'AnmInf_Citomegalovirose'     => $AnmInf_Citomegalovirose,
+            'AnmInf_Herpes'               => $AnmInf_Herpes,
+            'AnmInf_Drogas'               => $AnmInf_Drogas,
+            'AnmInf_Alcool'               => $AnmInf_Alcool,
+            'AnmInf_Parto'                => $AnmInf_Parto,
+            'AnmInf_Caxumba'              => $AnmInf_Caxumba,
+            'AnmInf_Meningite'            => $AnmInf_Meningite,
+            'AnmInf_Encefalite'           => $AnmInf_Encefalite,
+            'AnmInf_TraumaAcustico'       => $AnmInf_TraumaAcustico,
+            'AnmInf_Sarampo'              => $AnmInf_Sarampo,
+            'AnmInf_Doenca'               => $AnmInf_Doenca,
+            'AnmInf_HistOtite'            => $AnmInf_HistOtite,
+            'AnmInf_OtiteOE'              => $AnmInf_OtiteOE,
+            'AnmInf_OtiteOD'              => $AnmInf_OtiteOD,
+            'AnmInf_Periodicidade'        => $AnmInf_Periodicidade,
+            'AnmInf_PerdaAudNaFamilia'    => $AnmInf_PerdaAudNaFamilia,
+            'AnmInf_Familiar'             => $AnmInf_Familiar,
+            'AnmInf_UsoMedicacao'         => $AnmInf_UsoMedicacao,
+            'AnmInf_Medicacao'            => $AnmInf_Medicacao,
+            'AnmInf_PaisConsag'           => $AnmInf_PaisConsag,
+            'AnmInf_TempoDifculAud'       => $AnmInf_TempoDifculAud,
+            'AnmInf_IdadeConf'            => $AnmInf_IdadeConf,
+            'AnmInf_ComoConf'             => $AnmInf_ComoConf,
+            'AnmInf_IdadeInterv'          => $AnmInf_IdadeInterv,
+            'AnmInf_QualInterv'           => $AnmInf_QualInterv,
+            'AnmInf_ReageTrovao'          => $AnmInf_ReageTrovao,
+            'AnmInf_ReageAviao'           => $AnmInf_ReageAviao,
+            'AnmInf_ReagePorta'           => $AnmInf_ReagePorta,
+            'AnmInf_ReageBuzina'          => $AnmInf_ReageBuzina,
+            'AnmInf_ReageCachorro'        => $AnmInf_ReageCachorro,
+            'AnmInf_ReageVoz'             => $AnmInf_ReageVoz,
+            'AnmInf_ReacaoIntensidadeVoz' => $AnmInf_ReacaoIntensidadeVoz,
+            'AnmInf_ComoReage'            => $AnmInf_ComoReage,
+            'AnmInf_DesenvolvLing'        => $AnmInf_DesenvolvLing,
+            'AnmInf_ComunicProdom'        => $AnmInf_ComunicProdom,
+            'AnmInf_DesenvolvMotor'       => $AnmInf_DesenvolvMotor,
+            'AnmInf_Obs'                  => $AnmInf_Obs
           );
 
           foreach ($anamnese as $key => $value)

@@ -71,3 +71,4 @@ $route['cadastroAnamnese/(:num)'] = 'anamnese/cadastroAnamnese/$1';
 $route['edicaoAnamnese/(:num)']   = 'anamnese/edicaoAnamnese/$1';
 $route['editarAnamneseAdulta']    = 'anamnese/editarAdulta';
 $route['cadastrarAnamneseAdulta'] = 'anamnese/cadastrarAdulta';
+$route['editarAnamneseInfantil']  = 'anamnese/editarInfantil';

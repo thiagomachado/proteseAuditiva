@@ -8,7 +8,7 @@
 <div class="conteudo">
 
   <?php
-    echo form_open('anamnese/editarInfantil',$data_form);
+    echo form_open('',$data_form);
     echo form_input($dataCPFHidden);
    ?>
    <div class="areaFormulario">
@@ -85,9 +85,9 @@
              <fieldset class="subsecaoFormulario">
                <legend>Já teve ou tem alguma dessas doenças?</legend>
                <?php echo form_checkbox($dataCaxumba);?><label>Caxumba</label>
-               <?php echo form_checkbox($dataMeningite);?><label>Meningite</label>
-               <?php echo form_checkbox($dataEncefalite);?><label>Encefalite</label><br>
-               <?php echo form_checkbox($dataTraumaAcustico);?><label>Trauma Acustico</label>
+               <?php echo form_checkbox($dataMeningite);?><label>Meningite</label><br>
+               <?php echo form_checkbox($dataEncefalite);?><label>Encefalite</label>
+               <?php echo form_checkbox($dataTraumaAcustico);?><label>Trauma Acustico</label><br>
                <?php echo form_checkbox($dataSarampo);?><label>Sarampo</label>
                <br>
                <label>Outra(s):</label> <?php echo form_input($dataOutrasDoencas);?>
@@ -180,14 +180,14 @@
            <td>
             <fieldset class="subsecaoFormulario">
               <legend>Reage a qual intensidade de voz?</legend>
-              <?php echo form_dropdown('IntensidadeVoz', $dataReacaoVoz,$anamnese->AnmInf_ReacaoIntensidadeVoz, 'id="IntensidadeVoz"'); ?>
+              <?php echo form_dropdown('intensidadeVoz', $dataReacaoVoz,$anamnese->AnmInf_ReacaoIntensidadeVoz, 'id="intensidadeVoz"'); ?>
             </fieldset>
            </td>
 
            <td>
              <fieldset class="subsecaoFormulario">
                <legend>Como reage aos sons?</legend>
-               <?php echo form_dropdown('ComoReage', $dataComoReage,$anamnese->AnmInf_ComoReage, 'id="ComoReage"'); ?>
+               <?php echo form_dropdown('comoReage', $dataComoReage,$anamnese->AnmInf_ComoReage, 'id="comoReage"'); ?>
              </fieldset>
            </td>
          </tr>
@@ -269,7 +269,7 @@
 <script type="text/javascript">
 // Ajax post
 $(document).ready(function() {
-    $("#formAnamneseAdulta").on('submit', function(event) {
+    $("#formAnamneseInfantil").on('submit', function(event) {
         event.preventDefault();
 
         jQuery.ajax({
@@ -278,46 +278,52 @@ $(document).ready(function() {
             dataType: 'json',
             data:
             {
-              cpf:                      $("#cpfHidden").val(),
-              AnmAdt_EncaminhadoPor:    $("#encaminhado").val(),
-              AnmAdt_PrincQueixa:       $("#queixaPrincipal").val(),
-              AnmAdt_HistQueixa:        $("#historicoQueixa").val(),
-              AnmAdt_DorOuvido:         $("input[name='dorDeOuvido']:checked").val(),
-              AnmAdt_HistOtite:         $("input[name='historicoOtite']:checked").val(),
-              AnmAdt_OtiteOE:           $("#historicoOtiteOE" ).prop("checked"),
-              AnmAdt_OtiteOD:           $("#historicoOtiteOD" ).prop("checked"),
-              AnmAdt_Periodicidade:     $("#historicoOtitePeriodo").val(),
-              AnmAdt_CirurgiaOtologica: $("input[name='cirurgiaOtologica']:checked").val(),
-              AnmAdt_CirurgiaOtolOE:    $("#cirurgiaOtologicaOE" ).prop("checked"),
-              AnmAdt_CirurgiaOtolOD:    $("#cirurgiaOtologicaOD" ).prop("checked"),
-              AnmAdt_CirurgiaDesc:      $("#cirurgiaOtologicaDescricao").val(),
-              AnmAdt_PerdaAudNaFamilia: $("input[name='perdaAuditivaNaFamilia']:checked").val(),
-              AnmAdt_FamiliarPerdaAud:  $("#perdaAuditivaParentesco").val(),
-              AnmAdt_Doenca:            $("#outrasDoencas").val(),
-              AnmAdt_Caxumba:           $("#caxumba" ).prop("checked"),
-              AnmAdt_Meningite:         $("#meningite" ).prop("checked"),
-              AnmAdt_Sifilis:           $("#sifilis" ).prop("checked"),
-              AnmAdt_Hipertensao:       $("#hipertensao" ).prop("checked"),
-              AnmAdt_Sarampo:           $("#sarampo" ).prop("checked"),
-              AnmAdt_Circulatorios:     $("#circulatorios" ).prop("checked"),
-              AnmAdt_Diabetes:          $("#diabetes" ).prop("checked"),
-              AnmAdt_UsoMedicacao:      $("input[name='usoMedicacao']:checked").val(),
-              AnmAdt_Medicacao:         $("#medicacao").val(),
-              AnmAdt_SeRuidosOcup:      $("input[name='ruidoOcupacional']:checked").val(),
-              AnmAdt_RuidosOcup:        $("#ruidoOcupacionalDesc").val(),
-              AnmAdt_TempoRuidosOcup:   $("#ruidoOcupacionalTempo").val(),
-              AnmAdt_TempoDificulAud:   $("#tempoPerdaAudicao" ).val(),
-              AnmAdt_CompreenderFala:   $("input[name='compreendeFala']:checked").val(),
-              AnmAdt_Zumbido:           $("input[name='zumbido']:checked").val(),
-              AnmAdt_ZumbOD:            $("#zumbidoOD" ).prop("checked"),
-              AnmAdt_ZumbOE:            $("#zumbidoOE" ).prop("checked"),
-              AnmAdt_ZumbTipo:          $("input[name='zumbidoTipo']:checked").val(),
-              AnmAdt_ZumbTempo:         $("#tempoZumbido").val(),
-              AnmAdt_Vertigem:          $("input[name='vertigem']:checked").val(),
-              AnmAdt_TempoVertigem:     $("#tempoVertigem").val(),
-              AnmAdt_IncomSonsIntensos: $("input[name='incomodo']:checked").val(),
-              AnmAdt_SonsIntensos:      $("#descIncomodo").val(),
-              AnmAdt_Obs:               $("#obs").val()
+              cpf:                         $("#cpfHidden").val(),
+              AnmInf_EncaminhaPor:         $("#encaminhado").val(),
+              AnmInf_PrincQueixa:          $("#queixaPrincipal").val(),
+              AnmInf_HistQueixa:           $("#historicoQueixa").val(),
+              AnmInf_GestAlteracao:        $("input[name='alteracoesGravidez']:checked").val(),
+              AnmInf_DescAlteracao:        $("#descricaoAlteracao").val(),
+              AnmInf_Rubeola:              $("#rubeola" ).prop("checked"),
+              AnmInf_Toxoplasmose:         $("#toxoplasmose" ).prop("checked"),
+              AnmInf_Sifilis:              $("#sifilis" ).prop("checked"),
+              AnmInf_Citomegalovirose:     $("#citomegalovirose" ).prop("checked"),
+              AnmInf_Herpes:               $("#herpes" ).prop("checked"),
+              AnmInf_Drogas:               $("#drogas" ).prop("checked"),
+              AnmInf_Alcool:               $("#alcool" ).prop("checked"),
+              AnmInf_Parto:                $('#tipoParto').val(),
+              AnmInf_Caxumba:              $("#caxumba" ).prop("checked"),
+              AnmInf_Meningite:            $("#meningite" ).prop("checked"),
+              AnmInf_Encefalite:           $("#encefalite" ).prop("checked"),
+              AnmInf_TraumaAcustico:       $("#traumaAcustico" ).prop("checked"),
+              AnmInf_Sarampo:              $("#sarampo" ).prop("checked"),
+              AnmInf_Doenca:               $("#outrasDoencas").val(),
+              AnmInf_HistOtite:            $("input[name='historicoOtite']:checked").val(),
+              AnmInf_OtiteOE:              $("#historicoOtiteOE" ).prop("checked"),
+              AnmInf_OtiteOD:              $("#historicoOtiteOD" ).prop("checked"),
+              AnmInf_Periodicidade:        $("#historicoOtitePeriodo").val(),
+              AnmInf_PerdaAudNaFamilia:    $("input[name='perdaAuditivaNaFamilia']:checked").val(),
+              AnmInf_Familiar:             $("#perdaAuditivaParentesco").val(),
+              AnmInf_UsoMedicacao:         $("input[name='usoMedicacao']:checked").val(),
+              AnmInf_Medicacao:            $("#medicacao").val(),
+              AnmInf_PaisConsag:           $("input[name='consaguinidade']:checked").val(),
+              AnmInf_TempoDifculAud:       $("#tempoDificuldadeAuditiva").val(),
+              AnmInf_IdadeConf:            $("#idadeConfirmacao").val(),
+              AnmInf_ComoConf:             $("#comoConfirmou").val(),
+              AnmInf_IdadeInterv:          $("#idadeIntervencao").val(),
+              AnmInf_QualInterv:           $("#qualIntervencao").val(),
+              AnmInf_ReageTrovao:          $("#reageTrovao" ).prop("checked"),
+              AnmInf_ReageAviao:           $("#reageAviao" ).prop("checked"),
+              AnmInf_ReagePorta:           $("#reagePorta" ).prop("checked"),
+              AnmInf_ReageBuzina:          $("#reageBuzina" ).prop("checked"),
+              AnmInf_ReageCachorro:        $("#reageCachorro" ).prop("checked"),
+              AnmInf_ReageVoz:             $("#sarampo" ).prop("checked"),
+              AnmInf_ReacaoIntensidadeVoz: $("#intensidadeVoz").val(),
+              AnmInf_ComoReage:            $("#comoReage").val(),
+              AnmInf_DesenvolvLing:        $("#desenvolvimentoLinguagem").val(),
+              AnmInf_ComunicProdom:        $("#comunicacaoPredominante").val(),
+              AnmInf_DesenvolvMotor:       $("#desenvolvimentoMotor").val(),
+              AnmInf_Obs:                  $("#obs").val()
             },
             success: function(res)
             {
