@@ -55,10 +55,12 @@ $route['translate_uri_dashes']    = FALSE;
 $route['login']                   = 'login';
 $route['sair']                    = 'login/logout';
 
+//-------------------MENU-------------------------------------------------------
 $route['menu']                    = 'menu';
 $route['atendimento']             = 'menu/menuAtendimento';
 $route['sistema']                 = 'menu/menuSistema';
 
+//-------------------PACIENTE---------------------------------------------------
 $route['consultaPaciente']        = 'paciente';
 $route['cadastroPaciente']        = 'paciente/cadastroPaciente';
 $route['excluirPaciente/(:num)']  = 'paciente/excluir/$1';
@@ -67,9 +69,14 @@ $route['editarPaciente']          = 'paciente/editar';
 $route['cadastrarPaciente']       = 'paciente/cadastrar';
 $route['municipios/(:any)']       = 'paciente/popularMunicipios/$1';
 
-$route['cadastroAnamnese/(:num)'] = 'anamnese/cadastroAnamnese/$1';
-$route['edicaoAnamnese/(:num)']   = 'anamnese/edicaoAnamnese/$1';
-$route['editarAnamneseAdulta']    = 'anamnese/editarAdulta';
-$route['cadastrarAnamneseAdulta'] = 'anamnese/cadastrarAdulta';
-$route['editarAnamneseInfantil']  = 'anamnese/editarInfantil';
+//-------------------ANAMNESE---------------------------------------------------
+$route['cadastroAnamnese/(:num)']   = 'anamnese/cadastroAnamnese/$1';
+$route['edicaoAnamnese/(:num)']     = 'anamnese/edicaoAnamnese/$1';
+$route['editarAnamneseAdulta']      = 'anamnese/editarAdulta';
+$route['cadastrarAnamneseAdulta']   = 'anamnese/cadastrarAdulta';
+$route['editarAnamneseInfantil']    = 'anamnese/editarInfantil';
 $route['cadastrarAnamneseInfantil'] = 'anamnese/cadastrarInfantil';
+
+//-------------------CARACTERIZACAO PACIENTE------------------------------------
+$route['cadastroCaracterizacaoPaciente']        = 'caracterizacaoPaciente/selecionarPaciente';
+$route['cadastroCaracterizacaoPaciente/(:num)'] = 'caracterizacaoPaciente/$1';

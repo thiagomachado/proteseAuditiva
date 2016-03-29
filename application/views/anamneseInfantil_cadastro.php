@@ -242,11 +242,11 @@
      <div class="modal" id="modalSucesso">
        <div class="textoModal">
          <h1>Sucesso!</h1>
-         <p>Os dados foram alterados.</p>
+         <p>Os dados foram cadastrados.</p>
        </div>
 
        <div class="botoesModal">
-         <a href="<?php echo base_url().'index.php/edicaoPaciente/'.$paciente->Pc_CPF;?>"><input type="button" class="botao" value="Concluir"/></a>         
+         <a href="<?php echo base_url().'index.php/edicaoPaciente/'.$paciente->Pc_CPF;?>"><input type="button" class="botao" value="Concluir"/></a>
        </div>
      </div>
 

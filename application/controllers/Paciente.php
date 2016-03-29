@@ -18,10 +18,11 @@
         }
 
         public function index()
-        {   $jsConsulta = '<script language="JavaScript" type="text/javascript" src="'.base_url().'assets/js/consulta.js"></script>';
+        {   $jsConsulta = '<script language="JavaScript" type="text/javascript" src="'.base_url().'assets/js/consultaEdicaoPaciente.js"></script>';
             $this->template->set('script', $jsConsulta );
             $this->template->set('title', 'CONSULTA DE PACIENTES');
-            $listaPacientes = $this->consultar();
+            $listaPacientes               = $this->consultar();
+            $listaPacientes['formAction'] = 'paciente/' ;
             $this->template->load('template','paciente_consulta',$listaPacientes);
 
         }

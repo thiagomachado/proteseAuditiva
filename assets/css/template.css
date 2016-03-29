@@ -71,7 +71,7 @@ body
 .botao
 {
   background: -webkit-linear-gradient(top, #0BA3FD,#0066FF);
-  width: 100px;
+  min-width: 100px;
   font-size: 16px;
   position: relative;
   border: 3px outset #0BA3FD;
