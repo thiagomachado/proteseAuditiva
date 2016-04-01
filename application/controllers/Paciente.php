@@ -13,16 +13,17 @@
             $this->load->model('telefone_model');
             $this->load->model('uf_model');
             $this->load->model('municipio_model');
-
             $this->load->helper('url');
         }
 
         public function index()
-        {   $jsConsulta = '<script language="JavaScript" type="text/javascript" src="'.base_url().'assets/js/consultaEdicaoPaciente.js"></script>';
-            $this->template->set('script', $jsConsulta );
-            $this->template->set('title', 'CONSULTA DE PACIENTES');
+        {
+            $jsConsulta                   = '<script language="JavaScript" type="text/javascript" src="'.base_url().'assets/js/consultaEdicaoPaciente.js"></script>';
             $listaPacientes               = $this->consultar();
             $listaPacientes['formAction'] = 'paciente/' ;
+
+            $this->template->set('script', $jsConsulta );
+            $this->template->set('title', 'CONSULTA DE PACIENTES');
             $this->template->load('template','paciente_consulta',$listaPacientes);
 
         }

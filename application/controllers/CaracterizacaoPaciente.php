@@ -9,27 +9,31 @@
             parent::__construct();
             $this->template->set('css', link_tag('assets/css/caracterizacaoPaciente.css'));
             $this->load->model('paciente_model');
-
+            $this->load->model('usuario_model');
             $this->load->helper('url');
         }
 
         public function selecionarPaciente()
         {
-            $jsConsulta = '<script language="JavaScript" type="text/javascript" src="'.base_url().'assets/js/consultaPacienteCaracterizacao.js"></script>';
+            $jsConsulta                   = '<script language="JavaScript" type="text/javascript" src="'.base_url().'assets/js/consultaPacienteCaracterizacao.js"></script>';
+            $listaPacientes               = $this->consultarPacientes();
+            $listaPacientes['formAction'] = 'cadastroCaracterizacaoPaciente' ;
+
             $this->template->set('script', $jsConsulta );
             $this->template->set('title', 'SELECIONE O PACIENTE');
-            $listaPacientes = $this->consultarPacientes();
-            $listaPacientes['formAction'] = 'cadastroCaracterizacaoPaciente' ;
             $this->template->load('template','paciente_consulta',$listaPacientes);
 
         }
 
-        public function index($cpf)
+        public function cadastroCaracterizacao($cpf)
         {
-            $paciente = $this->consultarPacientes();
+            $paciente                = $this->paciente_model->recuperarPacientePorCPF($cpf);
+            $profissionais           = $this->usuario_model->recuperarProfissionais();
+            $dados['paciente']       = $paciente;
+            $dados['profissionais']  = $profissionais;
 
-            $this->template->set('title', 'CADASTRO CARACTERIZAÇÃO DO PACIENTE');
-            $this->template->load('template','paciente_consulta',$listaPacientes);
+            $this->template->set('title', 'CARACTERIZAÇÃO DO PACIENTE');
+            $this->template->load('template','caracterizacaoPaciente_cadastro',$dados);
 
         }
 

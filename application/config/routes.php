@@ -79,4 +79,4 @@ $route['cadastrarAnamneseInfantil'] = 'anamnese/cadastrarInfantil';
 
 //-------------------CARACTERIZACAO PACIENTE------------------------------------
 $route['cadastroCaracterizacaoPaciente']        = 'caracterizacaoPaciente/selecionarPaciente';
-$route['cadastroCaracterizacaoPaciente/(:num)'] = 'caracterizacaoPaciente/$1';
+$route['cadastroCaracterizacaoPaciente/(:num)'] = 'caracterizacaoPaciente/cadastroCaracterizacao/$1';

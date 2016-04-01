@@ -1,6 +1,6 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
-    
+
     class Usuario_model extends CI_Model
     {
 
@@ -42,6 +42,21 @@
 
             return $dadosUsuario;
           }
+        }
+
+        public function recuperarProfissionais()
+        {
+          $query = $this->db->get_where('tbl_usuarios', array('Us_Nivel' => 2))->result();
+          if(sizeof($query) == 0)
+          {
+            $profissionais = [];
+          }
+          else
+          {
+            $profissionais = $query;
+          }
+
+          return $profissionais;
         }
 
         function insert_entry($usuarioDados)
