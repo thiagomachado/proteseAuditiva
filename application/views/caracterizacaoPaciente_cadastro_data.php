@@ -276,7 +276,7 @@
 
     $dataConfiguracao = array(
             'name'          => 'configuracao',
-            'id'            => 'tipoPerdaAuditiva',
+            'id'            => 'configuracao',
             'size'          => '22',
             'maxlength'     => '25'
     );
@@ -390,7 +390,6 @@
             'size'          => '10',
             'maxlength'     => '25'
     );
-
 
     $dataOD_AASI_250 = array(
             'name'          => 'oD_AASI_250',
@@ -524,8 +523,6 @@
             'size'          => '10',
             'maxlength'     => '25'
     );
-
-
 
     $dataObs = array(
             'name'          => 'obs',

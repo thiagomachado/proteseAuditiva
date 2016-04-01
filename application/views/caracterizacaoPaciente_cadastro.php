@@ -7,7 +7,7 @@
 
 <div class="conteudo">
   <?php
-    echo form_open('anamnese/cadastrarAdulta',$data_form);
+    echo form_open('',$data_form);
     echo form_input($dataCPFHidden);
   ?>
   <div class="areaFormulario">
@@ -58,7 +58,7 @@
         </tr>
         <tr>
           <td rowspan="2">OD</td>
-          <td>VO</td>
+          <td>VA</td>
           <td><?php echo form_input($dataOD_VA_250); ?></td>
           <td><?php echo form_input($dataOD_VA_500); ?></td>
           <td><?php echo form_input($dataOD_VA_1k); ?></td>
@@ -69,19 +69,19 @@
           <td><?php echo form_input($dataOD_VA_8k); ?></td>
         </tr>
         <tr>
-          <td>VA</td>
+          <td>VO</td>
           <td></td>
-          <td><?php echo form_input($dataOD_VA_500); ?></td>
-          <td><?php echo form_input($dataOD_VA_1k); ?></td>
-          <td><?php echo form_input($dataOD_VA_2k); ?></td>
-          <td><?php echo form_input($dataOD_VA_3k); ?></td>
-          <td><?php echo form_input($dataOD_VA_4k); ?></td>
+          <td><?php echo form_input($dataOD_VO_500); ?></td>
+          <td><?php echo form_input($dataOD_VO_1k); ?></td>
+          <td><?php echo form_input($dataOD_VO_2k); ?></td>
+          <td><?php echo form_input($dataOD_VO_3k); ?></td>
+          <td><?php echo form_input($dataOD_VO_4k); ?></td>
           <td></td>
           <td></td>
         </tr>
         <tr>
           <td rowspan="2">OE</td>
-          <td>VO</td>
+          <td>VA</td>
           <td><?php echo form_input($dataOE_VA_250); ?></td>
           <td><?php echo form_input($dataOE_VA_500); ?></td>
           <td><?php echo form_input($dataOE_VA_1k); ?></td>
@@ -92,13 +92,13 @@
           <td><?php echo form_input($dataOE_VA_8k); ?></td>
         </tr>
         <tr>
-          <td>VA</td>
+          <td>VO</td>
           <td></td>
-          <td><?php echo form_input($dataOE_VA_500); ?></td>
-          <td><?php echo form_input($dataOE_VA_1k); ?></td>
-          <td><?php echo form_input($dataOE_VA_2k); ?></td>
-          <td><?php echo form_input($dataOE_VA_3k); ?></td>
-          <td><?php echo form_input($dataOE_VA_4k); ?></td>
+          <td><?php echo form_input($dataOE_VO_500); ?></td>
+          <td><?php echo form_input($dataOE_VO_1k); ?></td>
+          <td><?php echo form_input($dataOE_VO_2k); ?></td>
+          <td><?php echo form_input($dataOE_VO_3k); ?></td>
+          <td><?php echo form_input($dataOE_VO_4k); ?></td>
           <td></td>
           <td></td>
         </tr>
@@ -137,9 +137,9 @@
       <table>
         <tr>
           <td>Candidato ao uso de AASI:</td>
-          <td><?php echo form_dropdown('candidatoAASI',$dataOpcoesDropdown, 'id = "candidatoAASI"'); ?></td>
+          <td><?php echo form_dropdown('candidatoAASI',$dataOpcoesDropdown,'' ,'id ="candidatoAASI"'); ?></td>
           <td>Possível candidato ao uso de implante coclear:</td>
-          <td><?php echo form_dropdown('candidatoImplante', $dataOpcoesDropdown, 'id="candidatoImplante"'); ?></td>
+          <td><?php echo form_dropdown('candidatoImplante', $dataOpcoesDropdown,'' ,'id="candidatoImplante"'); ?></td>
         </tr>
       </table>
     </fieldset>
@@ -232,7 +232,7 @@
         <p>Deseja sair sem salvar?</p>
       </div>
       <div class="botoesModal">
-        <a href="<?php echo base_url().'index.php/edicaoPaciente/'.$paciente->Pc_CPF;?>"><input class="botao" type="button" value="Sim"/></a>
+        <a href="<?php echo base_url().'index.php/atendimento/';?>"><input class="botao" type="button" value="Sim"/></a>
         <input class="botao" type="button" onclick="esconderModal('#modalSairSemSalvar')" value="Não"/>
       </div>
     </div>
@@ -245,7 +245,7 @@
 
       <div class="botoesModal">
         <a href="<?php echo base_url().'index.php/edicaoPaciente/'.$paciente->Pc_CPF;?>"><input type="button" class="botao" value="Concluir"/></a>
-        <input class="botao" onclick="esconderModal('#modalSucesso'),location.reload()" value="Continuar"/>
+        <input class="botao" onclick="esconderModal('#modalSucesso'),location.reload()" value="Emitir"/>
       </div>
     </div>
 
@@ -264,3 +264,107 @@
   <?php echo form_close(); ?>
 
 </div>
+
+
+
+<script type="text/javascript">
+// Ajax post
+$(document).ready(function() {
+    $("#formCaracterizacaoPaciente").on('submit', function(event) {
+        event.preventDefault();
+
+        jQuery.ajax({
+            type: "POST",
+            url: "<?php echo base_url(); ?>" + "index.php/cadastrarCaracterizacaoPaciente",
+            dataType: 'json',
+            data:
+            {
+              cpf:                       $("#cpfHidden").val(),
+              Caract_Cpf_Profissional:   $('#profissional').val(),
+              Caract_TipoPerda:          $("#tipoPerdaAuditiva").val(),
+              Caract_GrauPerda:          $("#grauPerda").val(),
+              Caract_Config:             $("#configuracao").val(),
+              Caract_Duracao:            $("#duracao").val(),
+              Caract_Progress:           $("#progressao").val(),
+              Caract_Recrut:             $("#recrutamento").val(),
+              Caract_Zumbido:            $("#zumbido").val(),
+              Caract_ExamesCompl:        $("#examesComplementares").val(),
+              Caract_AASI:               $('#candidatoAASI').val(),
+              Caract_ImplCoclear:        $('#candidatoImplante').val(),
+              Caract_HistPerdaAud:       $("#historicoPerda").val(),
+              Caract_AASIModelo:         $('#modeloAASI').val(),
+              Caract_AASIOrelha:         $("#orelhaAASI" ).val(),
+              Caract_Obs:                $("#obs").val(),
+              OD_VA_250:                 $("#oD_VA_250").val(),
+              OD_VA_500:                 $("#oD_VA_500").val(),
+              OD_VA_1k:                  $("#oD_VA_1k").val(),
+              OD_VA_2k:                  $("#oD_VA_2k").val(),
+              OD_VA_3k:                  $("#oD_VA_3k").val(),
+              OD_VA_4k:                  $("#oD_VA_4k").val(),
+              OD_VA_6k:                  $("#oD_VA_6k").val(),
+              OD_VA_8k:                  $("#oD_VA_8k").val(),
+              OD_VO_500:                 $("#oD_VO_500").val(),
+              OD_VO_1k:                  $("#oD_VO_1k").val(),
+              OD_VO_2k:                  $("#oD_VO_2k").val(),
+              OD_VO_3k:                  $("#oD_VO_3k").val(),
+              OD_VO_4k:                  $("#oD_VO_4k").val(),
+              OE_VA_250:                 $("#oE_VA_250").val(),
+              OE_VA_500:                 $("#oE_VA_500").val(),
+              OE_VA_1k:                  $("#oE_VA_1k").val(),
+              OE_VA_2k:                  $("#oE_VA_2k").val(),
+              OE_VA_3k:                  $("#oE_VA_3k").val(),
+              OE_VA_4k:                  $("#oE_VA_4k").val(),
+              OE_VA_6k:                  $("#oE_VA_6k").val(),
+              OE_VA_8k:                  $("#oE_VA_8k").val(),
+              OE_VO_500:                 $("#oE_VO_500").val(),
+              OE_VO_1k:                  $("#oE_VO_1k").val(),
+              OE_VO_2k:                  $("#oE_VO_2k").val(),
+              OE_VO_3k:                  $("#oE_VO_3k").val(),
+              OE_VO_4k:                  $("#oE_VO_4k").val(),
+              sem250:                    $("#sem_AASI_250").val(),
+              sem500:                    $("#sem_AASI_500").val(),
+              sem1k:                     $("#sem_AASI_1k").val(),
+              sem2k:                     $("#sem_AASI_2k").val(),
+              sem3k:                     $("#sem_AASI_3k").val(),
+              sem4k:                     $("#sem_AASI_4k").val(),
+              sem6k:                     $("#sem_AASI_6k").val(),
+              sem8k:                     $("#sem_AASI_8k").val(),
+              sempercfala:               $("#sem_AASSI_percepcaoFala").val(),
+              od250:                     $("#oD_AASI_250").val(),
+              od500:                     $("#oD_AASI_500").val(),
+              od1k:                      $("#oD_AASI_1k").val(),
+              od2k:                      $("#oD_AASI_2k").val(),
+              od3k:                      $("#oD_AASI_3k").val(),
+              od4k:                      $("#oD_AASI_4k").val(),
+              od6k:                      $("#oD_AASI_6k").val(),
+              od8k:                      $("#oD_AASI_8k").val(),
+              odpercfala:                $("#oD_AASSI_percepcaoFala").val(),
+              oe250:                     $("#oE_AASI_250").val(),
+              oe500:                     $("#oE_AASI_500").val(),
+              oe1k:                      $("#oE_AASI_1k").val(),
+              oe2k:                      $("#oE_AASI_2k").val(),
+              oe3k:                      $("#oE_AASI_3k").val(),
+              oe4k:                      $("#oE_AASI_4k").val(),
+              oe6k:                      $("#oE_AASI_6k").val(),
+              oe8k:                      $("#oE_AASI_8k").val(),
+              oepercfala:                $("#oE_AASSI_percepcaoFala").val()
+            },
+            success: function(res)
+            {
+                mostrarModal('#modalSucesso');
+                if (res)
+                {
+                  console.log(res);
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError)
+            {
+              mostrarModal('#modalErro');
+              console.log(xhr.status);
+              console.log(thrownError);
+            }
+
+        });
+    });
+});
+</script>
