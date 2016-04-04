@@ -58,8 +58,8 @@
 
           return $profissionais;
         }
-
-        function insert_entry($usuarioDados)
+        
+        public function insert_entry($usuarioDados)
         {
             if($this->db->insert('tbl_usuarios', $usuarioDados))
             {

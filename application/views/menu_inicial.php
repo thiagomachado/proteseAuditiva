@@ -7,12 +7,12 @@
             <?php
                 if($this->session->userdata("nivel") != 4)
                 {
-                    echo '<a href="'.base_url().'index.php/atendimento"><li class = "liInicial">ATENDIMENTO</li></a>';
+                    echo '<a href="'.site_url("atendimento").'"><li class = "liInicial">ATENDIMENTO</li></a>';
                 }
             ?>
 
-            <a href="<?php echo base_url(); ?>index.php/sistema"><li class = "liInicial">SISTEMA</li></a>
-            <a href="<?php echo base_url(); ?>index.php/meusDados"><li class = "liInicial">MEUS DADOS</li></a>
-            <a href="<?php echo base_url(); ?>index.php/sair"><li class = "liInicial">SAIR</li></a>
+            <a href="<?php echo site_url("sistema"); ?>"><li class = "liInicial">SISTEMA</li></a>
+            <a href="<?php echo site_url("meusDados"); ?>"><li class = "liInicial">MEUS DADOS</li></a>
+            <a href="<?php echo site_url("sair"); ?>"><li class = "liInicial">SAIR</li></a>
         </ul>
 </div>

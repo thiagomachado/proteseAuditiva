@@ -15,5 +15,22 @@
           $this->db->insert('tbl_caracterizacao_paciente', $caracterizacao);
           return $this->db->insert_id();
         }
+
+        public function recuperarCaracterizacaoPacientePorCPF($cpf)
+        {
+          $this->db->where('Pc_CPF', $cpf);
+          $query = $this->db->get('tbl_caracterizacao_paciente');
+          $array = $query->result();
+          if(sizeof($array)==0)
+          {
+            $caracterizacao = [];
+          }
+          else
+          {
+            $caracterizacao = $array[0];
+          }
+
+          return $caracterizacao;
+        }
     }
 ?>

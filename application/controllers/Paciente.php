@@ -16,15 +16,18 @@
             $this->load->helper('url');
         }
 
+        //Consulta de Pacientes
         public function index()
         {
-            $jsConsulta                   = '<script language="JavaScript" type="text/javascript" src="'.base_url().'assets/js/consultaEdicaoPaciente.js"></script>';
-            $listaPacientes               = $this->consultar();
-            $listaPacientes['formAction'] = 'paciente/' ;
+            $jsConsulta                      = '<script language="JavaScript" type="text/javascript" src="'.base_url().'assets/js/consultaEdicaoPaciente.js"></script>';
+            $listaPacientes                  = $this->consultar();
+            $listaPacientes['formAction']    = 'paciente/' ;
+            $listaPacientes['cadastro']      = "cadastroPaciente";
+            $listaPacientes['textoCadastro'] = "Novo Paciente";
 
             $this->template->set('script', $jsConsulta );
             $this->template->set('title', 'CONSULTA DE PACIENTES');
-            $this->template->load('template','paciente_consulta',$listaPacientes);
+            $this->template->load('template','consulta_generica',$listaPacientes);
 
         }
 

@@ -286,7 +286,7 @@ $(document).ready(function() {
 
         jQuery.ajax({
             type: "POST",
-            url: "<?php echo base_url(); ?>" + "index.php/cadastrarAnamneseAdulta",
+            url: "<?php echo site_url("cadastrarAnamneseAdulta"); ?>",
             dataType: 'json',
             data:
             {

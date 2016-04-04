@@ -18,13 +18,15 @@
 
         public function selecionarPaciente()
         {
-            $jsConsulta                   = '<script language="JavaScript" type="text/javascript" src="'.base_url().'assets/js/consultaPacienteCaracterizacao.js"></script>';
-            $listaPacientes               = $this->consultarPacientes();
-            $listaPacientes['formAction'] = 'cadastroCaracterizacaoPaciente' ;
+            $jsConsulta                      = '<script language="JavaScript" type="text/javascript" src="'.base_url().'assets/js/consultaPacienteCaracterizacao.js"></script>';
+            $listaPacientes                  = $this->consultarPacientes();
+            $listaPacientes['formAction']    = 'cadastroCaracterizacaoPaciente' ;
+            $listaPacientes['cadastro']      = "cadastroPaciente";
+            $listaPacientes['textoCadastro'] = "Novo Paciente";
 
             $this->template->set('script', $jsConsulta );
             $this->template->set('title', 'SELECIONE O PACIENTE');
-            $this->template->load('template','paciente_consulta',$listaPacientes);
+            $this->template->load('template','consulta_generica',$listaPacientes);
 
         }
 
@@ -38,6 +40,44 @@
             $this->template->set('title', 'CARACTERIZAÇÃO DO PACIENTE');
             $this->template->load('template','caracterizacaoPaciente_cadastro',$dados);
 
+        }
+
+        public function consultaCaracterizacao()
+        {
+          $jsConsulta                   = '<script language="JavaScript" type="text/javascript" src="'.base_url().'assets/js/consultaCaracterizacao.js"></script>';
+          $listaPacientes               = $this->consultarCaracterizao();
+          $listaPacientes['formAction'] = 'paciente/' ;
+          $listaPacientes['cadastro']      = "cadastroCaracterizacaoPaciente";
+          $listaPacientes['textoCadastro'] = "Caracterização";
+
+          $this->template->set('script', $jsConsulta );
+          $this->template->set('title', 'CONSULTA DE CARACTERIZAÇÃO');
+          $this->template->load('template','consulta_generica',$listaPacientes);
+
+        }
+
+        public function edicaoCaracterizacao($cpf)
+        {
+          $caracterizacao = $this->caracterizacao_paciente_model->recuperarCaracterizacaoPacientePorCPF($cpf);
+          if(sizeof($caracterizacao)== 0)
+          {
+            redirect('/cadastroCaracterizacaoPaciente'.'/'.$cpf, 'refresh');
+          }
+          $paciente                = $this->paciente_model->recuperarPacientePorCPF($cpf);
+          $cpfProfissional         = $caracterizacao->Caract_Cpf_Profissional;
+          $profissionais           = $this->usuario_model->recuperarProfissionais();
+          $testeCaracterizacao     = $this->teste_caracterizacao_model->recuperarTesteCaracterizacao($caracterizacao->Caract_Numero);
+          $testeAASI               = $this->teste_aasi_model->recuperarTesteAASI($caracterizacao->Caract_Numero);
+
+          $dados['caracterizacao']      = $caracterizacao;
+          $dados['paciente']            = $paciente;
+          $dados['profissionais']       = $profissionais;
+          $dados['cpfProfissional']     = $cpfProfissional;
+          $dados['testeCaracterizacao'] = $testeCaracterizacao;
+          $dados['testeAASI']           = $testeAASI;
+
+          $this->template->set('title', 'EDIÇÃO DE CARACTERIZAÇÃO');
+          $this->template->load('template','caracterizacaoPaciente_edicao',$dados);
         }
 
         public function cadastrar()
@@ -102,6 +142,7 @@
 
           //cadastrar o teste de AASI
             $testeAASI = array(
+            'NumPront'      => $numCaracterizacao,
             'sem250'        => $sem250,
             'sem500'        => $sem500,
             'sem1k'         => $sem1k,
@@ -141,22 +182,25 @@
 
         }
 
-        public function excluir($cpf)
-        {
-          $this->paciente_model->excluirPacientePorCPF($cpf);
-          redirect('/paciente', 'refresh');
-
-        }
-
         private function consultarPacientes()
         {
           $nomePaciente = $this->input->post('nomePaciente');
           $nProntuario  = $this->input->post('nProntuario');
           $cartaoSUS    = $this->input->post('cartaoSUS');
-
-          $pacientes    = $this->paciente_model->recuperarPacientePorNomeNprontuarioCartaoSUS($nomePaciente,$nProntuario,$cartaoSUS);
-
+          //retorna somente os pacientes que não possuem caracterização cadastrada
+          $pacientes    = $this->paciente_model->recuperarPacienteSemCaracterizacaoPorNomeNprontuarioCartaoSUS($nomePaciente,$nProntuario,$cartaoSUS);
           //salva os pacientes em um vetor, para poder passar os dados para view
+          $listaPacientes["pacientes"] = $pacientes;
+          return $listaPacientes;
+        }
+
+        private function consultarCaracterizao()
+        {
+          $nomePaciente = $this->input->post('nomePaciente');
+          $nProntuario  = $this->input->post('nProntuario');
+          $cartaoSUS    = $this->input->post('cartaoSUS');
+
+          $pacientes    = $this->paciente_model->recuperarPacienteComCaracterizacaoPorNomeNprontuarioCartaoSUS($nomePaciente,$nProntuario,$cartaoSUS);
           $listaPacientes["pacientes"] = $pacientes;
           return $listaPacientes;
         }

@@ -6,7 +6,7 @@
   <div class="filtro">
     <?php
         //inclui dataset dos inputs
-        include("paciente_consulta_data.php");
+        include("consulta_generica_data.php");
 
         echo form_open($formAction, 'name="pacienteConsulta"');
         echo '<table class="formulario">';
@@ -72,7 +72,7 @@
 
   </div>
   <div class="areaBotoesResultado">
-    <a href="<?php echo site_url("cadastroPaciente")?>"><input type="button" class="botao" value="Novo Paciente"></a>
-    <a href="<?php echo site_url("atendimento")?>"><input type="button" class="botao" value="Voltar"></a>
+    <a href="<?php echo site_url($cadastro);?>"><input type="button" class="botao" value="<?php echo $textoCadastro ?>"></a>
+    <a href="<?php echo site_url("atendimento");?>"><input type="button" class="botao" value="Voltar"></a>
   </div>
 </div>
