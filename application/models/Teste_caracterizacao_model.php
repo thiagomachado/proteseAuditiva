@@ -15,6 +15,11 @@
           $this->db->insert('tbl_teste_caracterizacao_paciente', $testeCaracterizacao);
         }
 
+        public function editarTesteCaracterizacao($testeCaracterizacao, $numero)
+        {
+          $this->db->update('tbl_teste_caracterizacao_paciente',$testeCaracterizacao, array('Caract_Numero' => $numero));
+        }
+
         public function recuperarTesteCaracterizacao($numCaracterizacao)
         {
           $this->db->where('Caract_Numero', $numCaracterizacao);

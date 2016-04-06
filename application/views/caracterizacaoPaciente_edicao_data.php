@@ -10,6 +10,13 @@
             'value'         => $paciente->Pc_CPF
     );
 
+    $dataNumCaracterizacaoHidden = array(
+            'name'          => 'numCaracterizacaoHidden',
+            'type'          => 'hidden',
+            'id'            => 'numCaracterizacaoHidden',
+            'value'         => $caracterizacao->Caract_Numero
+    );
+
     $dataNomePaciente = array(
             'name'          => 'nomePaciente',
             'id'            => 'nomePaciente',
@@ -599,8 +606,8 @@
 
     $dataSubmit = array(
             'type'          => 'submit',
-            'value'         => 'Cadastrar',
-            'id'            => 'cadastrarCaracterizacaoPaciente',
+            'value'         => 'Editar',
+            'id'            => 'editarCaracterizacaoPaciente',
             'class'         => 'botao submit'
     );
 

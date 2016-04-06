@@ -15,6 +15,11 @@
           $this->db->insert('tbl_testeaasi', $testeAASI);
         }
 
+        public function editarTesteAASI($testeAASI, $numero)
+        {
+          $this->db->update('tbl_testeaasi',$testeAASI, array('NumPront' => $numero));
+        }
+
         public function recuperarTesteAASI($numCaracterizacao)
         {
           $this->db->where('NumPront', $numCaracterizacao);

@@ -9,6 +9,7 @@
   <?php
     echo form_open('',$data_form);
     echo form_input($dataCPFHidden);
+    echo form_input($dataNumCaracterizacaoHidden);
   ?>
   <div class="areaFormulario">
     <fieldset class="secaoFormulario">
@@ -221,6 +222,7 @@
   </div>
   <div class="areaBotoesFormulario">
     <?php echo form_submit($dataSubmit) ?>
+    <input class="botao" type="button" value="Emitir PDF"/>
     <input class="botao" type="button" onclick="mostrarModal('#modalSairSemSalvar')" value="Cancelar"/>
   </div>
 
@@ -244,8 +246,8 @@
       </div>
 
       <div class="botoesModal">
-        <a href="<?php echo base_url().'index.php/edicaoPaciente/'.$paciente->Pc_CPF;?>"><input type="button" class="botao" value="Concluir"/></a>
-        <input class="botao" onclick="esconderModal('#modalSucesso'),location.reload()" value="Emitir"/>
+        <a href="<?php echo site_url('consultaCaracterizacao');?>"><input type="button" class="botao" value="Concluir"/></a>
+        <input class="botao" onclick="esconderModal('#modalSucesso'),location.reload()" value="Continuar"/>
       </div>
     </div>
 
@@ -275,11 +277,12 @@ $(document).ready(function() {
 
         jQuery.ajax({
             type: "POST",
-            url: "<?php echo base_url(); ?>" + "index.php/cadastrarCaracterizacaoPaciente",
+            url: "<?php echo site_url("editarCaracterizacaoPaciente"); ?>",
             dataType: 'json',
             data:
             {
               cpf:                       $("#cpfHidden").val(),
+              Caract_Numero:             $("#numCaracterizacaoHidden").val(),
               Caract_Cpf_Profissional:   $('#profissional').val(),
               Caract_TipoPerda:          $("#tipoPerdaAuditiva").val(),
               Caract_GrauPerda:          $("#grauPerda").val(),

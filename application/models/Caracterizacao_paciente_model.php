@@ -16,6 +16,11 @@
           return $this->db->insert_id();
         }
 
+        public function editarCaracterizacaoPaciente($caracterizacao,$numero)
+        {
+          $this->db->update('tbl_caracterizacao_paciente',$caracterizacao, array('Caract_Numero' => $numero));
+        }
+
         public function recuperarCaracterizacaoPacientePorCPF($cpf)
         {
           $this->db->where('Pc_CPF', $cpf);

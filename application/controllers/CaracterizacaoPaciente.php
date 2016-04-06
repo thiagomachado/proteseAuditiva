@@ -178,7 +178,98 @@
 
         public function editar()
         {
+          //extrair dados
           extract($_POST);
+          //editar a carcterização
+          $caracterizacaoPaciente = array(
+              'PC_CPF'                  => $cpf,
+              'Caract_Cpf_Profissional' => $Caract_Cpf_Profissional,
+              'Caract_Data'             => date('Y-m-d'),
+              'Caract_TipoPerda'        => $Caract_TipoPerda,
+              'Caract_GrauPerda'        => $Caract_GrauPerda,
+              'Caract_Config'           => $Caract_Config,
+              'Caract_Duracao'          => $Caract_Duracao,
+              'Caract_Progress'         => $Caract_Progress,
+              'Caract_Recrut'           => $Caract_Recrut,
+              'Caract_Zumbido'          => $Caract_Zumbido,
+              'Caract_ExamesCompl'      => $Caract_ExamesCompl,
+              'Caract_AASI'             => $Caract_AASI,
+              'Caract_ImplCoclear'      => $Caract_ImplCoclear,
+              'Caract_HistPerdaAud'     => $Caract_HistPerdaAud,
+              'Caract_AASIModelo'       => $Caract_AASIModelo,
+              'Caract_AASIOrelha'       => $Caract_AASIOrelha,
+              'Caract_Obs'              => $Caract_Obs
+              );
+
+          $this->caracterizacao_paciente_model->editarCaracterizacaoPaciente($caracterizacaoPaciente,$Caract_Numero);
+
+
+          //editar o teste da caracterizacao
+          $testeCaracterizacao = array(
+            'Caract_Numero' => $Caract_Numero,
+            'OD_VA_250'     => $OD_VA_250,
+            'OD_VA_500'     => $OD_VA_500,
+            'OD_VA_1k'      => $OD_VA_1k,
+            'OD_VA_2k'      => $OD_VA_2k,
+            'OD_VA_3k'      => $OD_VA_3k,
+            'OD_VA_4k'      => $OD_VA_4k,
+            'OD_VA_6k'      => $OD_VA_6k,
+            'OD_VA_8k'      => $OD_VA_8k,
+            'OD_VO_500'     => $OD_VO_500,
+            'OD_VO_1k'      => $OD_VO_1k,
+            'OD_VO_2k'      => $OD_VO_2k,
+            'OD_VO_3k'      => $OD_VO_3k,
+            'OD_VO_4k'      => $OD_VO_4k,
+            'OE_VA_250'     => $OE_VA_250,
+            'OE_VA_500'     => $OE_VA_500,
+            'OE_VA_1k'      => $OE_VA_1k,
+            'OE_VA_2k'      => $OE_VA_2k,
+            'OE_VA_3k'      => $OE_VA_3k,
+            'OE_VA_4k'      => $OE_VA_4k,
+            'OE_VA_6k'      => $OE_VA_6k,
+            'OE_VA_8k'      => $OE_VA_8k,
+            'OE_VO_500'     => $OE_VO_500,
+            'OE_VO_1k'      => $OE_VO_1k,
+            'OE_VO_2k'      => $OE_VO_2k,
+            'OE_VO_3k'      => $OE_VO_3k,
+            'OE_VO_4k'      => $OE_VO_4k
+          );
+         $this->teste_caracterizacao_model->editarTesteCaracterizacao($testeCaracterizacao,$Caract_Numero);
+
+          //editar o teste de AASI
+            $testeAASI = array(
+            'NumPront'      => $Caract_Numero,
+            'sem250'        => $sem250,
+            'sem500'        => $sem500,
+            'sem1k'         => $sem1k,
+            'sem2k'         => $sem2k,
+            'sem3k'         => $sem3k,
+            'sem4k'         => $sem4k,
+            'sem6k'         => $sem6k,
+            'sem8k'         => $sem8k,
+            'sempercfala'   => $sempercfala,
+            'od250'         => $od250,
+            'od500'         => $od500,
+            'od1k'          => $od1k,
+            'od2k'          => $od2k,
+            'od3k'          => $od3k,
+            'od4k'          => $od4k,
+            'od6k'          => $od6k,
+            'od8k'          => $od8k,
+            'odpercfala'    => $odpercfala,
+            'oe250'         => $oe250,
+            'oe500'         => $oe500,
+            'oe1k'          => $oe1k,
+            'oe2k'          => $oe2k,
+            'oe3k'          => $oe3k,
+            'oe4k'          => $oe4k,
+            'oe6k'          => $oe6k,
+            'oe8k'          => $oe8k,
+            'oepercfala'    => $oepercfala
+          );
+
+         $this->teste_aasi_model->editarTesteAASI($testeAASI,$Caract_Numero);
+         echo json_encode($Caract_Numero);
 
         }
 
