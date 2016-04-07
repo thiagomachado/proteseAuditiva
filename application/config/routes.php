@@ -84,3 +84,4 @@ $route['cadastrarCaracterizacaoPaciente']       = 'caracterizacaoPaciente/cadast
 $route['consultaCaracterizacao']                = 'caracterizacaoPaciente/consultaCaracterizacao';
 $route['edicaoCaracterizacao/(:num)']           = 'caracterizacaoPaciente/edicaoCaracterizacao/$1';
 $route['editarCaracterizacaoPaciente']          = 'caracterizacaoPaciente/editar';
+$route['emitirLaudo/(:num)']                    = 'caracterizacaoPaciente/emitirLaudoPDF/$1';

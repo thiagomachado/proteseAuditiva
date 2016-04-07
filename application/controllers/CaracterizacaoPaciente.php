@@ -14,6 +14,7 @@
             $this->load->model('teste_caracterizacao_model');
             $this->load->model('teste_aasi_model');
             $this->load->helper('url');
+            $this->load->library('m_pdf');
         }
 
         public function selecionarPaciente()
@@ -296,5 +297,38 @@
           return $listaPacientes;
         }
 
+        public function emitirLaudoPDF($cpf)
+        {
+          $caracterizacao = $this->caracterizacao_paciente_model->recuperarCaracterizacaoPacientePorCPF($cpf);
+
+          $paciente                = $this->paciente_model->recuperarPacientePorCPF($cpf);
+          $cpfProfissional         = $caracterizacao->Caract_Cpf_Profissional;
+          $profissionais           = $this->usuario_model->recuperarProfissionais();//deletar depois
+          $profissional            = $this->usuario_model->recuperarDadosUsuarioPorCPF($cpf);
+
+          $testeCaracterizacao     = $this->teste_caracterizacao_model->recuperarTesteCaracterizacao($caracterizacao->Caract_Numero);
+          $testeAASI               = $this->teste_aasi_model->recuperarTesteAASI($caracterizacao->Caract_Numero);
+
+          $dados['caracterizacao']      = $caracterizacao;
+          $dados['paciente']            = $paciente;
+          $dados['profissionais']       = $profissionais;
+          $dados['profissional']        = $profissional;
+          $dados['cpfProfissional']     = $cpfProfissional;
+          $dados['testeCaracterizacao'] = $testeCaracterizacao;
+          $dados['testeAASI']           = $testeAASI;
+
+          //load the view and saved it into $html variable
+          $html=$this->load->view('caracterizacaoPaciente_laudo', $dados, true);
+
+          //this the the PDF filename that user will get to download
+          $pdfFilePath = "laudo".$caracterizacao->Caract_Numero.".pdf";
+
+          //generate the PDF from the given html
+          $this->m_pdf->pdf->WriteHTML($html);
+
+          //download it.
+          $this->m_pdf->pdf->Output($pdfFilePath, "D");
+
+        }
     }
 ?>

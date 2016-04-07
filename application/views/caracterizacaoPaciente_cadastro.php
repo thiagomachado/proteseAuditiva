@@ -130,7 +130,7 @@
         </tr>
       </table>
 
-      <label>Reaultado dos Exames Complementares:</label>
+      <label>Resultado dos Exames Complementares:</label>
       </br>
       <?php echo form_textarea($dataExamesComplementares); ?>
       </br>
@@ -244,8 +244,8 @@
       </div>
 
       <div class="botoesModal">
-        <a href="<?php echo base_url().'index.php/edicaoPaciente/'.$paciente->Pc_CPF;?>"><input type="button" class="botao" value="Concluir"/></a>
-        <input class="botao" onclick="esconderModal('#modalSucesso'),location.reload()" value="Emitir"/>
+        <a href="<?php echo base_url().'index.php/edicaoCaracterizacao/'.$paciente->Pc_CPF;?>"><input type="button" class="botao" value="Concluir"/></a>
+        <a target="_blank" href="<?php $emitirLaudo ='emitirLaudo/'.$paciente->Pc_CPF;  echo site_url($emitirLaudo);?>"><input class="botao" value="Emitir PDF"/></a>
       </div>
     </div>
 

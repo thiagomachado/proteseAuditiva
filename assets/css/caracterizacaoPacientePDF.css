@@ -1,0 +1,66 @@
+
+#profissional
+{
+  width: 510px;
+}
+
+.tabelaCaracterizacao
+{
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.15);
+    width: 700px;
+    margin: 0;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    padding: 0px;
+}
+
+.tabelaCaracterizacao th, .tabelaCaracterizacao td
+{
+  width: 50px;
+}
+
+.tabelaCaracterizacao, .tabelaCaracterizacao th, .tabelaCaracterizacao td
+{
+    padding: 0px;
+    margin: 0;
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.tabelaCaracterizacao tr:nth-child(even)
+{
+    background-color: #fff;
+}
+
+.tabelaCaracterizacao tr:nth-child(odd)
+{
+    background-color:#CCC;
+}
+
+.tabelaCaracterizacao tr:nth-child(odd) td input
+{
+    background-color: #CCC;
+}
+
+.tabelaCaracterizacao tr:nth-child(even) td input
+{
+    background-color:#fff;
+}
+
+.tabelaCaracterizacao input
+{
+
+    margin-top: 0px;
+    padding: 0px;
+    border-width: 0px;
+    width: 50px;
+    text-align: center;
+}
+
+.tabelaCaracterizacao th
+{
+    background-color: #000;
+    color: white;
+}

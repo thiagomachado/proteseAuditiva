@@ -44,6 +44,12 @@
           }
         }
 
+        function recuperarDadosUsuarioPorCPF($cpf)
+        {
+          $usuario = $this->db->get_where('tbl_usuarios', array('Us_Login' => $usuarioLogin))->result();
+          return $usuario;
+        }
+
         public function recuperarProfissionais()
         {
           $query = $this->db->get_where('tbl_usuarios', array('Us_Nivel' => 2))->result();
@@ -58,7 +64,7 @@
 
           return $profissionais;
         }
-        
+
         public function insert_entry($usuarioDados)
         {
             if($this->db->insert('tbl_usuarios', $usuarioDados))

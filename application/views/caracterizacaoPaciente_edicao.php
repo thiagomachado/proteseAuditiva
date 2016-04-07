@@ -131,7 +131,7 @@
         </tr>
       </table>
 
-      <label>Reaultado dos Exames Complementares:</label>
+      <label>Resultado dos Exames Complementares:</label>
       </br>
       <?php echo form_textarea($dataExamesComplementares); ?>
       </br>
@@ -222,7 +222,7 @@
   </div>
   <div class="areaBotoesFormulario">
     <?php echo form_submit($dataSubmit) ?>
-    <input class="botao" type="button" value="Emitir PDF"/>
+    <a target="_blank" href="<?php $emitirLaudo ='emitirLaudo/'.$paciente->Pc_CPF;  echo site_url($emitirLaudo);?>"><input class="botao" type="button" value="Emitir PDF"/></a>
     <input class="botao" type="button" onclick="mostrarModal('#modalSairSemSalvar')" value="Cancelar"/>
   </div>
 
@@ -234,7 +234,7 @@
         <p>Deseja sair sem salvar?</p>
       </div>
       <div class="botoesModal">
-        <a href="<?php echo base_url().'index.php/atendimento/';?>"><input class="botao" type="button" value="Sim"/></a>
+        <a href="<?php echo site_url('consultaCaracterizacao');?>"><input class="botao" type="button" value="Sim"/></a>
         <input class="botao" type="button" onclick="esconderModal('#modalSairSemSalvar')" value="Não"/>
       </div>
     </div>
