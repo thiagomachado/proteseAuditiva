@@ -146,7 +146,7 @@
     </fieldset>
 
     <fieldset class="secaoFormulario">
-      <legend>Histórico da Perda Auditiva</legend>
+      <legend>Histórico da Perda Auditiva*</legend>
       <?php echo form_textarea($dataHistoricoPerda); ?>
     </fieldset>
 

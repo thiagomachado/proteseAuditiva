@@ -321,7 +321,7 @@
           $html=$this->load->view('caracterizacaoPaciente_laudo', $dados, true);
 
           //this the the PDF filename that user will get to download
-          $pdfFilePath = "laudo".$caracterizacao->Caract_Numero.".pdf";
+          $pdfFilePath = $paciente->Pc_Nome.".pdf";
 
           //generate the PDF from the given html
           $this->m_pdf->pdf->WriteHTML($html);
