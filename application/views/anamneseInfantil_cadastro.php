@@ -21,7 +21,7 @@
              <?php echo form_input($dataNomePaciente); ?>
            </td>
            <td>
-             <label>Encaminhado por:</label><br>
+             <label>Encaminhado por*:</label><br>
              <?php echo form_input($dataEncaminhado); ?>
            </td>
          </tr>
@@ -33,13 +33,13 @@
        <table>
          <tr>
            <td>
-             <label>Queixa Principal:</label><br>
+             <label>Queixa Principal*:</label><br>
              <?php echo form_input($dataQueixaPrincipal); ?>
            </td>
          </tr>
          <tr>
            <td>
-             <label>Histórico da Queixa:</label><br>
+             <label>Histórico da Queixa*:</label><br>
              <?php echo form_textarea($dataHistoricoQueixa); ?>
            </td>
          </tr>
@@ -53,7 +53,7 @@
          <table>
            <tr>
              <td>
-               <label>Alterações na Gestação:</label><br/>
+               <label>Alterações na Gestação*:</label><br/>
                <?php echo form_input($dataAlteracoesGravidezS);?><label>Sim</label>
                <?php echo form_input($dataAlteracoesGravidezN);?><label>Não</label><br/>
                <label>Quais?</label><br/>
@@ -96,7 +96,7 @@
 
            <td>
              <fieldset class="subsecaoFormulario">
-               <legend>Histórico de otite</legend>
+               <legend>Histórico de otite*</legend>
                <?php echo form_input($dataHistoricoOtiteS);?><label>Sim</label>
                <?php echo form_input($dataHistoricoOtiteN);?><label>Não</label><br>
                <?php echo form_checkbox($dataHistoricoOtiteOD);?><label>OD</label>
@@ -108,7 +108,7 @@
 
            <td>
              <fieldset class="subsecaoFormulario">
-               <legend>Alguém na família<br> com perda auditiva?</legend>
+               <legend>Alguém na família<br> com perda auditiva*?</legend>
                <?php echo form_input($dataPerdaAuditivaNaFamiliaS);?><label>Sim</label>
                <?php echo form_input($dataPerdaAuditivaNaFamiliaN);?><label>Não</label><br>
                <label>Quem?</label><br>
@@ -118,12 +118,12 @@
 
           <td>
             <fieldset class="subsecaoFormulario">
-              <legend>Faz uso de medicação?</legend>
+              <legend>Faz uso de medicação*?</legend>
               <?php echo form_input($dataUsoMedicacaoS);?><label>Sim</label>
               <?php echo form_input($dataUsoMedicacaoN);?><label>Não</label><br>
               <label>Qual e para que?</label><?php echo form_input($dataMedicacao);?>
             </fieldset><br>
-            <label>Pais com consaguinidade?</label>
+            <label>Pais com consaguinidade*?</label>
             <?php echo form_input($dataPaisConsaguinidadeS);?><label>Sim</label>
             <?php echo form_input($dataPaisConsaguinidadeN);?><label>Não</label><br>
           </td>
@@ -136,7 +136,7 @@
        <legend>Aspectos Auditivos</legend>
        <table>
          <tr>
-           <td colspan="2">Há quanto tempo vem suspeitando de dificuldade de audição?</td>
+           <td colspan="2">Há quanto tempo vem suspeitando de dificuldade de audição*?</td>
            <td colspan="2"><?php echo form_input($dataTempoDificuldadeAuditiva);?></td>
          </tr>
 
@@ -162,7 +162,7 @@
          <tr>
            <td>
              <fieldset  class="subsecaoFormulario">
-               <legend><label>Reage a qual destes sons?</label> </legend>
+               <legend><label>Reage a quais destes sons?</label> </legend>
                <label>Trovão:</label>
                <?php echo form_checkbox($dataReageTrovao); ?>
                <label>Avião:</label>
