@@ -37,6 +37,7 @@
             'pattern'       => '\d{11}',
             'maxlength'     => '11',
             'title'         => 'Digite apenas números no CPF',
+            'placeholder'   => 'Próprio ou Responsável',
             'value'         => $paciente->Pc_CPF
     );
     $dataCPFHidden = array(
@@ -50,6 +51,7 @@
             'name'          => 'dataNascimento',
             'id'            => 'dataNascimento',
             'onchange'      => 'calcularIdade()',
+            'required'      => '',
             'value'         => $paciente->Pc_DtNascimento
     );
     $dataIdade = array(
@@ -100,7 +102,7 @@
             'adulta'        => 'Adulta',
             'infantil'      => 'Infantil'
     );
-    
+
     $dataEscolaridade = array(
             '1'             => 'Ensino Fundamental (Incompleto)',
             '2'             => 'Ensino Fundamental (Completo)',
@@ -114,6 +116,7 @@
             'name'          => 'trabalha',
             'id'            => 'trabalhaS',
             'size'          => '30',
+            'required'      => '',
             'value'         => '1'
     );
     $dataTrabalhaN = array(
@@ -154,6 +157,7 @@
             'name'          => 'logradouro',
             'id'            => 'logradouro',
             'size'          => '100',
+            'required'      => '',
             'placeholder'   => 'Rua/Número/Bairro',
             'value'         => $endereco->End_Logradouro
     );
@@ -171,14 +175,6 @@
     }
 
     $dataCodIBGE = array(
-            'name'   => 'codIBGE',
-            'id'     => 'codIBGE',
-            'size'   => '15',
-            'value'  => $endereco->End_CodIBGE
-
-    );
-
-    $dataCodIBGE = array(
             'name'     => 'codIBGE',
             'id'       => 'codIBGE',
             'size'     => '15',
@@ -192,6 +188,7 @@
             'id'        => 'cep',
             'size'      => '15',
             'maxlength' => '8',
+            'required'  => '',
             'value'     => $endereco->End_CEP
 
     );

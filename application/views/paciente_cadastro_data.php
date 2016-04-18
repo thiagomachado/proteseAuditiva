@@ -28,16 +28,18 @@
     $dataCPF = array(
             'name'          => 'cpf',
             'id'            => 'cpf',
-            'size'          => '15',
+            'size'          => '17',
             'required'      => '',
             'pattern'       => '\d{11}',
             'maxlength'     => '11',
+            'placeholder'   => 'Próprio ou Responsável',
             'title'         => 'Digite apenas números no CPF'
     );
     $dataDataNascimento = array(
             'type'          => 'date',
             'name'          => 'dataNascimento',
             'id'            => 'dataNascimento',
+            'required'      => '',
             'onchange'      => 'calcularIdade()'
     );
     $dataIdade = array(
@@ -94,6 +96,7 @@
             'name'          => 'trabalha',
             'id'            => 'trabalhaS',
             'size'          => '30',
+            'required'      => '',
             'value'         => '1'
     );
     $dataTrabalhaN = array(
@@ -121,6 +124,7 @@
             'name'          => 'logradouro',
             'id'            => 'logradouro',
             'size'          => '100',
+            'required'      => '',
             'placeholder'   => 'Rua/Número/Bairro'
     );
     $dataEstado = array();
@@ -137,13 +141,6 @@
     }
 
     $dataCodIBGE = array(
-            'name'   => 'codIBGE',
-            'id'     => 'codIBGE',
-            'size'   => '15',
-
-    );
-
-    $dataCodIBGE = array(
             'name'     => 'codIBGE',
             'id'       => 'codIBGE',
             'size'     => '15',
@@ -154,6 +151,7 @@
     $dataCEP = array(
             'name'      => 'cep',
             'id'        => 'cep',
+            'required'  => '',
             'size'      => '15',
             'maxlength' => '8'
 

@@ -16,26 +16,26 @@
       <table>
         <tr>
           <td colspan="3">
-            <label>Nome:</label><br>
+            <label>Nome*:</label><br>
             <?php echo form_input($dataNomePaciente); ?>
           </td>
           <td colspan="2">
-            <label>Cartão SUS:</label><br>
+            <label>Cartão SUS*:</label><br>
             <?php echo form_input($dataCartaoSus); ?>
           </td>
           <td>
-            <label>Nº do Prontuário:</label><br>
+            <label>Nº do Prontuário*:</label><br>
             <?php echo form_input($dataProntuario); ?>
           </td>
         </tr>
 
         <tr>
           <td>
-            <label>CPF:</label><br>
+            <label>CPF*:</label><br>
             <?php echo form_input($dataCPF); ?>
           </td>
           <td>
-            <label>Data de Nascimento:</label><br>
+            <label>Data de Nascimento*:</label><br>
             <?php echo form_input($dataDataNascimento); ?>
           </td>
           <td>
@@ -43,7 +43,7 @@
             <?php echo form_input($dataIdade); ?>
           </td>
           <td>
-            <label>Sexo:</label><br>
+            <label>Sexo*:</label><br>
             <?php echo form_input($dataSexoM);?><label>M</label>
             <?php echo form_input($dataSexoF); ?><label>F</label>
           </td>
@@ -55,7 +55,7 @@
 
         <tr>
           <td colspan="2">
-            <label>Nome da Mãe:</label><br>
+            <label>Nome da Mãe*:</label><br>
             <?php echo form_input($dataNomeMaePaciente); ?>
           </td>
           <td colspan="3">
@@ -79,7 +79,7 @@
                 <?php echo form_dropdown('escolaridade', $dataEscolaridade,$paciente->Pc_GrauEscolar, 'id="escolaridade" required');  ?>
             </td>
             <td>
-                <label>Trabalha?</label><br>
+                <label>Trabalha*?</label><br>
                 <?php echo form_input($dataTrabalhaS);?><label>Sim</label>
                 <?php echo form_input($dataTrabalhaN);?><label>Não</label>
             </td>
@@ -96,18 +96,18 @@
         <table>
           <tr>
             <td colspan="7">
-              <label>Endereço:</label><br>
+              <label>Endereço*:</label><br>
               <?php echo form_input($dataLogradouro); ?>
             </td>
           </tr>
 
           <tr>
             <td>
-              <label>UF:</label><br>
+              <label>UF*:</label><br>
               <?php echo form_dropdown('estado', $dataEstado, $endereco->End_UF,'onchange="mudarCidades()" id="estado" required'); ?>
             </td>
             <td>
-              <label>Municipio:</label><br>
+              <label>Municipio*:</label><br>
               <?php echo form_dropdown('municipio', $dataMunicipio, $endereco->End_CodIBGE,'onchange="mudarCodigoIBGE()" id="municipio" required'); ?>
             </td>
             <td>
@@ -115,7 +115,7 @@
               <?php echo form_input($dataCodIBGE); ?>
             </td>
             <td>
-              <label>CEP:</label><br>
+              <label>CEP*:</label><br>
               <?php echo form_input($dataCEP); ?>
             </td>
             <td>
