@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: 01/04/2016 às 16:50
+-- Tempo de Geração: 15/04/2016 às 15:47
 -- Versão do servidor: 5.5.47-0ubuntu0.14.04.1
 -- Versão do PHP: 5.5.9-1ubuntu4.14
 
@@ -112,13 +112,14 @@ CREATE TABLE IF NOT EXISTS `tbl_anamneseadt` (
   `AnmAdt_SonsIntensos` varchar(45) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
   `AnmAdt_Obs` varchar(250) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
   PRIMARY KEY (`AnmAdt_Cod`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci AUTO_INCREMENT=15 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci AUTO_INCREMENT=16 ;
 
 --
 -- Fazendo dump de dados para tabela `tbl_anamneseadt`
 --
 
 INSERT INTO `tbl_anamneseadt` (`AnmAdt_Cod`, `Pc_CPF`, `AnmAdt_EncaminhadoPor`, `AnmAdt_PrincQueixa`, `AnmAdt_HistQueixa`, `AnmAdt_DorOuvido`, `AnmAdt_HistOtite`, `AnmAdt_OtiteOE`, `AnmAdt_OtiteOD`, `AnmAdt_Periodicidade`, `AnmAdt_CirurgiaOtologica`, `AnmAdt_CirurgiaOtolOE`, `AnmAdt_CirurgiaOtolOD`, `AnmAdt_CirurgiaDesc`, `AnmAdt_PerdaAudNaFamilia`, `AnmAdt_FamiliarPerdaAud`, `AnmAdt_Doenca`, `AnmAdt_Caxumba`, `AnmAdt_Meningite`, `AnmAdt_Sifilis`, `AnmAdt_Hipertensao`, `AnmAdt_Sarampo`, `AnmAdt_Circulatorios`, `AnmAdt_Diabetes`, `AnmAdt_UsoMedicacao`, `AnmAdt_Medicacao`, `AnmAdt_SeRuidosOcup`, `AnmAdt_RuidosOcup`, `AnmAdt_TempoRuidosOcup`, `AnmAdt_TempoDificulAud`, `AnmAdt_CompreenderFala`, `AnmAdt_Zumbido`, `AnmAdt_ZumbOD`, `AnmAdt_ZumbOE`, `AnmAdt_ZumbTipo`, `AnmAdt_ZumbTempo`, `AnmAdt_Vertigem`, `AnmAdt_TempoVertigem`, `AnmAdt_IncomSonsIntensos`, `AnmAdt_SonsIntensos`, `AnmAdt_Obs`) VALUES
+(15, '93849102380', 'José Silva', 'Dores de ouvido', 'Teste', 0, 1, 0, 0, '', 0, 1, 0, '', 0, '', '', 0, 1, 0, 0, 0, 0, 0, 0, '', 0, '', '', '4 meses', 0, 1, 0, 1, 'intermitente', '', 0, '', 0, '', ''),
 (14, '01301493184', 'José Silva', 'Dores de ouvido', 'teste', 1, 1, 1, 1, '', 1, 1, 1, '', 1, 'Pai', '', 1, 0, 0, 0, 1, 0, 1, 0, '', 0, '', '', '5 meses', 2, 1, 1, 1, 'continuo', 'constante', 1, '', 0, '', ''),
 (13, '47139481920', 'José Silva', 'Dores de ouvido', 'Dores constantes desde o mês de outubro', 1, 1, 0, 0, '', 0, 0, 0, '  ', 0, '', '', 1, 1, 0, 0, 0, 0, 0, 0, '', 0, '', '', '5 meses', 0, 1, 1, 1, 'continuo', '', 1, '', 1, '', '');
 
@@ -214,14 +215,15 @@ CREATE TABLE IF NOT EXISTS `tbl_caracterizacao_paciente` (
   `Caract_AASIOrelha` varchar(25) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
   `Caract_Obs` varchar(250) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
   PRIMARY KEY (`Caract_Numero`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci AUTO_INCREMENT=76 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci AUTO_INCREMENT=80 ;
 
 --
 -- Fazendo dump de dados para tabela `tbl_caracterizacao_paciente`
 --
 
 INSERT INTO `tbl_caracterizacao_paciente` (`Pc_CPF`, `Caract_Cpf_Profissional`, `Caract_Numero`, `Caract_Data`, `Caract_TipoPerda`, `Caract_GrauPerda`, `Caract_Config`, `Caract_Duracao`, `Caract_Progress`, `Caract_Recrut`, `Caract_Zumbido`, `Caract_ExamesCompl`, `Caract_AASI`, `Caract_ImplCoclear`, `Caract_HistPerdaAud`, `Caract_AASIModelo`, `Caract_AASIOrelha`, `Caract_Obs`) VALUES
-('46464464655', '44444444444', 75, '2016-04-01 00:00:00', '', '', '', '', '', '', '', '', 'sim', 'sim', 'teste', '', '', '');
+('77777777799', '44444444444', 79, '2016-04-07 00:00:00', 'tipo', 'grau', 'configuração', 'duração', 'progressão', 'recrutamento', 'zumbido', 'resultado', 'jaPossui', 'jaPossui', 'historico', 'modelo', 'orelha', 'observações'),
+('77777777777', '44444444444', 78, '2016-04-06 00:00:00', '1teste4', 'grau maximo', 'teste1', 'teste2', 'progress', 'recrut', 'zumbido', 'exame de sangue', 'sim', 'nao', 'teste', 'Modelo 3.14', 'As Duas', 'OBS TESTE');
 
 -- --------------------------------------------------------
 
@@ -5995,7 +5997,7 @@ INSERT INTO `tbl_paciente` (`Pc_CPF`, `Pc_Nome`, `Pc_CartaoSus`, `Pc_NumProntuar
 ('77777777799', 'Luis da Silva Souza Ribeiro ', '666777666666666', '67', '1999-01-01', 19, 'm', 4, 'teste 6', 'teste 6', 5, 1, '', 'adulta'),
 ('88888888889', 'Jaqueline Loren', '888888888888888', '88', '1996-08-08', 16, 'f', 4, 'teste 8', 'Marcos', 5, 1, 'teste 8', 'adulta'),
 ('22222222222', 'Maria Eduarda', '222222222222222', '2222', '1991-02-21', 22, 'f', 3, 'mae do teste', 'PAI DO TESTE', 1, 0, '', 'adulta'),
-('93849102380', 'Ana Julia Lima', '203814192841020', '0', '1993-03-12', 21, 'f', 2, 'Ana Maria Lima', 'Antonio Carlos Lima', 5, 0, '', 'infantil'),
+('93849102380', 'Ana Julia Lima', '203814192841020', '0', '1993-03-12', 21, 'f', 2, 'Ana Maria Lima', 'Antonio Carlos Lima', 5, 0, '', 'adulta'),
 ('21736421838', 'José da Silva Souza', '28189310310319311111', '918', '1966-09-02', NULL, 'm', 1, 'Maria da Silva', 'João Souza', 1, 0, ' ', 'adulta'),
 ('01301493184', 'Lais Damasio', '291303910210', '230', '1995-12-10', NULL, 'f', 2, 'Leticia Damasio', '', 5, 0, 'Estudante', 'adulta'),
 ('47293019301', 'Maria Luiza Pinheiro', '21392381394319019029', '8271', '1992-11-13', NULL, 'f', 5, 'Helena Pinheiro', 'nunes', 4, 0, '', 'adulta'),
@@ -6167,7 +6169,7 @@ CREATE TABLE IF NOT EXISTS `tbl_solic` (
   `cid10causas` varchar(50) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
   `obs` text COLLATE utf8_general_mysql500_ci,
   PRIMARY KEY (`Solic_Cod`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci AUTO_INCREMENT=34 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci AUTO_INCREMENT=35 ;
 
 --
 -- Fazendo dump de dados para tabela `tbl_solic`
@@ -6186,7 +6188,8 @@ INSERT INTO `tbl_solic` (`Solic_Cod`, `cpfProfissional`, `codProntuario`, `dataS
 (30, '44444444444', 72, '2015-10-06', NULL, NULL, NULL, NULL, NULL),
 (31, '44444444444', 55, '2015-10-07', NULL, NULL, NULL, NULL, NULL),
 (32, '44444444444', 72, '2015-10-07', NULL, NULL, NULL, NULL, NULL),
-(33, '44444444444', 72, '2016-03-08', 'Surdez Parcial', '0120', '0120', '10210', 'internação por 2 semanas');
+(33, '44444444444', 72, '2016-03-08', 'Surdez Parcial', '0120', '0120', '10210', 'internação por 2 semanas'),
+(34, '44444444444', 75, '2016-04-06', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -6243,7 +6246,6 @@ CREATE TABLE IF NOT EXISTS `tbl_testeaasi` (
   `sem2k` int(11) DEFAULT NULL,
   `sem3k` int(11) DEFAULT NULL,
   `sem4k` int(11) DEFAULT NULL,
-  `sem5k` int(11) DEFAULT NULL,
   `sem6k` int(11) DEFAULT NULL,
   `sem8k` int(11) DEFAULT NULL,
   `sempercfala` varchar(25) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
@@ -6253,7 +6255,6 @@ CREATE TABLE IF NOT EXISTS `tbl_testeaasi` (
   `od2k` int(11) DEFAULT NULL,
   `od3k` int(11) DEFAULT NULL,
   `od4k` int(11) DEFAULT NULL,
-  `od5k` int(11) DEFAULT NULL,
   `od6k` int(11) DEFAULT NULL,
   `od8k` int(11) DEFAULT NULL,
   `odpercfala` varchar(25) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
@@ -6263,31 +6264,19 @@ CREATE TABLE IF NOT EXISTS `tbl_testeaasi` (
   `oe2k` int(11) DEFAULT NULL,
   `oe3k` int(11) DEFAULT NULL,
   `oe4k` int(11) DEFAULT NULL,
-  `oe5k` int(11) DEFAULT NULL,
   `oe6k` int(11) DEFAULT NULL,
   `oe8k` int(11) DEFAULT NULL,
   `oepercfala` varchar(25) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
   PRIMARY KEY (`testeaasi_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci AUTO_INCREMENT=25 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci AUTO_INCREMENT=27 ;
 
 --
 -- Fazendo dump de dados para tabela `tbl_testeaasi`
 --
 
-INSERT INTO `tbl_testeaasi` (`testeaasi_id`, `NumPront`, `sem250`, `sem500`, `sem1k`, `sem2k`, `sem3k`, `sem4k`, `sem5k`, `sem6k`, `sem8k`, `sempercfala`, `od250`, `od500`, `od1k`, `od2k`, `od3k`, `od4k`, `od5k`, `od6k`, `od8k`, `odpercfala`, `oe250`, `oe500`, `oe1k`, `oe2k`, `oe3k`, `oe4k`, `oe5k`, `oe6k`, `oe8k`, `oepercfala`) VALUES
-(1, 51, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 51, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 9, NULL, NULL, NULL, NULL, 9, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 11, NULL, NULL, NULL, 'null'),
-(3, 51, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'teste', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'null'),
-(4, 52, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'null'),
-(5, 54, 0, 0, 0, 0, 1, 0, 0, 0, NULL, 'testando', 0, 0, 0, 0, 0, 3, 0, 0, NULL, 'testando de novo', 0, 0, 0, 0, 0, 0, 0, 0, NULL, 'teste3'),
-(6, 55, 1, 1, 1, 1, 1, 1, 1, 1, NULL, 'normal', 3, 9, 9, 9, 9, 9, 9, 9, NULL, 'problematica', 8, 8, 8, 8, 8, 8, 8, 8, NULL, 'normal'),
-(7, 56, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'null'),
-(23, 72, 1, 1, 1, 1, 1, 1, 1, 1, NULL, 'teste', 9, 9, 9, 9, 9, 9, 9, 9, NULL, 'teste', 9, 9, 9, 9, 9, 9, 9, 9, NULL, 'teste'),
-(22, 71, 0, 0, 0, 0, 0, 0, 0, 0, NULL, '0', 0, 0, 0, 0, 0, 0, 0, 0, NULL, '0', 0, 0, 0, 0, 0, 0, 0, 0, NULL, '0'),
-(21, 48, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'null'),
-(19, 49, 0, 0, 0, 0, 0, 0, 0, 0, NULL, '0', 0, 0, 0, 0, 0, 0, 0, 0, NULL, '0', 0, 0, 0, 0, 0, 0, 0, 0, NULL, '0'),
-(20, 58, 9, 9, 9, 9, 9, 9, 99, 9, NULL, '9', 9, 9, 9, 9, 9, 9, 9, 9, NULL, '9', 9, 9, 9, 9, 9, 9, 9, 9, NULL, '9'),
-(24, 75, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'null');
+INSERT INTO `tbl_testeaasi` (`testeaasi_id`, `NumPront`, `sem250`, `sem500`, `sem1k`, `sem2k`, `sem3k`, `sem4k`, `sem6k`, `sem8k`, `sempercfala`, `od250`, `od500`, `od1k`, `od2k`, `od3k`, `od4k`, `od6k`, `od8k`, `odpercfala`, `oe250`, `oe500`, `oe1k`, `oe2k`, `oe3k`, `oe4k`, `oe6k`, `oe8k`, `oepercfala`) VALUES
+(25, 78, 0, 4, 0, 0, 0, 0, 0, 0, 'teste', 0, 0, 0, 0, 0, 5, 0, 0, '', 0, 4, 0, 0, 0, 0, 0, 0, 'teste'),
+(26, 79, 1, 4, 6, 7, 8, 9, 0, 8, 'perc', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -6296,7 +6285,7 @@ INSERT INTO `tbl_testeaasi` (`testeaasi_id`, `NumPront`, `sem250`, `sem500`, `se
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_teste_caracterizacao_paciente` (
-  `Pront_Numero` int(11) NOT NULL,
+  `Caract_Numero` int(11) NOT NULL,
   `OD_VA_250` varchar(20) DEFAULT NULL,
   `OD_VA_500` varchar(20) DEFAULT NULL,
   `OD_VA_1k` varchar(20) DEFAULT NULL,
@@ -6323,8 +6312,16 @@ CREATE TABLE IF NOT EXISTS `tbl_teste_caracterizacao_paciente` (
   `OE_VO_2k` varchar(20) DEFAULT NULL,
   `OE_VO_3k` varchar(20) DEFAULT NULL,
   `OE_VO_4k` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`Pront_Numero`)
+  PRIMARY KEY (`Caract_Numero`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Fazendo dump de dados para tabela `tbl_teste_caracterizacao_paciente`
+--
+
+INSERT INTO `tbl_teste_caracterizacao_paciente` (`Caract_Numero`, `OD_VA_250`, `OD_VA_500`, `OD_VA_1k`, `OD_VA_2k`, `OD_VA_3k`, `OD_VA_4k`, `OD_VA_6k`, `OD_VA_8k`, `OD_VO_500`, `OD_VO_1k`, `OD_VO_2k`, `OD_VO_3k`, `OD_VO_4k`, `OE_VA_250`, `OE_VA_500`, `OE_VA_1k`, `OE_VA_2k`, `OE_VA_3k`, `OE_VA_4k`, `OE_VA_6k`, `OE_VA_8k`, `OE_VO_500`, `OE_VO_1k`, `OE_VO_2k`, `OE_VO_3k`, `OE_VO_4k`) VALUES
+(78, '1', '7', '3', '4', '5', '6', '7', '8', '7', '3', '4', '5', '6', '5', '7', '8', '9', '1', '2', '4', '7', '88', '990', '9', '099', '87'),
+(79, '1', '3', '4', '5', '6', '7', '8', '9', '2', '3', '4', '5', '6', '1', '2', '3', '4', '5', '6', '7', '8', '2', '3', '4', '5', '6');
 
 -- --------------------------------------------------------
 

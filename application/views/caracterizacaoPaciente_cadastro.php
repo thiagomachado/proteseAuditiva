@@ -244,7 +244,7 @@
       </div>
 
       <div class="botoesModal">
-        <a href="<?php echo base_url().'index.php/edicaoCaracterizacao/'.$paciente->Pc_CPF;?>"><input type="button" class="botao" value="Concluir"/></a>
+        <a href="<?php echo base_url().'index.php/consultaCaracterizacao/';?>"><input type="button" class="botao" value="Concluir"/></a>
         <a target="_blank" href="<?php $emitirLaudo ='emitirLaudo/'.$paciente->Pc_CPF;  echo site_url($emitirLaudo);?>"><input class="botao" value="Emitir PDF"/></a>
       </div>
     </div>
