@@ -23,7 +23,7 @@
 
   </head>
 
-  <body>
+  <body onLoad="history.go(+1)">
     <div id="header">
       <img src="<?php echo base_url();?>assets/css/imagens/vwsus.jpg" class="le" />
       <img src="<?php echo base_url();?>assets/css/imagens/minis.jpg" class="le" />

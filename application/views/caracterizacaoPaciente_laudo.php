@@ -26,6 +26,9 @@
         echo form_open('',$data_form);
       ?>
       <div class="areaFormulario">
+        <img src="<?php echo base_url();?>assets/css/imagens/vwsus.jpg" class="le" />
+        <img src="<?php echo base_url();?>assets/css/imagens/minis.jpg" class="le" />
+        <img src="<?php echo base_url();?>assets/css/imagens/logohucff.jpg" class = "ld" />
         <center><h1>CARACTERIZAÇÃO DE PACIENTE</h1></center>
         <fieldset class="secaoFormulario">
           <legend>Paciente</legend>

@@ -85,3 +85,24 @@ $route['consultaCaracterizacao']                = 'caracterizacaoPaciente/consul
 $route['edicaoCaracterizacao/(:num)']           = 'caracterizacaoPaciente/edicaoCaracterizacao/$1';
 $route['editarCaracterizacaoPaciente']          = 'caracterizacaoPaciente/editar';
 $route['emitirLaudo/(:num)']                    = 'caracterizacaoPaciente/emitirLaudoPDF/$1';
+
+//-------------------IMPLANTE-----------------------------------------------------------
+$route['estoqueImplantes']        = 'implante';
+$route['cadastroImplante']        = 'implante/cadastro';
+$route['cadastrarImplante']       = 'implante/cadastrar';
+$route['edicaoImplante/(:num)']   = 'implante/edicao/$1';
+$route['editarImplante']          = 'implante/editar';
+
+//-------------------PROTESE-----------------------------------------------------------
+$route['estoqueProteses']        = 'protese';
+$route['cadastroProtese']        = 'protese/cadastro';
+$route['cadastrarProtese']       = 'protese/cadastrar';
+$route['edicaoProtese/(:num)']   = 'protese/edicao/$1';
+$route['editarProtese']          = 'protese/editar';
+
+//-------------------PROCEDIMENTO-----------------------------------------------------------
+$route['procedimento']                = 'procedimento';
+$route['cadastroProcedimento']        = 'procedimento/cadastro';
+$route['cadastrarProcedimento']       = 'procedimento/cadastrar';
+$route['edicaoProcedimento/(:num)']   = 'procedimento/edicao/$1';
+$route['editarProcedimento']          = 'procedimento/editar';
