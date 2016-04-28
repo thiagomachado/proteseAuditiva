@@ -86,6 +86,10 @@ $route['edicaoCaracterizacao/(:num)']           = 'caracterizacaoPaciente/edicao
 $route['editarCaracterizacaoPaciente']          = 'caracterizacaoPaciente/editar';
 $route['emitirLaudo/(:num)']                    = 'caracterizacaoPaciente/emitirLaudoPDF/$1';
 
+//-------------------SOLICITAÇÃO------------------------------------
+$route['cadastroSolicitacao']        = 'caracterizacaoPaciente/selecionarPaciente';
+
+
 //-------------------IMPLANTE-----------------------------------------------------------
 $route['estoqueImplantes']        = 'implante';
 $route['cadastroImplante']        = 'implante/cadastro';

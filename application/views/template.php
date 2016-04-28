@@ -8,6 +8,11 @@
     <title><?php echo $title; ?> </title>
     <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery-1.12.0.min.js"></script>
     <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>assets/js/functions.js"></script>
+    <script language="JavaScript" type="text/javascript">
+      window.location.hash="HUCFF";
+      window.location.hash="UFRJ";//again because google chrome don't insert first hash into history
+      window.onhashchange=function(){window.location.hash="HUCFF";}
+    </script>
     <?php
     echo meta('Content-type', 'text/html; charset=utf-8', 'equiv');
     echo link_tag('assets/css/template.css');
@@ -23,7 +28,7 @@
 
   </head>
 
-  <body onLoad="history.go(+1)">
+  <body >
     <div id="header">
       <img src="<?php echo base_url();?>assets/css/imagens/vwsus.jpg" class="le" />
       <img src="<?php echo base_url();?>assets/css/imagens/minis.jpg" class="le" />
