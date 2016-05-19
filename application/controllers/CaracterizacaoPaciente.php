@@ -299,19 +299,15 @@
 
         public function emitirLaudoPDF($cpf)
         {
-          $caracterizacao = $this->caracterizacao_paciente_model->recuperarCaracterizacaoPacientePorCPF($cpf);
-
+          $caracterizacao          = $this->caracterizacao_paciente_model->recuperarCaracterizacaoPacientePorCPF($cpf);
           $paciente                = $this->paciente_model->recuperarPacientePorCPF($cpf);
           $cpfProfissional         = $caracterizacao->Caract_Cpf_Profissional;
-          $profissionais           = $this->usuario_model->recuperarProfissionais();//deletar depois
           $profissional            = $this->usuario_model->recuperarDadosUsuarioPorCPF($cpf);
-
           $testeCaracterizacao     = $this->teste_caracterizacao_model->recuperarTesteCaracterizacao($caracterizacao->Caract_Numero);
           $testeAASI               = $this->teste_aasi_model->recuperarTesteAASI($caracterizacao->Caract_Numero);
 
           $dados['caracterizacao']      = $caracterizacao;
           $dados['paciente']            = $paciente;
-          $dados['profissionais']       = $profissionais;
           $dados['profissional']        = $profissional;
           $dados['cpfProfissional']     = $cpfProfissional;
           $dados['testeCaracterizacao'] = $testeCaracterizacao;
@@ -321,7 +317,7 @@
           $html=$this->load->view('caracterizacaoPaciente_laudo', $dados, true);
 
           //this the the PDF filename that user will get to download
-          $pdfFilePath = $paciente->Pc_Nome.".pdf";
+          $pdfFilePath = trim($paciente->Pc_Nome).".pdf";
 
           //generate the PDF from the given html
           $this->m_pdf->pdf->WriteHTML($html);

@@ -13,7 +13,7 @@
             }
         ?>
 
-        <a href="CadastrarSolicitacao.php"><li>REALIZAR SOLICITAÇÃO</li></a>
+        <a href="cadastroSolicitacao"><li>REALIZAR SOLICITAÇÃO</li></a>
     </ul>
 </div>
 
@@ -21,13 +21,13 @@
     <ul>
         <a href="<?php echo site_url("consultaPaciente"); ?>"><li>CONSULTAR PACIENTE</li></a>
         <a href="<?php echo site_url("consultaCaracterizacao"); ?>"><li>CONSULTAR CARACTERIZAÇÃO</li></a>
-        <a href=""><li>CONSULTAR SOLICITAÇÃO</li></a>
+        <a href="<?php echo site_url("consultaSolicitacao");?>"><li>CONSULTAR SOLICITAÇÃO</li></a>
     </ul>
 </div>
 
 <div class="menuInferior">
     <ul>
-        <a href=""><li>ANDAMENTO DE PACIENTE</li></a>
+        <a href="<?php echo site_url("andamentoPaciente"); ?>"><li>ANDAMENTO DE PACIENTE</li></a>
         <a href="<?php echo site_url("menu"); ?>"><li>VOLTAR AO MENU PRINCIPAL</li></a>
     </ul>
 </div>

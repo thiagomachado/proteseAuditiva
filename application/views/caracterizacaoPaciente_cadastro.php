@@ -240,7 +240,7 @@
     <div class="modal" id="modalSucesso">
       <div class="textoModal">
         <h1>Sucesso!</h1>
-        <p>Os dados foram alterados.</p>
+        <p>A caracterização do paciente foi cadastrada.</p>
       </div>
 
       <div class="botoesModal">

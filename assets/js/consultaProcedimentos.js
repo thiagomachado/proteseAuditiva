@@ -4,7 +4,7 @@ $(document).ready(function()
 		.click(function()
     {
   		var id = $(this).children('td:eq(0)').children('input').val();
-			window.location.href = "edicaoProcedimento/"+id;
+			window.location.href = "/proteseAuditiva/index.php/edicaoProcedimento/"+id;
 		})
 
 }).attr('unselectable', 'on').css('user-select', 'none').on('selectstart', false);

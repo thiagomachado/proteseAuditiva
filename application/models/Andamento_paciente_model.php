@@ -1,7 +1,7 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
 
-    class Solicitacao_model extends CI_Model
+    class Andamento_paciente_model extends CI_Model
     {
 
         public function __construct()
@@ -10,15 +10,15 @@
             parent::__construct();
         }
 
-        public function cadastrarSolicitacao($solicitacao)
+        public function cadastrarAndamentoPaciente($andamento)
         {
-          $this->db->insert('tbl_solicitacao', $solicitacao);
+          $this->db->insert('tbl_andamento_paciente', $andamento);
           return $this->db->insert_id();
         }
 
         public function editarSolicitacao($solicitacao,$id)
         {
-          $this->db->update('tbl_solicitacao',$solicitacao, array('Solic_id' => $id));          
+          $this->db->update('tbl_solicitacao',$solicitacao, array('Solic_id' => $id));
         }
 
         public function recuperarSolicitacoesPorCPF($cpf)

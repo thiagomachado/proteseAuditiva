@@ -4,7 +4,7 @@ $(document).ready(function()
 		.click(function()
     {
   		var codigo = $(this).children('td:eq(0)').text();
-  		window.location.href = "edicaoProtese/"+codigo;
+  		window.location.href = "/proteseAuditiva/index.php/edicaoProtese/"+codigo;
 		})
 
 }).attr('unselectable', 'on').css('user-select', 'none').on('selectstart', false);

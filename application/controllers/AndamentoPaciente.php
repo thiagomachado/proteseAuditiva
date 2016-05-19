@@ -2,27 +2,28 @@
 
     defined('BASEPATH') OR exit('No direct script access allowed');
 
-    class Solicitacao extends MY_Controller
+    class AndamentoPaciente extends MY_Controller
     {
         public function __construct()
         {
             parent::__construct();
-            $this->template->set('css', link_tag('assets/css/solicitacao.css'));
+            $this->template->set('css', link_tag('assets/css/andamentoPaciente.css'));
             $this->load->model('solicitacao_model');
             $this->load->model('item_solicitacao_model');
+            $this->load->model('andamento_paciente_model');
+            $this->load->model('consulta_model');
             $this->load->model('paciente_model');
             $this->load->model('procedimento_model');
-            $this->load->model('andamento_paciente_model');
             $this->load->library('m_pdf');
         }
 
         public function selecionarPaciente()
         {
-            $jsConsulta                      = '<script language="JavaScript" type="text/javascript" src="'.base_url().'assets/js/consultaCadastroSolicitacao.js"></script>';
-            $listaPacientes                  = $this->consultarPacientes();
-            $listaPacientes['formAction']    = 'cadastroSolicitacao' ;
-            $listaPacientes['cadastro']      = "cadastroPaciente";
-            $listaPacientes['textoCadastro'] = "Novo Paciente";
+            $jsConsulta                      = '<script language="JavaScript" type="text/javascript" src="'.base_url().'assets/js/consultaAndamentoPaciente.js"></script>';
+            $listaPacientes                  = $this->consultarPacientesComSolicitacao();
+            $listaPacientes['formAction']    = 'andamentoPaciente' ;
+            $listaPacientes['cadastro']      = "cadastroSolicitacao";
+            $listaPacientes['textoCadastro'] = "Solicitacao";
 
             $this->template->set('script', $jsConsulta );
             $this->template->set('title', 'SELECIONE O PACIENTE');
@@ -30,59 +31,21 @@
 
         }
 
-        public function cadastroSolicitacao($cpf)
+        public function edicaoAndamentoPaciente($cpf)
         {
             $paciente                = $this->paciente_model->recuperarPacientePorCPF($cpf);
+            $itensSolicitacao        = $this->item_solicitacao_model->recuperarItensPorPaciente($cpf);
             $procedimentos           = $this->procedimento_model->recuperarProcedimentos();
-            $dados['paciente']       = $paciente;
-            $dados['procedimentos']  = $procedimentos['procedimentos'];
+            // $solicitacao             = $this->solicitacao_model->recuperarSolicitacaoPorId($idSolicitacao);
 
-            $this->template->set('title', 'CADASTRO DE SOLICITAÇÃO');
-            $this->template->load('template','solicitacao_cadastro',$dados);
-
-
-        }
-
-        public function consultaSolicitacao()
-        {
-          $jsConsulta                      = '<script language="JavaScript" type="text/javascript" src="'.base_url().'assets/js/consultaSolicitacao.js"></script>';
-          $listaPacientes                  = $this->consultarPacientesComSolicitacao();
-          $listaPacientes['formAction']    = 'consultaSolicitacao' ;
-          $listaPacientes['cadastro']      = "cadastroSolicitacao";
-          $listaPacientes['textoCadastro'] = "Solicitação";
-
-          $this->template->set('script', $jsConsulta );
-          $this->template->set('title', 'CONSULTA DE SOLICITAÇÃO');
-          $this->template->load('template','consulta_generica',$listaPacientes);
-
-        }
-
-        public function consultaSolicitacaoPorPaciente($cpf)
-        {
-          $jsConsulta           = '<script language="JavaScript" type="text/javascript" src="'.base_url().'assets/js/consultaSolicitacaoPaciente.js"></script>';
-          $solicitacoes         = $this->solicitacao_model->recuperarSolicitacoesPorCPF($cpf);
-          $paciente             = $this->paciente_model->recuperarPacientePorCPF($cpf);
-          $data["paciente"]     = $paciente;
-          $data["solicitacoes"] = $solicitacoes;
-
-          $this->template->set('script', $jsConsulta );
-          $this->template->set('title', 'SOLICITAÇÕES DO PACIENTE');
-          $this->template->load('template','consulta_solicitacao',$data);
-        }
-
-        public function edicaoSolicitacao($idSolicitacao)
-        {
-            $solicitacao             = $this->solicitacao_model->recuperarSolicitacaoPorId($idSolicitacao);
-            $itensSolicitacao        = $this->item_solicitacao_model->recuperarItensPorSolicitacao($idSolicitacao);
-            $procedimentos           = $this->procedimento_model->recuperarProcedimentos();
-            $paciente                = $this->paciente_model->recuperarPacientePorCPF($solicitacao->Pc_CPF);
             $data["itens"]           = $itensSolicitacao;
             $data["paciente"]        = $paciente;
-            $data["solicitacao"]     = $solicitacao;
             $data["procedimentos"]   = $procedimentos["procedimentos"];
+            // $data["solicitacao"]     = $solicitacao;
 
-            $this->template->set('title', 'EDIÇÃO DE SOLICITACÃO');
-            $this->template->load('template','solicitacao_edicao',$data);
+
+            $this->template->set('title', 'ANDAMENTO DE PACIENTES');
+            $this->template->load('template','andamentoPaciente_edicao',$data);
 
         }
 
@@ -113,12 +76,6 @@
             );
             $this->item_solicitacao_model->cadastrarItemSolicitacao($dataItemSolicitacao);
           }
-
-          $dataAndamento = array(
-            'Pc_CPF' => $Pc_CPF
-          );
-
-          $this->andamento_paciente_model->cadastrarAndamentoPaciente($dataAndamento);
           echo json_encode($idSolicitacao);
         }
 

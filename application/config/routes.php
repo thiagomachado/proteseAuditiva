@@ -86,8 +86,22 @@ $route['edicaoCaracterizacao/(:num)']           = 'caracterizacaoPaciente/edicao
 $route['editarCaracterizacaoPaciente']          = 'caracterizacaoPaciente/editar';
 $route['emitirLaudo/(:num)']                    = 'caracterizacaoPaciente/emitirLaudoPDF/$1';
 
+
 //-------------------SOLICITAÇÃO------------------------------------
-$route['cadastroSolicitacao']        = 'caracterizacaoPaciente/selecionarPaciente';
+$route['cadastroSolicitacao']            = 'solicitacao/selecionarPaciente';
+$route['cadastroSolicitacao/(:num)']     = 'solicitacao/cadastroSolicitacao/$1';
+$route['cadastrarSolicitacao']           = 'solicitacao/cadastrar';
+$route['emitirLaudoSolicitacao/(:num)']  = 'solicitacao/emitirLaudoPDF/$1';
+$route['consultaSolicitacao']            = 'solicitacao/consultaSolicitacao';
+$route['consultaSolicitacao/(:num)']     = 'solicitacao/consultaSolicitacaoPorPaciente/$1';
+$route['edicaoSolicitacao/(:num)']       = 'solicitacao/edicaoSolicitacao/$1';
+$route['editarSolicitacao']              = 'solicitacao/editarSolicitacao';
+$route['emitirLaudoSolicitacao/(:num)']  = 'solicitacao/emitirLaudoPDF/$1';
+
+
+//-------------------ANDAMENTO DE PACIENTES -------------------------------------------
+$route['andamentoPaciente']        = 'andamentoPaciente/selecionarPaciente';
+$route['andamentoPaciente/(:num)'] = 'andamentoPaciente/edicaoAndamentoPaciente/$1';
 
 
 //-------------------IMPLANTE-----------------------------------------------------------

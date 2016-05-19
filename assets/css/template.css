@@ -411,3 +411,15 @@ body
   right: 0;
   margin: auto;
 }
+
+.clone
+{
+  background-color: #006600;
+  color: #fff;
+}
+
+.remove
+{
+  background-color: #b30000;
+  color: #fff;
+}

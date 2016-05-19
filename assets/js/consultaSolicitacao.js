@@ -4,7 +4,7 @@ $(document).ready(function()
 		.click(function()
     {
   		var cpf = $(this).children('td:eq(0)').text();
-  		window.location.href = "/proteseAuditiva/index.php/edicaoCaracterizacao/"+cpf;
+  		window.location.href = "/proteseAuditiva/index.php/consultaSolicitacao/"+cpf;
 		})
 
 }).attr('unselectable', 'on').css('user-select', 'none').on('selectstart', false);

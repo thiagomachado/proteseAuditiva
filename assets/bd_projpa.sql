@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: 15/04/2016 às 15:47
--- Versão do servidor: 5.5.47-0ubuntu0.14.04.1
--- Versão do PHP: 5.5.9-1ubuntu4.14
+-- Tempo de Geração: 19/05/2016 às 18:33
+-- Versão do servidor: 5.5.49-0ubuntu0.14.04.1
+-- Versão do PHP: 5.5.9-1ubuntu4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `tblnivel` (
   `Nvl_Cod` int(1) NOT NULL,
-  `Nvl_Desc` varchar(25) COLLATE utf8_general_mysql500_ci NOT NULL,
+  `Nvl_Desc` varchar(25) NOT NULL,
   PRIMARY KEY (`Nvl_Cod`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Fazendo dump de dados para tabela `tblnivel`
@@ -45,48 +45,27 @@ INSERT INTO `tblnivel` (`Nvl_Cod`, `Nvl_Desc`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tblprocs`
---
-
-CREATE TABLE IF NOT EXISTS `tblprocs` (
-  `Proc1_Cod` int(11) NOT NULL,
-  `Proc2_Cod` int(11) NOT NULL,
-  PRIMARY KEY (`Proc1_Cod`,`Proc2_Cod`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
-
---
--- Fazendo dump de dados para tabela `tblprocs`
---
-
-INSERT INTO `tblprocs` (`Proc1_Cod`, `Proc2_Cod`) VALUES
-(25, 1),
-(25, 2),
-(26, 2);
-
--- --------------------------------------------------------
-
---
 -- Estrutura para tabela `tbl_anamneseadt`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_anamneseadt` (
   `AnmAdt_Cod` int(11) NOT NULL AUTO_INCREMENT,
-  `Pc_CPF` varchar(14) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `AnmAdt_EncaminhadoPor` varchar(45) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `AnmAdt_PrincQueixa` varchar(250) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `AnmAdt_HistQueixa` varchar(1000) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
+  `Pc_CPF` varchar(14) NOT NULL,
+  `AnmAdt_EncaminhadoPor` varchar(45) NOT NULL,
+  `AnmAdt_PrincQueixa` varchar(250) NOT NULL,
+  `AnmAdt_HistQueixa` varchar(1000) DEFAULT NULL,
   `AnmAdt_DorOuvido` tinyint(1) NOT NULL,
   `AnmAdt_HistOtite` tinyint(1) NOT NULL,
   `AnmAdt_OtiteOE` tinyint(1) DEFAULT NULL,
   `AnmAdt_OtiteOD` tinyint(1) DEFAULT NULL,
-  `AnmAdt_Periodicidade` varchar(45) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
+  `AnmAdt_Periodicidade` varchar(45) DEFAULT NULL,
   `AnmAdt_CirurgiaOtologica` tinyint(1) NOT NULL,
   `AnmAdt_CirurgiaOtolOE` tinyint(1) DEFAULT NULL,
   `AnmAdt_CirurgiaOtolOD` tinyint(1) DEFAULT NULL,
-  `AnmAdt_CirurgiaDesc` varchar(45) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
+  `AnmAdt_CirurgiaDesc` varchar(45) DEFAULT NULL,
   `AnmAdt_PerdaAudNaFamilia` tinyint(1) NOT NULL,
-  `AnmAdt_FamiliarPerdaAud` varchar(25) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `AnmAdt_Doenca` varchar(175) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
+  `AnmAdt_FamiliarPerdaAud` varchar(25) DEFAULT NULL,
+  `AnmAdt_Doenca` varchar(175) DEFAULT NULL,
   `AnmAdt_Caxumba` tinyint(1) DEFAULT NULL,
   `AnmAdt_Meningite` tinyint(1) DEFAULT NULL,
   `AnmAdt_Sifilis` tinyint(1) DEFAULT NULL,
@@ -95,30 +74,31 @@ CREATE TABLE IF NOT EXISTS `tbl_anamneseadt` (
   `AnmAdt_Circulatorios` tinyint(1) DEFAULT NULL,
   `AnmAdt_Diabetes` tinyint(1) DEFAULT NULL,
   `AnmAdt_UsoMedicacao` tinyint(1) NOT NULL,
-  `AnmAdt_Medicacao` varchar(75) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
+  `AnmAdt_Medicacao` varchar(75) DEFAULT NULL,
   `AnmAdt_SeRuidosOcup` tinyint(1) NOT NULL,
-  `AnmAdt_RuidosOcup` varchar(45) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `AnmAdt_TempoRuidosOcup` varchar(15) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `AnmAdt_TempoDificulAud` varchar(45) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
+  `AnmAdt_RuidosOcup` varchar(45) DEFAULT NULL,
+  `AnmAdt_TempoRuidosOcup` varchar(15) DEFAULT NULL,
+  `AnmAdt_TempoDificulAud` varchar(45) DEFAULT NULL,
   `AnmAdt_CompreenderFala` int(1) NOT NULL,
   `AnmAdt_Zumbido` tinyint(1) NOT NULL,
   `AnmAdt_ZumbOD` tinyint(1) DEFAULT NULL,
   `AnmAdt_ZumbOE` tinyint(1) DEFAULT NULL,
-  `AnmAdt_ZumbTipo` varchar(12) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `AnmAdt_ZumbTempo` varchar(25) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
+  `AnmAdt_ZumbTipo` varchar(12) DEFAULT NULL,
+  `AnmAdt_ZumbTempo` varchar(25) DEFAULT NULL,
   `AnmAdt_Vertigem` tinyint(1) NOT NULL,
-  `AnmAdt_TempoVertigem` varchar(45) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
+  `AnmAdt_TempoVertigem` varchar(45) DEFAULT NULL,
   `AnmAdt_IncomSonsIntensos` tinyint(1) NOT NULL,
-  `AnmAdt_SonsIntensos` varchar(45) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `AnmAdt_Obs` varchar(250) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
+  `AnmAdt_SonsIntensos` varchar(45) DEFAULT NULL,
+  `AnmAdt_Obs` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`AnmAdt_Cod`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci AUTO_INCREMENT=16 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
 -- Fazendo dump de dados para tabela `tbl_anamneseadt`
 --
 
 INSERT INTO `tbl_anamneseadt` (`AnmAdt_Cod`, `Pc_CPF`, `AnmAdt_EncaminhadoPor`, `AnmAdt_PrincQueixa`, `AnmAdt_HistQueixa`, `AnmAdt_DorOuvido`, `AnmAdt_HistOtite`, `AnmAdt_OtiteOE`, `AnmAdt_OtiteOD`, `AnmAdt_Periodicidade`, `AnmAdt_CirurgiaOtologica`, `AnmAdt_CirurgiaOtolOE`, `AnmAdt_CirurgiaOtolOD`, `AnmAdt_CirurgiaDesc`, `AnmAdt_PerdaAudNaFamilia`, `AnmAdt_FamiliarPerdaAud`, `AnmAdt_Doenca`, `AnmAdt_Caxumba`, `AnmAdt_Meningite`, `AnmAdt_Sifilis`, `AnmAdt_Hipertensao`, `AnmAdt_Sarampo`, `AnmAdt_Circulatorios`, `AnmAdt_Diabetes`, `AnmAdt_UsoMedicacao`, `AnmAdt_Medicacao`, `AnmAdt_SeRuidosOcup`, `AnmAdt_RuidosOcup`, `AnmAdt_TempoRuidosOcup`, `AnmAdt_TempoDificulAud`, `AnmAdt_CompreenderFala`, `AnmAdt_Zumbido`, `AnmAdt_ZumbOD`, `AnmAdt_ZumbOE`, `AnmAdt_ZumbTipo`, `AnmAdt_ZumbTempo`, `AnmAdt_Vertigem`, `AnmAdt_TempoVertigem`, `AnmAdt_IncomSonsIntensos`, `AnmAdt_SonsIntensos`, `AnmAdt_Obs`) VALUES
+(16, '85729428401', 'Maria', 'Dores de ouvido', 'dores de ouvido', 1, 1, 0, 0, '', 0, 0, 0, '', 1, 'Pai', '', 0, 1, 1, 1, 0, 0, 0, 0, '', 0, '', '', '2 anos', 0, 0, 0, 0, '0', '', 0, ' ', 1, '', ''),
 (15, '93849102380', 'José Silva', 'Dores de ouvido', 'Teste', 0, 1, 0, 0, '', 0, 1, 0, '', 0, '', '', 0, 1, 0, 0, 0, 0, 0, 0, '', 0, '', '', '4 meses', 0, 1, 0, 1, 'intermitente', '', 0, '', 0, '', ''),
 (14, '01301493184', 'José Silva', 'Dores de ouvido', 'teste', 1, 1, 1, 1, '', 1, 1, 1, '', 1, 'Pai', '', 1, 0, 0, 0, 1, 0, 1, 0, '', 0, '', '', '5 meses', 2, 1, 1, 1, 'continuo', 'constante', 1, '', 0, '', ''),
 (13, '47139481920', 'José Silva', 'Dores de ouvido', 'Dores constantes desde o mês de outubro', 1, 1, 0, 0, '', 0, 0, 0, '  ', 0, '', '', 1, 1, 0, 0, 0, 0, 0, 0, '', 0, '', '', '5 meses', 0, 1, 1, 1, 'continuo', '', 1, '', 1, '', '');
@@ -131,12 +111,12 @@ INSERT INTO `tbl_anamneseadt` (`AnmAdt_Cod`, `Pc_CPF`, `AnmAdt_EncaminhadoPor`, 
 
 CREATE TABLE IF NOT EXISTS `tbl_anamneseinf` (
   `AnmInf_Cod` int(11) NOT NULL AUTO_INCREMENT,
-  `Pc_CPF` varchar(14) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `AnmInf_EncaminhaPor` varchar(45) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `AnmInf_PrincQueixa` varchar(250) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `AnmInf_HistQueixa` varchar(1000) COLLATE utf8_general_mysql500_ci NOT NULL,
+  `Pc_CPF` varchar(14) NOT NULL,
+  `AnmInf_EncaminhaPor` varchar(45) NOT NULL,
+  `AnmInf_PrincQueixa` varchar(250) NOT NULL,
+  `AnmInf_HistQueixa` varchar(1000) NOT NULL,
   `AnmInf_GestAlteracao` tinyint(1) NOT NULL,
-  `AnmInf_DescAlteracao` varchar(250) COLLATE utf8_general_mysql500_ci NOT NULL,
+  `AnmInf_DescAlteracao` varchar(250) NOT NULL,
   `AnmInf_Rubeola` tinyint(1) DEFAULT NULL,
   `AnmInf_Toxoplasmose` tinyint(1) DEFAULT NULL,
   `AnmInf_Sifilis` tinyint(1) DEFAULT NULL,
@@ -144,41 +124,41 @@ CREATE TABLE IF NOT EXISTS `tbl_anamneseinf` (
   `AnmInf_Herpes` tinyint(1) DEFAULT NULL,
   `AnmInf_Drogas` tinyint(1) DEFAULT NULL,
   `AnmInf_Alcool` tinyint(1) DEFAULT NULL,
-  `AnmInf_Parto` varchar(20) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
+  `AnmInf_Parto` varchar(20) DEFAULT NULL,
   `AnmInf_Caxumba` tinyint(1) DEFAULT NULL,
   `AnmInf_Meningite` tinyint(1) DEFAULT NULL,
   `AnmInf_Encefalite` tinyint(1) DEFAULT NULL,
   `AnmInf_TraumaAcustico` tinyint(1) DEFAULT NULL,
   `AnmInf_Sarampo` tinyint(1) DEFAULT NULL,
-  `AnmInf_Doenca` varchar(175) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
+  `AnmInf_Doenca` varchar(175) DEFAULT NULL,
   `AnmInf_HistOtite` tinyint(1) NOT NULL,
   `AnmInf_OtiteOE` tinyint(1) DEFAULT NULL,
   `AnmInf_OtiteOD` tinyint(1) DEFAULT NULL,
-  `AnmInf_Periodicidade` varchar(45) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
+  `AnmInf_Periodicidade` varchar(45) DEFAULT NULL,
   `AnmInf_PerdaAudNaFamilia` tinyint(1) NOT NULL,
-  `AnmInf_Familiar` varchar(25) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
+  `AnmInf_Familiar` varchar(25) DEFAULT NULL,
   `AnmInf_UsoMedicacao` tinyint(1) NOT NULL,
-  `AnmInf_Medicacao` varchar(75) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
+  `AnmInf_Medicacao` varchar(75) DEFAULT NULL,
   `AnmInf_PaisConsag` tinyint(1) NOT NULL,
-  `AnmInf_TempoDifculAud` varchar(45) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
+  `AnmInf_TempoDifculAud` varchar(45) DEFAULT NULL,
   `AnmInf_IdadeConf` int(3) NOT NULL,
-  `AnmInf_ComoConf` varchar(45) COLLATE utf8_general_mysql500_ci NOT NULL,
+  `AnmInf_ComoConf` varchar(45) NOT NULL,
   `AnmInf_IdadeInterv` int(3) DEFAULT NULL,
-  `AnmInf_QualInterv` varchar(45) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
+  `AnmInf_QualInterv` varchar(45) DEFAULT NULL,
   `AnmInf_ReageTrovao` tinyint(4) DEFAULT NULL,
   `AnmInf_ReageAviao` tinyint(4) DEFAULT NULL,
   `AnmInf_ReagePorta` tinyint(4) DEFAULT NULL,
   `AnmInf_ReageBuzina` tinyint(4) DEFAULT NULL,
   `AnmInf_ReageCachorro` tinyint(4) DEFAULT NULL,
   `AnmInf_ReageVoz` tinyint(4) DEFAULT NULL,
-  `AnmInf_ReacaoIntensidadeVoz` varchar(20) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `AnmInf_ComoReage` varchar(20) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `AnmInf_DesenvolvLing` varchar(45) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `AnmInf_ComunicProdom` varchar(45) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `AnmInf_DesenvolvMotor` varchar(45) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `AnmInf_Obs` varchar(250) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
+  `AnmInf_ReacaoIntensidadeVoz` varchar(20) NOT NULL,
+  `AnmInf_ComoReage` varchar(20) NOT NULL,
+  `AnmInf_DesenvolvLing` varchar(45) NOT NULL,
+  `AnmInf_ComunicProdom` varchar(45) NOT NULL,
+  `AnmInf_DesenvolvMotor` varchar(45) NOT NULL,
+  `AnmInf_Obs` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`AnmInf_Cod`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Fazendo dump de dados para tabela `tbl_anamneseinf`
@@ -192,38 +172,80 @@ INSERT INTO `tbl_anamneseinf` (`AnmInf_Cod`, `Pc_CPF`, `AnmInf_EncaminhaPor`, `A
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `tbl_andamento_paciente`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_andamento_paciente` (
+  `Andamento_id` int(11) NOT NULL AUTO_INCREMENT,
+  `Pc_CPF` varchar(14) NOT NULL,
+  `Andamento_protese` varchar(100) DEFAULT NULL,
+  `Andamento_implante` varchar(100) DEFAULT NULL,
+  `Andamento_obs` text,
+  PRIMARY KEY (`Andamento_id`),
+  KEY `Pc_CPF` (`Pc_CPF`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Fazendo dump de dados para tabela `tbl_andamento_paciente`
+--
+
+INSERT INTO `tbl_andamento_paciente` (`Andamento_id`, `Pc_CPF`, `Andamento_protese`, `Andamento_implante`, `Andamento_obs`) VALUES
+(1, '94857102482', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `tbl_caracterizacao_paciente`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_caracterizacao_paciente` (
-  `Pc_CPF` varchar(14) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Caract_Cpf_Profissional` varchar(14) COLLATE utf8_general_mysql500_ci NOT NULL,
   `Caract_Numero` int(11) NOT NULL AUTO_INCREMENT,
+  `Pc_CPF` varchar(14) DEFAULT NULL,
+  `Caract_Cpf_Profissional` varchar(14) NOT NULL,
   `Caract_Data` datetime NOT NULL,
-  `Caract_TipoPerda` varchar(25) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Caract_GrauPerda` varchar(25) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Caract_Config` varchar(25) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Caract_Duracao` varchar(25) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Caract_Progress` varchar(25) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Caract_Recrut` varchar(25) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Caract_Zumbido` varchar(25) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Caract_ExamesCompl` varchar(250) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Caract_AASI` varchar(10) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Caract_ImplCoclear` varchar(10) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Caract_HistPerdaAud` varchar(1000) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Caract_AASIModelo` varchar(45) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Caract_AASIOrelha` varchar(25) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Caract_Obs` varchar(250) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  PRIMARY KEY (`Caract_Numero`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci AUTO_INCREMENT=80 ;
+  `Caract_TipoPerda` varchar(25) DEFAULT NULL,
+  `Caract_GrauPerda` varchar(25) DEFAULT NULL,
+  `Caract_Config` varchar(25) DEFAULT NULL,
+  `Caract_Duracao` varchar(25) DEFAULT NULL,
+  `Caract_Progress` varchar(25) DEFAULT NULL,
+  `Caract_Recrut` varchar(25) DEFAULT NULL,
+  `Caract_Zumbido` varchar(25) DEFAULT NULL,
+  `Caract_ExamesCompl` varchar(250) DEFAULT NULL,
+  `Caract_AASI` varchar(10) DEFAULT NULL,
+  `Caract_ImplCoclear` varchar(10) DEFAULT NULL,
+  `Caract_HistPerdaAud` varchar(1000) DEFAULT NULL,
+  `Caract_AASIModelo` varchar(45) DEFAULT NULL,
+  `Caract_AASIOrelha` varchar(25) DEFAULT NULL,
+  `Caract_Obs` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`Caract_Numero`),
+  KEY `Pc_CPF` (`Pc_CPF`),
+  KEY `Caract_Numero` (`Caract_Numero`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=82 ;
 
 --
 -- Fazendo dump de dados para tabela `tbl_caracterizacao_paciente`
 --
 
-INSERT INTO `tbl_caracterizacao_paciente` (`Pc_CPF`, `Caract_Cpf_Profissional`, `Caract_Numero`, `Caract_Data`, `Caract_TipoPerda`, `Caract_GrauPerda`, `Caract_Config`, `Caract_Duracao`, `Caract_Progress`, `Caract_Recrut`, `Caract_Zumbido`, `Caract_ExamesCompl`, `Caract_AASI`, `Caract_ImplCoclear`, `Caract_HistPerdaAud`, `Caract_AASIModelo`, `Caract_AASIOrelha`, `Caract_Obs`) VALUES
-('77777777799', '44444444444', 79, '2016-04-07 00:00:00', 'tipo', 'grau', 'configuração', 'duração', 'progressão', 'recrutamento', 'zumbido', 'resultado', 'jaPossui', 'jaPossui', 'historico', 'modelo', 'orelha', 'observações'),
-('77777777777', '44444444444', 78, '2016-04-06 00:00:00', '1teste4', 'grau maximo', 'teste1', 'teste2', 'progress', 'recrut', 'zumbido', 'exame de sangue', 'sim', 'nao', 'teste', 'Modelo 3.14', 'As Duas', 'OBS TESTE');
+INSERT INTO `tbl_caracterizacao_paciente` (`Caract_Numero`, `Pc_CPF`, `Caract_Cpf_Profissional`, `Caract_Data`, `Caract_TipoPerda`, `Caract_GrauPerda`, `Caract_Config`, `Caract_Duracao`, `Caract_Progress`, `Caract_Recrut`, `Caract_Zumbido`, `Caract_ExamesCompl`, `Caract_AASI`, `Caract_ImplCoclear`, `Caract_HistPerdaAud`, `Caract_AASIModelo`, `Caract_AASIOrelha`, `Caract_Obs`) VALUES
+(79, '77777777799', '44444444444', '2016-04-07 00:00:00', 'tipo', 'grau', 'configuração', 'duração', 'progressão', 'recrutamento', 'zumbido', 'resultado', 'jaPossui', 'jaPossui', 'historico', 'modelo', 'orelha', 'observações'),
+(78, '77777777777', '44444444444', '2016-04-06 00:00:00', '1teste4', 'grau maximo', 'teste1', 'teste2', 'progress', 'recrut', 'zumbido', 'exame de sangue', 'sim', 'nao', 'teste', 'Modelo 3.14', 'As Duas', 'OBS TESTE'),
+(80, '85729428401', '44444444444', '2016-04-15 00:00:00', 'teste3', 'grau', 'configuração', 'duração', 'progressão', 'recrutamento', 'zumbido', 'resultado', 'jaPossui', 'nao', 'sem historico', 'modelo', 'orelha', 'obs'),
+(81, '93849102380', '44444444444', '2016-04-18 00:00:00', '', '', '', '', '', '', '', '', 'sim', 'sim', 'Testando', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `tbl_consulta`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_consulta` (
+  `Consulta_id` int(11) NOT NULL AUTO_INCREMENT,
+  `Andamento_id` int(11) NOT NULL,
+  `Consulta_data` date NOT NULL,
+  `Consulta_descricao` varchar(200) NOT NULL,
+  PRIMARY KEY (`Consulta_id`),
+  KEY `Andamento_id` (`Andamento_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -232,13 +254,13 @@ INSERT INTO `tbl_caracterizacao_paciente` (`Pc_CPF`, `Caract_Cpf_Profissional`, 
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_endereco` (
-  `Pc_CPF` varchar(14) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `End_Logradouro` varchar(100) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `End_UF` varchar(2) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `End_CEP` varchar(8) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `End_CodIBGE` varchar(7) COLLATE utf8_general_mysql500_ci NOT NULL,
+  `Pc_CPF` varchar(14) NOT NULL,
+  `End_Logradouro` varchar(100) NOT NULL,
+  `End_UF` varchar(2) NOT NULL,
+  `End_CEP` varchar(8) NOT NULL,
+  `End_CodIBGE` varchar(7) NOT NULL,
   PRIMARY KEY (`Pc_CPF`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Fazendo dump de dados para tabela `tbl_endereco`
@@ -257,76 +279,8 @@ INSERT INTO `tbl_endereco` (`Pc_CPF`, `End_Logradouro`, `End_UF`, `End_CEP`, `En
 ('49375482719', 'Rua Sem Nome, sem numero', 'AC', '31413442', '1200013'),
 ('21736421838', 'Rua acrelandia, numero 204', 'AC', '11111111', '1200013'),
 ('01301493184', 'Rua Sem Nome, sem numero', 'DF', '28187323', '5300108'),
-('11934892485', 'Rua Sargento João Lópes', 'AC', '21931-42', '1200013');
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `tbl_estoque`
---
-
-CREATE TABLE IF NOT EXISTS `tbl_estoque` (
-  `Est_Cod` int(11) NOT NULL AUTO_INCREMENT,
-  `Est_Desc` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `Est_Fabr` varchar(45) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `Est_Clss` varchar(45) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `Est_Valor` decimal(12,2) NOT NULL,
-  `Est_DataEnt` date NOT NULL,
-  `Pc_CPF` varchar(14) COLLATE utf8_general_mysql500_ci NOT NULL,
-  PRIMARY KEY (`Est_Cod`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci AUTO_INCREMENT=2 ;
-
---
--- Fazendo dump de dados para tabela `tbl_estoque`
---
-
-INSERT INTO `tbl_estoque` (`Est_Cod`, `Est_Desc`, `Est_Fabr`, `Est_Clss`, `Est_Valor`, `Est_DataEnt`, `Pc_CPF`) VALUES
-(1, 'Teste', 'Microsoft', '2', 1200.00, '2015-08-27', '');
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `tbl_grafico`
---
-
-CREATE TABLE IF NOT EXISTS `tbl_grafico` (
-  `Pront_Numero` int(11) NOT NULL,
-  `Graf_Cod` int(11) NOT NULL AUTO_INCREMENT,
-  `nomeGrafico` varchar(100) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Graf_x1` int(11) DEFAULT NULL,
-  `Graf_x2` int(11) DEFAULT NULL,
-  `Graf_x3` int(11) DEFAULT NULL,
-  `Graf_x4` int(11) DEFAULT NULL,
-  `Graf_x5` int(11) DEFAULT NULL,
-  `Graf_x6` int(11) DEFAULT NULL,
-  `Graf_x7` int(11) DEFAULT NULL,
-  `Graf_x8` int(11) DEFAULT NULL,
-  `Graf_x9` int(11) DEFAULT NULL,
-  `Graf_y1` int(11) DEFAULT NULL,
-  `Graf_y2` int(11) DEFAULT NULL,
-  `Graf_y3` int(11) DEFAULT NULL,
-  `Graf_y4` int(11) DEFAULT NULL,
-  `Graf_y5` int(11) DEFAULT NULL,
-  `Graf_y6` int(11) DEFAULT NULL,
-  `Graf_y7` int(11) DEFAULT NULL,
-  `Graf_y8` int(11) DEFAULT NULL,
-  `Graf_y9` int(11) DEFAULT NULL,
-  PRIMARY KEY (`Graf_Cod`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci AUTO_INCREMENT=21 ;
-
---
--- Fazendo dump de dados para tabela `tbl_grafico`
---
-
-INSERT INTO `tbl_grafico` (`Pront_Numero`, `Graf_Cod`, `nomeGrafico`, `Graf_x1`, `Graf_x2`, `Graf_x3`, `Graf_x4`, `Graf_x5`, `Graf_x6`, `Graf_x7`, `Graf_x8`, `Graf_x9`, `Graf_y1`, `Graf_y2`, `Graf_y3`, `Graf_y4`, `Graf_y5`, `Graf_y6`, `Graf_y7`, `Graf_y8`, `Graf_y9`) VALUES
-(58, 16, NULL, 20, 30, 40, 50, 60, 70, 100, 90, 80, 20, 30, 40, 50, 60, 70, 100, 90, 80),
-(56, 15, NULL, 1, 2, 3, 7, 9, 11, 13, 14, 15, 0, 1, 4, 8, 10, 8, 4, 1, 0),
-(56, 14, NULL, 9, 9, 9, 10, 11, 13, 20, 23, 25, 9, 9, 9, 10, 12, 14, 17, 15, 13),
-(54, 13, NULL, 1, 2, 3, 5, 6, 9, 10, 20, 30, 2, 3, 4, 6, 7, 8, 11, 15, 20),
-(71, 17, 'Gráfico 1', 2, 3, 4, 4, 5, 6, 7, 20, 31, 5, 1, 9, 7, 8, 10, 18, 1, 15),
-(72, 18, 'Grafico 1', 0, 1, 2, 3, 4, 5, 6, 7, 8, 12, 1, 2, 3, 4, 5, 6, 7, 10),
-(72, 19, 'Grafico 2', 0, 2, 4, 9, 15, 20, 30, 100, NULL, 0, 4, 16, 81, 225, 400, 900, 10000, NULL),
-(72, 20, 'Grafico 3', 0, 1, 3, 4, 5, 6, 10, 19, 30, 0, 0, 0, 9, 18, 27, 15, 31, 39);
+('11934892485', 'Rua Sargento João Lópes', 'AC', '21931-42', '1200013'),
+('85729428401', 'Rua sem nome', 'RJ', '21847193', '3301306');
 
 -- --------------------------------------------------------
 
@@ -336,9 +290,9 @@ INSERT INTO `tbl_grafico` (`Pront_Numero`, `Graf_Cod`, `nomeGrafico`, `Graf_x1`,
 
 CREATE TABLE IF NOT EXISTS `tbl_grauescolar` (
   `GEsc_Cod` int(1) NOT NULL,
-  `GEsc_Desc` varchar(32) COLLATE utf8_general_mysql500_ci NOT NULL,
+  `GEsc_Desc` varchar(32) NOT NULL,
   PRIMARY KEY (`GEsc_Cod`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Fazendo dump de dados para tabela `tbl_grauescolar`
@@ -360,22 +314,63 @@ INSERT INTO `tbl_grauescolar` (`GEsc_Cod`, `GEsc_Desc`) VALUES
 
 CREATE TABLE IF NOT EXISTS `tbl_implantes` (
   `Impl_Cod` int(11) NOT NULL AUTO_INCREMENT,
-  `Impl_Desc` varchar(45) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `Impl_Fabr` varchar(45) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `Impl_Clss` varchar(45) COLLATE utf8_general_mysql500_ci NOT NULL,
+  `Impl_Desc` varchar(45) NOT NULL,
+  `Impl_Fabr` varchar(45) NOT NULL,
+  `Impl_Clss` varchar(45) NOT NULL,
   `Impl_Valor` decimal(12,2) NOT NULL,
   `Impl_DataEnt` date NOT NULL,
-  `Pc_CPF` varchar(14) COLLATE utf8_general_mysql500_ci NOT NULL,
+  `Pc_CPF` varchar(14) NOT NULL,
   PRIMARY KEY (`Impl_Cod`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Fazendo dump de dados para tabela `tbl_implantes`
 --
 
 INSERT INTO `tbl_implantes` (`Impl_Cod`, `Impl_Desc`, `Impl_Fabr`, `Impl_Clss`, `Impl_Valor`, `Impl_DataEnt`, `Pc_CPF`) VALUES
-(2, 'item', 'item', 'item', 1200.00, '2015-05-13', ''),
-(4, 'item', 'item', 'item', 1200.00, '2015-10-14', '');
+(10, 'testando nome muito grande ', 'sony', 'omega', 1238.90, '2016-04-15', ''),
+(5, 'windows 10', 'Microsoft', 'alfa', 789.99, '2015-12-03', ''),
+(6, 'iEar', 'Apple', 'beta', 831.09, '2006-03-04', ''),
+(7, 'phenom x2', 'AMD', 'gama', 800.90, '2014-03-01', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `tbl_item_solicitacao`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_item_solicitacao` (
+  `Isolic_id` int(11) NOT NULL AUTO_INCREMENT,
+  `Solic_id` int(11) NOT NULL,
+  `Isolic_item_id` int(11) NOT NULL,
+  `Isolic_quantidade` int(11) NOT NULL,
+  `Isolic_descricao` varchar(100) DEFAULT NULL,
+  `Isolic_confirmado` tinyint(1) NOT NULL,
+  PRIMARY KEY (`Isolic_id`),
+  KEY `Solic_id` (`Solic_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
+
+--
+-- Fazendo dump de dados para tabela `tbl_item_solicitacao`
+--
+
+INSERT INTO `tbl_item_solicitacao` (`Isolic_id`, `Solic_id`, `Isolic_item_id`, `Isolic_quantidade`, `Isolic_descricao`, `Isolic_confirmado`) VALUES
+(14, 8, 1, 3, NULL, 0),
+(15, 9, 4, 5, NULL, 0),
+(16, 9, 2, 5, NULL, 0),
+(17, 9, 4, 7, NULL, 0),
+(18, 9, 3, 9, NULL, 0),
+(19, 10, 4, 1, NULL, 0),
+(20, 10, 1, 3, NULL, 0),
+(21, 11, 3, 1, NULL, 0),
+(22, 12, 1, 1, NULL, 0),
+(23, 13, 1, 2, NULL, 0),
+(24, 14, 2, 33, NULL, 0),
+(25, 15, 3, 3, NULL, 0),
+(26, 15, 4, 3, NULL, 0),
+(27, 15, 1, 3, NULL, 0),
+(28, 16, 1, 1, NULL, 0),
+(29, 16, 4, 1, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -384,10 +379,10 @@ INSERT INTO `tbl_implantes` (`Impl_Cod`, `Impl_Desc`, `Impl_Fabr`, `Impl_Clss`, 
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_municipios` (
-  `Mun_UF` varchar(2) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `Mun_Cod` varchar(7) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `Mun_Nome` varchar(32) COLLATE utf8_general_mysql500_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+  `Mun_UF` varchar(2) NOT NULL,
+  `Mun_Cod` varchar(7) NOT NULL,
+  `Mun_Nome` varchar(32) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Fazendo dump de dados para tabela `tbl_municipios`
@@ -5970,22 +5965,23 @@ INSERT INTO `tbl_municipios` (`Mun_UF`, `Mun_Cod`, `Mun_Nome`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_paciente` (
-  `Pc_CPF` varchar(14) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `Pc_Nome` varchar(100) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `Pc_CartaoSus` varchar(20) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `Pc_NumProntuario` varchar(20) COLLATE utf8_general_mysql500_ci NOT NULL,
+  `Pc_CPF` varchar(14) NOT NULL,
+  `Pc_Nome` varchar(100) NOT NULL,
+  `Pc_CartaoSus` varchar(20) NOT NULL,
+  `Pc_NumProntuario` varchar(20) NOT NULL,
   `Pc_DtNascimento` date NOT NULL,
   `Pc_Idade` int(3) DEFAULT NULL,
-  `Pc_Sexo` char(1) COLLATE utf8_general_mysql500_ci NOT NULL,
+  `Pc_Sexo` char(1) NOT NULL,
   `Pc_Etnia` int(1) NOT NULL,
-  `Pc_NomeMae` varchar(100) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `Pc_NomePai` varchar(100) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
+  `Pc_NomeMae` varchar(100) NOT NULL,
+  `Pc_NomePai` varchar(100) DEFAULT NULL,
   `Pc_GrauEscolar` int(1) NOT NULL,
   `Pc_SeTrabalha` tinyint(1) NOT NULL,
-  `Pc_Profissao` varchar(45) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Pc_TipoAnamn` varchar(8) COLLATE utf8_general_mysql500_ci NOT NULL,
-  PRIMARY KEY (`Pc_CPF`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+  `Pc_Profissao` varchar(45) DEFAULT NULL,
+  `Pc_TipoAnamn` varchar(8) NOT NULL,
+  PRIMARY KEY (`Pc_CPF`),
+  KEY `Pc_CPF` (`Pc_CPF`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Fazendo dump de dados para tabela `tbl_paciente`
@@ -5993,203 +5989,103 @@ CREATE TABLE IF NOT EXISTS `tbl_paciente` (
 
 INSERT INTO `tbl_paciente` (`Pc_CPF`, `Pc_Nome`, `Pc_CartaoSus`, `Pc_NumProntuario`, `Pc_DtNascimento`, `Pc_Idade`, `Pc_Sexo`, `Pc_Etnia`, `Pc_NomeMae`, `Pc_NomePai`, `Pc_GrauEscolar`, `Pc_SeTrabalha`, `Pc_Profissao`, `Pc_TipoAnamn`) VALUES
 ('46464464655', 'Fabiana Fernandes Lima', '545454555553333', '345', '1999-05-05', 15, 'f', 4, 'teste 5 ', 'teste 5', 5, 0, '', 'infantil'),
-('77777777777', 'Luisa da Silva Souza Ribeiro ', '666777666666666', '67', '1999-01-01', 16, 'f', 4, 'teste 6', 'teste 6', 1, 0, '', 'adulta'),
+('77777777777', 'Luisa da Silva Souza Ribeiro ', '666777666666666', '67', '1999-01-01', 16, 'f', 4, 'teste 6', 'teste 6', 1, 0, '', 'infantil'),
 ('77777777799', 'Luis da Silva Souza Ribeiro ', '666777666666666', '67', '1999-01-01', 19, 'm', 4, 'teste 6', 'teste 6', 5, 1, '', 'adulta'),
 ('88888888889', 'Jaqueline Loren', '888888888888888', '88', '1996-08-08', 16, 'f', 4, 'teste 8', 'Marcos', 5, 1, 'teste 8', 'adulta'),
 ('22222222222', 'Maria Eduarda', '222222222222222', '2222', '1991-02-21', 22, 'f', 3, 'mae do teste', 'PAI DO TESTE', 1, 0, '', 'adulta'),
-('93849102380', 'Ana Julia Lima', '203814192841020', '0', '1993-03-12', 21, 'f', 2, 'Ana Maria Lima', 'Antonio Carlos Lima', 5, 0, '', 'adulta'),
+('93849102380', 'Ana Julia Lima', '203814192841020', '09401', '1993-03-12', 21, 'f', 2, 'Ana Maria Lima', 'Antonio Carlos Lima', 5, 0, '', 'adulta'),
 ('21736421838', 'José da Silva Souza', '28189310310319311111', '918', '1966-09-02', NULL, 'm', 1, 'Maria da Silva', 'João Souza', 1, 0, ' ', 'adulta'),
 ('01301493184', 'Lais Damasio', '291303910210', '230', '1995-12-10', NULL, 'f', 2, 'Leticia Damasio', '', 5, 0, 'Estudante', 'adulta'),
 ('47293019301', 'Maria Luiza Pinheiro', '21392381394319019029', '8271', '1992-11-13', NULL, 'f', 5, 'Helena Pinheiro', 'nunes', 4, 0, '', 'adulta'),
 ('49375482719', 'Marcos Antonio de Oliveira', '12941939310', '2941', '1996-11-18', NULL, 'm', 2, 'Julia de Oliveira', '', 3, 0, 'Estudante', 'adulta'),
 ('94857102482', 'Thiago Leal Damasio Machado', '19219485', '8471', '1992-11-14', NULL, 'm', 3, 'Thiago Leal', 'Machado', 1, 1, 'Estudante', 'adulta'),
 ('47139481920', 'Thiago Leal Damasio Machado', '128738192', '2871', '1992-11-14', NULL, 'm', 3, 'Luciana Machado', 'Omar Machado', 5, 1, 'Tecnico Informatica', 'adulta'),
-('11934892485', 'Alice Fontes', '28148234925830', '182781', '2009-04-30', NULL, 'f', 2, 'Eduarda Fontes', 'Guilherme Andrade Fontes', 1, 0, '', 'infantil');
+('11934892485', 'Alice Fontes', '28148234925830', '182781', '2009-04-30', NULL, 'f', 2, 'Eduarda Fontes', 'Guilherme Andrade Fontes', 1, 0, '', 'infantil'),
+('85729428401', 'João Silva', '7489239', '90', '1999-08-31', NULL, 'm', 4, 'Maria da Silva', 'Pedro Silva', 1, 0, '', 'infantil');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tbl_proc1`
+-- Estrutura para tabela `tbl_procedimentos`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_proc1` (
-  `Proc1_Cod` int(11) NOT NULL,
-  `Proc1_Desc` varchar(30) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  PRIMARY KEY (`Proc1_Cod`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+CREATE TABLE IF NOT EXISTS `tbl_procedimentos` (
+  `Proc_Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Proc_Codigo` varchar(22) NOT NULL,
+  `Proc_Nome` varchar(150) NOT NULL,
+  `Proc_Valor` decimal(12,2) NOT NULL,
+  PRIMARY KEY (`Proc_Id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
--- Fazendo dump de dados para tabela `tbl_proc1`
+-- Fazendo dump de dados para tabela `tbl_procedimentos`
 --
 
-INSERT INTO `tbl_proc1` (`Proc1_Cod`, `Proc1_Desc`) VALUES
-(800, 'teste'),
-(700, 'Exame de audição');
+INSERT INTO `tbl_procedimentos` (`Proc_Id`, `Proc_Codigo`, `Proc_Nome`, `Proc_Valor`) VALUES
+(1, '00976548907', 'Raio x', 200.00),
+(2, '0097654890890', 'Exame sanguineo', 40.00),
+(3, '0481927319038', 'Teste auditivo', 1700.00),
+(4, '00976548907', 'Raio y', 200.00);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tbl_proc2`
+-- Estrutura para tabela `tbl_proteses`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_proc2` (
-  `Proc2_Cod` int(11) NOT NULL,
-  `Proc2_Desc` varchar(30) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Proc2_Custo` float DEFAULT NULL,
-  `Proc1_Cod` int(11) NOT NULL,
-  PRIMARY KEY (`Proc2_Cod`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+CREATE TABLE IF NOT EXISTS `tbl_proteses` (
+  `Prot_Cod` int(11) NOT NULL AUTO_INCREMENT,
+  `Prot_Nome` varchar(45) NOT NULL,
+  `Prot_Fabricante` varchar(45) NOT NULL,
+  `Prot_Classe` varchar(45) NOT NULL,
+  `Prot_Valor` decimal(12,2) NOT NULL,
+  `Prot_DataEntrada` date NOT NULL,
+  `Pc_CPF` varchar(14) NOT NULL,
+  PRIMARY KEY (`Prot_Cod`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Fazendo dump de dados para tabela `tbl_proc2`
+-- Fazendo dump de dados para tabela `tbl_proteses`
 --
 
-INSERT INTO `tbl_proc2` (`Proc2_Cod`, `Proc2_Desc`, `Proc2_Custo`, `Proc1_Cod`) VALUES
-(8029, 'Teste', 9000, 800),
-(2198, 'Teste 02', 1900, 800),
-(7001, 'Ouvido esquerdo', 100, 700),
-(7002, 'Ouvido direito', 120, 700),
-(7003, 'Raio X da cabeça', 45, 700);
+INSERT INTO `tbl_proteses` (`Prot_Cod`, `Prot_Nome`, `Prot_Fabricante`, `Prot_Classe`, `Prot_Valor`, `Prot_DataEntrada`, `Pc_CPF`) VALUES
+(1, 'windows 7', 'Microsoft', 'alfa', 2000.00, '2016-04-19', ' '),
+(2, 'macbook pro', 'Apple', 'omega', 8301.09, '2016-03-31', ''),
+(3, 'macbook pro 3', 'Apple', 'omega', 8301.09, '2014-03-31', '');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tbl_procedimentossolic`
+-- Estrutura para tabela `tbl_solicitacao`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_procedimentossolic` (
-  `cod_procsolic` int(11) NOT NULL AUTO_INCREMENT,
-  `codSolicitacao` int(11) NOT NULL,
-  `cod_proc` int(11) NOT NULL,
-  `quantidade` int(11) NOT NULL,
-  PRIMARY KEY (`cod_procsolic`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+CREATE TABLE IF NOT EXISTS `tbl_solicitacao` (
+  `Solic_id` int(11) NOT NULL AUTO_INCREMENT,
+  `Pc_CPF` varchar(15) NOT NULL,
+  `Solic_data` date NOT NULL,
+  `Solic_descricao` varchar(150) NOT NULL,
+  `Solic_cid10principal` varchar(30) DEFAULT NULL,
+  `Solic_cid10sec` varchar(30) DEFAULT NULL,
+  `Solic_cid10causas` varchar(100) DEFAULT NULL,
+  `Solic_obs` text,
+  PRIMARY KEY (`Solic_id`),
+  KEY `Pc_CPF` (`Pc_CPF`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
--- Fazendo dump de dados para tabela `tbl_procedimentossolic`
+-- Fazendo dump de dados para tabela `tbl_solicitacao`
 --
 
-INSERT INTO `tbl_procedimentossolic` (`cod_procsolic`, `codSolicitacao`, `cod_proc`, `quantidade`) VALUES
-(1, 0, 800, 1),
-(2, 29, 800, 2),
-(3, 0, 800, 3),
-(4, 0, 800, 3),
-(5, 0, 800, 4),
-(6, 0, 800, 15),
-(7, 0, 800, 2),
-(8, 0, 800, 2),
-(9, 0, 800, 20),
-(10, 0, 700, 1),
-(11, 0, 800, 2),
-(12, 0, 700, 2),
-(13, 0, 800, 2),
-(14, 0, 700, 2),
-(15, 29, 700, 1),
-(16, 0, 800, 4),
-(17, 0, 800, 5),
-(18, 0, 700, 4);
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `tbl_proteses_pacientes`
---
-
-CREATE TABLE IF NOT EXISTS `tbl_proteses_pacientes` (
-  `Pc_CPF` varchar(14) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `Est_Cod` int(11) NOT NULL,
-  PRIMARY KEY (`Pc_CPF`,`Est_Cod`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
-
---
--- Fazendo dump de dados para tabela `tbl_proteses_pacientes`
---
-
-INSERT INTO `tbl_proteses_pacientes` (`Pc_CPF`, `Est_Cod`) VALUES
-('10101010101', 1);
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `tbl_protuario`
---
-
-CREATE TABLE IF NOT EXISTS `tbl_protuario` (
-  `Pc_CPF` varchar(14) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Pront_Cpf_Profissional` varchar(14) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `Pront_Numero` int(11) NOT NULL AUTO_INCREMENT,
-  `Pront_Data` datetime NOT NULL,
-  `Pront_CodIBGE` int(11) DEFAULT NULL,
-  `Pront_TipoPerda` varchar(25) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Pront_GrauPerda` varchar(25) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Pront_Config` varchar(25) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Pront_Duracao` varchar(25) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Pront_Progress` varchar(25) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Pront_Recrut` varchar(25) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Pront_Zumbido` varchar(25) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Pront_ExamesCompl` varchar(250) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Pront_AASI` tinyint(1) DEFAULT NULL,
-  `Pront_ImplCoclear` tinyint(1) DEFAULT NULL,
-  `Pront_HistPerdaAud` varchar(1000) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Pront_AASIModelo` varchar(45) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Pront_AASIOrelha` varchar(25) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Pront_Obs` varchar(250) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  PRIMARY KEY (`Pront_Numero`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci AUTO_INCREMENT=77 ;
-
---
--- Fazendo dump de dados para tabela `tbl_protuario`
---
-
-INSERT INTO `tbl_protuario` (`Pc_CPF`, `Pront_Cpf_Profissional`, `Pront_Numero`, `Pront_Data`, `Pront_CodIBGE`, `Pront_TipoPerda`, `Pront_GrauPerda`, `Pront_Config`, `Pront_Duracao`, `Pront_Progress`, `Pront_Recrut`, `Pront_Zumbido`, `Pront_ExamesCompl`, `Pront_AASI`, `Pront_ImplCoclear`, `Pront_HistPerdaAud`, `Pront_AASIModelo`, `Pront_AASIOrelha`, `Pront_Obs`) VALUES
-('88888888888', '44444444444', 57, '2015-09-17 00:00:00', NULL, '0', '0', '0', '0', '0', '00', '0', '0', 1, 1, '0', '0', '0', 'teste'),
-('22222222222', '44444444444', 56, '2015-09-17 00:00:00', NULL, 'Gradativa', '3', '8', '1 ano', '7', 'sim', 'sim', 'Nenhum resultado', 1, 1, 'perda gradativa devida a idade', 'Composto', 'esquerda', 'sem resultados'),
-('77777777777', '44444444444', 54, '2015-09-16 00:00:00', NULL, '2', '1', '2', '3', '2', '3', '4', 'Nenhum problema relatado', 1, 1, 'sem historico', '1', '2', 'poucos resultados'),
-('46464464655', '44444444444', 58, '2015-09-17 00:00:00', NULL, '0', '0', '0', '0', '0', '0', '0', 'sem resultados', 1, 1, 'historico', 'normal', 'Direita', 'observação'),
-('77777777799', '44444444444', 72, '2015-09-20 00:00:00', NULL, '8', '8', '8', '8', '8', '8', '8', 'sem resultados', 1, 1, 'testando', 'teste', 'Direita', 'sem resultados'),
-(NULL, '44444444444', 73, '2016-02-12 00:00:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(NULL, '44444444444', 74, '2016-03-30 00:00:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('77777777799', '44444444444', 75, '2016-03-30 00:00:00', NULL, 'null', 'null', 'null', 'null', 'null', 'null', 'null', '', 0, 0, 'null', 'null', 'null', 'null'),
-(NULL, '44444444444', 76, '2016-03-30 00:00:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `tbl_solic`
---
-
-CREATE TABLE IF NOT EXISTS `tbl_solic` (
-  `Solic_Cod` int(11) NOT NULL AUTO_INCREMENT,
-  `cpfProfissional` varchar(14) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `codProntuario` int(11) DEFAULT NULL,
-  `dataSolicitacao` date NOT NULL,
-  `descricaoDiagnostico` varchar(100) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `cid10principal` varchar(50) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `cid10secundario` varchar(50) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `cid10causas` varchar(50) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `obs` text COLLATE utf8_general_mysql500_ci,
-  PRIMARY KEY (`Solic_Cod`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci AUTO_INCREMENT=35 ;
-
---
--- Fazendo dump de dados para tabela `tbl_solic`
---
-
-INSERT INTO `tbl_solic` (`Solic_Cod`, `cpfProfissional`, `codProntuario`, `dataSolicitacao`, `descricaoDiagnostico`, `cid10principal`, `cid10secundario`, `cid10causas`, `obs`) VALUES
-(26, '44444444444', 72, '0000-00-00', 'danos no aparelho auditivo', 'teste', 'teste', 'teste', 'teste'),
-(25, '44444444444', 58, '0000-00-00', 'danos no aparelho auditivo', 'test', 'teste', 'fone de ouvido', 'teste'),
-(24, '44444444444', 72, '0000-00-00', 'danos no aparelho auditivo', 'teste', 'teste', 'som alto', 'paciente com grave problema de audição'),
-(23, '44444444444', NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL),
-(22, '44444444444', 71, '0000-00-00', 'surdez', 'test', 'teste', 'fone de ouvido', 'testando'),
-(21, '44444444444', 55, '0000-00-00', 'Teste', 'teste', 'teste', 'teste', ''),
-(27, '44444444444', 58, '0000-00-00', 'danos no aparelho auditivo', 'teste', 'teste', 'fone de ouvido', 'ae'),
-(28, '44444444444', NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL),
-(29, '44444444444', 71, '2015-10-01', 'danos no aparelho auditivo', '1', '1', '1', 'dsas'),
-(30, '44444444444', 72, '2015-10-06', NULL, NULL, NULL, NULL, NULL),
-(31, '44444444444', 55, '2015-10-07', NULL, NULL, NULL, NULL, NULL),
-(32, '44444444444', 72, '2015-10-07', NULL, NULL, NULL, NULL, NULL),
-(33, '44444444444', 72, '2016-03-08', 'Surdez Parcial', '0120', '0120', '10210', 'internação por 2 semanas'),
-(34, '44444444444', 75, '2016-04-06', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `tbl_solicitacao` (`Solic_id`, `Pc_CPF`, `Solic_data`, `Solic_descricao`, `Solic_cid10principal`, `Solic_cid10sec`, `Solic_cid10causas`, `Solic_obs`) VALUES
+(8, '01301493184', '2016-05-16', 'teste', '12', '2', '2', 'testando oaaksokaoskao'),
+(9, '77777777777', '2016-05-16', 'teste', '10', '10', '10', 'obss'),
+(10, '47293019301', '2016-05-16', 'teste', NULL, NULL, NULL, NULL),
+(11, '01301493184', '2016-05-17', 'teste', NULL, NULL, NULL, NULL),
+(12, '21736421838', '2016-05-16', 'teste', '1', '1', '2', ''),
+(13, '93849102380', '2016-05-16', 'teste', NULL, NULL, NULL, NULL),
+(14, '88888888889', '2016-05-18', 'teste', '134', '14', '3', 'obsss'),
+(15, '21736421838', '2016-05-18', 'teste', '10', '4', '10', 'teste'),
+(16, '94857102482', '2016-05-18', 'teste', '1', '3', '4', 'obsssssssssssssobssss');
 
 -- --------------------------------------------------------
 
@@ -6199,13 +6095,13 @@ INSERT INTO `tbl_solic` (`Solic_Cod`, `cpfProfissional`, `codProntuario`, `dataS
 
 CREATE TABLE IF NOT EXISTS `tbl_telefone` (
   `telefone_cod` int(11) NOT NULL AUTO_INCREMENT,
-  `Pc_CPF` varchar(14) COLLATE utf8_general_mysql500_ci NOT NULL,
+  `Pc_CPF` varchar(14) NOT NULL,
   `Tel_DDD` int(2) DEFAULT NULL,
-  `Tel_Tel1` varchar(14) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `Tel_Tel2` varchar(14) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
+  `Tel_Tel1` varchar(14) NOT NULL,
+  `Tel_Tel2` varchar(14) DEFAULT NULL,
   `TipoTel_Cod` int(1) DEFAULT NULL,
   PRIMARY KEY (`telefone_cod`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci AUTO_INCREMENT=28 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
 
 --
 -- Fazendo dump de dados para tabela `tbl_telefone`
@@ -6229,7 +6125,8 @@ INSERT INTO `tbl_telefone` (`telefone_cod`, `Pc_CPF`, `Tel_DDD`, `Tel_Tel1`, `Te
 (20, '49375482719', NULL, '2739183819201', '1983912831922', NULL),
 (26, '94857102482', NULL, '21994309100', '21994309100', NULL),
 (25, '47139481920', NULL, '21994309100', '21994309100', NULL),
-(27, '11934892485', NULL, '21994309100', '21994309100', NULL);
+(27, '11934892485', NULL, '21994309100', '21994309100', NULL),
+(28, '85729428401', NULL, '284713910121', '281723171821', NULL);
 
 -- --------------------------------------------------------
 
@@ -6248,7 +6145,7 @@ CREATE TABLE IF NOT EXISTS `tbl_testeaasi` (
   `sem4k` int(11) DEFAULT NULL,
   `sem6k` int(11) DEFAULT NULL,
   `sem8k` int(11) DEFAULT NULL,
-  `sempercfala` varchar(25) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
+  `sempercfala` varchar(25) DEFAULT NULL,
   `od250` int(11) DEFAULT NULL,
   `od500` int(11) DEFAULT NULL,
   `od1k` int(11) DEFAULT NULL,
@@ -6257,7 +6154,7 @@ CREATE TABLE IF NOT EXISTS `tbl_testeaasi` (
   `od4k` int(11) DEFAULT NULL,
   `od6k` int(11) DEFAULT NULL,
   `od8k` int(11) DEFAULT NULL,
-  `odpercfala` varchar(25) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
+  `odpercfala` varchar(25) DEFAULT NULL,
   `oe250` int(11) DEFAULT NULL,
   `oe500` int(11) DEFAULT NULL,
   `oe1k` int(11) DEFAULT NULL,
@@ -6266,9 +6163,9 @@ CREATE TABLE IF NOT EXISTS `tbl_testeaasi` (
   `oe4k` int(11) DEFAULT NULL,
   `oe6k` int(11) DEFAULT NULL,
   `oe8k` int(11) DEFAULT NULL,
-  `oepercfala` varchar(25) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
+  `oepercfala` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`testeaasi_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci AUTO_INCREMENT=27 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
 
 --
 -- Fazendo dump de dados para tabela `tbl_testeaasi`
@@ -6276,7 +6173,9 @@ CREATE TABLE IF NOT EXISTS `tbl_testeaasi` (
 
 INSERT INTO `tbl_testeaasi` (`testeaasi_id`, `NumPront`, `sem250`, `sem500`, `sem1k`, `sem2k`, `sem3k`, `sem4k`, `sem6k`, `sem8k`, `sempercfala`, `od250`, `od500`, `od1k`, `od2k`, `od3k`, `od4k`, `od6k`, `od8k`, `odpercfala`, `oe250`, `oe500`, `oe1k`, `oe2k`, `oe3k`, `oe4k`, `oe6k`, `oe8k`, `oepercfala`) VALUES
 (25, 78, 0, 4, 0, 0, 0, 0, 0, 0, 'teste', 0, 0, 0, 0, 0, 5, 0, 0, '', 0, 4, 0, 0, 0, 0, 0, 0, 'teste'),
-(26, 79, 1, 4, 6, 7, 8, 9, 0, 8, 'perc', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '');
+(26, 79, 1, 4, 6, 7, 8, 9, 0, 8, 'perc', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, ''),
+(27, 80, 9, 9, 9, 8, 8, 9, 9, 0, 'nula', 9, 7, 9, 7, 5, 7, 7, 8, 'nula', 1, 2, 0, 2, 3, 2, 3, 3, 'boa'),
+(28, 81, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -6321,19 +6220,9 @@ CREATE TABLE IF NOT EXISTS `tbl_teste_caracterizacao_paciente` (
 
 INSERT INTO `tbl_teste_caracterizacao_paciente` (`Caract_Numero`, `OD_VA_250`, `OD_VA_500`, `OD_VA_1k`, `OD_VA_2k`, `OD_VA_3k`, `OD_VA_4k`, `OD_VA_6k`, `OD_VA_8k`, `OD_VO_500`, `OD_VO_1k`, `OD_VO_2k`, `OD_VO_3k`, `OD_VO_4k`, `OE_VA_250`, `OE_VA_500`, `OE_VA_1k`, `OE_VA_2k`, `OE_VA_3k`, `OE_VA_4k`, `OE_VA_6k`, `OE_VA_8k`, `OE_VO_500`, `OE_VO_1k`, `OE_VO_2k`, `OE_VO_3k`, `OE_VO_4k`) VALUES
 (78, '1', '7', '3', '4', '5', '6', '7', '8', '7', '3', '4', '5', '6', '5', '7', '8', '9', '1', '2', '4', '7', '88', '990', '9', '099', '87'),
-(79, '1', '3', '4', '5', '6', '7', '8', '9', '2', '3', '4', '5', '6', '1', '2', '3', '4', '5', '6', '7', '8', '2', '3', '4', '5', '6');
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `tbl_tipotel`
---
-
-CREATE TABLE IF NOT EXISTS `tbl_tipotel` (
-  `TipoTel_Cod` int(1) NOT NULL,
-  `TipoTel_Desc` varchar(15) COLLATE utf8_general_mysql500_ci NOT NULL,
-  PRIMARY KEY (`TipoTel_Cod`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+(79, '1', '3', '4', '5', '6', '7', '8', '9', '2', '3', '4', '5', '6', '1', '2', '3', '4', '5', '6', '7', '8', '2', '3', '4', '5', '6'),
+(80, '8', '8', '8', '8', '8', '8', '8', '9', '0', '7', '7', '7', '7', '7', '8', '8', '8', '8', '8', '8', '8', '', '8', '9', '9', '9'),
+(81, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -6342,10 +6231,10 @@ CREATE TABLE IF NOT EXISTS `tbl_tipotel` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_uf` (
-  `UF_Cod` varchar(2) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `UF_Desc` varchar(20) COLLATE utf8_general_mysql500_ci NOT NULL,
+  `UF_Cod` varchar(2) NOT NULL,
+  `UF_Desc` varchar(20) NOT NULL,
   PRIMARY KEY (`UF_Cod`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Fazendo dump de dados para tabela `tbl_uf`
@@ -6387,16 +6276,16 @@ INSERT INTO `tbl_uf` (`UF_Cod`, `UF_Desc`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_usuarios` (
-  `Us_CPF` varchar(14) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `Us_Nome` varchar(45) COLLATE utf8_general_mysql500_ci NOT NULL,
+  `Us_CPF` varchar(14) NOT NULL,
+  `Us_Nome` varchar(45) NOT NULL,
   `Us_DtNasc` date NOT NULL,
-  `Us_CRFA` varchar(45) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `Us_Cargo` varchar(45) COLLATE utf8_general_mysql500_ci NOT NULL,
+  `Us_CRFA` varchar(45) NOT NULL,
+  `Us_Cargo` varchar(45) NOT NULL,
   `Us_Nivel` int(1) NOT NULL,
-  `Us_Login` varchar(10) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
-  `Us_Senha` varchar(40) COLLATE utf8_general_mysql500_ci DEFAULT NULL,
+  `Us_Login` varchar(10) DEFAULT NULL,
+  `Us_Senha` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`Us_CPF`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Fazendo dump de dados para tabela `tbl_usuarios`
@@ -6407,6 +6296,16 @@ INSERT INTO `tbl_usuarios` (`Us_CPF`, `Us_Nome`, `Us_DtNasc`, `Us_CRFA`, `Us_Car
 ('33333333333', 'Estoquista', '1980-01-06', '', 'Estoquista', 4, 'estoquista', '42ef63e7836ef622d9185c1a456051edf16095cc'),
 ('44444444444', 'dra Maria Silva', '1940-09-28', '12401823', 'Fonoaudiologo', 2, 'prof', '42ef63e7836ef622d9185c1a456051edf16095cc'),
 ('55555555555', 'Colaborador', '1987-11-14', '', 'Colaborador', 3, 'colab', '42ef63e7836ef622d9185c1a456051edf16095cc');
+
+--
+-- Restrições para dumps de tabelas
+--
+
+--
+-- Restrições para tabelas `tbl_item_solicitacao`
+--
+ALTER TABLE `tbl_item_solicitacao`
+  ADD CONSTRAINT `tbl_item_solicitacao_ibfk_1` FOREIGN KEY (`Solic_id`) REFERENCES `tbl_solicitacao` (`Solic_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

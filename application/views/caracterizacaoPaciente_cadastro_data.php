@@ -23,8 +23,7 @@
             'name'          => 'cpf',
             'id'            => 'cpf',
             'size'          => '15',
-            'readonly'      => '',
-            'pattern'       => '\d{11}',
+            'readonly'      => '',            
             'maxlength'     => '11',
             'title'         => 'Digite apenas números no CPF',
             'value'         => $paciente->Pc_CPF

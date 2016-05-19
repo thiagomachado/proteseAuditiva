@@ -1,7 +1,7 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
 
-    class Solicitacao_model extends CI_Model
+    class Consulta_model extends CI_Model
     {
 
         public function __construct()
@@ -18,7 +18,7 @@
 
         public function editarSolicitacao($solicitacao,$id)
         {
-          $this->db->update('tbl_solicitacao',$solicitacao, array('Solic_id' => $id));          
+          $this->db->update('tbl_solicitacao',$solicitacao, array('Solic_id' => $id));
         }
 
         public function recuperarSolicitacoesPorCPF($cpf)
