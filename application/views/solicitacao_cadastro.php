@@ -48,7 +48,7 @@
               </td>
             </tr>
           </table>
-        <button class="clone">+</button>
+          <button class="clone">+</button>
           <button class="remove">-</button>
         </div>
       </div>

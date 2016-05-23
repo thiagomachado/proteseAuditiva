@@ -114,11 +114,17 @@
             $this->item_solicitacao_model->cadastrarItemSolicitacao($dataItemSolicitacao);
           }
 
-          $dataAndamento = array(
-            'Pc_CPF' => $Pc_CPF
-          );
+          //cadastro andamento do paciente (somente se ja não tiver cadastrado antes)
+          $andamentoCadastradoAnteriormente = $this->andamento_paciente_model->recuperarAndamentoPacientePorCPF($Pc_CPF);
+          if(sizeof($andamentoCadastradoAnteriormente) == 0) //verifica se ja foi cadastrado andamento para esse paciente
+          {
+            $dataAndamento = array(
+              'Pc_CPF' => $Pc_CPF
+            );
 
-          $this->andamento_paciente_model->cadastrarAndamentoPaciente($dataAndamento);
+            $this->andamento_paciente_model->cadastrarAndamentoPaciente($dataAndamento);
+          }
+
           echo json_encode($idSolicitacao);
         }
 

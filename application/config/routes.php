@@ -100,8 +100,9 @@ $route['emitirLaudoSolicitacao/(:num)']  = 'solicitacao/emitirLaudoPDF/$1';
 
 
 //-------------------ANDAMENTO DE PACIENTES -------------------------------------------
-$route['andamentoPaciente']        = 'andamentoPaciente/selecionarPaciente';
-$route['andamentoPaciente/(:num)'] = 'andamentoPaciente/edicaoAndamentoPaciente/$1';
+$route['andamentoPaciente']          = 'andamentoPaciente/selecionarPaciente';
+$route['andamentoPaciente/(:num)']   = 'andamentoPaciente/edicaoAndamentoPaciente/$1';
+$route['atualizarAndamentoPaciente'] = 'andamentoPaciente/editar';
 
 
 //-------------------IMPLANTE-----------------------------------------------------------

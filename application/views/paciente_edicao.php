@@ -132,7 +132,7 @@
   </div>
   <div class="areaBotoesFormulario">
     <?php echo form_submit($dataSubmit) ?>
-    <input class="botao" type="button" onclick="mostrarModal('#modalExcluirPaciente')" value="Excluir"/>
+    <!-- <input class="botao" type="button" onclick="mostrarModal('#modalExcluirPaciente')" value="Excluir"/> -->
     <a href="<?php echo base_url().'index.php/edicaoAnamnese/'.$paciente->Pc_CPF;?>"><input class="botao" type="button" value="Anamnese"/></a>
     <input class="botao" type="button" onclick="mostrarModal('#modalSairSemSalvar')" value="Cancelar"/>
   </div>
@@ -150,7 +150,7 @@
       </div>
     </div>
 
-    <div class="modal" id="modalExcluirPaciente">
+    <!-- <div class="modal" id="modalExcluirPaciente">
       <div class="textoModal">
         <h1>EXCLUIR</h1>
         <p>Todos os dados desse paciente serão excluídos, deseja continuar?</p>
@@ -160,7 +160,7 @@
         <a href="<?php echo base_url();?>index.php/excluirPaciente/<?php echo $paciente->Pc_CPF; ?>"><input type="button" class="botao" value="Sim"/></a>
         <input type="button" class="botao" onclick="esconderModal('#modalExcluirPaciente')" value="Não"/>
       </div>
-    </div>
+    </div> -->
 
     <div class="modal" id="modalSucesso">
       <div class="textoModal">

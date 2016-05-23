@@ -18,7 +18,7 @@
           </td>
           <td >
             <label>Carteira Nacional de Saúde(CNS):</label><br>
-            <?php echo form_input($dataCNS); ?>
+            <?php echo form_input($dataCNS); echo form_input($dataCPF);?>
           </td>
         </tr>
       </table>
@@ -27,20 +27,28 @@
     <fieldset class="secaoFormulario">
       <legend>Solicitações</legend>
       <table class="tabelaPDF">
-        <tr>
+        <tr class="titulo">
           <td>Procedimento:</td>
+          <td>Quantidade:</td>
           <td>Confirmado:</td>
           <td>Descrição:</td>
         </tr>
       <?php
           foreach ($itens as $item)
           {
+            $checked = '';
+            if($item->Isolic_confirmado == 1)
+            {
+              $checked = 'checked';
+            }
             echo
             '
               <tr>
-                <td>'.$dataProcedimentos[$item->Isolic_item_id].'</td>
-                <td>'.$item->Isolic_quantidade.'</td>
-                <td></td>
+                <td><input type="hidden" name="itens[]" readonly value="'.$item->Isolic_id.'"/>
+                '.$dataProcedimentos[$item->Isolic_item_id].'</td>
+                <td class="linhaCentralizada">'.$item->Isolic_quantidade.'</td>
+                <td class="linhaCentralizada"><input type="checkbox" name="confirmados[]" value="1" '.$checked.'/></td>
+                <td class="linhaCentralizada"><input type="text" maxlength=100 name="descricoes[]" size=45 value="'.$item->Isolic_descricao.'"/></td>
               </tr>
             ';
           }
@@ -50,10 +58,67 @@
 
     <fieldset class="secaoFormulario">
       <legend>Consultas</legend>
+      <div id="divEditarConsultas">
+        <?php
+            if(sizeof($consultas)> 0)
+            {
+              echo "<table>";
+              foreach ($consultas as $consulta)
+              {
+                $dataConsultaEdicaoData["value"]      = $consulta->Consulta_data;
+                $dataConsultaEdicaoDescricao["value"] = $consulta->Consulta_descricao;
+                $dataConsultaEdicaoId["value"]        = $consulta->Consulta_id;
+                echo
+                "
+                  <tr>
+                    <td>".form_input($dataConsultaEdicaoId)."
+                      <label>Data da Consulta:</label><br>
+                      ".form_input($dataConsultaEdicaoData)."
+                    </td>
+                    <td>
+                      <label>Descrição:</label><br>
+                      ".form_input($dataConsultaEdicaoDescricao)."
+                    </td>
+                  </tr>
+                ";
+              }
+              echo "</table>";
+            }
+         ?>
+      </div>
+      <div id="divConsultas" >
+        <div class="consulta">
+          <table>
+            <tr>
+              <td>
+                <label>Data da Consulta:</label><br>
+                <?php echo form_input($dataConsultaData);?>
+              </td>
+              <td>
+                <label>Descrição:</label><br>
+                <?php echo form_input($dataConsultaDescricao); ?>
+              </td>
+            </tr>
+          </table>
+          <button class="clone">+</button>
+          <button class="remove">-</button>
+        </div>
+      </div>
     </fieldset>
 
     <fieldset class="secaoFormulario">
       <legend>Observações Gerais</legend>
+      <table>
+        <tr>
+          <td>Prótese Auditiva:<?php echo form_input($dataProtese); ?></td>
+          <td>Implante Coclear:<?php echo form_input($dataImplante); ?></td>
+        </tr>
+        <tr>
+          <td colspan="2">Observações:<br>
+            <?php echo form_textarea($dataObs); ?>
+          </td>
+        </tr>
+      </table>
     </fieldset>
   </div>
   <div class="areaBotoesFormulario">
@@ -69,7 +134,7 @@
         <p>Deseja sair sem salvar?</p>
       </div>
       <div class="botoesModal">
-        <a href="<?php echo site_url('cadastroSolicitacao');?>"><input type="button" class="botao" value="Sim"/></a>
+        <a href="<?php echo site_url('andamentoPaciente');?>"><input type="button" class="botao" value="Sim"/></a>
         <input class="botao" type="button" onclick="esconderModal('#modalSairSemSalvar')" value="Não"/>
       </div>
     </div>
@@ -78,12 +143,12 @@
     <div class="modal" id="modalSucesso">
       <div class="textoModal">
         <h1>Sucesso!</h1>
-        <p>A solicitação foi cadastrada.</p>
+        <p>O andamento do paciente foi atualizado.</p>
       </div>
 
       <div class="botoesModal">
-        <a href="<?php echo base_url().'index.php/consultaSolicitacao/';?>"><input type="button" class="botao" value="Concluir"/></a>
-        <a id='emitirLaudo' target="_blank"?><input class="botao" value="Emitir PDF"/></a>
+        <a href="<?php echo base_url().'index.php/andamentoPaciente/';?>"><input type="button" class="botao" value="Concluir"/></a>
+        <input onclick="esconderModal('#modalSucesso');location.reload()" class="botao" value="Continuar"/>
       </div>
     </div>
 
@@ -104,14 +169,14 @@
 
 <script type="text/javascript">
     var regex          = /^(.+?)(\d+)$/i;
-    var cloneIndex     = $(".procedimento").length;
-    var numberOfClones = $(".procedimento").length;
+    var cloneIndex     = $(".consulta").length;
+    var numberOfClones = $(".consulta").length;
 
     function clone()
     {
       event.preventDefault();
-      $(this).parents(".procedimento").clone()
-          .appendTo("#divProcedimentos")
+      $(this).parents(".consulta").clone()
+          .appendTo("#divConsultas")
           .attr("id", "clonedInput" +  cloneIndex)
           .each(function()
           {
@@ -132,7 +197,7 @@
       event.preventDefault();
       if (numberOfClones > 1)
       {
-        $(this).parents(".procedimento").remove();
+        $(this).parents(".consulta").remove();
         numberOfClones --;
       }
     }
@@ -148,33 +213,83 @@
 $(document).ready(function() {
     $("#formAndamentoPaciente").on('submit', function(event) {
         event.preventDefault();
-        var procedimentos = [];
-        var quantidades   = [];
+        var confirmados              = [];
+        var descricoes               = [];
+        var itens                    = [];
+        var consultaEdicaoDatas      = [];
+        var consultaEdicaoDescricoes = [];
+        var consultaEdicaoIds        = [];
+        var consultaDatas            = [];
+        var consultaDescricoes       = [];
 
-        $("select[name='procedimentos[]']").each(function()
+        //montando vetor com os itens da solicitação a serem editados
+        $("input[name='confirmados[]']").each(function()
         {
-            procedimentos.push($(this).val());
+          if($(this).prop("checked"))
+          {
+            confirmados.push(1);
+          }
+          else
+          {
+            confirmados.push(0);
+          }
         });
 
-        $("input[name='quantidade[]']").each(function()
+        $("input[name='descricoes[]']").each(function()
         {
-            quantidades.push($(this).val());
+            descricoes.push($(this).val());
+        });
+
+        $("input[name='itens[]']").each(function()
+        {
+            itens.push($(this).val());
+        });
+
+        //Montando vetor com as consultas a serem editadas
+        $("input[name='consultaEdicaoId[]']").each(function()
+        {
+            consultaEdicaoIds.push($(this).val());
+        });
+
+        $("input[name='consultaEdicaoDescricao[]']").each(function()
+        {
+            consultaEdicaoDescricoes.push($(this).val());
+        });
+
+        $("input[name='consultaEdicaoData[]']").each(function()
+        {
+            consultaEdicaoDatas.push($(this).val());
+        });
+
+        //montando vetor com as consultas a serem inseridas
+        $("input[name='consultaDescricao[]']").each(function()
+        {
+            consultaDescricoes.push($(this).val());
+        });
+
+        $("input[name='consultaData[]']").each(function()
+        {
+            consultaDatas.push($(this).val());
         });
 
         jQuery.ajax({
             type: "POST",
-            url: "<?php echo base_url(); ?>" + "index.php/cadastrarSolicitacao",
+            url: "<?php echo base_url(); ?>" + "index.php/atualizarAndamentoPaciente",
             dataType: 'json',
             data:
             {
-              Pc_CPF:                $("#cpf").val(),
-              Solic_descricao:       $("#diagnostico").val(),
-              Solic_cid10principal:  $("#cid10Principal").val(),
-              Solic_cid10sec:        $("#cid10Sec").val(),
-              Solic_cid10causas:     $("#cid10Causas").val(),
-              Solic_obs:             $("#obs").val(),
-              procedimentos:         procedimentos,
-              quantidades:           quantidades
+              confirmados:              confirmados,
+              descricoes:               descricoes,
+              itens:                    itens,
+              consultaEdicaoIds:        consultaEdicaoIds,
+              consultaEdicaoDescricoes: consultaEdicaoDescricoes,
+              consultaEdicaoDatas:      consultaEdicaoDatas,
+              consultaDatas:            consultaDatas,
+              consultaDescricoes:       consultaDescricoes,
+              Andamento_protese:        $('#protese').val(),
+              Andamento_implante:       $('#implante').val(),
+              Andamento_obs:            $('#obs').val(),
+              Pc_CPF:                   $('#cpfHidden').val()
             },
             success: function(res)
             {

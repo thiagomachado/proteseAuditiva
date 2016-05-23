@@ -36,12 +36,15 @@
             $paciente                = $this->paciente_model->recuperarPacientePorCPF($cpf);
             $itensSolicitacao        = $this->item_solicitacao_model->recuperarItensPorPaciente($cpf);
             $procedimentos           = $this->procedimento_model->recuperarProcedimentos();
+            $andamento               = $this->andamento_paciente_model->recuperarAndamentoPacientePorCPF($cpf);
+            $consultas               = $this->consulta_model->recuperarConsultasPorCPF($cpf);
             // $solicitacao             = $this->solicitacao_model->recuperarSolicitacaoPorId($idSolicitacao);
 
             $data["itens"]           = $itensSolicitacao;
             $data["paciente"]        = $paciente;
             $data["procedimentos"]   = $procedimentos["procedimentos"];
-            // $data["solicitacao"]     = $solicitacao;
+            $data["andamento"]       = $andamento;
+            $data["consultas"]       = $consultas;
 
 
             $this->template->set('title', 'ANDAMENTO DE PACIENTES');
@@ -49,34 +52,81 @@
 
         }
 
-        public function cadastrar()
+        public function editar()
         {
           extract($_POST);
-          $dataSolicitacao = array(
-            'Pc_CPF'              => $Pc_CPF,
-            'Solic_data'          => date("Y-m-d"),
-            'Solic_descricao'     => $Solic_descricao,
-            'Solic_cid10principal'=> $Solic_cid10principal,
-            'Solic_cid10sec'      => $Solic_cid10sec,
-            'Solic_cid10causas'   => $Solic_cid10causas,
-            'Solic_obs'           => $Solic_obs
+          //editando os campos do andamento (o andamento é cadastrado junto com a solicitação)
+          $dataAndamento = array(
+            'Andamento_protese' => $Andamento_protese,
+            'Andamento_implante'=> $Andamento_implante,
+            'Andamento_obs'     => $Andamento_obs
           );
 
-          $idSolicitacao = $this->solicitacao_model->cadastrarSolicitacao($dataSolicitacao);
+          $editouAndamento = $this->andamento_paciente_model->editarAndamento($dataAndamento, $Pc_CPF);
+          $resposta = array(
+            'andamento'  => $editouAndamento,
+            'dataAndamento' => $dataAndamento,
+            'cpf' => $Pc_CPF
+          );
 
-          $quantidadeItens = sizeof($procedimentos);
+          //editando os itens das solicitações
+          $quantidadeItens = sizeof($itens);
 
           for($i = 0; $i < $quantidadeItens; $i++)
           {
+            $Isolic_id = $itens[$i];
+
             $dataItemSolicitacao = array(
-              'Solic_id'          => $idSolicitacao,
-              'Isolic_item_id'    => $procedimentos[$i],
-              'Isolic_quantidade' => $quantidades[$i],
-              'Isolic_confirmado' => 0
+              'Isolic_descricao'  => $descricoes[$i],
+              'Isolic_confirmado' => $confirmados[$i]
             );
-            $this->item_solicitacao_model->cadastrarItemSolicitacao($dataItemSolicitacao);
+            if($this->item_solicitacao_model->editarItemSolicitacao($dataItemSolicitacao, $Isolic_id))
+            {
+              $resposta[$Isolic_id] = true;
+            }
+            else
+            {
+              $resposta[$Isolic_id] = false;
+            }
           }
-          echo json_encode($idSolicitacao);
+
+          //Editando as consultas
+          $quantidadeConsultasEdicao = sizeof($consultaEdicaoIds);
+
+          for ($i=0; $i < $quantidadeConsultasEdicao ; $i++)
+          {
+            $consulta_id  = $consultaEdicaoIds[$i];
+            $dataConsultaEdicao = array(
+              'Consulta_data'      => $consultaEdicaoDatas[$i],
+              'Consulta_descricao' => $consultaEdicaoDescricoes[$i]
+            );
+
+            $this->consulta_model->editarConsulta($dataConsultaEdicao,$consulta_id);
+
+          }
+
+          //cadastrando as novas consultas
+          $quantidadeConsultas = sizeof($consultaDescricoes);
+
+          for ($i=0; $i < $quantidadeConsultas; $i++)
+          {
+            if(!($consultaDatas[$i]=="") and !($consultaDescricoes[$i]=="") )
+            {
+
+              $dataConsulta = array(
+                'Pc_CPF'             => $Pc_CPF,
+                'Consulta_data'      => $consultaDatas[$i],
+                'Consulta_descricao' => $consultaDescricoes[$i]
+              );
+              $idConsulta = $this->consulta_model->cadastrarConsulta($dataConsulta);
+              $resposta["consulta"] = $idConsulta;
+            }
+
+
+          }
+
+          //enviando json com os resultados (somente para debug)
+          echo json_encode($resposta);
         }
 
         private function consultarPacientes()
@@ -103,59 +153,5 @@
 
         }
 
-        public function editarSolicitacao()
-        {
-          extract($_POST);
-
-          $dataSolicitacao = array(
-            'Solic_descricao'      => $Solic_descricao,
-            'Solic_cid10principal' => $Solic_cid10principal,
-            'Solic_cid10sec'       => $Solic_cid10sec,
-            'Solic_cid10causas'    =>$Solic_cid10causas,
-            'Solic_obs'            => $Solic_obs
-          );
-           $this->solicitacao_model->editarSolicitacao($dataSolicitacao, $Solic_id);
-
-          $quantidadeItens = sizeof($procedimentos);
-
-          for($i = 0; $i < $quantidadeItens; $i++)
-          {
-            $dataItemSolicitacao = array(
-              'Isolic_item_id'    => $procedimentos[$i],
-              'Isolic_quantidade' => $quantidades[$i]
-            );
-            $this->item_solicitacao_model->editarItemSolicitacao($dataItemSolicitacao,$idItens[$i]);
-          }
-          $arr = array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5);
-
-          echo json_encode($arr);
-          return json_encode($arr);
-        }
-
-        public function emitirLaudoPDF($idSolicitacao)
-        {
-          $solicitacao      = $this->solicitacao_model->recuperarSolicitacaoPorId($idSolicitacao);
-          $itensSolicitacao = $this->item_solicitacao_model->recuperarItensPorSolicitacao($idSolicitacao);
-          $paciente         = $this->paciente_model->recuperarPacientePorCPF($solicitacao->Pc_CPF);
-          $procedimentos    = $this->procedimento_model->recuperarProcedimentos();
-
-          $dados['solicitacao']      = $solicitacao;
-          $dados['itensSolicitacao'] = $itensSolicitacao;
-          $dados['paciente']         = $paciente;
-          $dados['procedimentos']    = $procedimentos["procedimentos"];
-
-          //load the view and saved it into $html variable
-          $html=$this->load->view('solicitacao_laudo', $dados, true);
-
-
-          //this the the PDF filename that user will get to download
-          $pdfFilePath = trim($paciente->Pc_Nome).".pdf";
-
-          //generate the PDF from the given html
-          $this->m_pdf->pdf->WriteHTML($html);
-
-          //download it.
-          $this->m_pdf->pdf->Output($pdfFilePath, "D");
-        }
     }
 ?>

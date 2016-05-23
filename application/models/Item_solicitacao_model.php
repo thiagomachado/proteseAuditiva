@@ -18,7 +18,11 @@
 
         public function editarItemSolicitacao($itenSolicitacao,$id)
         {
-          $this->db->update('tbl_item_solicitacao',$itenSolicitacao, array('Isolic_id' => $id));
+          if($this->db->update('tbl_item_solicitacao',$itenSolicitacao, array('Isolic_id' => $id)))
+          {
+            return true;
+          }
+          return false;
         }
 
         public function recuperarItensPorSolicitacao($idSolicitacao)

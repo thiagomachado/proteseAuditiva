@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: 19/05/2016 às 18:33
+-- Tempo de Geração: 23/05/2016 às 14:11
 -- Versão do servidor: 5.5.49-0ubuntu0.14.04.1
 -- Versão do PHP: 5.5.9-1ubuntu4.16
 
@@ -183,14 +183,20 @@ CREATE TABLE IF NOT EXISTS `tbl_andamento_paciente` (
   `Andamento_obs` text,
   PRIMARY KEY (`Andamento_id`),
   KEY `Pc_CPF` (`Pc_CPF`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Fazendo dump de dados para tabela `tbl_andamento_paciente`
 --
 
 INSERT INTO `tbl_andamento_paciente` (`Andamento_id`, `Pc_CPF`, `Andamento_protese`, `Andamento_implante`, `Andamento_obs`) VALUES
-(1, '94857102482', NULL, NULL, NULL);
+(1, '94857102482', 'Protese ', 'Implante ', 'afasda'),
+(2, '01301493184', '', '', ''),
+(3, '93849102380', NULL, NULL, NULL),
+(4, '88888888889', '', '', ''),
+(5, '21736421838', NULL, NULL, NULL),
+(6, '77777777777', NULL, NULL, NULL),
+(7, '47293019301', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -240,12 +246,27 @@ INSERT INTO `tbl_caracterizacao_paciente` (`Caract_Numero`, `Pc_CPF`, `Caract_Cp
 
 CREATE TABLE IF NOT EXISTS `tbl_consulta` (
   `Consulta_id` int(11) NOT NULL AUTO_INCREMENT,
-  `Andamento_id` int(11) NOT NULL,
+  `Pc_CPF` varchar(14) NOT NULL,
   `Consulta_data` date NOT NULL,
   `Consulta_descricao` varchar(200) NOT NULL,
   PRIMARY KEY (`Consulta_id`),
-  KEY `Andamento_id` (`Andamento_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  KEY `Andamento_id` (`Pc_CPF`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+
+--
+-- Fazendo dump de dados para tabela `tbl_consulta`
+--
+
+INSERT INTO `tbl_consulta` (`Consulta_id`, `Pc_CPF`, `Consulta_data`, `Consulta_descricao`) VALUES
+(1, '94857102482', '2016-05-17', 'teste12'),
+(2, '94857102482', '2016-05-18', 'teste1'),
+(4, '94857102482', '2016-05-19', 'test3'),
+(6, '94857102482', '2016-05-01', 'teste123'),
+(7, '94857102482', '2016-05-03', 'teste 5'),
+(8, '01301493184', '2016-05-18', 'confirmação'),
+(9, '01301493184', '2016-05-11', ''),
+(10, '01301493184', '2016-05-25', '313'),
+(11, '88888888889', '2016-05-26', 'teste');
 
 -- --------------------------------------------------------
 
@@ -271,7 +292,6 @@ INSERT INTO `tbl_endereco` (`Pc_CPF`, `End_Logradouro`, `End_UF`, `End_CEP`, `En
 ('46464464655', 'Rua e n 192', 'MG', '18231827', '3101631'),
 ('77777777777', 'Rua teste 5', 'AL', '31873912', '2709301'),
 ('77777777799', 'teste 5', 'AL', '18273817', '2701704'),
-('88888888889', 'teste 8', 'AL', '82187382', '2200202'),
 ('47139481920', 'Rua Sargento João Lópes', 'RJ', '21931-42', '3304557'),
 ('22222222222', 'SJAIJSDIASJI', 'BA', '28712930', '2910727'),
 ('93849102380', 'Rua Sargento João Lópes', 'RN', '21931420', '2400109'),
@@ -348,29 +368,29 @@ CREATE TABLE IF NOT EXISTS `tbl_item_solicitacao` (
   `Isolic_confirmado` tinyint(1) NOT NULL,
   PRIMARY KEY (`Isolic_id`),
   KEY `Solic_id` (`Solic_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
 
 --
 -- Fazendo dump de dados para tabela `tbl_item_solicitacao`
 --
 
 INSERT INTO `tbl_item_solicitacao` (`Isolic_id`, `Solic_id`, `Isolic_item_id`, `Isolic_quantidade`, `Isolic_descricao`, `Isolic_confirmado`) VALUES
-(14, 8, 1, 3, NULL, 0),
-(15, 9, 4, 5, NULL, 0),
-(16, 9, 2, 5, NULL, 0),
-(17, 9, 4, 7, NULL, 0),
-(18, 9, 3, 9, NULL, 0),
+(14, 8, 1, 3, 'teste', 1),
+(15, 9, 4, 5, '', 1),
+(16, 9, 2, 5, '', 0),
+(17, 9, 4, 7, 'teste', 1),
+(18, 9, 3, 9, '', 0),
 (19, 10, 4, 1, NULL, 0),
 (20, 10, 1, 3, NULL, 0),
-(21, 11, 3, 1, NULL, 0),
+(21, 11, 3, 1, '', 1),
 (22, 12, 1, 1, NULL, 0),
 (23, 13, 1, 2, NULL, 0),
-(24, 14, 2, 33, NULL, 0),
 (25, 15, 3, 3, NULL, 0),
 (26, 15, 4, 3, NULL, 0),
 (27, 15, 1, 3, NULL, 0),
-(28, 16, 1, 1, NULL, 0),
-(29, 16, 4, 1, NULL, 0);
+(28, 16, 1, 1, 'Teste', 0),
+(29, 16, 4, 1, 'Teste', 1),
+(30, 17, 2, 2, '', 0);
 
 -- --------------------------------------------------------
 
@@ -5991,7 +6011,6 @@ INSERT INTO `tbl_paciente` (`Pc_CPF`, `Pc_Nome`, `Pc_CartaoSus`, `Pc_NumProntuar
 ('46464464655', 'Fabiana Fernandes Lima', '545454555553333', '345', '1999-05-05', 15, 'f', 4, 'teste 5 ', 'teste 5', 5, 0, '', 'infantil'),
 ('77777777777', 'Luisa da Silva Souza Ribeiro ', '666777666666666', '67', '1999-01-01', 16, 'f', 4, 'teste 6', 'teste 6', 1, 0, '', 'infantil'),
 ('77777777799', 'Luis da Silva Souza Ribeiro ', '666777666666666', '67', '1999-01-01', 19, 'm', 4, 'teste 6', 'teste 6', 5, 1, '', 'adulta'),
-('88888888889', 'Jaqueline Loren', '888888888888888', '88', '1996-08-08', 16, 'f', 4, 'teste 8', 'Marcos', 5, 1, 'teste 8', 'adulta'),
 ('22222222222', 'Maria Eduarda', '222222222222222', '2222', '1991-02-21', 22, 'f', 3, 'mae do teste', 'PAI DO TESTE', 1, 0, '', 'adulta'),
 ('93849102380', 'Ana Julia Lima', '203814192841020', '09401', '1993-03-12', 21, 'f', 2, 'Ana Maria Lima', 'Antonio Carlos Lima', 5, 0, '', 'adulta'),
 ('21736421838', 'José da Silva Souza', '28189310310319311111', '918', '1966-09-02', NULL, 'm', 1, 'Maria da Silva', 'João Souza', 1, 0, ' ', 'adulta'),
@@ -6025,7 +6044,7 @@ INSERT INTO `tbl_procedimentos` (`Proc_Id`, `Proc_Codigo`, `Proc_Nome`, `Proc_Va
 (1, '00976548907', 'Raio x', 200.00),
 (2, '0097654890890', 'Exame sanguineo', 40.00),
 (3, '0481927319038', 'Teste auditivo', 1700.00),
-(4, '00976548907', 'Raio y', 200.00);
+(4, '00976548907', 'Raio Gama', 250.00);
 
 -- --------------------------------------------------------
 
@@ -6070,7 +6089,7 @@ CREATE TABLE IF NOT EXISTS `tbl_solicitacao` (
   `Solic_obs` text,
   PRIMARY KEY (`Solic_id`),
   KEY `Pc_CPF` (`Pc_CPF`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
 
 --
 -- Fazendo dump de dados para tabela `tbl_solicitacao`
@@ -6083,9 +6102,9 @@ INSERT INTO `tbl_solicitacao` (`Solic_id`, `Pc_CPF`, `Solic_data`, `Solic_descri
 (11, '01301493184', '2016-05-17', 'teste', NULL, NULL, NULL, NULL),
 (12, '21736421838', '2016-05-16', 'teste', '1', '1', '2', ''),
 (13, '93849102380', '2016-05-16', 'teste', NULL, NULL, NULL, NULL),
-(14, '88888888889', '2016-05-18', 'teste', '134', '14', '3', 'obsss'),
 (15, '21736421838', '2016-05-18', 'teste', '10', '4', '10', 'teste'),
-(16, '94857102482', '2016-05-18', 'teste', '1', '3', '4', 'obsssssssssssssobssss');
+(16, '94857102482', '2016-05-18', 'teste', '1', '3', '4', 'obsssssssssssssobssss'),
+(17, '94857102482', '2016-05-23', 'teste', 'teste', 'teste', 'teste', 'afasa');
 
 -- --------------------------------------------------------
 
@@ -6113,7 +6132,6 @@ INSERT INTO `tbl_telefone` (`telefone_cod`, `Pc_CPF`, `Tel_DDD`, `Tel_Tel1`, `Te
 (5, '46464464655', 0, '12345567776', '1234445555', 0),
 (6, '77777777777', 0, '111111111111', '3333333333', 0),
 (7, '77777777799', 0, '22222222222', '3333333333', 0),
-(8, '88888888889', 0, '11888888888', '2288888888', 0),
 (9, '10101010101', 0, '10101101010', '1010101011', 0),
 (10, '22222222222', 0, '21222222222', '21999999999', 0),
 (12, '93849102380', 0, '21994309100', '', 0),

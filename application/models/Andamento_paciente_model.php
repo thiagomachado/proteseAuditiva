@@ -16,35 +16,27 @@
           return $this->db->insert_id();
         }
 
-        public function editarSolicitacao($solicitacao,$id)
+        public function editarAndamento($andamento,$cpf)
         {
-          $this->db->update('tbl_solicitacao',$solicitacao, array('Solic_id' => $id));
+          return $this->db->update('tbl_andamento_paciente',$andamento, array('Pc_CPF' => $cpf));          
         }
 
-        public function recuperarSolicitacoesPorCPF($cpf)
+
+        public function recuperarAndamentoPacientePorCPF($cpf)
         {
           $this->db->where('Pc_CPF', $cpf);
-          $query = $this->db->get('tbl_solicitacao');
-          $solicitacao = $query->result();
-
-          return $solicitacao;
-        }
-
-        public function recuperarSolicitacaoPorId($id)
-        {
-          $this->db->where('Solic_id', $id);
-          $query = $this->db->get('tbl_solicitacao');
+          $query = $this->db->get('tbl_andamento_paciente');
           $array = $query->result();
           if(sizeof($array)==0)
           {
-            $solicitacao = [];
+            $andamento = [];
           }
           else
           {
-            $solicitacao = $array[0];
+            $andamento = $array[0];
           }
 
-          return $solicitacao;
+          return $andamento;
         }
     }
 ?>

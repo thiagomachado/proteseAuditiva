@@ -10,24 +10,25 @@
             parent::__construct();
         }
 
-        public function cadastrarSolicitacao($solicitacao)
+        public function cadastrarConsulta($consulta)
         {
-          $this->db->insert('tbl_solicitacao', $solicitacao);
+          $this->db->insert('tbl_consulta', $consulta);
           return $this->db->insert_id();
         }
 
-        public function editarSolicitacao($solicitacao,$id)
+        public function editarConsulta($consulta,$id)
         {
-          $this->db->update('tbl_solicitacao',$solicitacao, array('Solic_id' => $id));
+          $this->db->update('tbl_consulta',$consulta, array('Consulta_id' => $id));
         }
 
-        public function recuperarSolicitacoesPorCPF($cpf)
+        public function recuperarConsultasPorCPF($cpf)
         {
+          $this->db->order_by("Consulta_data", "asc");
           $this->db->where('Pc_CPF', $cpf);
-          $query = $this->db->get('tbl_solicitacao');
-          $solicitacao = $query->result();
+          $query = $this->db->get('tbl_consulta');
+          $consultas = $query->result();
 
-          return $solicitacao;
+          return $consultas;
         }
 
         public function recuperarSolicitacaoPorId($id)
