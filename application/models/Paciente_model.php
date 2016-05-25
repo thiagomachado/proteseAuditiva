@@ -93,7 +93,7 @@
 
       public function excluirPacientePorCPF($cpf)
       {
-          $tabelas = array('tbl_paciente', 'tbl_endereco', 'tbl_telefone', 'tbl_protuario', 'tbl_proteses_pacientes');
+          $tabelas = array('tbl_paciente', 'tbl_endereco', 'tbl_telefone', 'tbl_proteses_pacientes');
           $where = array('Pc_CPF' => $cpf);
           $this->db->delete($tabelas, $where);
       }

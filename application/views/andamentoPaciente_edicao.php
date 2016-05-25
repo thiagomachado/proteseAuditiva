@@ -65,6 +65,7 @@
               echo "<table>";
               foreach ($consultas as $consulta)
               {
+                //adiciona no value dos inputs o valor recuperado
                 $dataConsultaEdicaoData["value"]      = $consulta->Consulta_data;
                 $dataConsultaEdicaoDescricao["value"] = $consulta->Consulta_descricao;
                 $dataConsultaEdicaoId["value"]        = $consulta->Consulta_id;
@@ -78,6 +79,11 @@
                     <td>
                       <label>Descrição:</label><br>
                       ".form_input($dataConsultaEdicaoDescricao)."
+                    </td>
+                    <td>
+                    </br>
+                      <button onclick='atualizarLinkRemoverConsulta(".$consulta->Consulta_id."); mostrarModal(\"#modalExcluirConsulta\")'
+                      class='remove linhaCentralizada'>-</button>
                     </td>
                   </tr>
                 ";
@@ -142,13 +148,25 @@
 
     <div class="modal" id="modalSucesso">
       <div class="textoModal">
-        <h1>Sucesso!</h1>
+        <h1>SUCESSO!</h1>
         <p>O andamento do paciente foi atualizado.</p>
       </div>
 
       <div class="botoesModal">
         <a href="<?php echo base_url().'index.php/andamentoPaciente/';?>"><input type="button" class="botao" value="Concluir"/></a>
         <input onclick="esconderModal('#modalSucesso');location.reload()" class="botao" value="Continuar"/>
+      </div>
+    </div>
+
+    <div class="modal" id="modalExcluirConsulta">
+      <div class="textoModal">
+        <h1>ATENÇÃO!</h1>
+        <p>Deseja realmente excluir a consulta selecionada?</p>
+      </div>
+
+      <div class="botoesModal">
+        <a id="botaoExcluirConsulta"><input type="button" class="botao" value="Sim"/></a>
+        <input onclick="esconderModal('#modalExcluirConsulta')" class="botao" value="Não"/>
       </div>
     </div>
 
@@ -166,6 +184,7 @@
 
 <?php echo form_close(); ?>
 </div>
+
 
 <script type="text/javascript">
     var regex          = /^(.+?)(\d+)$/i;
@@ -204,6 +223,14 @@
     $(".clone").on("click", clone);
 
     $(".remove").on("click", remove);
+
+    function atualizarLinkRemoverConsulta(idConsulta)
+    {
+      event.preventDefault();
+      var link = "<?php echo site_url('excluirConsulta');?>/"
+      $('#botaoExcluirConsulta').attr("href", link + idConsulta);
+    }
+
 </script>
 
 

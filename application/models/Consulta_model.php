@@ -31,21 +31,28 @@
           return $consultas;
         }
 
-        public function recuperarSolicitacaoPorId($id)
+        public function recuperarConsultaPorId($id)
         {
-          $this->db->where('Solic_id', $id);
-          $query = $this->db->get('tbl_solicitacao');
+          $this->db->where('Consulta_id', $id);
+          $query = $this->db->get('tbl_consulta');
           $array = $query->result();
           if(sizeof($array)==0)
           {
-            $solicitacao = [];
+            $consulta = [];
           }
           else
           {
-            $solicitacao = $array[0];
+            $consulta = $array[0];
           }
 
-          return $solicitacao;
+          return $consulta;
+        }
+
+        public function excluirConsultaPorId($id)
+        {
+            $tabelas = array('tbl_consulta');
+            $where = array('Consulta_id' => $id);
+            $this->db->delete($tabelas, $where);
         }
     }
 ?>

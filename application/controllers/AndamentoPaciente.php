@@ -153,5 +153,15 @@
 
         }
 
+        public function excluirConsulta($id)
+        {
+          $consulta = $this->consulta_model->recuperarConsultaPorId($id);
+          $cpf = $consulta->Pc_CPF;
+          $this->consulta_model->excluirConsultaPorId($id);
+          $link = "index.php/andamentoPaciente/"+$cpf;
+          redirect("/andamentoPaciente/$cpf", 'refresh');
+
+        }
+
     }
 ?>
