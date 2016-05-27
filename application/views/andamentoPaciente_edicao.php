@@ -48,7 +48,9 @@
                 '.$dataProcedimentos[$item->Isolic_item_id].'</td>
                 <td class="linhaCentralizada">'.$item->Isolic_quantidade.'</td>
                 <td class="linhaCentralizada"><input type="checkbox" name="confirmados[]" value="1" '.$checked.'/></td>
-                <td class="linhaCentralizada"><input type="text" maxlength=100 name="descricoes[]" size=45 value="'.$item->Isolic_descricao.'"/></td>
+                <td class="linhaCentralizada">
+                  <input type="text" maxlength=100 name="descricoes[]" size=45 value="'.$item->Isolic_descricao.'"/>
+                </td>
               </tr>
             ';
           }
@@ -111,14 +113,94 @@
         </div>
       </div>
     </fieldset>
+    <?php
+      if(sizeof($protesesPaciente)>0)
+      {
+        echo '
+          <fieldset class="secaoFormulario">
+              <legend>Próteses do Paciente:</legend>
+              <table class="tabelaResultado" id="tabelaResultadoProtese">
+                <tr>
+                  <th>Código</th>
+                  <th>Nome</th>
+                  <th>Fabricante</th>
+                  <th>Classe</th>
+                  <th>Data da Retirada</th>
+                </tr>';
+        foreach ($protesesPaciente as $protese)
+        {
+          echo '
+
+          <tr class="linhaResultado">
+            <td>'.$protese->Prot_Cod.'</td>
+            <td>'.$protese->Prot_Nome.'</td>
+            <td>'.$protese->Prot_Fabricante.'</td>
+            <td>'.$protese->Prot_Classe.'</td>
+            <td>'.date_format(date_create($protese->Prot_DataSaida), 'd/m/Y').'</td>
+
+          </tr></a>';
+        }
+
+        echo '
+              </table>
+          </fieldset>
+        ';
+      }
+
+
+      if(sizeof($implantesPaciente)> 0)
+      {
+        echo '
+          <fieldset class="secaoFormulario">
+              <legend>Implantes do Paciente:</legend>
+              <table class="tabelaResultado" id="tabelaResultadoImplante">
+                <tr>
+                  <th>Código</th>
+                  <th>Nome</th>
+                  <th>Fabricante</th>
+                  <th>Classe</th>
+                  <th>Data da Retirada</th>
+                </tr>';
+        foreach ($implantesPaciente as $implante)
+        {
+          echo '
+
+          <tr class="linhaResultado">
+            <td>'.$implante->Impl_Cod.'</td>
+            <td>'.$implante->Impl_Desc.'</td>
+            <td>'.$implante->Impl_Fabr.'</td>
+            <td>'.$implante->Impl_Clss.'</td>
+            <td>'.date_format(date_create($implante->Impl_DataSaida), 'd/m/Y').'</td>
+
+          </tr></a>';
+        }
+
+        echo '
+              </table>
+          </fieldset>
+        ';
+      }
+
+
+     ?>
+    <fieldset class="secaoFormulario">
+      <legend>Adicionar Implante ou Prótese</legend>
+      <table>
+        <tr>
+          <td>Prótese Auditiva:</td>
+          <td>Implante Coclear:</td>
+        </tr>
+        <tr>
+          <td><?php echo form_dropdown('protese', $dataProteses,'','id="protese"'); ?></td>
+          <td><?php echo form_dropdown('implante', $dataImplantes,'','id="implante"'); ?></td>
+        </tr>
+      </table>
+    </fieldset>
+
 
     <fieldset class="secaoFormulario">
       <legend>Observações Gerais</legend>
       <table>
-        <tr>
-          <td>Prótese Auditiva:<?php echo form_input($dataProtese); ?></td>
-          <td>Implante Coclear:<?php echo form_input($dataImplante); ?></td>
-        </tr>
         <tr>
           <td colspan="2">Observações:<br>
             <?php echo form_textarea($dataObs); ?>
@@ -233,7 +315,19 @@
 
 </script>
 
+<script>
 
+$(document).ready(function()
+{
+	$('#tabelaResultadoProtese tr:gt(0)')
+		.click(function()
+    {
+  		var cpf = $(this).children('td:eq(0)').text();
+  		window.location.href = "/proteseAuditiva/index.php/edicaoProtese/"+cpf;
+		})
+
+}).attr('unselectable', 'on').css('user-select', 'none').on('selectstart', false);
+</script>
 
 <script type="text/javascript">
 // Ajax post

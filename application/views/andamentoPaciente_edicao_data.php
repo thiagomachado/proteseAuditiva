@@ -104,6 +104,20 @@
     }
 
 
+    $dataProteses = array('0' => '');
+
+    foreach ($proteses as $protese)
+    {
+      $dataProteses[$protese->Prot_Cod] = $protese->Prot_Nome;
+    }
+
+    $dataImplantes = array('0' => '');
+
+    foreach ($implantes as $implante)
+    {
+      $dataImplantes[$implante->Impl_Cod] = $implante->Impl_Desc;
+    }
+
     $dataSubmit = array(
             'type'          => 'submit',
             'value'         => 'Atualizar',

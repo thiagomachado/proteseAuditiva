@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: 23/05/2016 às 14:11
+-- Tempo de Geração: 26/05/2016 às 21:30
 -- Versão do servidor: 5.5.49-0ubuntu0.14.04.1
 -- Versão do PHP: 5.5.9-1ubuntu4.16
 
@@ -190,13 +190,13 @@ CREATE TABLE IF NOT EXISTS `tbl_andamento_paciente` (
 --
 
 INSERT INTO `tbl_andamento_paciente` (`Andamento_id`, `Pc_CPF`, `Andamento_protese`, `Andamento_implante`, `Andamento_obs`) VALUES
-(1, '94857102482', 'Protese ', 'Implante ', 'afasda'),
+(1, '94857102482', '0', '5', 'afasda'),
 (2, '01301493184', '', '', ''),
 (3, '93849102380', NULL, NULL, NULL),
 (4, '88888888889', '', '', ''),
-(5, '21736421838', NULL, NULL, NULL),
+(5, '21736421838', '', '', ''),
 (6, '77777777777', NULL, NULL, NULL),
-(7, '47293019301', NULL, NULL, NULL);
+(7, '47293019301', '4', '0', '');
 
 -- --------------------------------------------------------
 
@@ -251,22 +251,19 @@ CREATE TABLE IF NOT EXISTS `tbl_consulta` (
   `Consulta_descricao` varchar(200) NOT NULL,
   PRIMARY KEY (`Consulta_id`),
   KEY `Andamento_id` (`Pc_CPF`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
 
 --
 -- Fazendo dump de dados para tabela `tbl_consulta`
 --
 
 INSERT INTO `tbl_consulta` (`Consulta_id`, `Pc_CPF`, `Consulta_data`, `Consulta_descricao`) VALUES
-(1, '94857102482', '2016-05-17', 'teste12'),
-(2, '94857102482', '2016-05-18', 'teste1'),
-(4, '94857102482', '2016-05-19', 'test3'),
-(6, '94857102482', '2016-05-01', 'teste123'),
-(7, '94857102482', '2016-05-03', 'teste 5'),
 (8, '01301493184', '2016-05-18', 'confirmação'),
 (9, '01301493184', '2016-05-11', ''),
 (10, '01301493184', '2016-05-25', '313'),
-(11, '88888888889', '2016-05-26', 'teste');
+(11, '88888888889', '2016-05-26', 'teste'),
+(12, '21736421838', '2016-05-05', 'teste'),
+(20, '94857102482', '2016-05-04', 'teste');
 
 -- --------------------------------------------------------
 
@@ -339,6 +336,7 @@ CREATE TABLE IF NOT EXISTS `tbl_implantes` (
   `Impl_Clss` varchar(45) NOT NULL,
   `Impl_Valor` decimal(12,2) NOT NULL,
   `Impl_DataEnt` date NOT NULL,
+  `Impl_DataSaida` date DEFAULT NULL,
   `Pc_CPF` varchar(14) NOT NULL,
   PRIMARY KEY (`Impl_Cod`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
@@ -347,11 +345,11 @@ CREATE TABLE IF NOT EXISTS `tbl_implantes` (
 -- Fazendo dump de dados para tabela `tbl_implantes`
 --
 
-INSERT INTO `tbl_implantes` (`Impl_Cod`, `Impl_Desc`, `Impl_Fabr`, `Impl_Clss`, `Impl_Valor`, `Impl_DataEnt`, `Pc_CPF`) VALUES
-(10, 'testando nome muito grande ', 'sony', 'omega', 1238.90, '2016-04-15', ''),
-(5, 'windows 10', 'Microsoft', 'alfa', 789.99, '2015-12-03', ''),
-(6, 'iEar', 'Apple', 'beta', 831.09, '2006-03-04', ''),
-(7, 'phenom x2', 'AMD', 'gama', 800.90, '2014-03-01', '');
+INSERT INTO `tbl_implantes` (`Impl_Cod`, `Impl_Desc`, `Impl_Fabr`, `Impl_Clss`, `Impl_Valor`, `Impl_DataEnt`, `Impl_DataSaida`, `Pc_CPF`) VALUES
+(10, 'testando nome muito grande ', 'sony', 'omega', 1238.90, '2016-04-15', NULL, ''),
+(5, 'windows 10', 'Microsoft', 'alfa', 789.99, '2015-12-03', '2016-05-27', '94857102482'),
+(6, 'iEar', 'Apple', 'beta', 831.09, '2006-03-04', NULL, ''),
+(7, 'phenom x2', 'AMD', 'gama', 800.90, '2014-03-01', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -380,15 +378,15 @@ INSERT INTO `tbl_item_solicitacao` (`Isolic_id`, `Solic_id`, `Isolic_item_id`, `
 (16, 9, 2, 5, '', 0),
 (17, 9, 4, 7, 'teste', 1),
 (18, 9, 3, 9, '', 0),
-(19, 10, 4, 1, NULL, 0),
-(20, 10, 1, 3, NULL, 0),
+(19, 10, 4, 1, 'teste', 1),
+(20, 10, 1, 3, '', 1),
 (21, 11, 3, 1, '', 1),
-(22, 12, 1, 1, NULL, 0),
+(22, 12, 1, 1, '', 1),
 (23, 13, 1, 2, NULL, 0),
-(25, 15, 3, 3, NULL, 0),
-(26, 15, 4, 3, NULL, 0),
-(27, 15, 1, 3, NULL, 0),
-(28, 16, 1, 1, 'Teste', 0),
+(25, 15, 3, 3, '', 0),
+(26, 15, 4, 3, '', 1),
+(27, 15, 1, 3, '', 1),
+(28, 16, 1, 1, 'Teste', 1),
 (29, 16, 4, 1, 'Teste', 1),
 (30, 17, 2, 2, '', 0);
 
@@ -6018,7 +6016,6 @@ INSERT INTO `tbl_paciente` (`Pc_CPF`, `Pc_Nome`, `Pc_CartaoSus`, `Pc_NumProntuar
 ('47293019301', 'Maria Luiza Pinheiro', '21392381394319019029', '8271', '1992-11-13', NULL, 'f', 5, 'Helena Pinheiro', 'nunes', 4, 0, '', 'adulta'),
 ('49375482719', 'Marcos Antonio de Oliveira', '12941939310', '2941', '1996-11-18', NULL, 'm', 2, 'Julia de Oliveira', '', 3, 0, 'Estudante', 'adulta'),
 ('94857102482', 'Thiago Leal Damasio Machado', '19219485', '8471', '1992-11-14', NULL, 'm', 3, 'Thiago Leal', 'Machado', 1, 1, 'Estudante', 'adulta'),
-('47139481920', 'Thiago Leal Damasio Machado', '128738192', '2871', '1992-11-14', NULL, 'm', 3, 'Luciana Machado', 'Omar Machado', 5, 1, 'Tecnico Informatica', 'adulta'),
 ('11934892485', 'Alice Fontes', '28148234925830', '182781', '2009-04-30', NULL, 'f', 2, 'Eduarda Fontes', 'Guilherme Andrade Fontes', 1, 0, '', 'infantil'),
 ('85729428401', 'João Silva', '7489239', '90', '1999-08-31', NULL, 'm', 4, 'Maria da Silva', 'Pedro Silva', 1, 0, '', 'infantil');
 
@@ -6059,18 +6056,20 @@ CREATE TABLE IF NOT EXISTS `tbl_proteses` (
   `Prot_Classe` varchar(45) NOT NULL,
   `Prot_Valor` decimal(12,2) NOT NULL,
   `Prot_DataEntrada` date NOT NULL,
+  `Prot_DataSaida` date DEFAULT NULL,
   `Pc_CPF` varchar(14) NOT NULL,
   PRIMARY KEY (`Prot_Cod`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Fazendo dump de dados para tabela `tbl_proteses`
 --
 
-INSERT INTO `tbl_proteses` (`Prot_Cod`, `Prot_Nome`, `Prot_Fabricante`, `Prot_Classe`, `Prot_Valor`, `Prot_DataEntrada`, `Pc_CPF`) VALUES
-(1, 'windows 7', 'Microsoft', 'alfa', 2000.00, '2016-04-19', ' '),
-(2, 'macbook pro', 'Apple', 'omega', 8301.09, '2016-03-31', ''),
-(3, 'macbook pro 3', 'Apple', 'omega', 8301.09, '2014-03-31', '');
+INSERT INTO `tbl_proteses` (`Prot_Cod`, `Prot_Nome`, `Prot_Fabricante`, `Prot_Classe`, `Prot_Valor`, `Prot_DataEntrada`, `Prot_DataSaida`, `Pc_CPF`) VALUES
+(1, 'Surface Pro 4', 'Microsoft', 'alfa', 6000.00, '2016-04-19', '2016-05-26', '94857102482'),
+(2, 'Macbook Pro', 'Apple', 'omega', 12301.09, '2016-03-31', '2016-05-26', '94857102482'),
+(3, 'Macbook air', 'Apple', 'omega', 8301.09, '2014-03-31', '2016-05-26', '94857102482'),
+(4, 'testando nome muito grande ', 'Microsoft', '333', 500.00, '2016-05-26', '0000-00-00', '');
 
 -- --------------------------------------------------------
 

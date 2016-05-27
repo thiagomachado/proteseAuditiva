@@ -12,11 +12,21 @@
 
         public function recuperarImplantes()
         {
-          $this->db->order_by("Impl_DataEnt", "desc"); 
+          $this->db->order_by("Impl_DataEnt", "desc");
           $query                       = $this->db->get('tbl_implantes');
           $listaImplantes["implantes"] = $query->result();
 
           return $listaImplantes;
+        }
+
+        public function recuperarImplantesSemPacientes()
+        {
+          $this->db->where('Pc_CPF', '');
+          $this->db->order_by("Impl_Desc", "asc");
+          $query     = $this->db->get('tbl_implantes');
+          $implantes = $query->result();
+
+          return $implantes;
         }
 
         public function recuperarImplantePorCodigo($codigo)
@@ -34,6 +44,16 @@
           }
 
           return $implante;
+        }
+
+        public function recuperarImplantesPorPacientes($cpf)
+        {
+          $this->db->where('Pc_CPF', $cpf);
+          $this->db->order_by("Impl_Desc", "asc");
+          $query    = $this->db->get('tbl_implantes');
+          $proteses = $query->result();
+
+          return $proteses;
         }
 
         public function editar($codigo, $implante)

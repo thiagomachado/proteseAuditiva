@@ -12,12 +12,34 @@
 
         public function recuperarProteses()
         {
-          $this->db->order_by("Prot_DataEntrada", "desc");
+          $this->db->order_by("Prot_DataEntrada", "asc");
           $query                      = $this->db->get('tbl_proteses');
           $listaProteses["proteses"]  = $query->result();
 
           return $listaProteses;
         }
+
+        public function recuperarProtesesSemPacientes()
+        {
+          $this->db->where('Pc_CPF', '');
+          $this->db->order_by("Prot_Nome", "asc");
+          $query    = $this->db->get('tbl_proteses');
+          $proteses = $query->result();
+
+          return $proteses;
+        }
+
+        public function recuperarProtesesPorPacientes($cpf)
+        {
+          $this->db->where('Pc_CPF', $cpf);
+          $this->db->order_by("Prot_Nome", "asc");
+          $query    = $this->db->get('tbl_proteses');
+          $proteses = $query->result();
+
+          return $proteses;
+        }
+
+
 
         public function recuperarProtesePorCodigo($codigo)
         {

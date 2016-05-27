@@ -14,12 +14,15 @@
             $this->load->model('consulta_model');
             $this->load->model('paciente_model');
             $this->load->model('procedimento_model');
+            $this->load->model('protese_model');
+            $this->load->model('implante_model');
             $this->load->library('m_pdf');
         }
 
         public function selecionarPaciente()
         {
-            $jsConsulta                      = '<script language="JavaScript" type="text/javascript" src="'.base_url().'assets/js/consultaAndamentoPaciente.js"></script>';
+            $jsConsulta                      = '<script language="JavaScript" type="text/javascript"
+            src="'.base_url().'assets/js/consultaAndamentoPaciente.js"></script>';
             $listaPacientes                  = $this->consultarPacientesComSolicitacao();
             $listaPacientes['formAction']    = 'andamentoPaciente' ;
             $listaPacientes['cadastro']      = "cadastroSolicitacao";
@@ -33,19 +36,16 @@
 
         public function edicaoAndamentoPaciente($cpf)
         {
-            $paciente                = $this->paciente_model->recuperarPacientePorCPF($cpf);
-            $itensSolicitacao        = $this->item_solicitacao_model->recuperarItensPorPaciente($cpf);
-            $procedimentos           = $this->procedimento_model->recuperarProcedimentos();
-            $andamento               = $this->andamento_paciente_model->recuperarAndamentoPacientePorCPF($cpf);
-            $consultas               = $this->consulta_model->recuperarConsultasPorCPF($cpf);
-            // $solicitacao             = $this->solicitacao_model->recuperarSolicitacaoPorId($idSolicitacao);
 
-            $data["itens"]           = $itensSolicitacao;
-            $data["paciente"]        = $paciente;
-            $data["procedimentos"]   = $procedimentos["procedimentos"];
-            $data["andamento"]       = $andamento;
-            $data["consultas"]       = $consultas;
-
+            $data["itens"]            = $this->item_solicitacao_model->recuperarItensPorPaciente($cpf);
+            $data["paciente"]         = $this->paciente_model->recuperarPacientePorCPF($cpf);
+            $data["procedimentos"]    = $this->procedimento_model->recuperarProcedimentos()["procedimentos"];
+            $data["andamento"]        = $this->andamento_paciente_model->recuperarAndamentoPacientePorCPF($cpf);
+            $data["consultas"]        = $this->consulta_model->recuperarConsultasPorCPF($cpf);
+            $data["proteses"]         = $this->protese_model->recuperarProtesesSemPacientes();
+            $data["protesesPaciente"] = $this->protese_model->recuperarProtesesPorPacientes($cpf);
+            $data["implantes"]        = $this->implante_model->recuperarImplantesSemPacientes();
+            $data["implantesPaciente"]= $this->implante_model->recuperarImplantesPorPacientes($cpf);
 
             $this->template->set('title', 'ANDAMENTO DE PACIENTES');
             $this->template->load('template','andamentoPaciente_edicao',$data);
@@ -68,6 +68,29 @@
             'dataAndamento' => $dataAndamento,
             'cpf' => $Pc_CPF
           );
+
+          //Editando o paciente no implante e/ou protese
+          if($Andamento_protese <> "0")
+          {
+            $dataProtese = array('Pc_CPF' =>$Pc_CPF, 'Prot_DataSaida'=> date('Y-m-d'));
+
+            $this->protese_model->editar($Andamento_protese,$dataProtese);
+          }
+
+          if($Andamento_implante <> "0")
+          {
+            $dataImplante = array('Pc_CPF' =>$Pc_CPF, 'Impl_DataSaida'=> date('Y-m-d'));
+
+            $this->implante_model->editar($Andamento_implante,$dataImplante);
+          }
+
+          //Editando o paciente no implante e/ou protese
+          if($Andamento_protese <> 0)
+          {
+            $dataProtese = array('Pc_CPF' =>$Pc_CPF);
+
+            $this->protese_model->editar($Andamento_protese,$dataProtese);
+          }
 
           //editando os itens das solicitações
           $quantidadeItens = sizeof($itens);
@@ -160,7 +183,6 @@
           $this->consulta_model->excluirConsultaPorId($id);
           $link = "index.php/andamentoPaciente/"+$cpf;
           redirect("/andamentoPaciente/$cpf", 'refresh');
-
         }
 
     }
