@@ -17,7 +17,7 @@ function mudarCidades(url)
   $.ajax(
   {
     type: "POST",
-    url: "http://localhost/proteseAuditiva/index.php/municipios/"+estado_cod,
+    url: "/proteseAuditiva/index.php/municipios/"+estado_cod,
 
     success: function(municipios)
     {
