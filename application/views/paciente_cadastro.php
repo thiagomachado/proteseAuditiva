@@ -152,7 +152,7 @@
       </div>
 
       <div class="botoesModal">
-        <a href="<?php echo base_url();?>index.php/consultaPaciente"><input class="botao" value="Concluir"/></a>
+        <a href="<?php echo site_url("cadastroPaciente");?>"><input class="botao" value="Concluir"/></a>
         <a id="linkAnamnese"><input class="botao" onclick="esconderModal('#modalSucesso'),location.reload()" value="Anamnese"/></a>
       </div>
     </div>

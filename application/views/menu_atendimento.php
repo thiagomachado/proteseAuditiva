@@ -13,7 +13,7 @@
             }
         ?>
 
-        <a href="cadastroSolicitacao"><li>REALIZAR SOLICITAÇÃO</li></a>
+        <a href="<?php echo site_url("cadastroSolicitacao");?>"><li>REALIZAR SOLICITAÇÃO</li></a>
     </ul>
 </div>
 
