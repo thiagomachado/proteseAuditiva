@@ -65,7 +65,7 @@
           return $profissionais;
         }
 
-        public function insert_entry($usuarioDados)
+        public function cadastrar($usuarioDados)
         {
             if($this->db->insert('tbl_usuarios', $usuarioDados))
             {

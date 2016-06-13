@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10deb1
+-- version 4.2.12deb2+deb8u1
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tempo de Geração: 26/05/2016 às 21:30
--- Versão do servidor: 5.5.49-0ubuntu0.14.04.1
--- Versão do PHP: 5.5.9-1ubuntu4.16
+-- Host: localhost
+-- Generation Time: 13-Jun-2016 às 18:25
+-- Versão do servidor: 5.5.49-0+deb8u1
+-- PHP Version: 5.6.20-0+deb8u1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,23 +17,22 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Banco de dados: `bd_projpa`
+-- Database: `bd_projpa`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tblnivel`
+-- Estrutura da tabela `tblnivel`
 --
 
 CREATE TABLE IF NOT EXISTS `tblnivel` (
   `Nvl_Cod` int(1) NOT NULL,
-  `Nvl_Desc` varchar(25) NOT NULL,
-  PRIMARY KEY (`Nvl_Cod`)
+  `Nvl_Desc` varchar(25) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `tblnivel`
+-- Extraindo dados da tabela `tblnivel`
 --
 
 INSERT INTO `tblnivel` (`Nvl_Cod`, `Nvl_Desc`) VALUES
@@ -45,11 +44,11 @@ INSERT INTO `tblnivel` (`Nvl_Cod`, `Nvl_Desc`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tbl_anamneseadt`
+-- Estrutura da tabela `tbl_anamneseadt`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_anamneseadt` (
-  `AnmAdt_Cod` int(11) NOT NULL AUTO_INCREMENT,
+`AnmAdt_Cod` int(11) NOT NULL,
   `Pc_CPF` varchar(14) NOT NULL,
   `AnmAdt_EncaminhadoPor` varchar(45) NOT NULL,
   `AnmAdt_PrincQueixa` varchar(250) NOT NULL,
@@ -89,12 +88,11 @@ CREATE TABLE IF NOT EXISTS `tbl_anamneseadt` (
   `AnmAdt_TempoVertigem` varchar(45) DEFAULT NULL,
   `AnmAdt_IncomSonsIntensos` tinyint(1) NOT NULL,
   `AnmAdt_SonsIntensos` varchar(45) DEFAULT NULL,
-  `AnmAdt_Obs` varchar(250) DEFAULT NULL,
-  PRIMARY KEY (`AnmAdt_Cod`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
+  `AnmAdt_Obs` varchar(250) DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `tbl_anamneseadt`
+-- Extraindo dados da tabela `tbl_anamneseadt`
 --
 
 INSERT INTO `tbl_anamneseadt` (`AnmAdt_Cod`, `Pc_CPF`, `AnmAdt_EncaminhadoPor`, `AnmAdt_PrincQueixa`, `AnmAdt_HistQueixa`, `AnmAdt_DorOuvido`, `AnmAdt_HistOtite`, `AnmAdt_OtiteOE`, `AnmAdt_OtiteOD`, `AnmAdt_Periodicidade`, `AnmAdt_CirurgiaOtologica`, `AnmAdt_CirurgiaOtolOE`, `AnmAdt_CirurgiaOtolOD`, `AnmAdt_CirurgiaDesc`, `AnmAdt_PerdaAudNaFamilia`, `AnmAdt_FamiliarPerdaAud`, `AnmAdt_Doenca`, `AnmAdt_Caxumba`, `AnmAdt_Meningite`, `AnmAdt_Sifilis`, `AnmAdt_Hipertensao`, `AnmAdt_Sarampo`, `AnmAdt_Circulatorios`, `AnmAdt_Diabetes`, `AnmAdt_UsoMedicacao`, `AnmAdt_Medicacao`, `AnmAdt_SeRuidosOcup`, `AnmAdt_RuidosOcup`, `AnmAdt_TempoRuidosOcup`, `AnmAdt_TempoDificulAud`, `AnmAdt_CompreenderFala`, `AnmAdt_Zumbido`, `AnmAdt_ZumbOD`, `AnmAdt_ZumbOE`, `AnmAdt_ZumbTipo`, `AnmAdt_ZumbTempo`, `AnmAdt_Vertigem`, `AnmAdt_TempoVertigem`, `AnmAdt_IncomSonsIntensos`, `AnmAdt_SonsIntensos`, `AnmAdt_Obs`) VALUES
@@ -106,11 +104,11 @@ INSERT INTO `tbl_anamneseadt` (`AnmAdt_Cod`, `Pc_CPF`, `AnmAdt_EncaminhadoPor`, 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tbl_anamneseinf`
+-- Estrutura da tabela `tbl_anamneseinf`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_anamneseinf` (
-  `AnmInf_Cod` int(11) NOT NULL AUTO_INCREMENT,
+`AnmInf_Cod` int(11) NOT NULL,
   `Pc_CPF` varchar(14) NOT NULL,
   `AnmInf_EncaminhaPor` varchar(45) NOT NULL,
   `AnmInf_PrincQueixa` varchar(250) NOT NULL,
@@ -156,12 +154,11 @@ CREATE TABLE IF NOT EXISTS `tbl_anamneseinf` (
   `AnmInf_DesenvolvLing` varchar(45) NOT NULL,
   `AnmInf_ComunicProdom` varchar(45) NOT NULL,
   `AnmInf_DesenvolvMotor` varchar(45) NOT NULL,
-  `AnmInf_Obs` varchar(250) DEFAULT NULL,
-  PRIMARY KEY (`AnmInf_Cod`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+  `AnmInf_Obs` varchar(250) DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `tbl_anamneseinf`
+-- Extraindo dados da tabela `tbl_anamneseinf`
 --
 
 INSERT INTO `tbl_anamneseinf` (`AnmInf_Cod`, `Pc_CPF`, `AnmInf_EncaminhaPor`, `AnmInf_PrincQueixa`, `AnmInf_HistQueixa`, `AnmInf_GestAlteracao`, `AnmInf_DescAlteracao`, `AnmInf_Rubeola`, `AnmInf_Toxoplasmose`, `AnmInf_Sifilis`, `AnmInf_Citomegalovirose`, `AnmInf_Herpes`, `AnmInf_Drogas`, `AnmInf_Alcool`, `AnmInf_Parto`, `AnmInf_Caxumba`, `AnmInf_Meningite`, `AnmInf_Encefalite`, `AnmInf_TraumaAcustico`, `AnmInf_Sarampo`, `AnmInf_Doenca`, `AnmInf_HistOtite`, `AnmInf_OtiteOE`, `AnmInf_OtiteOD`, `AnmInf_Periodicidade`, `AnmInf_PerdaAudNaFamilia`, `AnmInf_Familiar`, `AnmInf_UsoMedicacao`, `AnmInf_Medicacao`, `AnmInf_PaisConsag`, `AnmInf_TempoDifculAud`, `AnmInf_IdadeConf`, `AnmInf_ComoConf`, `AnmInf_IdadeInterv`, `AnmInf_QualInterv`, `AnmInf_ReageTrovao`, `AnmInf_ReageAviao`, `AnmInf_ReagePorta`, `AnmInf_ReageBuzina`, `AnmInf_ReageCachorro`, `AnmInf_ReageVoz`, `AnmInf_ReacaoIntensidadeVoz`, `AnmInf_ComoReage`, `AnmInf_DesenvolvLing`, `AnmInf_ComunicProdom`, `AnmInf_DesenvolvMotor`, `AnmInf_Obs`) VALUES
@@ -172,21 +169,19 @@ INSERT INTO `tbl_anamneseinf` (`AnmInf_Cod`, `Pc_CPF`, `AnmInf_EncaminhaPor`, `A
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tbl_andamento_paciente`
+-- Estrutura da tabela `tbl_andamento_paciente`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_andamento_paciente` (
-  `Andamento_id` int(11) NOT NULL AUTO_INCREMENT,
+`Andamento_id` int(11) NOT NULL,
   `Pc_CPF` varchar(14) NOT NULL,
   `Andamento_protese` varchar(100) DEFAULT NULL,
   `Andamento_implante` varchar(100) DEFAULT NULL,
-  `Andamento_obs` text,
-  PRIMARY KEY (`Andamento_id`),
-  KEY `Pc_CPF` (`Pc_CPF`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+  `Andamento_obs` text
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `tbl_andamento_paciente`
+-- Extraindo dados da tabela `tbl_andamento_paciente`
 --
 
 INSERT INTO `tbl_andamento_paciente` (`Andamento_id`, `Pc_CPF`, `Andamento_protese`, `Andamento_implante`, `Andamento_obs`) VALUES
@@ -201,11 +196,11 @@ INSERT INTO `tbl_andamento_paciente` (`Andamento_id`, `Pc_CPF`, `Andamento_prote
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tbl_caracterizacao_paciente`
+-- Estrutura da tabela `tbl_caracterizacao_paciente`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_caracterizacao_paciente` (
-  `Caract_Numero` int(11) NOT NULL AUTO_INCREMENT,
+`Caract_Numero` int(11) NOT NULL,
   `Pc_CPF` varchar(14) DEFAULT NULL,
   `Caract_Cpf_Profissional` varchar(14) NOT NULL,
   `Caract_Data` datetime NOT NULL,
@@ -222,14 +217,11 @@ CREATE TABLE IF NOT EXISTS `tbl_caracterizacao_paciente` (
   `Caract_HistPerdaAud` varchar(1000) DEFAULT NULL,
   `Caract_AASIModelo` varchar(45) DEFAULT NULL,
   `Caract_AASIOrelha` varchar(25) DEFAULT NULL,
-  `Caract_Obs` varchar(250) DEFAULT NULL,
-  PRIMARY KEY (`Caract_Numero`),
-  KEY `Pc_CPF` (`Pc_CPF`),
-  KEY `Caract_Numero` (`Caract_Numero`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=82 ;
+  `Caract_Obs` varchar(250) DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=82 DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `tbl_caracterizacao_paciente`
+-- Extraindo dados da tabela `tbl_caracterizacao_paciente`
 --
 
 INSERT INTO `tbl_caracterizacao_paciente` (`Caract_Numero`, `Pc_CPF`, `Caract_Cpf_Profissional`, `Caract_Data`, `Caract_TipoPerda`, `Caract_GrauPerda`, `Caract_Config`, `Caract_Duracao`, `Caract_Progress`, `Caract_Recrut`, `Caract_Zumbido`, `Caract_ExamesCompl`, `Caract_AASI`, `Caract_ImplCoclear`, `Caract_HistPerdaAud`, `Caract_AASIModelo`, `Caract_AASIOrelha`, `Caract_Obs`) VALUES
@@ -241,20 +233,18 @@ INSERT INTO `tbl_caracterizacao_paciente` (`Caract_Numero`, `Pc_CPF`, `Caract_Cp
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tbl_consulta`
+-- Estrutura da tabela `tbl_consulta`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_consulta` (
-  `Consulta_id` int(11) NOT NULL AUTO_INCREMENT,
+`Consulta_id` int(11) NOT NULL,
   `Pc_CPF` varchar(14) NOT NULL,
   `Consulta_data` date NOT NULL,
-  `Consulta_descricao` varchar(200) NOT NULL,
-  PRIMARY KEY (`Consulta_id`),
-  KEY `Andamento_id` (`Pc_CPF`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
+  `Consulta_descricao` varchar(200) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `tbl_consulta`
+-- Extraindo dados da tabela `tbl_consulta`
 --
 
 INSERT INTO `tbl_consulta` (`Consulta_id`, `Pc_CPF`, `Consulta_data`, `Consulta_descricao`) VALUES
@@ -268,7 +258,7 @@ INSERT INTO `tbl_consulta` (`Consulta_id`, `Pc_CPF`, `Consulta_data`, `Consulta_
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tbl_endereco`
+-- Estrutura da tabela `tbl_endereco`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_endereco` (
@@ -276,12 +266,11 @@ CREATE TABLE IF NOT EXISTS `tbl_endereco` (
   `End_Logradouro` varchar(100) NOT NULL,
   `End_UF` varchar(2) NOT NULL,
   `End_CEP` varchar(8) NOT NULL,
-  `End_CodIBGE` varchar(7) NOT NULL,
-  PRIMARY KEY (`Pc_CPF`)
+  `End_CodIBGE` varchar(7) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `tbl_endereco`
+-- Extraindo dados da tabela `tbl_endereco`
 --
 
 INSERT INTO `tbl_endereco` (`Pc_CPF`, `End_Logradouro`, `End_UF`, `End_CEP`, `End_CodIBGE`) VALUES
@@ -297,22 +286,23 @@ INSERT INTO `tbl_endereco` (`Pc_CPF`, `End_Logradouro`, `End_UF`, `End_CEP`, `En
 ('21736421838', 'Rua acrelandia, numero 204', 'AC', '11111111', '1200013'),
 ('01301493184', 'Rua Sem Nome, sem numero', 'DF', '28187323', '5300108'),
 ('11934892485', 'Rua Sargento João Lópes', 'AC', '21931-42', '1200013'),
-('85729428401', 'Rua sem nome', 'RJ', '21847193', '3301306');
+('85729428401', 'Rua sem nome', 'RJ', '21847193', '3301306'),
+('03948201310', 'Avenida Joana Angelica', 'BA', '25394820', '2910727'),
+('31413132431', 'Rua Sargento João Lópes', 'AC', '21931-42', '1200013');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tbl_grauescolar`
+-- Estrutura da tabela `tbl_grauescolar`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_grauescolar` (
   `GEsc_Cod` int(1) NOT NULL,
-  `GEsc_Desc` varchar(32) NOT NULL,
-  PRIMARY KEY (`GEsc_Cod`)
+  `GEsc_Desc` varchar(32) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `tbl_grauescolar`
+-- Extraindo dados da tabela `tbl_grauescolar`
 --
 
 INSERT INTO `tbl_grauescolar` (`GEsc_Cod`, `GEsc_Desc`) VALUES
@@ -326,23 +316,22 @@ INSERT INTO `tbl_grauescolar` (`GEsc_Cod`, `GEsc_Desc`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tbl_implantes`
+-- Estrutura da tabela `tbl_implantes`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_implantes` (
-  `Impl_Cod` int(11) NOT NULL AUTO_INCREMENT,
+`Impl_Cod` int(11) NOT NULL,
   `Impl_Desc` varchar(45) NOT NULL,
   `Impl_Fabr` varchar(45) NOT NULL,
   `Impl_Clss` varchar(45) NOT NULL,
   `Impl_Valor` decimal(12,2) NOT NULL,
   `Impl_DataEnt` date NOT NULL,
   `Impl_DataSaida` date DEFAULT NULL,
-  `Pc_CPF` varchar(14) NOT NULL,
-  PRIMARY KEY (`Impl_Cod`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+  `Pc_CPF` varchar(14) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `tbl_implantes`
+-- Extraindo dados da tabela `tbl_implantes`
 --
 
 INSERT INTO `tbl_implantes` (`Impl_Cod`, `Impl_Desc`, `Impl_Fabr`, `Impl_Clss`, `Impl_Valor`, `Impl_DataEnt`, `Impl_DataSaida`, `Pc_CPF`) VALUES
@@ -354,22 +343,20 @@ INSERT INTO `tbl_implantes` (`Impl_Cod`, `Impl_Desc`, `Impl_Fabr`, `Impl_Clss`, 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tbl_item_solicitacao`
+-- Estrutura da tabela `tbl_item_solicitacao`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_item_solicitacao` (
-  `Isolic_id` int(11) NOT NULL AUTO_INCREMENT,
+`Isolic_id` int(11) NOT NULL,
   `Solic_id` int(11) NOT NULL,
   `Isolic_item_id` int(11) NOT NULL,
   `Isolic_quantidade` int(11) NOT NULL,
   `Isolic_descricao` varchar(100) DEFAULT NULL,
-  `Isolic_confirmado` tinyint(1) NOT NULL,
-  PRIMARY KEY (`Isolic_id`),
-  KEY `Solic_id` (`Solic_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
+  `Isolic_confirmado` tinyint(1) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `tbl_item_solicitacao`
+-- Extraindo dados da tabela `tbl_item_solicitacao`
 --
 
 INSERT INTO `tbl_item_solicitacao` (`Isolic_id`, `Solic_id`, `Isolic_item_id`, `Isolic_quantidade`, `Isolic_descricao`, `Isolic_confirmado`) VALUES
@@ -393,7 +380,7 @@ INSERT INTO `tbl_item_solicitacao` (`Isolic_id`, `Solic_id`, `Isolic_item_id`, `
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tbl_municipios`
+-- Estrutura da tabela `tbl_municipios`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_municipios` (
@@ -403,7 +390,7 @@ CREATE TABLE IF NOT EXISTS `tbl_municipios` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `tbl_municipios`
+-- Extraindo dados da tabela `tbl_municipios`
 --
 
 INSERT INTO `tbl_municipios` (`Mun_UF`, `Mun_Cod`, `Mun_Nome`) VALUES
@@ -5979,7 +5966,7 @@ INSERT INTO `tbl_municipios` (`Mun_UF`, `Mun_Cod`, `Mun_Nome`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tbl_paciente`
+-- Estrutura da tabela `tbl_paciente`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_paciente` (
@@ -5996,13 +5983,11 @@ CREATE TABLE IF NOT EXISTS `tbl_paciente` (
   `Pc_GrauEscolar` int(1) NOT NULL,
   `Pc_SeTrabalha` tinyint(1) NOT NULL,
   `Pc_Profissao` varchar(45) DEFAULT NULL,
-  `Pc_TipoAnamn` varchar(8) NOT NULL,
-  PRIMARY KEY (`Pc_CPF`),
-  KEY `Pc_CPF` (`Pc_CPF`)
+  `Pc_TipoAnamn` varchar(8) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `tbl_paciente`
+-- Extraindo dados da tabela `tbl_paciente`
 --
 
 INSERT INTO `tbl_paciente` (`Pc_CPF`, `Pc_Nome`, `Pc_CartaoSus`, `Pc_NumProntuario`, `Pc_DtNascimento`, `Pc_Idade`, `Pc_Sexo`, `Pc_Etnia`, `Pc_NomeMae`, `Pc_NomePai`, `Pc_GrauEscolar`, `Pc_SeTrabalha`, `Pc_Profissao`, `Pc_TipoAnamn`) VALUES
@@ -6016,25 +6001,26 @@ INSERT INTO `tbl_paciente` (`Pc_CPF`, `Pc_Nome`, `Pc_CartaoSus`, `Pc_NumProntuar
 ('47293019301', 'Maria Luiza Pinheiro', '21392381394319019029', '8271', '1992-11-13', NULL, 'f', 5, 'Helena Pinheiro', 'nunes', 4, 0, '', 'adulta'),
 ('49375482719', 'Marcos Antonio de Oliveira', '12941939310', '2941', '1996-11-18', NULL, 'm', 2, 'Julia de Oliveira', '', 3, 0, 'Estudante', 'adulta'),
 ('94857102482', 'Thiago Leal Damasio Machado', '19219485', '8471', '1992-11-14', NULL, 'm', 3, 'Thiago Leal', 'Machado', 1, 1, 'Estudante', 'adulta'),
-('11934892485', 'Alice Fontes', '28148234925830', '182781', '2009-04-30', NULL, 'f', 2, 'Eduarda Fontes', 'Guilherme Andrade Fontes', 1, 0, '', 'infantil'),
-('85729428401', 'João Silva', '7489239', '90', '1999-08-31', NULL, 'm', 4, 'Maria da Silva', 'Pedro Silva', 1, 0, '', 'infantil');
+('11934892485', 'ALICE FONTES', '28148234925830', '182781', '2009-04-30', NULL, 'f', 2, 'EDUARDA FONTES', 'GUILHERME ANDRADE FONTES', 1, 0, '', 'infantil'),
+('85729428401', 'JOãO SILVA', '7489239', '90', '1999-08-31', NULL, 'm', 4, 'MARIA DA SILVA', '', 1, 0, '', 'infantil'),
+('03948201310', 'Omar José Machado', '20130341', '291', '1967-02-15', NULL, 'm', 4, 'Iolanda de Oliveira Machado', '', 5, 1, 'Policial Militar', 'adulta'),
+('31413132431', 'Thiago Leal Damasio Machado', '13113', '121', '1800-12-14', NULL, 'm', 1, 'Thiago Leal', 'Machado', 1, 0, '', 'adulta');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tbl_procedimentos`
+-- Estrutura da tabela `tbl_procedimentos`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_procedimentos` (
-  `Proc_Id` int(11) NOT NULL AUTO_INCREMENT,
+`Proc_Id` int(11) NOT NULL,
   `Proc_Codigo` varchar(22) NOT NULL,
   `Proc_Nome` varchar(150) NOT NULL,
-  `Proc_Valor` decimal(12,2) NOT NULL,
-  PRIMARY KEY (`Proc_Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+  `Proc_Valor` decimal(12,2) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `tbl_procedimentos`
+-- Extraindo dados da tabela `tbl_procedimentos`
 --
 
 INSERT INTO `tbl_procedimentos` (`Proc_Id`, `Proc_Codigo`, `Proc_Nome`, `Proc_Valor`) VALUES
@@ -6046,23 +6032,22 @@ INSERT INTO `tbl_procedimentos` (`Proc_Id`, `Proc_Codigo`, `Proc_Nome`, `Proc_Va
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tbl_proteses`
+-- Estrutura da tabela `tbl_proteses`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_proteses` (
-  `Prot_Cod` int(11) NOT NULL AUTO_INCREMENT,
+`Prot_Cod` int(11) NOT NULL,
   `Prot_Nome` varchar(45) NOT NULL,
   `Prot_Fabricante` varchar(45) NOT NULL,
   `Prot_Classe` varchar(45) NOT NULL,
   `Prot_Valor` decimal(12,2) NOT NULL,
   `Prot_DataEntrada` date NOT NULL,
   `Prot_DataSaida` date DEFAULT NULL,
-  `Pc_CPF` varchar(14) NOT NULL,
-  PRIMARY KEY (`Prot_Cod`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+  `Pc_CPF` varchar(14) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `tbl_proteses`
+-- Extraindo dados da tabela `tbl_proteses`
 --
 
 INSERT INTO `tbl_proteses` (`Prot_Cod`, `Prot_Nome`, `Prot_Fabricante`, `Prot_Classe`, `Prot_Valor`, `Prot_DataEntrada`, `Prot_DataSaida`, `Pc_CPF`) VALUES
@@ -6074,24 +6059,22 @@ INSERT INTO `tbl_proteses` (`Prot_Cod`, `Prot_Nome`, `Prot_Fabricante`, `Prot_Cl
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tbl_solicitacao`
+-- Estrutura da tabela `tbl_solicitacao`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_solicitacao` (
-  `Solic_id` int(11) NOT NULL AUTO_INCREMENT,
+`Solic_id` int(11) NOT NULL,
   `Pc_CPF` varchar(15) NOT NULL,
   `Solic_data` date NOT NULL,
   `Solic_descricao` varchar(150) NOT NULL,
   `Solic_cid10principal` varchar(30) DEFAULT NULL,
   `Solic_cid10sec` varchar(30) DEFAULT NULL,
   `Solic_cid10causas` varchar(100) DEFAULT NULL,
-  `Solic_obs` text,
-  PRIMARY KEY (`Solic_id`),
-  KEY `Pc_CPF` (`Pc_CPF`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
+  `Solic_obs` text
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `tbl_solicitacao`
+-- Extraindo dados da tabela `tbl_solicitacao`
 --
 
 INSERT INTO `tbl_solicitacao` (`Solic_id`, `Pc_CPF`, `Solic_data`, `Solic_descricao`, `Solic_cid10principal`, `Solic_cid10sec`, `Solic_cid10causas`, `Solic_obs`) VALUES
@@ -6108,21 +6091,20 @@ INSERT INTO `tbl_solicitacao` (`Solic_id`, `Pc_CPF`, `Solic_data`, `Solic_descri
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tbl_telefone`
+-- Estrutura da tabela `tbl_telefone`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_telefone` (
-  `telefone_cod` int(11) NOT NULL AUTO_INCREMENT,
+`telefone_cod` int(11) NOT NULL,
   `Pc_CPF` varchar(14) NOT NULL,
   `Tel_DDD` int(2) DEFAULT NULL,
   `Tel_Tel1` varchar(14) NOT NULL,
   `Tel_Tel2` varchar(14) DEFAULT NULL,
-  `TipoTel_Cod` int(1) DEFAULT NULL,
-  PRIMARY KEY (`telefone_cod`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
+  `TipoTel_Cod` int(1) DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `tbl_telefone`
+-- Extraindo dados da tabela `tbl_telefone`
 --
 
 INSERT INTO `tbl_telefone` (`telefone_cod`, `Pc_CPF`, `Tel_DDD`, `Tel_Tel1`, `Tel_Tel2`, `TipoTel_Cod`) VALUES
@@ -6143,16 +6125,18 @@ INSERT INTO `tbl_telefone` (`telefone_cod`, `Pc_CPF`, `Tel_DDD`, `Tel_Tel1`, `Te
 (26, '94857102482', NULL, '21994309100', '21994309100', NULL),
 (25, '47139481920', NULL, '21994309100', '21994309100', NULL),
 (27, '11934892485', NULL, '21994309100', '21994309100', NULL),
-(28, '85729428401', NULL, '284713910121', '281723171821', NULL);
+(28, '85729428401', NULL, '284713910121', '281723171821', NULL),
+(29, '03948201310', NULL, '7399983579292', '', NULL),
+(30, '31413132431', NULL, '21994309100', '21994309100', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tbl_testeaasi`
+-- Estrutura da tabela `tbl_testeaasi`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_testeaasi` (
-  `testeaasi_id` int(11) NOT NULL AUTO_INCREMENT,
+`testeaasi_id` int(11) NOT NULL,
   `NumPront` int(11) NOT NULL,
   `sem250` int(11) DEFAULT NULL,
   `sem500` int(11) DEFAULT NULL,
@@ -6180,12 +6164,11 @@ CREATE TABLE IF NOT EXISTS `tbl_testeaasi` (
   `oe4k` int(11) DEFAULT NULL,
   `oe6k` int(11) DEFAULT NULL,
   `oe8k` int(11) DEFAULT NULL,
-  `oepercfala` varchar(25) DEFAULT NULL,
-  PRIMARY KEY (`testeaasi_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
+  `oepercfala` varchar(25) DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `tbl_testeaasi`
+-- Extraindo dados da tabela `tbl_testeaasi`
 --
 
 INSERT INTO `tbl_testeaasi` (`testeaasi_id`, `NumPront`, `sem250`, `sem500`, `sem1k`, `sem2k`, `sem3k`, `sem4k`, `sem6k`, `sem8k`, `sempercfala`, `od250`, `od500`, `od1k`, `od2k`, `od3k`, `od4k`, `od6k`, `od8k`, `odpercfala`, `oe250`, `oe500`, `oe1k`, `oe2k`, `oe3k`, `oe4k`, `oe6k`, `oe8k`, `oepercfala`) VALUES
@@ -6197,7 +6180,7 @@ INSERT INTO `tbl_testeaasi` (`testeaasi_id`, `NumPront`, `sem250`, `sem500`, `se
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tbl_teste_caracterizacao_paciente`
+-- Estrutura da tabela `tbl_teste_caracterizacao_paciente`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_teste_caracterizacao_paciente` (
@@ -6227,12 +6210,11 @@ CREATE TABLE IF NOT EXISTS `tbl_teste_caracterizacao_paciente` (
   `OE_VO_1k` varchar(20) DEFAULT NULL,
   `OE_VO_2k` varchar(20) DEFAULT NULL,
   `OE_VO_3k` varchar(20) DEFAULT NULL,
-  `OE_VO_4k` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`Caract_Numero`)
+  `OE_VO_4k` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `tbl_teste_caracterizacao_paciente`
+-- Extraindo dados da tabela `tbl_teste_caracterizacao_paciente`
 --
 
 INSERT INTO `tbl_teste_caracterizacao_paciente` (`Caract_Numero`, `OD_VA_250`, `OD_VA_500`, `OD_VA_1k`, `OD_VA_2k`, `OD_VA_3k`, `OD_VA_4k`, `OD_VA_6k`, `OD_VA_8k`, `OD_VO_500`, `OD_VO_1k`, `OD_VO_2k`, `OD_VO_3k`, `OD_VO_4k`, `OE_VA_250`, `OE_VA_500`, `OE_VA_1k`, `OE_VA_2k`, `OE_VA_3k`, `OE_VA_4k`, `OE_VA_6k`, `OE_VA_8k`, `OE_VO_500`, `OE_VO_1k`, `OE_VO_2k`, `OE_VO_3k`, `OE_VO_4k`) VALUES
@@ -6244,17 +6226,16 @@ INSERT INTO `tbl_teste_caracterizacao_paciente` (`Caract_Numero`, `OD_VA_250`, `
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tbl_uf`
+-- Estrutura da tabela `tbl_uf`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_uf` (
   `UF_Cod` varchar(2) NOT NULL,
-  `UF_Desc` varchar(20) NOT NULL,
-  PRIMARY KEY (`UF_Cod`)
+  `UF_Desc` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `tbl_uf`
+-- Extraindo dados da tabela `tbl_uf`
 --
 
 INSERT INTO `tbl_uf` (`UF_Cod`, `UF_Desc`) VALUES
@@ -6289,7 +6270,7 @@ INSERT INTO `tbl_uf` (`UF_Cod`, `UF_Desc`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tbl_usuarios`
+-- Estrutura da tabela `tbl_usuarios`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_usuarios` (
@@ -6301,28 +6282,210 @@ CREATE TABLE IF NOT EXISTS `tbl_usuarios` (
   `Us_Nivel` int(1) NOT NULL,
   `Us_Login` varchar(10) DEFAULT NULL,
   `Us_Senha` varchar(40) DEFAULT NULL,
-  PRIMARY KEY (`Us_CPF`)
+  `Us_email` varchar(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `tbl_usuarios`
+-- Extraindo dados da tabela `tbl_usuarios`
 --
 
-INSERT INTO `tbl_usuarios` (`Us_CPF`, `Us_Nome`, `Us_DtNasc`, `Us_CRFA`, `Us_Cargo`, `Us_Nivel`, `Us_Login`, `Us_Senha`) VALUES
-('22222222222', 'Administrador', '2015-08-03', '', '', 1, 'adm', '42ef63e7836ef622d9185c1a456051edf16095cc'),
-('33333333333', 'Estoquista', '1980-01-06', '', 'Estoquista', 4, 'estoquista', '42ef63e7836ef622d9185c1a456051edf16095cc'),
-('44444444444', 'dra Maria Silva', '1940-09-28', '12401823', 'Fonoaudiologo', 2, 'prof', '42ef63e7836ef622d9185c1a456051edf16095cc'),
-('55555555555', 'Colaborador', '1987-11-14', '', 'Colaborador', 3, 'colab', '42ef63e7836ef622d9185c1a456051edf16095cc');
+INSERT INTO `tbl_usuarios` (`Us_CPF`, `Us_Nome`, `Us_DtNasc`, `Us_CRFA`, `Us_Cargo`, `Us_Nivel`, `Us_Login`, `Us_Senha`, `Us_email`) VALUES
+('22222222222', 'Administrador', '2015-08-03', '', '', 1, 'adm', '42ef63e7836ef622d9185c1a456051edf16095cc', ''),
+('33333333333', 'Estoquista', '1980-01-06', '', 'Estoquista', 4, 'estoquista', '42ef63e7836ef622d9185c1a456051edf16095cc', ''),
+('44444444444', 'dra Maria Silva', '1940-09-28', '12401823', 'Fonoaudiologo', 2, 'prof', '42ef63e7836ef622d9185c1a456051edf16095cc', ''),
+('55555555555', 'Colaborador', '1987-11-14', '', 'Colaborador', 3, 'colab', '42ef63e7836ef622d9185c1a456051edf16095cc', '');
 
 --
--- Restrições para dumps de tabelas
+-- Indexes for dumped tables
 --
 
 --
--- Restrições para tabelas `tbl_item_solicitacao`
+-- Indexes for table `tblnivel`
+--
+ALTER TABLE `tblnivel`
+ ADD PRIMARY KEY (`Nvl_Cod`);
+
+--
+-- Indexes for table `tbl_anamneseadt`
+--
+ALTER TABLE `tbl_anamneseadt`
+ ADD PRIMARY KEY (`AnmAdt_Cod`);
+
+--
+-- Indexes for table `tbl_anamneseinf`
+--
+ALTER TABLE `tbl_anamneseinf`
+ ADD PRIMARY KEY (`AnmInf_Cod`);
+
+--
+-- Indexes for table `tbl_andamento_paciente`
+--
+ALTER TABLE `tbl_andamento_paciente`
+ ADD PRIMARY KEY (`Andamento_id`), ADD KEY `Pc_CPF` (`Pc_CPF`);
+
+--
+-- Indexes for table `tbl_caracterizacao_paciente`
+--
+ALTER TABLE `tbl_caracterizacao_paciente`
+ ADD PRIMARY KEY (`Caract_Numero`), ADD KEY `Pc_CPF` (`Pc_CPF`), ADD KEY `Caract_Numero` (`Caract_Numero`);
+
+--
+-- Indexes for table `tbl_consulta`
+--
+ALTER TABLE `tbl_consulta`
+ ADD PRIMARY KEY (`Consulta_id`), ADD KEY `Andamento_id` (`Pc_CPF`);
+
+--
+-- Indexes for table `tbl_endereco`
+--
+ALTER TABLE `tbl_endereco`
+ ADD PRIMARY KEY (`Pc_CPF`);
+
+--
+-- Indexes for table `tbl_grauescolar`
+--
+ALTER TABLE `tbl_grauescolar`
+ ADD PRIMARY KEY (`GEsc_Cod`);
+
+--
+-- Indexes for table `tbl_implantes`
+--
+ALTER TABLE `tbl_implantes`
+ ADD PRIMARY KEY (`Impl_Cod`);
+
+--
+-- Indexes for table `tbl_item_solicitacao`
 --
 ALTER TABLE `tbl_item_solicitacao`
-  ADD CONSTRAINT `tbl_item_solicitacao_ibfk_1` FOREIGN KEY (`Solic_id`) REFERENCES `tbl_solicitacao` (`Solic_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ ADD PRIMARY KEY (`Isolic_id`), ADD KEY `Solic_id` (`Solic_id`);
+
+--
+-- Indexes for table `tbl_paciente`
+--
+ALTER TABLE `tbl_paciente`
+ ADD PRIMARY KEY (`Pc_CPF`), ADD KEY `Pc_CPF` (`Pc_CPF`);
+
+--
+-- Indexes for table `tbl_procedimentos`
+--
+ALTER TABLE `tbl_procedimentos`
+ ADD PRIMARY KEY (`Proc_Id`);
+
+--
+-- Indexes for table `tbl_proteses`
+--
+ALTER TABLE `tbl_proteses`
+ ADD PRIMARY KEY (`Prot_Cod`);
+
+--
+-- Indexes for table `tbl_solicitacao`
+--
+ALTER TABLE `tbl_solicitacao`
+ ADD PRIMARY KEY (`Solic_id`), ADD KEY `Pc_CPF` (`Pc_CPF`);
+
+--
+-- Indexes for table `tbl_telefone`
+--
+ALTER TABLE `tbl_telefone`
+ ADD PRIMARY KEY (`telefone_cod`);
+
+--
+-- Indexes for table `tbl_testeaasi`
+--
+ALTER TABLE `tbl_testeaasi`
+ ADD PRIMARY KEY (`testeaasi_id`);
+
+--
+-- Indexes for table `tbl_teste_caracterizacao_paciente`
+--
+ALTER TABLE `tbl_teste_caracterizacao_paciente`
+ ADD PRIMARY KEY (`Caract_Numero`);
+
+--
+-- Indexes for table `tbl_uf`
+--
+ALTER TABLE `tbl_uf`
+ ADD PRIMARY KEY (`UF_Cod`);
+
+--
+-- Indexes for table `tbl_usuarios`
+--
+ALTER TABLE `tbl_usuarios`
+ ADD PRIMARY KEY (`Us_CPF`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tbl_anamneseadt`
+--
+ALTER TABLE `tbl_anamneseadt`
+MODIFY `AnmAdt_Cod` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT for table `tbl_anamneseinf`
+--
+ALTER TABLE `tbl_anamneseinf`
+MODIFY `AnmInf_Cod` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `tbl_andamento_paciente`
+--
+ALTER TABLE `tbl_andamento_paciente`
+MODIFY `Andamento_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `tbl_caracterizacao_paciente`
+--
+ALTER TABLE `tbl_caracterizacao_paciente`
+MODIFY `Caract_Numero` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=82;
+--
+-- AUTO_INCREMENT for table `tbl_consulta`
+--
+ALTER TABLE `tbl_consulta`
+MODIFY `Consulta_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+--
+-- AUTO_INCREMENT for table `tbl_implantes`
+--
+ALTER TABLE `tbl_implantes`
+MODIFY `Impl_Cod` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `tbl_item_solicitacao`
+--
+ALTER TABLE `tbl_item_solicitacao`
+MODIFY `Isolic_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
+--
+-- AUTO_INCREMENT for table `tbl_procedimentos`
+--
+ALTER TABLE `tbl_procedimentos`
+MODIFY `Proc_Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `tbl_proteses`
+--
+ALTER TABLE `tbl_proteses`
+MODIFY `Prot_Cod` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `tbl_solicitacao`
+--
+ALTER TABLE `tbl_solicitacao`
+MODIFY `Solic_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+--
+-- AUTO_INCREMENT for table `tbl_telefone`
+--
+ALTER TABLE `tbl_telefone`
+MODIFY `telefone_cod` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
+--
+-- AUTO_INCREMENT for table `tbl_testeaasi`
+--
+ALTER TABLE `tbl_testeaasi`
+MODIFY `testeaasi_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Limitadores para a tabela `tbl_item_solicitacao`
+--
+ALTER TABLE `tbl_item_solicitacao`
+ADD CONSTRAINT `tbl_item_solicitacao_ibfk_1` FOREIGN KEY (`Solic_id`) REFERENCES `tbl_solicitacao` (`Solic_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

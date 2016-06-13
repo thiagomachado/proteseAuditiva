@@ -20,7 +20,7 @@
             }
         ?>
 
-        <a href=""><li>CADASTRO DE USUARIOS</li></a>
+        <a href="<?php echo site_url("cadastroUsuario"); ?>"><li>CADASTRO DE USUARIOS</li></a>
     </ul>
 </div>
 
