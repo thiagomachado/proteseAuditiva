@@ -1,6 +1,6 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
-    $nivel = $this->session->userdata("nivel");
+    $nivel = $this->session->userdata("usuario")->Us_Nivel;
 ?>
 <div class="menu">
     <ul>
@@ -19,8 +19,12 @@
                 echo '<a href=""><li>RELATÓRIO FINANCEIRO</li></a>';
             }
         ?>
-
-        <a href="<?php echo site_url("cadastroUsuario"); ?>"><li>CADASTRO DE USUARIOS</li></a>
+        <?php
+          if($nivel == 1)
+          {
+              echo '<a href="'.site_url("cadastroUsuario").'"><li>CADASTRO DE USUARIOS</li></a>';
+          }          
+        ?>
     </ul>
 </div>
 

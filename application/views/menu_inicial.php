@@ -1,11 +1,12 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
+    $nivel = $this->session->userdata("usuario")->Us_Nivel;
 ?>
 
 <div class = "menu">
         <ul>
             <?php
-                if($this->session->userdata("nivel") != 4)
+                if($nivel != 4)
                 {
                     echo '<a href="'.site_url("atendimento").'"><li class = "liInicial">ATENDIMENTO</li></a>';
                 }

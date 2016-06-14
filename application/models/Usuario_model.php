@@ -32,21 +32,16 @@
 
         function recuperarDadosUsuario($usuarioLogin)
         {
-          $query = $this->db->get_where('tbl_usuarios', array('Us_Login' => $usuarioLogin))->result();
-          foreach ($query as $usuario)
-          {
-            $dadosUsuario["cpf"] = $usuario->Us_CPF;
-            $dadosUsuario["nome"] = $usuario->Us_Nome;
-            $dadosUsuario["nivel"] = $usuario->Us_Nivel;
-            $dadosUsuario["cargo"] = $usuario->Us_Cargo;
+          $query   = $this->db->get_where('tbl_usuarios', array('Us_Login' => $usuarioLogin))->result();
+          $usuario = $query[0];
 
-            return $dadosUsuario;
-          }
+          return $usuario;
         }
 
-        function recuperarDadosUsuarioPorCPF($cpf)
+        public function recuperarDadosUsuarioPorCPF($cpf)
         {
-          $usuario = $this->db->get_where('tbl_usuarios', array('Us_Login' => $usuarioLogin))->result();
+          $usuario = $this->db->get_where('tbl_usuarios', array('Us_CPF' => $cpf))->result();
+          $usuario = $usuario[0];
           return $usuario;
         }
 
@@ -73,6 +68,12 @@
             }
 
             return false;
+        }
+
+        public function editar($cpf,$usuario)
+        {
+          $this->db->update('tbl_usuarios', $usuario, array('Us_CPF' => $cpf));
+          return true;
         }
     }
 ?>

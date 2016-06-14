@@ -1,6 +1,6 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
-    $nivel = $this->session->userdata("nivel");
+    $nivel = $this->session->userdata("usuario")->Us_Nivel;
 ?>
 
 <div class="menuDireito">

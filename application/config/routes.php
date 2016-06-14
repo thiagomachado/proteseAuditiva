@@ -130,3 +130,5 @@ $route['editarProcedimento']          = 'procedimento/editar';
 //------------------Usuarios-----------------------------------------------------------
 $route['cadastroUsuario']     = 'usuario/cadastroUsuario';
 $route['cadastrarUsuario']    = 'usuario/cadastrar';
+$route['meusDados']           = 'usuario/edicaoUsuario';
+$route['editarUsuario']       = 'usuario/editar';

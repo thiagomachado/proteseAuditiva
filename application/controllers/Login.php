@@ -25,9 +25,7 @@
             {
                 $usuario = $this->usuario_model->recuperarDadosUsuario($nomeUsuario);
                 $this->session->set_userdata("logado", 1);
-                $this->session->set_userdata("cpf", $usuario["cpf"]);
-                $this->session->set_userdata("nome", $usuario["nome"]);
-                $this->session->set_userdata("nivel", $usuario["nivel"]);
+                $this->session->set_userdata("usuario", $usuario);
                 redirect(base_url());
 
             }
@@ -41,6 +39,7 @@
         public function logout()
         {
             $this->session->unset_userdata("logado");
+            $this->session->unset_userdata("usuario");
             redirect(base_url());
         }
     }

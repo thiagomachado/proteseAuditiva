@@ -20,11 +20,11 @@
           $this->template->load('template','usuario_cadastro', $data);
         }
 
-        public function edicaoUsuario($cpf)
+        public function edicaoUsuario()
         {
-
+          $data["niveis"] = $this->nivel_model->get_all();
           $this->template->set('title', 'MEUS DADOS');
-          $this->template->load('template','paciente_edicao', $data);
+          $this->template->load('template','usuario_edicao', $data);
         }
 
 
@@ -50,27 +50,21 @@
         public function editar()
         {
           extract($_POST);
-          $dataPaciente = array(
-            'Pc_CPF'          => $Pc_CPF,
-            'Pc_Nome'         =>strtoupper($Pc_Nome),
-            'Pc_CartaoSus'    => $Pc_CartaoSus,
-            'Pc_NumProntuario'=> $Pc_NumProntuario,
-            'Pc_DtNascimento' => $Pc_DtNascimento,
-            'Pc_Sexo'         => $Pc_Sexo,
-            'Pc_Etnia'        => $Pc_Etnia,
-            'Pc_NomeMae'      => strtoupper($Pc_NomeMae),
-            'Pc_NomePai'      => strtoupper($Pc_NomePai),
-            'Pc_GrauEscolar'  => $Pc_GrauEscolar,
-            'Pc_SeTrabalha'   => $Pc_SeTrabalha,
-            'Pc_Profissao'    => $Pc_Profissao,
-            'Pc_TipoAnamn'    => $Pc_TipoAnamn
+          $dataUsuario = array(
+            'Us_CPF'    =>  $Us_CPF,
+            'Us_Nome'   =>  strtoupper($Us_Nome),
+            'Us_DtNasc' =>  $Us_DtNasc,
+            'Us_CRFA'   =>  $Us_CRFA,
+            'Us_Cargo'  =>  $Us_Cargo,
+            'Us_Login'  =>  $Us_Login,
+            'Us_Senha'  =>  sha1($Us_Senha),
+            'Us_email'  =>  $Us_email
           );
 
-          $editarPaciente = $this->paciente_model->editarPacientePorCPF($cpf, $dataPaciente);
-          $this->endereco_model->editarEnderecoPorCPF($cpf, $dataEndereco);
-          $this->telefone_model->editarTelefonePorCPF($cpf, $dataTelefone);
-
-          echo json_encode(true);
+          $this->usuario_model->editar($cpf,$dataUsuario);
+          $usuarioEditado = $this->usuario_model->recuperarDadosUsuarioPorCPF($Us_CPF);
+          $this->session->set_userdata("usuario", $usuarioEditado);
+          echo json_encode($usuarioEditado);
         }
 
     }
