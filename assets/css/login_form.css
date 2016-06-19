@@ -57,9 +57,20 @@ tr
     font-weight: bold;
     font-size: 17px;
     text-align: center;
+    cursor: pointer;
 }
 
 .linkEsqueciMinhaSenha:hover
 {
     color: #76ccfb;
+}
+
+#nomeUsuario
+{
+  text-align: center;
+}
+
+#usuarioEsqueciSenha
+{
+
 }

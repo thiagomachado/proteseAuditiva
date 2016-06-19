@@ -9,16 +9,16 @@
             parent::__construct();
             $this->template->set('title', 'FONOAUDIOLOGIA');
             $this->template->set('css', link_tag('assets/css/login_form.css'));
+            $this->load->model('usuario_model');
         }
 
         public function index()
         {
-          $this->template->load('template','login_form');
+            $this->template->load('template','login_form');
         }
 
         public function logar()
         {
-            $this->load->model('usuario_model');
             $nomeUsuario = $this->input->post('nomeUsuario');
             $senha       = sha1($this->input->post('senha'));
             if($this->usuario_model->verificarUsuario($nomeUsuario, $senha))
@@ -41,6 +41,17 @@
             $this->session->unset_userdata("logado");
             $this->session->unset_userdata("usuario");
             redirect(base_url());
+        }
+
+        public function recuperarSenha()
+        {
+            extract($_POST);
+            //$login vem pelo POST da request http
+            $usuario = $this->usuario_model->recuperarDadosUsuario($login);
+
+            mail($usuario->Us_email, "Recuperação de senha", "senha recuperada", "From: bdProteseAuditiva@srvfono.hucff.ufrj.br");
+            echo json_encode($usuario->Us_email);
+
         }
     }
 
