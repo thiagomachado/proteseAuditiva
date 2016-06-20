@@ -83,7 +83,10 @@
       $dataProcedimentos[$procedimento->Proc_Id] = $procedimento->Proc_Codigo .' - '.$procedimento->Proc_Nome ;
     }
 
-
+    foreach ($profissionais as $profissional)
+    {
+      $dataProfissional[$profissional->Us_CPF] = $profissional->Us_Nome;
+    }
 
     $dataSubmit = array(
             'type'          => 'submit',

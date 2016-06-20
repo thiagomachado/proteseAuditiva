@@ -110,7 +110,7 @@
 
           <td>
             <fieldset class="subsecaoFormulario">
-              <legend>Fez uso de medicação por tempo prolongado*?</legend>
+              <legend>Fez ou faz uso de medicamento prolongado*?</legend>
               <?php echo form_input($dataUsoMedicacaoS);?><label>Sim</label>
               <?php echo form_input($dataUsoMedicacaoN);?><label>Não</label><br>
               <label>Qual e para que?</label><?php echo form_input($dataMedicacao);?>

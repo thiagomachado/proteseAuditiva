@@ -81,6 +81,12 @@
               <?php echo form_textarea($dataObs); ?>
             </td>
           </tr>
+          <tr>
+            <td colspan="4">
+              <label>Selecione o profissional responsável :</label><br>
+              <?php echo form_dropdown('profissional', $dataProfissional, '', 'id = "profissional"'); ?>
+            </td>
+          </tr>
         </table>
       </fieldset>
 
@@ -202,6 +208,7 @@ $(document).ready(function() {
               Solic_cid10sec:        $("#cid10Sec").val(),
               Solic_cid10causas:     $("#cid10Causas").val(),
               Solic_obs:             $("#obs").val(),
+              Solic_CPF_Profissional:$("#profissional").val(),
               procedimentos:         procedimentos,
               quantidades:           quantidades
             },

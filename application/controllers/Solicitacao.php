@@ -11,6 +11,7 @@
             $this->load->model('solicitacao_model');
             $this->load->model('item_solicitacao_model');
             $this->load->model('paciente_model');
+            $this->load->model('usuario_model');
             $this->load->model('procedimento_model');
             $this->load->model('andamento_paciente_model');
             $this->load->library('m_pdf');
@@ -32,10 +33,12 @@
 
         public function cadastroSolicitacao($cpf)
         {
-            $paciente                = $this->paciente_model->recuperarPacientePorCPF($cpf);
             $procedimentos           = $this->procedimento_model->recuperarProcedimentos();
-            $dados['paciente']       = $paciente;
+
+            $dados['paciente']       = $this->paciente_model->recuperarPacientePorCPF($cpf);
+            $dados['profissionais']  = $this->usuario_model->recuperarProfissionais();
             $dados['procedimentos']  = $procedimentos['procedimentos'];
+
 
             $this->template->set('title', 'CADASTRO DE SOLICITAÇÃO');
             $this->template->load('template','solicitacao_cadastro',$dados);
@@ -72,13 +75,12 @@
 
         public function edicaoSolicitacao($idSolicitacao)
         {
-            $solicitacao             = $this->solicitacao_model->recuperarSolicitacaoPorId($idSolicitacao);
-            $itensSolicitacao        = $this->item_solicitacao_model->recuperarItensPorSolicitacao($idSolicitacao);
             $procedimentos           = $this->procedimento_model->recuperarProcedimentos();
-            $paciente                = $this->paciente_model->recuperarPacientePorCPF($solicitacao->Pc_CPF);
-            $data["itens"]           = $itensSolicitacao;
-            $data["paciente"]        = $paciente;
-            $data["solicitacao"]     = $solicitacao;
+
+            $data["itens"]           = $this->item_solicitacao_model->recuperarItensPorSolicitacao($idSolicitacao);
+            $data["paciente"]        = $this->paciente_model->recuperarPacientePorCPF($solicitacao->Pc_CPF);;
+            $data["solicitacao"]     = $this->solicitacao_model->recuperarSolicitacaoPorId($idSolicitacao);
+            $data['profissionais']  = $this->usuario_model->recuperarProfissionais();
             $data["procedimentos"]   = $procedimentos["procedimentos"];
 
             $this->template->set('title', 'EDIÇÃO DE SOLICITACÃO');
@@ -96,6 +98,7 @@
             'Solic_cid10principal'=> $Solic_cid10principal,
             'Solic_cid10sec'      => $Solic_cid10sec,
             'Solic_cid10causas'   => $Solic_cid10causas,
+            'Solic_CPF_Profissional' =>$Solic_CPF_Profissional,
             'Solic_obs'           => $Solic_obs
           );
 
@@ -161,6 +164,7 @@
             'Solic_cid10principal' => $Solic_cid10principal,
             'Solic_cid10sec'       => $Solic_cid10sec,
             'Solic_cid10causas'    =>$Solic_cid10causas,
+            'Solic_CPF_Profissional'=>$Solic_CPF_Profissional,
             'Solic_obs'            => $Solic_obs
           );
            $this->solicitacao_model->editarSolicitacao($dataSolicitacao, $Solic_id);
