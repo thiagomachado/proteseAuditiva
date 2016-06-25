@@ -22,5 +22,14 @@
           $query = $this->db->get('tbl_municipios');
           return $query->result();
         }
+
+        function recuperarMunicipioPorCodIBGE($codigo)
+        {
+          $this->db->where('Mun_Cod', $codigo);
+          $query     = $this->db->get('tbl_municipios');
+          $array     = $query->result();
+          $municipio = $array[0];
+          return $municipio;
+        }
     }
 ?>

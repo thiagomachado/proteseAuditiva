@@ -27,7 +27,7 @@
 
         function recuperarTelefonePorCPF($cpf)
         {
-          //retorna o objeto endereço
+          //retorna o objeto telefone
             $this->db->where('Pc_CPF', $cpf);
             $query = $this->db->get('tbl_telefone');
             $array = $query->result();

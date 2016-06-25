@@ -52,6 +52,8 @@
 
         }
 
+        //só possui função de edição pois um andamento em branco é criado durante a Solicitacao
+
         public function editar()
         {
           extract($_POST);

@@ -13,8 +13,13 @@
             $this->load->model('paciente_model');
             $this->load->model('usuario_model');
             $this->load->model('procedimento_model');
+            $this->load->model('endereco_model');
+            $this->load->model('telefone_model');
+            $this->load->model('municipio_model');
+            $this->load->model('cor_model');
             $this->load->model('andamento_paciente_model');
             $this->load->library('m_pdf');
+            $this->load->library('pdf');
         }
 
         public function selecionarPaciente()
@@ -191,24 +196,30 @@
           $itensSolicitacao = $this->item_solicitacao_model->recuperarItensPorSolicitacao($idSolicitacao);
           $paciente         = $this->paciente_model->recuperarPacientePorCPF($solicitacao->Pc_CPF);
           $procedimentos    = $this->procedimento_model->recuperarProcedimentos();
+          $endereco         = $this->endereco_model->recuperarEnderecoPorCPF($solicitacao->Pc_CPF);
+          $telefone         = $this->telefone_model->recuperarTelefonePorCPF($solicitacao->Pc_CPF);
+          $municipios       = $this->municipio_model->recuperarMunicipioPorCodIBGE($endereco->End_CodIBGE);
+          $cor              = $this->cor_model->recuperarCorPorCodigo($paciente->Pc_Etnia);
+          $profissional     = $this->usuario_model->recuperarDadosUsuarioPorCPF($solicitacao->Solic_CPF_Profissional);
 
           $dados['solicitacao']      = $solicitacao;
           $dados['itensSolicitacao'] = $itensSolicitacao;
           $dados['paciente']         = $paciente;
           $dados['procedimentos']    = $procedimentos["procedimentos"];
+          $dados['profissionais']    = $this->usuario_model->recuperarProfissionais();
+          $dados['endereco']         = $endereco;
+          $dados['telefone']         = $telefone;
+          $dados['municipios']       = $municipios;
+          $dados['cor']              = $cor;
+          $dados['profissional']     = $profissional;
 
-          //load the view and saved it into $html variable
-          $html=$this->load->view('solicitacao_laudo', $dados, true);
+          //passa o laudo como arquivo pdf para download
+          $this->pdf->load_view('solicitacao_laudo', $dados);
+          $this->pdf->render();
+          $this->pdf->stream(trim($paciente->Pc_Nome).".pdf");
 
-
-          //this the the PDF filename that user will get to download
-          $pdfFilePath = trim($paciente->Pc_Nome).".pdf";
-
-          //generate the PDF from the given html
-          $this->m_pdf->pdf->WriteHTML($html);
-
-          //download it.
-          $this->m_pdf->pdf->Output($pdfFilePath, "D");
+          //exibe o laudo como pagina web
+          //echo $this->load->view('solicitacao_laudo', $dados, true);
         }
     }
 ?>

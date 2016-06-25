@@ -150,6 +150,7 @@ body
 .resultado
 {
   font-size: 14px;
+  overflow: auto;
   background-color: #D8E2DC;
   border-width: 2px;
   border-color: #CCC;

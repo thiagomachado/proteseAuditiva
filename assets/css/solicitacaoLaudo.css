@@ -1,0 +1,60 @@
+fieldset
+{
+    width: auto;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #000;
+    clear: both;
+    page-break-inside:avoid;
+}
+table
+{
+  width: 100%;
+}
+legend
+{
+  font-size: 9px;
+  font-weight: bold;
+}
+.ministerioDaSaude
+{
+  background-image: url(imagens/minis.jpg);
+  width: 150px;
+  height: 60px;
+  float: left;
+}
+.sus
+{
+  background-image: url(imagens/vwsus.jpg);
+  width: 180px;
+  height: 60px;
+  float: left;
+
+}
+.cabecalho
+{
+  margin-left: 350px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+.campo
+{
+  height: 8px;
+}
+.campoCarimbo
+{
+  height: 40px;
+}
+.tamanhoReduzido
+{
+  width:100px;
+}
+.titulo
+{
+  background-color: #000;
+  text-align: center;
+  width: 100%;
+  font-size: 18px;
+  color: #FFF;
+}
