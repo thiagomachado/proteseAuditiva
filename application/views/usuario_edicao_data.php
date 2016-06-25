@@ -33,6 +33,13 @@
             'value'         => $this->session->userdata("usuario")->Us_CPF
     );
 
+    $dataCartaoSUS = array(
+            'name'          => 'cartaoSUS',
+            'id'            => 'cartaoSUS',
+            'size'          => '20',
+            'maxlength'     => '45',
+            'value'         => $this->session->userdata("usuario")->Us_CartaoSUS
+    );
 
     $dataDataNascimento = array(
             'type'          => 'date',

@@ -40,6 +40,10 @@
                 <?php echo form_input($dataCRFA);?>
             </td>
             <td>
+                <label>Cartão de Saúde do Profissional:</label><br>
+                <?php echo form_input($dataCartaoSUS);?>
+            </td>
+            <td>
               <label>Nivel de Acesso:</label><br>
               <?php echo form_dropdown("nivel",$dataNiveis,1,"id='nivel' required"); ?>
             </td>
@@ -50,7 +54,7 @@
               <label>Nome de usuário*:</label><br>
               <?php echo form_input($dataLogin); ?>
             </td>
-            <td colspan="2">
+            <td colspan="3">
               <label>E-mail*:</label><br>
               <?php echo form_input($dataEmail); ?>
             </td>
@@ -158,6 +162,7 @@ $(document).ready(function() {
               Us_CRFA:   $("#crfa").val(),
               Us_Cargo:  $("#cargo").val(),
               Us_Nivel:  $("#nivel").val(),
+              Us_CartaoSUS: $("#cartaoSUS").val(),
               Us_Login:  $("#login").val(),
               Us_Senha:  $("#senha").val(),
               Us_email:  $("#email").val()

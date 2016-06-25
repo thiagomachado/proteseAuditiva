@@ -32,15 +32,16 @@
         {
           extract($_POST);
           $dataUsuario = array(
-            'Us_CPF'    =>  $Us_CPF,
-            'Us_Nome'   =>  strtoupper($Us_Nome),
-            'Us_DtNasc' =>  $Us_DtNasc,
-            'Us_CRFA'   =>  $Us_CRFA,
-            'Us_Cargo'  =>  $Us_Cargo,
-            'Us_Nivel'  =>  $Us_Nivel,
-            'Us_Login'  =>  $Us_Login,
-            'Us_Senha'  =>  sha1($Us_Senha),
-            'Us_email'  =>  $Us_email
+            'Us_CPF'       =>  $Us_CPF,
+            'Us_Nome'      =>  strtoupper($Us_Nome),
+            'Us_DtNasc'    =>  $Us_DtNasc,
+            'Us_CRFA'      =>  $Us_CRFA,
+            'Us_Cargo'     =>  $Us_Cargo,
+            'Us_CartaoSUS' => $Us_CartaoSUS,
+            'Us_Nivel'     =>  $Us_Nivel,
+            'Us_Login'     =>  $Us_Login,
+            'Us_Senha'     =>  sha1($Us_Senha),
+            'Us_email'     =>  $Us_email
           );
 
           $usuarioInserido = $this->usuario_model->cadastrar($dataUsuario);
@@ -56,6 +57,7 @@
             'Us_DtNasc' =>  $Us_DtNasc,
             'Us_CRFA'   =>  $Us_CRFA,
             'Us_Cargo'  =>  $Us_Cargo,
+            'Us_CartaoSUS' => $Us_CartaoSUS,
             'Us_Login'  =>  $Us_Login,
             'Us_Senha'  =>  sha1($Us_Senha),
             'Us_email'  =>  $Us_email

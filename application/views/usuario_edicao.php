@@ -42,6 +42,10 @@
                 <label>CRFA:</label><br>
                 <?php echo form_input($dataCRFA);?>
             </td>
+            <td>
+                <label>Cartão de Saúde do Profissional:</label><br>
+                <?php echo form_input($dataCartaoSUS);?>
+            </td>
 
           </tr>
 
@@ -157,6 +161,7 @@ $(document).ready(function() {
               Us_DtNasc: $("#dataNascimento").val(),
               Us_CRFA:   $("#crfa").val(),
               Us_Cargo:  $("#cargo").val(),
+              Us_CartaoSUS: $("#cartaoSUS").val(),
               Us_Login:  $("#login").val(),
               Us_Senha:  $("#senha").val(),
               Us_email:  $("#email").val(),

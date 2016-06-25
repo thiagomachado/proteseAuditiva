@@ -35,7 +35,14 @@
     $dataCRFA = array(
             'name'          => 'crfa',
             'id'            => 'crfa',
-            'size'          => '30',
+            'size'          => '20',
+            'maxlength'     => '45'
+    );
+
+    $dataCartaoSUS = array(
+            'name'          => 'cartaoSUS',
+            'id'            => 'cartaoSUS',
+            'size'          => '20',
             'maxlength'     => '45'
     );
 
