@@ -2,45 +2,75 @@ fieldset
 {
     width: auto;
     border-width: 1px;
+    border-collapse: collapse;
     border-style: solid;
     border-color: #000;
     clear: both;
     page-break-inside:avoid;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 table
 {
   width: 100%;
+  padding: 0px;
+}
+tr
+{
+  padding: 0px;
+  margin: 0px;
+}
+td
+{
+  padding: 0px;
+  margin: 0px;
 }
 legend
 {
-  font-size: 9px;
+  font-size: 8px;
   font-weight: bold;
 }
 .ministerioDaSaude
 {
-  background-image: url(imagens/minis.jpg);
-  width: 150px;
-  height: 60px;
+  background-image: url(imagens/minisLaudo.jpg);
+  background-size: contain;
+  width: 120px;
+  height: 40px;
   float: left;
 }
 .sus
 {
-  background-image: url(imagens/vwsus.jpg);
-  width: 180px;
-  height: 60px;
+  background-image: url(imagens/vwsusLAUDO.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 120px;
+  height: 40px;
   float: left;
 
 }
 .cabecalho
 {
-  margin-left: 350px;
+  margin-left: 200px;
   text-align: center;
-  font-size: 18px;
+  font-size: 12px;
   font-weight: bold;
 }
 .campo
 {
-  height: 8px;
+  height: 12px;
+  padding:0 px;
+  padding-top: 10px;
+  padding-left:4px;
+  margin-bottom:3px;
+  margin-top: 0px;
+}
+.obs
+{
+  height: 30px;
+}
+.campo label
+{
+  font-size: 10px;
 }
 .campoCarimbo
 {
@@ -55,6 +85,6 @@ legend
   background-color: #000;
   text-align: center;
   width: 100%;
-  font-size: 18px;
+  font-size: 12px;
   color: #FFF;
 }

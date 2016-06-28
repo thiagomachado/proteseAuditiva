@@ -39,13 +39,12 @@
               <td>
                 <fieldset class="campo">
                   <legend>CNES:</legend>
-                  <label></label>
+                  <label>2280167</label>
                 </fieldset>
               </td>
             </tr>
           </table>
         </fieldset>
-        <br/>
         <fieldset class="secaoFormulario">
           <legend class="titulo">IDENTIFICAÇÃO DO PACIENTE</legend>
           <table class="tabelaPDF">
@@ -159,7 +158,43 @@
 
           </table>
         </fieldset>
-        <br>
+        <fieldset class="secaoFormulario">
+          <legend class="titulo">PROCEDIMENTO SOLICITADO:</legend>
+          <table>
+              <tr>
+                <td>
+                  <fieldset class="campo">
+                    <legend>CÓDIGO DO PROCEDIMENTO</legend>
+                    <label></label>
+                  </fieldset>
+                </td>
+                <td>
+                  <fieldset class="campo">
+                    <legend>SERVIÇO</legend>
+                    <label></label>
+                  </fieldset>
+                </td>
+                <td>
+                  <fieldset class="campo">
+                    <legend>CLASS</legend>
+                    <label></label>
+                  </fieldset>
+                </td>
+                <td>
+                  <fieldset class="campo">
+                    <legend>NOME DO PROCEDIMENTO PRINCIPAL</legend>
+                    <label></label>
+                  </fieldset>
+                </td>
+                <td>
+                  <fieldset class="campo">
+                    <legend>QTDE</legend>
+                    <label></label>
+                  </fieldset>
+                </td>
+              </tr>
+          </table>
+        </fieldset>
         <fieldset class="secaoFormulario">
           <legend class="titulo">PROCEDIMENTO(S) SECUNDÁRIO(S):</legend>
           <table>
@@ -187,9 +222,6 @@
              ?>
           </table>
         </fieldset>
-
-        <br>
-
         <fieldset class="secaoFormulario">
           <legend class="titulo">JUSTIFICATIVA DO(S) PROCEDIMENTO(S) SOLICITADO(S)</legend>
           <table>
@@ -221,7 +253,7 @@
             </tr>
             <tr>
               <td colspan="4">
-                <fieldset class="campo">
+                <fieldset class="campo obs">
                   <legend>OBSERVAÇÕES</legend>
                   <label><?php echo $solicitacao->Solic_obs; ?></label>
                 </fieldset>
@@ -229,9 +261,6 @@
             </tr>
           </table>
         </fieldset>
-
-        <br>
-
         <fieldset class="secaoFormulario">
           <legend class="titulo">SOLICITAÇÃO</legend>
           <table>
@@ -265,9 +294,6 @@
             </tr>
           </table>
         </fieldset>
-
-        <br>
-
         <fieldset class="secaoFormulario">
           <legend class="titulo">AUTORIZAÇÃO</legend>
           <table>
@@ -321,9 +347,6 @@
             </tr>
           </table>
         </fieldset>
-
-        </br>
-
         <fieldset class="secaoFormulario">
           <legend class="titulo">IDENTIFICAÇÃO DO ESTABELECIMENTO DE SAÚDE (EXECUTANTE)</legend>
           <table>
@@ -331,13 +354,13 @@
               <td colspan="4">
                 <fieldset class="campo">
                   <legend>NOME DO ESTABELECIMENTO DE SAÚDE EXECUTANTE:</legend>
-                  <label></label>
+                  <label>HOSPITAL UNIVERSITÁRIO CLEMENTINO FRAGA FILHO</label>
                 </fieldset>
               </td>
               <td>
                 <fieldset class="campo">
                   <legend>CNES:</legend>
-                  <label></label>
+                  <label>2280167</label>
                 </fieldset>
               </td>
             </tr>
