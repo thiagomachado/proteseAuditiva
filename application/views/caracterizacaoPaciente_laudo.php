@@ -11,236 +11,280 @@
 <html>
 
   <head lang = "pt-br">
-    <title><?php echo $title; ?> </title>
-    <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery-1.12.0.min.js"></script>
-    <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>assets/js/functions.js"></script>
     <?php
     echo meta('Content-type', 'text/html; charset=utf-8', 'equiv');
-    echo link_tag('assets/css/templatePDF.css');
     echo link_tag('assets/css/caracterizacaoPacientePDF.css');
     ?>
   </head>
   <body>
     <div class="conteudo">
-      <?php
-        echo form_open('',$data_form);
-      ?>
       <div class="areaFormulario">
-        <img src="<?php echo base_url();?>assets/css/imagens/vwsus.jpg" class="le" />
-        <img src="<?php echo base_url();?>assets/css/imagens/minis.jpg" class="le" />
-        <img src="<?php echo base_url();?>assets/css/imagens/logohucff.jpg" class = "ld" />
-        <center><h1>CARACTERIZAÇÃO DE PACIENTE</h1></center>
-        <fieldset class="secaoFormulario">
-          <legend>Paciente</legend>
+          <div class="logoHUCFF"></div>
+
+          <div class="cabecalho">
+            <p>
+              UNIVERSIDADE FEDERAL DO RIO DE JANEIRO</br>
+              HOSPITAL UNIVERSITÁRIO CLEMENTINO FRAGA FILHO</br>
+              DIVISÃO DE APOIO ASSISTENCIAL</br>
+              SERVIÇO DE FONOAUDIOLOGIA</br>
+              PROGRAMA DE SAÚDE AUDITIVA DE ALTA COMPLEXIDADE</br>
+            </p>
+          </div>
+          <fieldset class="secaoFormulario">
+            <legend class="titulo">IDENTIFICAÇÃO DO PACIENTE</legend>
+            <table class="tabelaPDF">
+              <tr>
+                <td colspan="2">
+                  <fieldset class="campo">
+                    <legend>NOME:</legend>
+                    <label><?php echo trim($paciente->Pc_Nome); ?></label>
+                  </fieldset>
+                </td>
+                <td>
+                  <fieldset class="campo">
+                    <legend>Nº DO PRONTUÁRIO:</legend>
+                    <label><?php echo $paciente->Pc_NumProntuario; ?></label>
+                  </fieldset>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <fieldset class="campo">
+                    <legend>CPF:</legend>
+                    <label><?php echo strtoupper($paciente->Pc_CPF); ?></label>
+                  </fieldset>
+                </td>
+                <td>
+                  <fieldset class="campo">
+                    <legend>CARTÃO NACIONAL DE SAÚDE(CNS):</legend>
+                    <label><?php echo $paciente->Pc_CartaoSus; ?></label>
+                  </fieldset>
+                </td>
+                <td>
+                  <fieldset class="campo">
+                    <legend>DATA DE NASCIMENTO:</legend>
+                    <label><?php echo date("d/m/Y", strtotime($paciente->Pc_DtNascimento)); ?></label>
+                  </fieldset>
+                </td>
+
+              </tr>
+            </table>
+          </fieldset>
+
+          <fieldset class="secaoFormulario">
+            <legend class="titulo">CARACTERIZAÇÃO DA PERDA AUDITIVA</legend>
+            <table>
+              <tr>
+                <td>
+                  <fieldset class="campo">
+                    <legend>TIPO DE PERDA AUDITIVA:</legend>
+                    <label><?php echo$caracterizacao->Caract_TipoPerda; ?></label>
+                  </fieldset>
+                </td>
+                <td>
+                  <fieldset class="campo">
+                    <legend>GRAU DE PERDA:</legend>
+                    <label><?php echo$caracterizacao->Caract_GrauPerda; ?></label>
+                  </fieldset>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <fieldset class="campo">
+                    <legend>CONFIGURAÇÃO:</legend>
+                    <label><?php echo$caracterizacao->Caract_Config; ?></label>
+                  </fieldset>
+                </td>
+                <td>
+                  <fieldset class="campo">
+                    <legend>DURAÇÃO:</legend>
+                    <label><?php echo$caracterizacao->Caract_Duracao; ?></label>
+                  </fieldset>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <fieldset class="campo">
+                    <legend>PROGRESSÃO:</legend>
+                    <label><?php echo$caracterizacao->Caract_Progress; ?></label>
+                  </fieldset>
+                </td>
+                <td>
+                  <fieldset class="campo">
+                    <legend>RECRUTAMENTO:</legend>
+                    <label><?php echo$caracterizacao->Caract_Recrut; ?></label>
+                  </fieldset>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <fieldset class="campo">
+                    <legend>ZUMBIDO:</legend>
+                    <label><?php echo$caracterizacao->Caract_Zumbido; ?></label>
+                  </fieldset>
+                </td>
+              </tr>
+
+            </table>
+          </fieldset>
+          <fieldset class="secaoFormulario">
+            <legend class="titulo">EXAMES</legend>
+            <table>
+              <tr>
+                <td colspan="2">
+                  <fieldset class="campo obs">
+                    <legend>RESULTADO DOS EXAMES COMPLEMENTARES</legend>
+                    <label><?php echo$caracterizacao->Caract_ExamesCompl; ?></label>
+                  </fieldset>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <fieldset class="campo">
+                    <legend>CANDIDATO AO USO DE AASI:</legend>
+                    <label><?php echo $Caract_AASI; ?></label>
+                  </fieldset>
+                </td>
+                <td>
+                  <fieldset class="campo">
+                    <legend>CANDIDATO AO USO DE IMPLANTE COCLEAR:</legend>
+                    <label><?php echo $Caract_ImplCoclear;?></label>
+                  </fieldset>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <fieldset class="campo obs">
+                    <legend>HISTÓRICO DA PERDA AUDITIVA</legend>
+                    <label><?php echo$caracterizacao->Caract_HistPerdaAud; ?></label>
+                  </fieldset>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <fieldset class="campo">
+                    <legend>MODELO DE AASI INDICADO:</legend>
+                    <label><?php echo $caracterizacao->Caract_AASIModelo; ?></label>
+                  </fieldset>
+                </td>
+                <td>
+                  <fieldset class="campo">
+                    <legend>ORELHA:</legend>
+                    <label><?php echo $caracterizacao->Caract_AASIOrelha;?></label>
+                  </fieldset>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <fieldset class="campo obs">
+                    <legend>OBSERVAÇÕES</legend>
+                    <label><?php echo$caracterizacao->Caract_Obs; ?></label>
+                  </fieldset>
+                </td>
+              </tr>
+            </table>
+          </fieldset>
+
+          <fieldset class="secaoFormulario">
+            <legend class="titulo">LIMIARES DE AUDIBILIDADE</legend>
+            <table class="tabelaCaracterizacao">
+              <tr>
+                <th></th>
+                <th>250</th>
+                <th>500</th>
+                <th>1K</th>
+                <th>2K</th>
+                <th>3K</th>
+                <th>4K</th>
+                <th>6K</th>
+                <th>8K</th>
+                <th>Percepção da fala</th>
+              </tr>
+              <tr>
+                <td>Sem AASI</td>
+                <td><?php echo $testeAASI->sem250; ?></td>
+                <td><?php echo $testeAASI->sem500; ?></td>
+                <td><?php echo $testeAASI->sem1k; ?></td>
+                <td><?php echo $testeAASI->sem2k; ?></td>
+                <td><?php echo $testeAASI->sem3k; ?></td>
+                <td><?php echo $testeAASI->sem4k; ?></td>
+                <td><?php echo $testeAASI->sem6k; ?></td>
+                <td><?php echo $testeAASI->sem8k; ?></td>
+                <td><?php echo $testeAASI->sempercfala; ?></td>
+              </tr>
+              <tr>
+                <td>AASI OD</td>
+                <td><?php echo $testeAASI->od250; ?></td>
+                <td><?php echo $testeAASI->od500; ?></td>
+                <td><?php echo $testeAASI->od1k; ?></td>
+                <td><?php echo $testeAASI->od2k; ?></td>
+                <td><?php echo $testeAASI->od3k; ?></td>
+                <td><?php echo $testeAASI->od4k; ?></td>
+                <td><?php echo $testeAASI->od6k; ?></td>
+                <td><?php echo $testeAASI->od8k; ?></td>
+                <td><?php echo $testeAASI->odpercfala; ?></td>
+              </tr>
+              <tr>
+                <td>AASI OE</td>
+                <td><?php echo $testeAASI->oe250; ?></td>
+                <td><?php echo $testeAASI->oe500; ?></td>
+                <td><?php echo $testeAASI->oe1k; ?></td>
+                <td><?php echo $testeAASI->oe2k; ?></td>
+                <td><?php echo $testeAASI->oe3k; ?></td>
+                <td><?php echo $testeAASI->oe4k; ?></td>
+                <td><?php echo $testeAASI->oe6k; ?></td>
+                <td><?php echo $testeAASI->oe8k; ?></td>
+                <td><?php echo $testeAASI->oepercfala; ?></td>
+              </tr>
+            </table>
+          </fieldset>
+
+          <fieldset class="secaoFormulario">
+            <legend class="titulo">FONOAUDIÓLOGO</legend>
+            <table>
+              <tr>
+                <td>
+                  <fieldset class="campo">
+                    <legend>NOME DO PROFISSIONAL</legend>
+                    <label><?php echo $profissional->Us_Nome ?></label>
+                  </fieldset>
+                </td>
+                <td>
+                  <fieldset class="campo">
+                    <legend>DATA</legend>
+                    <label><?php echo date("d/m/Y"); ?></label>
+                  </fieldset>
+                </td>
+                <td rowspan="2">
+                  <fieldset class="campoCarimbo">
+                    <legend>ASSINATURA E CARIMBO</legend>
+                    <label></label>
+                  </fieldset>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <fieldset class="campo">
+                    <legend>CARTÃO NACIONAL DE SAÚDE DO PROFISSIONAL SOLICITANTE</legend>
+                    <label></label>
+                  </fieldset>
+                </td>
+              </tr>
+            </table>
+          </fieldset>
+<br><br>
           <table>
             <tr>
-              <td >
-                <label>Nome:</label><br>
-                <p class="labelInfo"><?php echo $paciente->Pc_Nome; ?></p>
-              </td>
-              <td >
-                <label>CPF:</label><br>
-                <p class="labelInfo"><?php echo $paciente->Pc_CPF; ?></p>
-              </td>
-              <td >
-                <label>Data de Nascimento:</label><br>
-                <p class="labelInfo"><?php echo date("d/m/Y", strtotime($paciente->Pc_DtNascimento)); ?></p>
-              </td>
-
-              <td >
-                <label>Nº Prontuário:</label><br>
-                <p class="labelInfo"><?php echo $paciente->Pc_NumProntuario; ?></p>
-              </td>
+              <td><center>________________________________________</center></td>
+              <td><center>________________________________________</center></td>
             </tr>
             <tr>
-              <td colspan="4">
-                <label>Profissional:</label><br>
-                <p class="labelInfo"><?php echo $profissional->Us_Nome; ?></p>
-              </td>
+              <td><center>Otorrinolaringologista</center></td>
+              <td><center>Divisão Médica</center></td>
             </tr>
           </table>
-        </fieldset>
-
-        <fieldset class="secaoFormulario">
-          <legend>Caracterização do Paciente</legend>
-          <table class="tabelaCaracterizacao">
-            <tr>
-              <th colspan="2"></th>
-              <th>250</th>
-              <th>500</th>
-              <th>1K</th>
-              <th>2K</th>
-              <th>3K</th>
-              <th>4K</th>
-              <th>6K</th>
-              <th>8K</th>
-            </tr>
-            <tr>
-              <td rowspan="2">OD</td>
-              <td>VA</td>
-              <td><?php echo $testeCaracterizacao->OD_VA_250; ?></td>
-              <td><?php echo $testeCaracterizacao->OD_VA_500; ?></td>
-              <td><?php echo $testeCaracterizacao->OD_VA_1k; ?></td>
-              <td><?php echo $testeCaracterizacao->OD_VA_2k; ?></td>
-              <td><?php echo $testeCaracterizacao->OD_VA_3k; ?></td>
-              <td><?php echo $testeCaracterizacao->OD_VA_4k; ?></td>
-              <td><?php echo $testeCaracterizacao->OD_VA_6k; ?></td>
-              <td><?php echo $testeCaracterizacao->OD_VA_8k; ?></td>
-            </tr>
-            <tr>
-              <td>VO</td>
-              <td></td>
-              <td><?php echo $testeCaracterizacao->OD_VO_500; ?></td>
-              <td><?php echo $testeCaracterizacao->OD_VO_1k; ?></td>
-              <td><?php echo $testeCaracterizacao->OD_VO_2k; ?></td>
-              <td><?php echo $testeCaracterizacao->OD_VO_3k; ?></td>
-              <td><?php echo $testeCaracterizacao->OD_VO_4k; ?></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td rowspan="2">OE</td>
-              <td>VA</td>
-              <td><?php echo $testeCaracterizacao->OE_VA_250; ?></td>
-              <td><?php echo $testeCaracterizacao->OE_VA_500; ?></td>
-              <td><?php echo $testeCaracterizacao->OE_VA_1k; ?></td>
-              <td><?php echo $testeCaracterizacao->OE_VA_2k; ?></td>
-              <td><?php echo $testeCaracterizacao->OE_VA_3k; ?></td>
-              <td><?php echo $testeCaracterizacao->OE_VA_4k; ?></td>
-              <td><?php echo $testeCaracterizacao->OE_VA_6k; ?></td>
-              <td><?php echo $testeCaracterizacao->OE_VA_8k; ?></td>
-            </tr>
-            <tr>
-              <td>VO</td>
-              <td></td>
-              <td><?php echo $testeCaracterizacao->OE_VO_500; ?></td>
-              <td><?php echo $testeCaracterizacao->OE_VO_1k; ?></td>
-              <td><?php echo $testeCaracterizacao->OE_VO_2k; ?></td>
-              <td><?php echo $testeCaracterizacao->OE_VO_3k; ?></td>
-              <td><?php echo $testeCaracterizacao->OE_VO_4k; ?></td>
-              <td></td>
-              <td></td>
-            </tr>
-          </table>
-        </fieldset>
-
-        <fieldset class="secaoFormulario">
-          <legend>Caracterização da Perda Auditiva</legend>
-          <table>
-            <tr>
-              <td>Tipo de Perda Auditiva:</td>
-              <td><p class="labelInfo"><?php echo$caracterizacao->Caract_TipoPerda; ?></p></td>
-              <td>Duração:</td>
-              <td><p class="labelInfo"><?php echo$caracterizacao->Caract_Duracao; ?></p></td>
-              <td>Zumbido:</td>
-              <td><p class="labelInfo"><?php echo$caracterizacao->Caract_Zumbido; ?></p></td>
-            </tr>
-            <tr>
-              <td>Grau de Perda:</td>
-              <td><p class="labelInfo"><?php echo$caracterizacao->Caract_GrauPerda; ?></p></td>
-              <td>Progressão:</td>
-              <td><p class="labelInfo"><?php echo$caracterizacao->Caract_Progress; ?></p></td>
-              <td>Configuração:</td>
-              <td><p class="labelInfo"><?php echo$caracterizacao->Caract_Config; ?></p></td>
-            </tr>
-            <tr>
-              <td>Recrutamento:</td>
-              <td><p class="labelInfo"><?php echo$caracterizacao->Caract_Recrut; ?></p></td>
-            </tr>
-          </table>
-
-          <label>Reaultado dos Exames Complementares:</label>
-          </br>
-          <p class="labelInfo"><?php echo$caracterizacao->Caract_ExamesCompl; ?></p>
-          </br>
-          <table>
-            <tr>
-              <td>Candidato ao uso de AASI:</td>
-              <td><p class="labelInfo"><?php echo $Caract_AASI; ?></p></td>
-              <td>Possível candidato ao uso de implante coclear:</td>
-              <td><p class="labelInfo"><?php echo $Caract_ImplCoclear;?></p></td>
-            </tr>
-          </table>
-        </fieldset>
-
-        <fieldset class="secaoFormulario">
-          <legend>Histórico da Perda Auditiva</legend>
-          <p class="labelInfo"><?php echo $caracterizacao->Caract_HistPerdaAud; ?></p>
-        </fieldset>
-
-        <fieldset class="secaoFormulario">
-          <legend>AASI indicado</legend>
-          <table>
-            <tr>
-              <td>Modelo:</td>
-              <td><p class="labelInfo"><?php echo $caracterizacao->Caract_AASIModelo; ?></p></td>
-            </tr>
-            <tr>
-              <td>Orelha:</td>
-              <td><p class="labelInfo"><?php echo $caracterizacao->Caract_AASIOrelha; ?></p></td>
-            </tr>
-          </table>
-        </br>
-          <table class="tabelaCaracterizacao">
-            <tr>
-              <th></th>
-              <th>250</th>
-              <th>500</th>
-              <th>1K</th>
-              <th>2K</th>
-              <th>3K</th>
-              <th>4K</th>
-              <th>6K</th>
-              <th>8K</th>
-              <th>Percepção da fala</th>
-            </tr>
-            <tr>
-              <td>Sem AASI</td>
-              <td><?php echo $testeAASI->sem250; ?></td>
-              <td><?php echo $testeAASI->sem500; ?></td>
-              <td><?php echo $testeAASI->sem1k; ?></td>
-              <td><?php echo $testeAASI->sem2k; ?></td>
-              <td><?php echo $testeAASI->sem3k; ?></td>
-              <td><?php echo $testeAASI->sem4k; ?></td>
-              <td><?php echo $testeAASI->sem6k; ?></td>
-              <td><?php echo $testeAASI->sem8k; ?></td>
-              <td><?php echo $testeAASI->sempercfala; ?></td>
-            </tr>
-            <tr>
-              <td>AASI OD</td>
-              <td><?php echo $testeAASI->od250; ?></td>
-              <td><?php echo $testeAASI->od500; ?></td>
-              <td><?php echo $testeAASI->od1k; ?></td>
-              <td><?php echo $testeAASI->od2k; ?></td>
-              <td><?php echo $testeAASI->od3k; ?></td>
-              <td><?php echo $testeAASI->od4k; ?></td>
-              <td><?php echo $testeAASI->od6k; ?></td>
-              <td><?php echo $testeAASI->od8k; ?></td>
-              <td><?php echo $testeAASI->odpercfala; ?></td>
-            </tr>
-            <tr>
-              <td>AASI OE</td>
-              <td><?php echo $testeAASI->oe250; ?></td>
-              <td><?php echo $testeAASI->oe500; ?></td>
-              <td><?php echo $testeAASI->oe1k; ?></td>
-              <td><?php echo $testeAASI->oe2k; ?></td>
-              <td><?php echo $testeAASI->oe3k; ?></td>
-              <td><?php echo $testeAASI->oe4k; ?></td>
-              <td><?php echo $testeAASI->oe6k; ?></td>
-              <td><?php echo $testeAASI->oe8k; ?></td>
-              <td><?php echo $testeAASI->oepercfala; ?></td>
-            </tr>
-          </table>
-        </fieldset>
-
-        <fieldset class="secaoFormulario">
-          <legend>Observações</legend>
-          <p class="labelInfo"><?php echo $caracterizacao->Caract_Obs; ?></p>
-        </fieldset>
       </div>
-
-      <?php echo form_close(); ?>
-
     </div>
 
   </body>

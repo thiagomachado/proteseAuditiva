@@ -18,7 +18,6 @@
             $this->load->model('municipio_model');
             $this->load->model('cor_model');
             $this->load->model('andamento_paciente_model');
-            $this->load->library('m_pdf');
             $this->load->library('pdf');
         }
 
@@ -81,10 +80,9 @@
         public function edicaoSolicitacao($idSolicitacao)
         {
             $procedimentos           = $this->procedimento_model->recuperarProcedimentos();
-
-            $data["itens"]           = $this->item_solicitacao_model->recuperarItensPorSolicitacao($idSolicitacao);
-            $data["paciente"]        = $this->paciente_model->recuperarPacientePorCPF($solicitacao->Pc_CPF);;
             $data["solicitacao"]     = $this->solicitacao_model->recuperarSolicitacaoPorId($idSolicitacao);
+            $data["itens"]           = $this->item_solicitacao_model->recuperarItensPorSolicitacao($idSolicitacao);
+            $data["paciente"]        = $this->paciente_model->recuperarPacientePorCPF($data["solicitacao"]->Pc_CPF);;
             $data['profissionais']  = $this->usuario_model->recuperarProfissionais();
             $data["procedimentos"]   = $procedimentos["procedimentos"];
 

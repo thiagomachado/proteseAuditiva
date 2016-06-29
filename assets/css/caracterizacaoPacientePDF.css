@@ -1,17 +1,92 @@
-
-#profissional
+fieldset
 {
-  width: 510px;
+    width: auto;
+    border-width: 1px;
+    border-collapse: collapse;
+    border-style: solid;
+    border-color: #000;
+    clear: both;
+    page-break-inside:avoid;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+table
+{
+  width: 100%;
+  padding: 0px;
+}
+tr
+{
+  padding: 0px;
+  margin: 0px;
+}
+td
+{
+  padding: 0px;
+  margin: 0px;
+}
+legend
+{
+  font-size: 8px;
+  font-weight: bold;
+}
+.logoHUCFF
+{
+  background-image: url(imagens/logoHUCFF.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position:center;
+  width: 100px;
+  height: 100px;
+  float: left;
+}
+.cabecalho
+{
+  width: 500px;
+  padding: 0px;
+  float: left;
+  text-align: left;
+  font-size: 15px;
+  font-weight: bold;
+}
+.campo
+{
+  height: 12px;
+  padding:0 px;
+  padding-top: 10px;
+  padding-left:4px;
+  margin-bottom:3px;
+  margin-top: 0px;
+}
+.obs
+{
+  height: 30px;
+}
+.campo label
+{
+  font-size: 10px;
+}
+.campoCarimbo
+{
+  height: 40px;
+}
+.tamanhoReduzido
+{
+  width:100px;
+}
+.titulo
+{
+  background-color: #000;
+  text-align: center;
+  width: 100%;
+  font-size: 12px;
+  color: #FFF;
 }
 
 .tabelaCaracterizacao
 {
-    box-shadow: 5px 5px 5px rgba(0,0,0,0.15);
     width: 700px;
-    margin: 0;
-    position: relative;
-    left: 50%;
-    transform: translate(-50%, 0%);
+    margin: 0px;
     padding: 0px;
 }
 

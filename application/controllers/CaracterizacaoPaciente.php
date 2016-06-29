@@ -14,7 +14,7 @@
             $this->load->model('teste_caracterizacao_model');
             $this->load->model('teste_aasi_model');
             $this->load->helper('url');
-            $this->load->library('m_pdf');
+            $this->load->library('pdf');
         }
 
         public function selecionarPaciente()
@@ -302,7 +302,7 @@
           $caracterizacao          = $this->caracterizacao_paciente_model->recuperarCaracterizacaoPacientePorCPF($cpf);
           $paciente                = $this->paciente_model->recuperarPacientePorCPF($cpf);
           $cpfProfissional         = $caracterizacao->Caract_Cpf_Profissional;
-          $profissional            = $this->usuario_model->recuperarDadosUsuarioPorCPF($cpf);
+          $profissional            = $this->usuario_model->recuperarDadosUsuarioPorCPF($cpfProfissional);
           $testeCaracterizacao     = $this->teste_caracterizacao_model->recuperarTesteCaracterizacao($caracterizacao->Caract_Numero);
           $testeAASI               = $this->teste_aasi_model->recuperarTesteAASI($caracterizacao->Caract_Numero);
 
@@ -313,18 +313,13 @@
           $dados['testeCaracterizacao'] = $testeCaracterizacao;
           $dados['testeAASI']           = $testeAASI;
 
-          //load the view and saved it into $html variable
-          $html=$this->load->view('caracterizacaoPaciente_laudo', $dados, true);
+          //passa o laudo como arquivo pdf para download
+          $this->pdf->load_view('caracterizacaoPaciente_laudo', $dados);
+          $this->pdf->render();
+          $this->pdf->stream(trim($paciente->Pc_Nome).".pdf");
 
-          //this the the PDF filename that user will get to download
-          $pdfFilePath = trim($paciente->Pc_Nome).".pdf";
-
-          //generate the PDF from the given html
-          $this->m_pdf->pdf->WriteHTML($html);
-
-          //download it.
-          $this->m_pdf->pdf->Output($pdfFilePath, "D");
-
+          //exibe o laudo como pagina web
+          // echo $this->load->view('caracterizacaoPaciente_laudo', $dados, true);
         }
     }
 ?>

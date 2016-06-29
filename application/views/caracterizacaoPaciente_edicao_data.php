@@ -611,8 +611,12 @@
             'class'         => 'botao submit'
     );
 
-    foreach ($profissionais as $profissional)
+    if (isset($profissionais))
     {
-      $dataProfissional[$profissional->Us_CPF] = $profissional->Us_Nome;
+      foreach ($profissionais as $profissional)
+      {
+        $dataProfissional[$profissional->Us_CPF] = $profissional->Us_Nome;
+      }
     }
+
 ?>
