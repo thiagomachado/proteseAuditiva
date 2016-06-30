@@ -39,8 +39,6 @@
           return $proteses;
         }
 
-
-
         public function recuperarProtesePorCodigo($codigo)
         {
           $this->db->where('Prot_Cod', $codigo);
@@ -58,9 +56,26 @@
           return $protese;
         }
 
-        public function editar($codigo, $protese)
+        public function recuperarProtesePorId($id)
         {
-          $this->db->update('tbl_proteses',$protese, array('Prot_Cod' => $codigo));
+          $this->db->where('Prot_Id', $id);
+          $query = $this->db->get('tbl_proteses');
+          $array = $query->result();
+          if(sizeof($array)==0)
+          {
+            $protese = [];
+          }
+          else
+          {
+            $protese = $array[0];
+          }
+
+          return $protese;
+        }
+
+        public function editar($id, $protese)
+        {
+          $this->db->update('tbl_proteses',$protese, array('Prot_Id' => $id));
         }
 
 

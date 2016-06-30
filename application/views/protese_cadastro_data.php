@@ -14,6 +14,17 @@
             'size'          => '62'
 
     );
+
+    $dataCodigo = array(
+            'name'          => 'codigo',
+            'id'            => 'codigo',
+            'required'      => '',
+            'type'          => 'number',
+            'maxlength'     => '11',
+            'required'      => '',
+            'size'          => '22'
+    );
+
     $dataFabricante = array(
             'name'          => 'fabricante',
             'id'            => 'fabricante',
@@ -36,7 +47,7 @@
             'required'      => '',
             'pattern'       => '\d+(\.\d{2})?',
             'placeholder'   => 'Ultilize . ao inves de ,',
-            'size'          => '15'
+            'size'          => '17'
     );
 
     $dataDataEntrada = array(

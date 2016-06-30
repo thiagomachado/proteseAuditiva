@@ -30,6 +30,7 @@
         {
           extract($_POST);
           $dataProtese = array(
+            'Prot_Cod'            => $Prot_Cod,
             'Prot_Nome'           => $Prot_Nome,
             'Prot_Fabricante'     => $Prot_Fabricante,
             'Prot_Classe'         => $Prot_Classe,
@@ -42,9 +43,9 @@
           echo json_encode($id_inserido);
         }
 
-        public function edicao($codigo)
+        public function edicao($id)
         {
-          $protese = $this->protese_model->recuperarProtesePorCodigo($codigo);
+          $protese = $this->protese_model->recuperarProtesePorId($id);
           $data["protese"] = $protese;
           $this->template->set('title', 'EDIÇÃO DE PRÓTESE');
           $this->template->load('template','protese_edicao',$data);
@@ -54,6 +55,7 @@
         {
           extract($_POST);
           $dataProtese = array(
+            'Prot_Cod'            => $Prot_Cod,
             'Prot_Nome'           => $Prot_Nome,
             'Prot_Fabricante'     => $Prot_Fabricante,
             'Prot_Classe'         => $Prot_Classe,
@@ -61,7 +63,7 @@
             'Prot_DataEntrada'    => $Prot_DataEntrada
           );
 
-          $id_inserido = $this->protese_model->editar($Prot_Cod,$dataProtese);
+          $id_inserido = $this->protese_model->editar($Prot_Id,$dataProtese);
           echo json_encode($id_inserido);
         }
 

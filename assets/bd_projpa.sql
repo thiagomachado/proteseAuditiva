@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 13-Jun-2016 às 18:25
+-- Generation Time: 30-Jun-2016 às 11:50
 -- Versão do servidor: 5.5.49-0+deb8u1
--- PHP Version: 5.6.20-0+deb8u1
+-- PHP Version: 5.6.22-0+deb8u1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -185,13 +185,13 @@ CREATE TABLE IF NOT EXISTS `tbl_andamento_paciente` (
 --
 
 INSERT INTO `tbl_andamento_paciente` (`Andamento_id`, `Pc_CPF`, `Andamento_protese`, `Andamento_implante`, `Andamento_obs`) VALUES
-(1, '94857102482', '0', '5', 'afasda'),
+(1, '94857102482', '0', '7', 'afasda'),
 (2, '01301493184', '', '', ''),
 (3, '93849102380', NULL, NULL, NULL),
 (4, '88888888889', '', '', ''),
 (5, '21736421838', '', '', ''),
 (6, '77777777777', NULL, NULL, NULL),
-(7, '47293019301', '4', '0', '');
+(7, '47293019301', '0', '6', '');
 
 -- --------------------------------------------------------
 
@@ -226,8 +226,8 @@ CREATE TABLE IF NOT EXISTS `tbl_caracterizacao_paciente` (
 
 INSERT INTO `tbl_caracterizacao_paciente` (`Caract_Numero`, `Pc_CPF`, `Caract_Cpf_Profissional`, `Caract_Data`, `Caract_TipoPerda`, `Caract_GrauPerda`, `Caract_Config`, `Caract_Duracao`, `Caract_Progress`, `Caract_Recrut`, `Caract_Zumbido`, `Caract_ExamesCompl`, `Caract_AASI`, `Caract_ImplCoclear`, `Caract_HistPerdaAud`, `Caract_AASIModelo`, `Caract_AASIOrelha`, `Caract_Obs`) VALUES
 (79, '77777777799', '44444444444', '2016-04-07 00:00:00', 'tipo', 'grau', 'configuração', 'duração', 'progressão', 'recrutamento', 'zumbido', 'resultado', 'jaPossui', 'jaPossui', 'historico', 'modelo', 'orelha', 'observações'),
-(78, '77777777777', '44444444444', '2016-04-06 00:00:00', '1teste4', 'grau maximo', 'teste1', 'teste2', 'progress', 'recrut', 'zumbido', 'exame de sangue', 'sim', 'nao', 'teste', 'Modelo 3.14', 'As Duas', 'OBS TESTE'),
-(80, '85729428401', '44444444444', '2016-04-15 00:00:00', 'teste3', 'grau', 'configuração', 'duração', 'progressão', 'recrutamento', 'zumbido', 'resultado', 'jaPossui', 'nao', 'sem historico', 'modelo', 'orelha', 'obs'),
+(78, '77777777777', '19283102184', '2016-06-29 00:00:00', '1teste4', 'grau maximo', 'teste1', 'teste2', 'progress', 'recrut', 'zumbido', 'exame de sangue', 'sim', 'nao', 'teste', 'Modelo 3.14', 'As Duas', 'OBS TESTE'),
+(80, '85729428401', '19283102184', '2016-06-29 00:00:00', 'teste3', 'grau', 'configuração', 'duração', 'progressão', 'recrutamento', 'zumbido', 'resultado', 'jaPossui', 'nao', 'sem historico', 'modelo', 'orelha', 'obs'),
 (81, '93849102380', '44444444444', '2016-04-18 00:00:00', '', '', '', '', '', '', '', '', 'sim', 'sim', 'Testando', '', '', '');
 
 -- --------------------------------------------------------
@@ -258,6 +258,28 @@ INSERT INTO `tbl_consulta` (`Consulta_id`, `Pc_CPF`, `Consulta_data`, `Consulta_
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `tbl_cor`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_cor` (
+`Cor_Codigo` int(11) NOT NULL,
+  `Cor_Descricao` varchar(20) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `tbl_cor`
+--
+
+INSERT INTO `tbl_cor` (`Cor_Codigo`, `Cor_Descricao`) VALUES
+(1, 'Amarelo'),
+(2, 'Branco'),
+(3, 'Negro'),
+(4, 'Pardo'),
+(5, 'Indígena');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `tbl_endereco`
 --
 
@@ -265,7 +287,7 @@ CREATE TABLE IF NOT EXISTS `tbl_endereco` (
   `Pc_CPF` varchar(14) NOT NULL,
   `End_Logradouro` varchar(100) NOT NULL,
   `End_UF` varchar(2) NOT NULL,
-  `End_CEP` varchar(8) NOT NULL,
+  `End_CEP` varchar(10) NOT NULL,
   `End_CodIBGE` varchar(7) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -278,17 +300,17 @@ INSERT INTO `tbl_endereco` (`Pc_CPF`, `End_Logradouro`, `End_UF`, `End_CEP`, `En
 ('46464464655', 'Rua e n 192', 'MG', '18231827', '3101631'),
 ('77777777777', 'Rua teste 5', 'AL', '31873912', '2709301'),
 ('77777777799', 'teste 5', 'AL', '18273817', '2701704'),
-('47139481920', 'Rua Sargento João Lópes', 'RJ', '21931-42', '3304557'),
+('47139481920', 'Rua Sargento João Lópes', 'RJ', '21931-420', '3304557'),
 ('22222222222', 'SJAIJSDIASJI', 'BA', '28712930', '2910727'),
 ('93849102380', 'Rua Sargento João Lópes', 'RN', '21931420', '2400109'),
-('94857102482', 'Rua Sargento João Lópes', 'AC', '21931-42', '1200013'),
+('94857102482', 'Rua Sargento João Lópes', 'RJ', '21931-420', '3304557'),
 ('49375482719', 'Rua Sem Nome, sem numero', 'AC', '31413442', '1200013'),
 ('21736421838', 'Rua acrelandia, numero 204', 'AC', '11111111', '1200013'),
 ('01301493184', 'Rua Sem Nome, sem numero', 'DF', '28187323', '5300108'),
-('11934892485', 'Rua Sargento João Lópes', 'AC', '21931-42', '1200013'),
+('11934892485', 'Rua Sargento João Lópes', 'AC', '21931-420', '1200013'),
 ('85729428401', 'Rua sem nome', 'RJ', '21847193', '3301306'),
 ('03948201310', 'Avenida Joana Angelica', 'BA', '25394820', '2910727'),
-('31413132431', 'Rua Sargento João Lópes', 'AC', '21931-42', '1200013');
+('31413132431', 'Rua Sargento João Lópes', 'AC', '21931-420', '1200013');
 
 -- --------------------------------------------------------
 
@@ -337,8 +359,8 @@ CREATE TABLE IF NOT EXISTS `tbl_implantes` (
 INSERT INTO `tbl_implantes` (`Impl_Cod`, `Impl_Desc`, `Impl_Fabr`, `Impl_Clss`, `Impl_Valor`, `Impl_DataEnt`, `Impl_DataSaida`, `Pc_CPF`) VALUES
 (10, 'testando nome muito grande ', 'sony', 'omega', 1238.90, '2016-04-15', NULL, ''),
 (5, 'windows 10', 'Microsoft', 'alfa', 789.99, '2015-12-03', '2016-05-27', '94857102482'),
-(6, 'iEar', 'Apple', 'beta', 831.09, '2006-03-04', NULL, ''),
-(7, 'phenom x2', 'AMD', 'gama', 800.90, '2014-03-01', NULL, '');
+(6, 'iEar', 'Apple', 'beta', 831.09, '2006-03-04', '2016-06-20', '47293019301'),
+(7, 'phenom x2', 'AMD', 'gama', 800.90, '2014-03-01', '2016-06-20', '94857102482');
 
 -- --------------------------------------------------------
 
@@ -353,29 +375,23 @@ CREATE TABLE IF NOT EXISTS `tbl_item_solicitacao` (
   `Isolic_quantidade` int(11) NOT NULL,
   `Isolic_descricao` varchar(100) DEFAULT NULL,
   `Isolic_confirmado` tinyint(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `tbl_item_solicitacao`
 --
 
 INSERT INTO `tbl_item_solicitacao` (`Isolic_id`, `Solic_id`, `Isolic_item_id`, `Isolic_quantidade`, `Isolic_descricao`, `Isolic_confirmado`) VALUES
-(14, 8, 1, 3, 'teste', 1),
-(15, 9, 4, 5, '', 1),
-(16, 9, 2, 5, '', 0),
-(17, 9, 4, 7, 'teste', 1),
-(18, 9, 3, 9, '', 0),
-(19, 10, 4, 1, 'teste', 1),
-(20, 10, 1, 3, '', 1),
-(21, 11, 3, 1, '', 1),
-(22, 12, 1, 1, '', 1),
-(23, 13, 1, 2, NULL, 0),
-(25, 15, 3, 3, '', 0),
-(26, 15, 4, 3, '', 1),
-(27, 15, 1, 3, '', 1),
-(28, 16, 1, 1, 'Teste', 1),
-(29, 16, 4, 1, 'Teste', 1),
-(30, 17, 2, 2, '', 0);
+(31, 18, 2, 1, '', 0),
+(32, 19, 2, 22, NULL, 0),
+(33, 19, 2, 23, NULL, 0),
+(34, 20, 2, 1, NULL, 0),
+(35, 20, 2, 1, NULL, 0),
+(36, 20, 2, 1, NULL, 0),
+(37, 21, 2, 1, NULL, 0),
+(38, 21, 3, 3, NULL, 0),
+(39, 21, 1, 4, NULL, 0),
+(40, 21, 4, 1, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -6000,11 +6016,11 @@ INSERT INTO `tbl_paciente` (`Pc_CPF`, `Pc_Nome`, `Pc_CartaoSus`, `Pc_NumProntuar
 ('01301493184', 'Lais Damasio', '291303910210', '230', '1995-12-10', NULL, 'f', 2, 'Leticia Damasio', '', 5, 0, 'Estudante', 'adulta'),
 ('47293019301', 'Maria Luiza Pinheiro', '21392381394319019029', '8271', '1992-11-13', NULL, 'f', 5, 'Helena Pinheiro', 'nunes', 4, 0, '', 'adulta'),
 ('49375482719', 'Marcos Antonio de Oliveira', '12941939310', '2941', '1996-11-18', NULL, 'm', 2, 'Julia de Oliveira', '', 3, 0, 'Estudante', 'adulta'),
-('94857102482', 'Thiago Leal Damasio Machado', '19219485', '8471', '1992-11-14', NULL, 'm', 3, 'Thiago Leal', 'Machado', 1, 1, 'Estudante', 'adulta'),
+('94857102482', 'THIAGO LEAL DAMASIO MACHADO', '19219485', '8471', '1992-11-14', NULL, 'm', 3, 'LUCIANA LEAL DAMASIO', 'OMAR JOSé MACHADO', 1, 1, 'Estudante', 'adulta'),
 ('11934892485', 'ALICE FONTES', '28148234925830', '182781', '2009-04-30', NULL, 'f', 2, 'EDUARDA FONTES', 'GUILHERME ANDRADE FONTES', 1, 0, '', 'infantil'),
 ('85729428401', 'JOãO SILVA', '7489239', '90', '1999-08-31', NULL, 'm', 4, 'MARIA DA SILVA', '', 1, 0, '', 'infantil'),
 ('03948201310', 'Omar José Machado', '20130341', '291', '1967-02-15', NULL, 'm', 4, 'Iolanda de Oliveira Machado', '', 5, 1, 'Policial Militar', 'adulta'),
-('31413132431', 'Thiago Leal Damasio Machado', '13113', '121', '1800-12-14', NULL, 'm', 1, 'Thiago Leal', 'Machado', 1, 0, '', 'adulta');
+('31413132431', 'THIAGO LEAL DAMASIO MACHADO', '13113', '121', '1800-12-14', NULL, 'm', 1, 'LUCIANA LEAL DAMASIO', 'OMAR JOSé MACHADO', 1, 0, '', 'adulta');
 
 -- --------------------------------------------------------
 
@@ -6036,7 +6052,8 @@ INSERT INTO `tbl_procedimentos` (`Proc_Id`, `Proc_Codigo`, `Proc_Nome`, `Proc_Va
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_proteses` (
-`Prot_Cod` int(11) NOT NULL,
+`Prot_Id` int(11) NOT NULL,
+  `Prot_Cod` int(11) NOT NULL,
   `Prot_Nome` varchar(45) NOT NULL,
   `Prot_Fabricante` varchar(45) NOT NULL,
   `Prot_Classe` varchar(45) NOT NULL,
@@ -6044,17 +6061,18 @@ CREATE TABLE IF NOT EXISTS `tbl_proteses` (
   `Prot_DataEntrada` date NOT NULL,
   `Prot_DataSaida` date DEFAULT NULL,
   `Pc_CPF` varchar(14) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `tbl_proteses`
 --
 
-INSERT INTO `tbl_proteses` (`Prot_Cod`, `Prot_Nome`, `Prot_Fabricante`, `Prot_Classe`, `Prot_Valor`, `Prot_DataEntrada`, `Prot_DataSaida`, `Pc_CPF`) VALUES
-(1, 'Surface Pro 4', 'Microsoft', 'alfa', 6000.00, '2016-04-19', '2016-05-26', '94857102482'),
-(2, 'Macbook Pro', 'Apple', 'omega', 12301.09, '2016-03-31', '2016-05-26', '94857102482'),
-(3, 'Macbook air', 'Apple', 'omega', 8301.09, '2014-03-31', '2016-05-26', '94857102482'),
-(4, 'testando nome muito grande ', 'Microsoft', '333', 500.00, '2016-05-26', '0000-00-00', '');
+INSERT INTO `tbl_proteses` (`Prot_Id`, `Prot_Cod`, `Prot_Nome`, `Prot_Fabricante`, `Prot_Classe`, `Prot_Valor`, `Prot_DataEntrada`, `Prot_DataSaida`, `Pc_CPF`) VALUES
+(1, 0, 'Surface Pro 4', 'Microsoft', 'alfa', 6000.00, '2016-04-19', '2016-05-26', '94857102482'),
+(2, 0, 'Macbook Pro', 'Apple', 'omega', 12301.09, '2016-03-31', '2016-05-26', '94857102482'),
+(3, 0, 'Macbook air', 'Apple', 'omega', 8301.09, '2014-03-31', '2016-05-26', '94857102482'),
+(4, 0, 'testando nome muito grande ', 'Microsoft', '333', 500.00, '2016-05-26', '2016-06-20', '94857102482'),
+(5, 261241, 'Z400t', 'Lenovo', 'A', 1500.00, '2016-06-23', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -6070,23 +6088,19 @@ CREATE TABLE IF NOT EXISTS `tbl_solicitacao` (
   `Solic_cid10principal` varchar(30) DEFAULT NULL,
   `Solic_cid10sec` varchar(30) DEFAULT NULL,
   `Solic_cid10causas` varchar(100) DEFAULT NULL,
-  `Solic_obs` text
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+  `Solic_obs` text,
+  `Solic_CPF_Profissional` varchar(14) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `tbl_solicitacao`
 --
 
-INSERT INTO `tbl_solicitacao` (`Solic_id`, `Pc_CPF`, `Solic_data`, `Solic_descricao`, `Solic_cid10principal`, `Solic_cid10sec`, `Solic_cid10causas`, `Solic_obs`) VALUES
-(8, '01301493184', '2016-05-16', 'teste', '12', '2', '2', 'testando oaaksokaoskao'),
-(9, '77777777777', '2016-05-16', 'teste', '10', '10', '10', 'obss'),
-(10, '47293019301', '2016-05-16', 'teste', NULL, NULL, NULL, NULL),
-(11, '01301493184', '2016-05-17', 'teste', NULL, NULL, NULL, NULL),
-(12, '21736421838', '2016-05-16', 'teste', '1', '1', '2', ''),
-(13, '93849102380', '2016-05-16', 'teste', NULL, NULL, NULL, NULL),
-(15, '21736421838', '2016-05-18', 'teste', '10', '4', '10', 'teste'),
-(16, '94857102482', '2016-05-18', 'teste', '1', '3', '4', 'obsssssssssssssobssss'),
-(17, '94857102482', '2016-05-23', 'teste', 'teste', 'teste', 'teste', 'afasa');
+INSERT INTO `tbl_solicitacao` (`Solic_id`, `Pc_CPF`, `Solic_data`, `Solic_descricao`, `Solic_cid10principal`, `Solic_cid10sec`, `Solic_cid10causas`, `Solic_obs`, `Solic_CPF_Profissional`) VALUES
+(18, '94857102482', '2016-06-20', 'Perda audição', '12', '121', '12', '', '19274129391'),
+(19, '94857102482', '2016-06-28', 'Perda audição', '12', '10', '3', 'O paciente teve perda de audição devido a exposição continua a raios gamas, radiação cosmica e particulas alfa e beta', '19283102184'),
+(20, '94857102482', '2016-06-28', 'Perda audição', '12', '10', '2', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '19283102184'),
+(21, '94857102482', '2016-06-28', 'teste', '213', '12133', '141212', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaa aaaaaa aaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaa aaaaa', '19283102184');
 
 -- --------------------------------------------------------
 
@@ -6220,7 +6234,7 @@ CREATE TABLE IF NOT EXISTS `tbl_teste_caracterizacao_paciente` (
 INSERT INTO `tbl_teste_caracterizacao_paciente` (`Caract_Numero`, `OD_VA_250`, `OD_VA_500`, `OD_VA_1k`, `OD_VA_2k`, `OD_VA_3k`, `OD_VA_4k`, `OD_VA_6k`, `OD_VA_8k`, `OD_VO_500`, `OD_VO_1k`, `OD_VO_2k`, `OD_VO_3k`, `OD_VO_4k`, `OE_VA_250`, `OE_VA_500`, `OE_VA_1k`, `OE_VA_2k`, `OE_VA_3k`, `OE_VA_4k`, `OE_VA_6k`, `OE_VA_8k`, `OE_VO_500`, `OE_VO_1k`, `OE_VO_2k`, `OE_VO_3k`, `OE_VO_4k`) VALUES
 (78, '1', '7', '3', '4', '5', '6', '7', '8', '7', '3', '4', '5', '6', '5', '7', '8', '9', '1', '2', '4', '7', '88', '990', '9', '099', '87'),
 (79, '1', '3', '4', '5', '6', '7', '8', '9', '2', '3', '4', '5', '6', '1', '2', '3', '4', '5', '6', '7', '8', '2', '3', '4', '5', '6'),
-(80, '8', '8', '8', '8', '8', '8', '8', '9', '0', '7', '7', '7', '7', '7', '8', '8', '8', '8', '8', '8', '8', '', '8', '9', '9', '9'),
+(80, '8', '8', '8', '8', '8', '8', '8', '9', '8', '8', '8', '8', '8', '7', '8', '8', '8', '8', '8', '8', '8', '', '8', '9', '9', '9'),
 (81, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
@@ -6279,6 +6293,7 @@ CREATE TABLE IF NOT EXISTS `tbl_usuarios` (
   `Us_DtNasc` date NOT NULL,
   `Us_CRFA` varchar(45) NOT NULL,
   `Us_Cargo` varchar(45) NOT NULL,
+  `Us_CartaoSUS` varchar(20) DEFAULT NULL,
   `Us_Nivel` int(1) NOT NULL,
   `Us_Login` varchar(10) DEFAULT NULL,
   `Us_Senha` varchar(40) DEFAULT NULL,
@@ -6289,11 +6304,13 @@ CREATE TABLE IF NOT EXISTS `tbl_usuarios` (
 -- Extraindo dados da tabela `tbl_usuarios`
 --
 
-INSERT INTO `tbl_usuarios` (`Us_CPF`, `Us_Nome`, `Us_DtNasc`, `Us_CRFA`, `Us_Cargo`, `Us_Nivel`, `Us_Login`, `Us_Senha`, `Us_email`) VALUES
-('22222222222', 'Administrador', '2015-08-03', '', '', 1, 'adm', '42ef63e7836ef622d9185c1a456051edf16095cc', ''),
-('33333333333', 'Estoquista', '1980-01-06', '', 'Estoquista', 4, 'estoquista', '42ef63e7836ef622d9185c1a456051edf16095cc', ''),
-('44444444444', 'dra Maria Silva', '1940-09-28', '12401823', 'Fonoaudiologo', 2, 'prof', '42ef63e7836ef622d9185c1a456051edf16095cc', ''),
-('55555555555', 'Colaborador', '1987-11-14', '', 'Colaborador', 3, 'colab', '42ef63e7836ef622d9185c1a456051edf16095cc', '');
+INSERT INTO `tbl_usuarios` (`Us_CPF`, `Us_Nome`, `Us_DtNasc`, `Us_CRFA`, `Us_Cargo`, `Us_CartaoSUS`, `Us_Nivel`, `Us_Login`, `Us_Senha`, `Us_email`) VALUES
+('22222222222', 'ADMINISTRADOR', '2015-08-03', '', 'Administrador', '124355363', 1, 'adm', '42ef63e7836ef622d9185c1a456051edf16095cc', 'thiagold14@gmail.com'),
+('33333333333', 'Estoquista', '1980-01-06', '', 'Estoquista', NULL, 4, 'estoquista', '42ef63e7836ef622d9185c1a456051edf16095cc', ''),
+('44444444444', 'dra Maria Silva', '1940-09-28', '12401823', 'Fonoaudiologo', NULL, 2, 'prof', '42ef63e7836ef622d9185c1a456051edf16095cc', ''),
+('55555555555', 'Colaborador', '1987-11-14', '', 'Colaborador', NULL, 3, 'colab', '42ef63e7836ef622d9185c1a456051edf16095cc', ''),
+('19274129391', 'LUISA ALEM RIBEIRO', '1994-06-10', '18212031', 'Fonoaudiologa', NULL, 2, 'lribeiro', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'lribeiro@gmail.com'),
+('19283102184', 'LUIZE MELOTI FIORIO ', '1996-06-08', '12940128458', 'Médica', '1724891031783312', 2, 'lfiorio', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'luize.meloti@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -6336,6 +6353,12 @@ ALTER TABLE `tbl_consulta`
  ADD PRIMARY KEY (`Consulta_id`), ADD KEY `Andamento_id` (`Pc_CPF`);
 
 --
+-- Indexes for table `tbl_cor`
+--
+ALTER TABLE `tbl_cor`
+ ADD PRIMARY KEY (`Cor_Codigo`), ADD KEY `Cor_Codigo` (`Cor_Codigo`);
+
+--
 -- Indexes for table `tbl_endereco`
 --
 ALTER TABLE `tbl_endereco`
@@ -6375,13 +6398,13 @@ ALTER TABLE `tbl_procedimentos`
 -- Indexes for table `tbl_proteses`
 --
 ALTER TABLE `tbl_proteses`
- ADD PRIMARY KEY (`Prot_Cod`);
+ ADD PRIMARY KEY (`Prot_Id`);
 
 --
 -- Indexes for table `tbl_solicitacao`
 --
 ALTER TABLE `tbl_solicitacao`
- ADD PRIMARY KEY (`Solic_id`), ADD KEY `Pc_CPF` (`Pc_CPF`);
+ ADD PRIMARY KEY (`Solic_id`), ADD KEY `Pc_CPF` (`Pc_CPF`), ADD KEY `Us_usuario` (`Solic_CPF_Profissional`);
 
 --
 -- Indexes for table `tbl_telefone`
@@ -6443,6 +6466,11 @@ MODIFY `Caract_Numero` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=82;
 ALTER TABLE `tbl_consulta`
 MODIFY `Consulta_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 --
+-- AUTO_INCREMENT for table `tbl_cor`
+--
+ALTER TABLE `tbl_cor`
+MODIFY `Cor_Codigo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT for table `tbl_implantes`
 --
 ALTER TABLE `tbl_implantes`
@@ -6451,7 +6479,7 @@ MODIFY `Impl_Cod` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 -- AUTO_INCREMENT for table `tbl_item_solicitacao`
 --
 ALTER TABLE `tbl_item_solicitacao`
-MODIFY `Isolic_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
+MODIFY `Isolic_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=41;
 --
 -- AUTO_INCREMENT for table `tbl_procedimentos`
 --
@@ -6461,12 +6489,12 @@ MODIFY `Proc_Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT for table `tbl_proteses`
 --
 ALTER TABLE `tbl_proteses`
-MODIFY `Prot_Cod` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `Prot_Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tbl_solicitacao`
 --
 ALTER TABLE `tbl_solicitacao`
-MODIFY `Solic_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+MODIFY `Solic_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `tbl_telefone`
 --

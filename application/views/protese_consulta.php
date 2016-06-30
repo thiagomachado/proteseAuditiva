@@ -19,7 +19,14 @@
           {
             foreach ($proteses as $protese )
             {
+              $dataId = array(
+                      'name'          => 'id',
+                      'class'         => 'id',
+                      'type'          => 'hidden',
+                      'value'         => $protese->Prot_Id
+              );
               echo '<tr class="linhaResultado">';
+              echo form_input($dataId);
               echo '<td>'.$protese->Prot_Cod.'</td>';
               echo '<td>'.$protese->Prot_Nome.'</td>';
               echo '<td>'.$protese->Prot_Fabricante.'</td>';
@@ -32,9 +39,7 @@
           }
 
        ?>
-    </table
-
-    </ol>
+    </table>
 
   </div>
   <div class="areaBotoesResultado">

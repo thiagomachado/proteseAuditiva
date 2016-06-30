@@ -11,24 +11,31 @@
       <legend>Dados do Produto</legend>
       <table>
         <tr>
-          <td colspan="3">
+          <td>
+            <label>Codigo*:</label><br>
+            <?php echo form_input($dataCodigo); ?>
+          </td>
+          <td>
             <label>Nome do Item*:</label><br>
             <?php echo form_input($dataNomeItem); ?>
           </td>
-          <td colspan="2">
+
+          <td>
+            <label>Valor*:</label><br>
+            <?php echo form_input($dataValor); ?>
+          </td>
+
+
+        </tr>
+
+        <tr>
+          <td>
             <label>Fabricante*:</label><br>
             <?php echo form_input($dataFabricante); ?>
           </td>
           <td>
             <label>Classe*:</label><br>
             <?php echo form_input($dataClasse); ?>
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-            <label>Valor*:</label><br>
-            <?php echo form_input($dataValor); ?>
           </td>
           <td>
             <label>Data de Entrada*:</label><br>
@@ -96,6 +103,7 @@ $(document).ready(function() {
             dataType: 'json',
             data:
             {
+              Prot_Cod:            $("#codigo").val(),
               Prot_Nome:           $("#nomeItem").val(),
               Prot_Fabricante:     $("#fabricante").val(),
               Prot_Classe:         $("#classe").val(),
