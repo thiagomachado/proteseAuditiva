@@ -32,7 +32,7 @@
         public function recuperarProtesesPorPacientes($cpf)
         {
           $this->db->where('Pc_CPF', $cpf);
-          $this->db->order_by("Prot_Nome", "asc");
+          $this->db->order_by("Prot_DataSaida", "asc");
           $query    = $this->db->get('tbl_proteses');
           $proteses = $query->result();
 

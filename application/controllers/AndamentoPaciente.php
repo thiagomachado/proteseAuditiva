@@ -16,7 +16,7 @@
             $this->load->model('procedimento_model');
             $this->load->model('protese_model');
             $this->load->model('implante_model');
-            $this->load->library('m_pdf');
+
         }
 
         public function selecionarPaciente()

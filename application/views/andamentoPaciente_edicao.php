@@ -129,16 +129,20 @@
                 </tr>';
         foreach ($protesesPaciente as $protese)
         {
-          echo '
-
-          <tr class="linhaResultado">
-            <td>'.$protese->Prot_Cod.'</td>
-            <td>'.$protese->Prot_Nome.'</td>
-            <td>'.$protese->Prot_Fabricante.'</td>
-            <td>'.$protese->Prot_Classe.'</td>
-            <td>'.date_format(date_create($protese->Prot_DataSaida), 'd/m/Y').'</td>
-
-          </tr></a>';
+          $dataId = array(
+                  'name'          => 'id',
+                  'class'         => 'id',
+                  'type'          => 'hidden',
+                  'value'         => $protese->Prot_Id
+          );
+          echo '<tr class="linhaResultado">';
+          echo form_input($dataId);
+          echo '<td>'.$protese->Prot_Cod.'</td>';
+          echo '<td>'.$protese->Prot_Nome.'</td>';
+          echo '<td>'.$protese->Prot_Fabricante.'</td>';
+          echo '<td>'.$protese->Prot_Classe.'</td>';
+          echo '<td>'.date("d/m/Y", strtotime($protese->Prot_DataEntrada)).'</td>';
+          echo '</tr>';
         }
 
         echo '
@@ -316,14 +320,13 @@
 </script>
 
 <script>
-
 $(document).ready(function()
 {
-	$('#tabelaResultadoProtese tr:gt(0)')
+	$('.tabelaResultado tr:gt(0)')
 		.click(function()
     {
-  		var cpf = $(this).children('td:eq(0)').text();
-  		window.location.href = "/proteseAuditiva/index.php/edicaoProtese/"+cpf;
+  		var codigo = $(this).children('.id').val();
+  		window.location.href = "/proteseAuditiva/index.php/edicaoProtese/"+codigo;
 		})
 
 }).attr('unselectable', 'on').css('user-select', 'none').on('selectstart', false);

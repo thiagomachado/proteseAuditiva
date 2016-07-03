@@ -49,7 +49,7 @@
         public function recuperarImplantesPorPacientes($cpf)
         {
           $this->db->where('Pc_CPF', $cpf);
-          $this->db->order_by("Impl_Desc", "asc");
+          $this->db->order_by("Impl_DataSaida", "asc");
           $query    = $this->db->get('tbl_implantes');
           $proteses = $query->result();
 

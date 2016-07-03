@@ -108,7 +108,7 @@
 
     foreach ($proteses as $protese)
     {
-      $dataProteses[$protese->Prot_Cod] = $protese->Prot_Nome;
+      $dataProteses[$protese->Prot_Id] = $protese->Prot_Nome;
     }
 
     $dataImplantes = array('0' => '');
