@@ -19,7 +19,14 @@
           {
             foreach ($implantes as $implante )
             {
+              $dataId = array(
+                      'name'          => 'id',
+                      'class'         => 'id',
+                      'type'          => 'hidden',
+                      'value'         => $implante->Impl_Id
+              );
               echo '<tr class="linhaResultado">';
+              echo form_input($dataId);
               echo '<td>'.$implante->Impl_Cod.'</td>';
               echo '<td>'.$implante->Impl_Desc.'</td>';
               echo '<td>'.$implante->Impl_Fabr.'</td>';

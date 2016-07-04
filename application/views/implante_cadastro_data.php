@@ -5,6 +5,15 @@
     $data_form = array(
         'id' => 'formImplante'
     );
+    $dataCodigo = array(
+            'name'          => 'codigo',
+            'id'            => 'codigo',
+            'required'      => '',
+            'type'          => 'number',
+            'maxlength'     => '11',
+            'size'          => '22',
+            'required'      => ''
+    );
 
     $dataNomeItem = array(
             'name'          => 'nomeItem',

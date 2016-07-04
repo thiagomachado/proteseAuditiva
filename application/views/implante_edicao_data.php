@@ -6,13 +6,23 @@
         'id' => 'formImplante'
     );
 
+    $dataId = array(
+            'name'          => 'id',
+            'id'            => 'id',
+            'type'          => 'hidden',
+            'value'         => $implante->Impl_Id
+    );
+
     $dataCodigo = array(
             'name'          => 'codigo',
             'id'            => 'codigo',
-            'type'          => 'hidden',
+            'required'      => '',
+            'type'          => 'number',
+            'maxlength'     => '11',
+            'size'          => '22',
+            'required'      => '',
             'value'         => $implante->Impl_Cod
     );
-
     $dataNomeItem = array(
             'name'          => 'nomeItem',
             'id'            => 'nomeItem',

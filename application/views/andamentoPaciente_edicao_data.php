@@ -115,7 +115,7 @@
 
     foreach ($implantes as $implante)
     {
-      $dataImplantes[$implante->Impl_Cod] = $implante->Impl_Desc;
+      $dataImplantes[$implante->Impl_Id] = $implante->Impl_Desc;
     }
 
     $dataSubmit = array(

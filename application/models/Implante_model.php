@@ -46,6 +46,23 @@
           return $implante;
         }
 
+        public function recuperarImplantePorId($id)
+        {
+          $this->db->where('Impl_Id', $id);
+          $query = $this->db->get('tbl_implantes');
+          $array = $query->result();
+          if(sizeof($array)==0)
+          {
+            $implante = [];
+          }
+          else
+          {
+            $implante = $array[0];
+          }
+
+          return $implante;
+        }
+
         public function recuperarImplantesPorPacientes($cpf)
         {
           $this->db->where('Pc_CPF', $cpf);
@@ -56,9 +73,9 @@
           return $proteses;
         }
 
-        public function editar($codigo, $implante)
+        public function editar($id, $implante)
         {
-          $this->db->update('tbl_implantes',$implante, array('Impl_Cod' => $codigo));
+          $this->db->update('tbl_implantes',$implante, array('Impl_Id' => $id));
         }
 
 

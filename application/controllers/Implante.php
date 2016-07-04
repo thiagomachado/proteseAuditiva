@@ -30,6 +30,7 @@
         {
           extract($_POST);
           $dataImplante = array(
+            'Impl_Cod'     => $Impl_Cod,
             'Impl_Desc'    => $Impl_Desc,
             'Impl_Fabr'    => $Impl_Fabr,
             'Impl_Clss'    => $Impl_Clss,
@@ -42,9 +43,9 @@
           echo json_encode($id_inserido);
         }
 
-        public function edicao($codigo)
+        public function edicao($id)
         {
-          $implante = $this->implante_model->recuperarImplantePorCodigo($codigo);
+          $implante = $this->implante_model->recuperarImplantePorId($id);
           $data["implante"] = $implante;
           $this->template->set('title', 'EDIÇÃO DE IMPLANTE');
           $this->template->load('template','implante_edicao',$data);
@@ -54,6 +55,7 @@
         {
           extract($_POST);
           $dataImplante = array(
+            'Impl_Cod'     => $Impl_Cod,
             'Impl_Desc'    => $Impl_Desc,
             'Impl_Fabr'    => $Impl_Fabr,
             'Impl_Clss'    => $Impl_Clss,
@@ -61,7 +63,7 @@
             'Impl_DataEnt' =>  $Impl_DataEnt
           );
 
-          $id_inserido = $this->implante_model->editar($Impl_Cod,$dataImplante);
+          $id_inserido = $this->implante_model->editar($Impl_Id,$dataImplante);
           echo json_encode($id_inserido);
         }
 
