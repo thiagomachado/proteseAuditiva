@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 30-Jun-2016 às 11:50
+-- Generation Time: 05-Jul-2016 às 00:03
 -- Versão do servidor: 5.5.49-0+deb8u1
 -- PHP Version: 5.6.22-0+deb8u1
 
@@ -185,7 +185,7 @@ CREATE TABLE IF NOT EXISTS `tbl_andamento_paciente` (
 --
 
 INSERT INTO `tbl_andamento_paciente` (`Andamento_id`, `Pc_CPF`, `Andamento_protese`, `Andamento_implante`, `Andamento_obs`) VALUES
-(1, '94857102482', '0', '7', 'afasda'),
+(1, '94857102482', '0', '0', 'afasda'),
 (2, '01301493184', '', '', ''),
 (3, '93849102380', NULL, NULL, NULL),
 (4, '88888888889', '', '', ''),
@@ -342,7 +342,8 @@ INSERT INTO `tbl_grauescolar` (`GEsc_Cod`, `GEsc_Desc`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_implantes` (
-`Impl_Cod` int(11) NOT NULL,
+`Impl_Id` int(11) NOT NULL,
+  `Impl_Cod` int(11) NOT NULL,
   `Impl_Desc` varchar(45) NOT NULL,
   `Impl_Fabr` varchar(45) NOT NULL,
   `Impl_Clss` varchar(45) NOT NULL,
@@ -350,17 +351,18 @@ CREATE TABLE IF NOT EXISTS `tbl_implantes` (
   `Impl_DataEnt` date NOT NULL,
   `Impl_DataSaida` date DEFAULT NULL,
   `Pc_CPF` varchar(14) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `tbl_implantes`
 --
 
-INSERT INTO `tbl_implantes` (`Impl_Cod`, `Impl_Desc`, `Impl_Fabr`, `Impl_Clss`, `Impl_Valor`, `Impl_DataEnt`, `Impl_DataSaida`, `Pc_CPF`) VALUES
-(10, 'testando nome muito grande ', 'sony', 'omega', 1238.90, '2016-04-15', NULL, ''),
-(5, 'windows 10', 'Microsoft', 'alfa', 789.99, '2015-12-03', '2016-05-27', '94857102482'),
-(6, 'iEar', 'Apple', 'beta', 831.09, '2006-03-04', '2016-06-20', '47293019301'),
-(7, 'phenom x2', 'AMD', 'gama', 800.90, '2014-03-01', '2016-06-20', '94857102482');
+INSERT INTO `tbl_implantes` (`Impl_Id`, `Impl_Cod`, `Impl_Desc`, `Impl_Fabr`, `Impl_Clss`, `Impl_Valor`, `Impl_DataEnt`, `Impl_DataSaida`, `Pc_CPF`) VALUES
+(10, 1231, 'testando nome muito grande ', 'sony', 'omega', 1238.90, '2016-04-15', '2016-07-01', '94857102482'),
+(5, 214, 'windows 10', 'Microsoft', 'alfa', 789.99, '2015-12-03', '2016-05-27', '94857102482'),
+(6, 52312, 'iEar 2.0', 'Apple', 'beta', 831.09, '2006-03-04', '2016-06-20', '47293019301'),
+(7, 424243, 'phenom x2', 'AMD', 'gama', 800.90, '2014-03-01', '2016-06-20', '94857102482'),
+(11, 32138401, 'Galaxy S7', 'Samsung', 'Alpha', 3799.00, '2016-12-14', '2016-07-04', '94857102482');
 
 -- --------------------------------------------------------
 
@@ -383,15 +385,15 @@ CREATE TABLE IF NOT EXISTS `tbl_item_solicitacao` (
 
 INSERT INTO `tbl_item_solicitacao` (`Isolic_id`, `Solic_id`, `Isolic_item_id`, `Isolic_quantidade`, `Isolic_descricao`, `Isolic_confirmado`) VALUES
 (31, 18, 2, 1, '', 0),
-(32, 19, 2, 22, NULL, 0),
-(33, 19, 2, 23, NULL, 0),
-(34, 20, 2, 1, NULL, 0),
-(35, 20, 2, 1, NULL, 0),
-(36, 20, 2, 1, NULL, 0),
-(37, 21, 2, 1, NULL, 0),
-(38, 21, 3, 3, NULL, 0),
-(39, 21, 1, 4, NULL, 0),
-(40, 21, 4, 1, NULL, 0);
+(32, 19, 2, 22, '', 0),
+(33, 19, 2, 23, '', 0),
+(34, 20, 2, 1, '', 0),
+(35, 20, 2, 1, '', 0),
+(36, 20, 2, 1, '', 0),
+(37, 21, 2, 1, '', 0),
+(38, 21, 3, 3, '', 0),
+(39, 21, 1, 4, '', 0),
+(40, 21, 4, 1, '', 0);
 
 -- --------------------------------------------------------
 
@@ -6030,20 +6032,22 @@ INSERT INTO `tbl_paciente` (`Pc_CPF`, `Pc_Nome`, `Pc_CartaoSus`, `Pc_NumProntuar
 
 CREATE TABLE IF NOT EXISTS `tbl_procedimentos` (
 `Proc_Id` int(11) NOT NULL,
+  `Tp_Id` int(11) NOT NULL,
   `Proc_Codigo` varchar(22) NOT NULL,
   `Proc_Nome` varchar(150) NOT NULL,
   `Proc_Valor` decimal(12,2) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `tbl_procedimentos`
 --
 
-INSERT INTO `tbl_procedimentos` (`Proc_Id`, `Proc_Codigo`, `Proc_Nome`, `Proc_Valor`) VALUES
-(1, '00976548907', 'Raio x', 200.00),
-(2, '0097654890890', 'Exame sanguineo', 40.00),
-(3, '0481927319038', 'Teste auditivo', 1700.00),
-(4, '00976548907', 'Raio Gama', 250.00);
+INSERT INTO `tbl_procedimentos` (`Proc_Id`, `Tp_Id`, `Proc_Codigo`, `Proc_Nome`, `Proc_Valor`) VALUES
+(1, 1, '00976548907', 'Raio x', 200.00),
+(2, 2, '0097654890890', 'Exame sanguineo', 40.00),
+(3, 2, '0481927319038', 'Teste auditivo', 1700.00),
+(4, 2, '00976548907', 'Raio Gama', 250.00),
+(5, 1, '1293410', 'Procedimento Principal', 900.00);
 
 -- --------------------------------------------------------
 
@@ -6068,11 +6072,11 @@ CREATE TABLE IF NOT EXISTS `tbl_proteses` (
 --
 
 INSERT INTO `tbl_proteses` (`Prot_Id`, `Prot_Cod`, `Prot_Nome`, `Prot_Fabricante`, `Prot_Classe`, `Prot_Valor`, `Prot_DataEntrada`, `Prot_DataSaida`, `Pc_CPF`) VALUES
-(1, 0, 'Surface Pro 4', 'Microsoft', 'alfa', 6000.00, '2016-04-19', '2016-05-26', '94857102482'),
-(2, 0, 'Macbook Pro', 'Apple', 'omega', 12301.09, '2016-03-31', '2016-05-26', '94857102482'),
-(3, 0, 'Macbook air', 'Apple', 'omega', 8301.09, '2014-03-31', '2016-05-26', '94857102482'),
-(4, 0, 'testando nome muito grande ', 'Microsoft', '333', 500.00, '2016-05-26', '2016-06-20', '94857102482'),
-(5, 261241, 'Z400t', 'Lenovo', 'A', 1500.00, '2016-06-23', NULL, '');
+(1, 6353, 'Surface Pro 4', 'Microsoft', 'alfa', 6000.00, '2016-04-19', '2016-05-26', '94857102482'),
+(2, 313, 'Macbook Pro', 'Apple', 'omega', 12301.09, '2016-03-31', '2016-05-26', '94857102482'),
+(3, 4252, 'Macbook air', 'Apple', 'omega', 8301.09, '2014-03-31', '2016-05-26', '94857102482'),
+(4, 345, 'testando nome muito grande ', 'Microsoft', '333', 500.00, '2016-05-26', '2016-06-20', '94857102482'),
+(5, 261241, 'Z400t', 'Lenovo', 'A', 1500.00, '2016-06-23', '2016-07-01', '94857102482');
 
 -- --------------------------------------------------------
 
@@ -6240,6 +6244,25 @@ INSERT INTO `tbl_teste_caracterizacao_paciente` (`Caract_Numero`, `OD_VA_250`, `
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `tbl_tipo_procedimento`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_tipo_procedimento` (
+`Tp_Id` int(11) NOT NULL,
+  `Tp_Nome` varchar(30) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `tbl_tipo_procedimento`
+--
+
+INSERT INTO `tbl_tipo_procedimento` (`Tp_Id`, `Tp_Nome`) VALUES
+(1, 'Principal'),
+(2, 'Secundário');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `tbl_uf`
 --
 
@@ -6374,7 +6397,7 @@ ALTER TABLE `tbl_grauescolar`
 -- Indexes for table `tbl_implantes`
 --
 ALTER TABLE `tbl_implantes`
- ADD PRIMARY KEY (`Impl_Cod`);
+ ADD PRIMARY KEY (`Impl_Id`);
 
 --
 -- Indexes for table `tbl_item_solicitacao`
@@ -6392,7 +6415,7 @@ ALTER TABLE `tbl_paciente`
 -- Indexes for table `tbl_procedimentos`
 --
 ALTER TABLE `tbl_procedimentos`
- ADD PRIMARY KEY (`Proc_Id`);
+ ADD PRIMARY KEY (`Proc_Id`), ADD KEY `Tp_Id` (`Tp_Id`);
 
 --
 -- Indexes for table `tbl_proteses`
@@ -6423,6 +6446,12 @@ ALTER TABLE `tbl_testeaasi`
 --
 ALTER TABLE `tbl_teste_caracterizacao_paciente`
  ADD PRIMARY KEY (`Caract_Numero`);
+
+--
+-- Indexes for table `tbl_tipo_procedimento`
+--
+ALTER TABLE `tbl_tipo_procedimento`
+ ADD PRIMARY KEY (`Tp_Id`);
 
 --
 -- Indexes for table `tbl_uf`
@@ -6474,7 +6503,7 @@ MODIFY `Cor_Codigo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 -- AUTO_INCREMENT for table `tbl_implantes`
 --
 ALTER TABLE `tbl_implantes`
-MODIFY `Impl_Cod` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+MODIFY `Impl_Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `tbl_item_solicitacao`
 --
@@ -6484,7 +6513,7 @@ MODIFY `Isolic_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=41;
 -- AUTO_INCREMENT for table `tbl_procedimentos`
 --
 ALTER TABLE `tbl_procedimentos`
-MODIFY `Proc_Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `Proc_Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tbl_proteses`
 --
@@ -6506,6 +6535,11 @@ MODIFY `telefone_cod` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
 ALTER TABLE `tbl_testeaasi`
 MODIFY `testeaasi_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
 --
+-- AUTO_INCREMENT for table `tbl_tipo_procedimento`
+--
+ALTER TABLE `tbl_tipo_procedimento`
+MODIFY `Tp_Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
 -- Constraints for dumped tables
 --
 
@@ -6514,6 +6548,12 @@ MODIFY `testeaasi_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
 --
 ALTER TABLE `tbl_item_solicitacao`
 ADD CONSTRAINT `tbl_item_solicitacao_ibfk_1` FOREIGN KEY (`Solic_id`) REFERENCES `tbl_solicitacao` (`Solic_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `tbl_procedimentos`
+--
+ALTER TABLE `tbl_procedimentos`
+ADD CONSTRAINT `tbl_procedimentos_ibfk_1` FOREIGN KEY (`Tp_Id`) REFERENCES `tbl_tipo_procedimento` (`Tp_Id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

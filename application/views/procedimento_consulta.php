@@ -8,16 +8,20 @@
       <tr class="first">
         <th>Código</th>
         <th>Nome</th>
+        <th>Tipo</th>
         <th>Valor Unitário</th>
       </tr>
       <?php
           if(sizeof($procedimentos) > 0)
           {
-            foreach ($procedimentos as $procedimento )
+            foreach ($procedimentos["procedimentos"] as $procedimento )
             {
               echo '<tr class="linhaResultado">';
               echo '<td>'.$procedimento->Proc_Codigo.'<input type="hidden" value="'.$procedimento->Proc_Id.'"</td>';
               echo '<td>'.$procedimento->Proc_Nome.'</td>';
+
+              echo '<td>'.$tipos[$procedimento->Tp_Id].'</td>';
+
               echo '<td>'.$procedimento->Proc_Valor.'</td>';
               echo '</tr>';
             }

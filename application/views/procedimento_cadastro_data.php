@@ -11,7 +11,7 @@
             'id'            => 'nome',
             'required'      => '',
             'maxlength'     => '150',
-            'size'          => '62'
+            'size'          => '58'
 
     );
     $dataCodigo = array(

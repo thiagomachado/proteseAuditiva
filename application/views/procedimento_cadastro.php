@@ -23,6 +23,10 @@
             <label>Valor*:</label><br>
             <?php echo form_input($dataValor); ?>
           </td>
+          <td>
+            <label>Tipo:</label><br>
+            <?php echo form_dropdown('tipoProcedimento', $tipos,'1', 'id="tipoProcedimento" required'); ?>
+          </td>
         </tr>
       </table>
     </fieldset>
@@ -85,6 +89,7 @@ $(document).ready(function() {
             dataType: 'json',
             data:
             {
+              Tp_Id:        $("#tipoProcedimento").val(),
               Proc_Nome:    $("#nome").val(),
               Proc_Codigo:  $("#codigo").val(),
               Proc_Valor:   $("#valor").val()

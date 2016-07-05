@@ -19,6 +19,15 @@
           return $listaProcedimentos;
         }
 
+        public function recuperarTiposProcedimento()
+        {
+          $this->db->order_by("Tp_Nome", "asc");
+          $query = $this->db->get('tbl_tipo_procedimento');
+          $tiposProcedimento  = $query->result();
+
+          return $tiposProcedimento;
+        }
+
         public function recuperarProcedimentoPorId($id)
         {
           $this->db->where('Proc_Id', $id);
