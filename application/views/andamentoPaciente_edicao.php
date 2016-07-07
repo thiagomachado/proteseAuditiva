@@ -167,9 +167,15 @@
                 </tr>';
         foreach ($implantesPaciente as $implante)
         {
-          echo '
-
-          <tr class="linhaResultado">
+          $dataId = array(
+                  'name'          => 'id',
+                  'class'         => 'id',
+                  'type'          => 'hidden',
+                  'value'         => $implante->Impl_Id
+          );
+          echo '<tr class="linhaResultado">';
+          echo form_input($dataId);
+          echo'
             <td>'.$implante->Impl_Cod.'</td>
             <td>'.$implante->Impl_Desc.'</td>
             <td>'.$implante->Impl_Fabr.'</td>
@@ -322,11 +328,15 @@
 <script>
 $(document).ready(function()
 {
-	$('.tabelaResultado tr:gt(0)')
-		.click(function()
+	$('#tabelaResultadoProtese tr:gt(0)').click(function()
     {
-  		var codigo = $(this).children('.id').val();
-  		window.location.href = "/proteseAuditiva/index.php/edicaoProtese/"+codigo;
+  		var id = $(this).children('.id').val();
+  		window.location.href = "/proteseAuditiva/index.php/edicaoProtese/"+id;
+		})
+  $('#tabelaResultadoImplante tr:gt(0)').click(function()
+    {
+  		var id = $(this).children('.id').val();
+  		window.location.href = "/proteseAuditiva/index.php/edicaoImplante/"+id;
 		})
 
 }).attr('unselectable', 'on').css('user-select', 'none').on('selectstart', false);
