@@ -116,18 +116,21 @@
           }
 
           //Editando as consultas
-          $quantidadeConsultasEdicao = sizeof($consultaEdicaoIds);
-
-          for ($i=0; $i < $quantidadeConsultasEdicao ; $i++)
+          if(isset($consultaEdicaoIds))
           {
-            $consulta_id  = $consultaEdicaoIds[$i];
-            $dataConsultaEdicao = array(
-              'Consulta_data'      => $consultaEdicaoDatas[$i],
-              'Consulta_descricao' => $consultaEdicaoDescricoes[$i]
-            );
+            $quantidadeConsultasEdicao = sizeof($consultaEdicaoIds);
 
-            $this->consulta_model->editarConsulta($dataConsultaEdicao,$consulta_id);
+            for ($i=0; $i < $quantidadeConsultasEdicao ; $i++)
+            {
+              $consulta_id  = $consultaEdicaoIds[$i];
+              $dataConsultaEdicao = array(
+                'Consulta_data'      => $consultaEdicaoDatas[$i],
+                'Consulta_descricao' => $consultaEdicaoDescricoes[$i]
+              );
 
+              $this->consulta_model->editarConsulta($dataConsultaEdicao,$consulta_id);
+
+            }
           }
 
           //cadastrando as novas consultas
