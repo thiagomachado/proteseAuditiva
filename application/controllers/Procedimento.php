@@ -46,7 +46,7 @@
         {
           extract($_POST);
           $dataProcedimento = array(
-            'Proc_Nome'           => $Proc_Nome,
+            'Proc_Nome'           => $this->normalizarTexto($Proc_Nome),
             'Proc_Codigo'         => $Proc_Codigo,
             'Tp_Id'               => $Tp_Id,
             'Proc_Valor'          => $Proc_Valor
@@ -76,7 +76,7 @@
           extract($_POST);
           $dataProcedimento = array(
             'Tp_Id'               => $Tp_Id,
-            'Proc_Nome'           => $Proc_Nome,
+            'Proc_Nome'           => $this->normalizarTexto($Proc_Nome),
             'Proc_Codigo'         => $Proc_Codigo,
             'Proc_Valor'          => $Proc_Valor
           );

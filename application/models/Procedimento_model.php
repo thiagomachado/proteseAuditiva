@@ -19,6 +19,26 @@
           return $listaProcedimentos;
         }
 
+        public function recuperarProcedimentosPrincipais()
+        {
+          $this->db->order_by("Proc_Nome", "asc");
+          $this->db->where("Tp_id",1);
+          $query         = $this->db->get('tbl_procedimentos');
+          $procedimentos = $query->result();
+
+          return $procedimentos;
+        }
+
+        public function recuperarProcedimentosSecundarios()
+        {
+          $this->db->order_by("Proc_Nome", "asc");
+          $this->db->where("Tp_id",2);
+          $query          = $this->db->get('tbl_procedimentos');
+          $procedimentos  = $query->result();
+
+          return $procedimentos;
+        }
+
         public function recuperarTiposProcedimento()
         {
           $this->db->order_by("Tp_Nome", "asc");

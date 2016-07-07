@@ -37,16 +37,27 @@
 
         public function cadastroSolicitacao($cpf)
         {
-            $procedimentos           = $this->procedimento_model->recuperarProcedimentos();
-
             $dados['paciente']       = $this->paciente_model->recuperarPacientePorCPF($cpf);
             $dados['profissionais']  = $this->usuario_model->recuperarProfissionais();
-            $dados['procedimentos']  = $procedimentos['procedimentos'];
-
+            $dados['procSecundarios']= $this->procedimento_model->recuperarProcedimentosSecundarios();
+            $dados['procPincipais']  = $this->procedimento_model->recuperarProcedimentosPrincipais();
 
             $this->template->set('title', 'CADASTRO DE SOLICITAÇÃO');
             $this->template->load('template','solicitacao_cadastro',$dados);
+        }
 
+
+        public function edicaoSolicitacao($idSolicitacao)
+        {
+            $dados["solicitacao"]     = $this->solicitacao_model->recuperarSolicitacaoPorId($idSolicitacao);
+            $dados["itens"]           = $this->item_solicitacao_model->recuperarItensPorSolicitacao($idSolicitacao);
+            $dados["paciente"]        = $this->paciente_model->recuperarPacientePorCPF($dados["solicitacao"]->Pc_CPF);;
+            $dados['profissionais']   = $this->usuario_model->recuperarProfissionais();
+            $dados["procSecundarios"] = $this->procedimento_model->recuperarProcedimentosSecundarios();
+            $dados['procPincipais']   = $this->procedimento_model->recuperarProcedimentosPrincipais();
+
+            $this->template->set('title', 'EDIÇÃO DE SOLICITACÃO');
+            $this->template->load('template','solicitacao_edicao',$dados);
 
         }
 
@@ -69,26 +80,12 @@
           $jsConsulta           = '<script language="JavaScript" type="text/javascript" src="'.base_url().'assets/js/consultaSolicitacaoPaciente.js"></script>';
           $solicitacoes         = $this->solicitacao_model->recuperarSolicitacoesPorCPF($cpf);
           $paciente             = $this->paciente_model->recuperarPacientePorCPF($cpf);
-          $data["paciente"]     = $paciente;
-          $data["solicitacoes"] = $solicitacoes;
+          $dados["paciente"]     = $paciente;
+          $dados["solicitacoes"] = $solicitacoes;
 
           $this->template->set('script', $jsConsulta );
           $this->template->set('title', 'SOLICITAÇÕES DO PACIENTE');
-          $this->template->load('template','consulta_solicitacao',$data);
-        }
-
-        public function edicaoSolicitacao($idSolicitacao)
-        {
-            $procedimentos           = $this->procedimento_model->recuperarProcedimentos();
-            $data["solicitacao"]     = $this->solicitacao_model->recuperarSolicitacaoPorId($idSolicitacao);
-            $data["itens"]           = $this->item_solicitacao_model->recuperarItensPorSolicitacao($idSolicitacao);
-            $data["paciente"]        = $this->paciente_model->recuperarPacientePorCPF($data["solicitacao"]->Pc_CPF);;
-            $data['profissionais']  = $this->usuario_model->recuperarProfissionais();
-            $data["procedimentos"]   = $procedimentos["procedimentos"];
-
-            $this->template->set('title', 'EDIÇÃO DE SOLICITACÃO');
-            $this->template->load('template','solicitacao_edicao',$data);
-
+          $this->template->load('template','consulta_solicitacao',$dados);
         }
 
         public function cadastrar()
@@ -96,6 +93,8 @@
           extract($_POST);
           $dataSolicitacao = array(
             'Pc_CPF'              => $Pc_CPF,
+            'Proc_Id'             => $Proc_Id,
+            'Proc_Quantidade'     => $Proc_Quantidade,
             'Solic_data'          => date("Y-m-d"),
             'Solic_descricao'     => $Solic_descricao,
             'Solic_cid10principal'=> $Solic_cid10principal,
@@ -163,61 +162,55 @@
           extract($_POST);
 
           $dataSolicitacao = array(
-            'Solic_descricao'      => $Solic_descricao,
-            'Solic_cid10principal' => $Solic_cid10principal,
-            'Solic_cid10sec'       => $Solic_cid10sec,
-            'Solic_cid10causas'    =>$Solic_cid10causas,
-            'Solic_CPF_Profissional'=>$Solic_CPF_Profissional,
-            'Solic_obs'            => $Solic_obs
+            'Proc_Id'               => $Proc_Id,
+            'Proc_Quantidade'       => $Proc_Quantidade,
+            'Solic_descricao'       => $Solic_descricao,
+            'Solic_cid10principal'  => $Solic_cid10principal,
+            'Solic_cid10sec'        => $Solic_cid10sec,
+            'Solic_cid10causas'     => $Solic_cid10causas,
+            'Solic_CPF_Profissional'=> $Solic_CPF_Profissional,
+            'Solic_obs'             => $Solic_obs
           );
-           $this->solicitacao_model->editarSolicitacao($dataSolicitacao, $Solic_id);
+           $alterar = $this->solicitacao_model->editarSolicitacao($dataSolicitacao, $Solic_id);
 
-          $quantidadeItens = sizeof($procedimentos);
+           $quantidadeItens = sizeof($procedimentos);
 
-          for($i = 0; $i < $quantidadeItens; $i++)
-          {
-            $dataItemSolicitacao = array(
+           for($i = 0; $i < $quantidadeItens; $i++)
+           {
+             $dataItemSolicitacao = array(
               'Isolic_item_id'    => $procedimentos[$i],
               'Isolic_quantidade' => $quantidades[$i]
-            );
-            $this->item_solicitacao_model->editarItemSolicitacao($dataItemSolicitacao,$idItens[$i]);
-          }
-          $arr = array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5);
+             );
+             $this->item_solicitacao_model->editarItemSolicitacao($dataItemSolicitacao,$idItens[$i]);
+           }
+           $arr = array('Proc_Id' => $alterar);
 
-          echo json_encode($arr);
-          return json_encode($arr);
+           echo json_encode($arr);
+           return json_encode($arr);
         }
 
         public function emitirLaudoPDF($idSolicitacao)
         {
-          $solicitacao      = $this->solicitacao_model->recuperarSolicitacaoPorId($idSolicitacao);
-          $itensSolicitacao = $this->item_solicitacao_model->recuperarItensPorSolicitacao($idSolicitacao);
-          $paciente         = $this->paciente_model->recuperarPacientePorCPF($solicitacao->Pc_CPF);
-          $procedimentos    = $this->procedimento_model->recuperarProcedimentos();
-          $endereco         = $this->endereco_model->recuperarEnderecoPorCPF($solicitacao->Pc_CPF);
-          $telefone         = $this->telefone_model->recuperarTelefonePorCPF($solicitacao->Pc_CPF);
-          $municipios       = $this->municipio_model->recuperarMunicipioPorCodIBGE($endereco->End_CodIBGE);
-          $cor              = $this->cor_model->recuperarCorPorCodigo($paciente->Pc_Etnia);
-          $profissional     = $this->usuario_model->recuperarDadosUsuarioPorCPF($solicitacao->Solic_CPF_Profissional);
-
-          $dados['solicitacao']      = $solicitacao;
-          $dados['itensSolicitacao'] = $itensSolicitacao;
-          $dados['paciente']         = $paciente;
-          $dados['procedimentos']    = $procedimentos["procedimentos"];
+          $dados['solicitacao']     = $this->solicitacao_model->recuperarSolicitacaoPorId($idSolicitacao);
+          $dados['itensSolicitacao'] = $this->item_solicitacao_model->recuperarItensPorSolicitacao($idSolicitacao);
+          $dados['paciente']         = $this->paciente_model->recuperarPacientePorCPF($dados['solicitacao']->Pc_CPF);
           $dados['profissionais']    = $this->usuario_model->recuperarProfissionais();
-          $dados['endereco']         = $endereco;
-          $dados['telefone']         = $telefone;
-          $dados['municipios']       = $municipios;
-          $dados['cor']              = $cor;
-          $dados['profissional']     = $profissional;
+          $dados['endereco']          = $this->endereco_model->recuperarEnderecoPorCPF($dados['solicitacao']->Pc_CPF);
+          $dados['telefone']        = $this->telefone_model->recuperarTelefonePorCPF($dados['solicitacao']->Pc_CPF);
+          $dados['municipios']        = $this->municipio_model->recuperarMunicipioPorCodIBGE($dados['endereco']->End_CodIBGE);
+          $dados['cor']               = $this->cor_model->recuperarCorPorCodigo($dados['paciente']->Pc_Etnia);
+          $dados['profissional']     = $this->usuario_model->recuperarDadosUsuarioPorCPF($dados['solicitacao']->Solic_CPF_Profissional);
+          $dados["procSecundarios"] = $this->procedimento_model->recuperarProcedimentosSecundarios();
+          $dados['procPincipais']   = $this->procedimento_model->recuperarProcedimentosPrincipais();
+          $dados['procPrincipal']   = $this->procedimento_model->recuperarProcedimentoPorId($dados['solicitacao']->Proc_Id);
 
           //passa o laudo como arquivo pdf para download
           $this->pdf->load_view('solicitacao_laudo', $dados);
           $this->pdf->render();
-          $this->pdf->stream(trim($paciente->Pc_Nome).".pdf");
+          $this->pdf->stream(trim($dados['paciente']->Pc_Nome).".pdf");
 
           //exibe o laudo como pagina web
-          //echo $this->load->view('solicitacao_laudo', $dados, true);
+          // echo $this->load->view('solicitacao_laudo', $dados, true);
         }
     }
 ?>

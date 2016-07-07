@@ -18,7 +18,8 @@
 
         public function editarSolicitacao($solicitacao,$id)
         {
-          $this->db->update('tbl_solicitacao',$solicitacao, array('Solic_id' => $id));          
+          $this->db->update('tbl_solicitacao',$solicitacao, array('Solic_id' => $id));
+          return $this->db->last_query();;
         }
 
         public function recuperarSolicitacoesPorCPF($cpf)

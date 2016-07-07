@@ -162,7 +162,7 @@
                 <td>
                   <fieldset class="campo">
                     <legend>CÓDIGO DO PROCEDIMENTO</legend>
-                    <label></label>
+                    <label><?php echo $procPrincipal->Proc_Codigo;  ?></label>
                   </fieldset>
                 </td>
                 <td>
@@ -173,20 +173,20 @@
                 </td>
                 <td>
                   <fieldset class="campo">
-                    <legend>CLASS</legend>
+                    <legend>CLASSE</legend>
                     <label></label>
                   </fieldset>
                 </td>
                 <td>
                   <fieldset class="campo">
                     <legend>NOME DO PROCEDIMENTO PRINCIPAL</legend>
-                    <label></label>
+                    <label><?php echo $procPrincipal->Proc_Nome; ?></label>
                   </fieldset>
                 </td>
                 <td>
                   <fieldset class="campo">
                     <legend>QTDE</legend>
-                    <label></label>
+                    <label><?php echo $solicitacao->Proc_Quantidade; ?></label>
                   </fieldset>
                 </td>
               </tr>
@@ -203,8 +203,8 @@
                   <tr>
                     <td>
                       <fieldset class="campo">
-                        <legend>CÓDIGO - PROCEDIMENTO</legend>
-                        <label>'.$dataProcedimentos[$itemSolicitacao->Isolic_item_id].'</label>
+                        <legend>CÓDIGO - NOME DO PROCEDIMENTO</legend>
+                        <label>'.$dataProcSecundarios[$itemSolicitacao->Isolic_item_id].'</label>
                       </fieldset>
                     </td>
                     <td>

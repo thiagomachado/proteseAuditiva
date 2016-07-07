@@ -31,7 +31,7 @@
           extract($_POST);
           $dataProtese = array(
             'Prot_Cod'            => $Prot_Cod,
-            'Prot_Nome'           => $Prot_Nome,
+            'Prot_Nome'           => $this->normalizarTexto($Prot_Nome),
             'Prot_Fabricante'     => $Prot_Fabricante,
             'Prot_Classe'         => $Prot_Classe,
             'Prot_Valor'          => $Prot_Valor,
@@ -56,7 +56,7 @@
           extract($_POST);
           $dataProtese = array(
             'Prot_Cod'            => $Prot_Cod,
-            'Prot_Nome'           => $Prot_Nome,
+            'Prot_Nome'           => $this->normalizarTexto($Prot_Nome),
             'Prot_Fabricante'     => $Prot_Fabricante,
             'Prot_Classe'         => $Prot_Classe,
             'Prot_Valor'          => $Prot_Valor,

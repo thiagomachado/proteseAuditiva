@@ -10,6 +10,25 @@
     echo form_input($dataIdSolicitacao);
   ?>
   <div class="areaFormulario">
+    <fieldset class="secaoFormulario">
+      <legend>Procedimento Principal</legend>
+      <div id="divProcedimentosPrincipais" >
+        <div class="procedimentoPrincipal">
+          <table>
+            <tr>
+              <td>
+                <label>Procedimento Principal Solicitado*:</label><br>
+                <?php echo form_dropdown('procPrincipal', $dataProcPrincipais,$solicitacao->Proc_Id,'id="procPrincipal" required');?>
+              </td>
+              <td>
+                <label>Quantidade*:</label><br>
+                <?php echo form_input($dataQuantidadePrincipal); ?>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </fieldset>
 
     <fieldset class="secaoFormulario">
       <legend>Procedimentos</legend>
@@ -28,7 +47,7 @@
                     <td>
                     '.form_input($dataIdItem).'
                       <label>Procedimento Solicitado*:</label><br>
-                      '.form_dropdown('procedimentos[]', $dataProcedimentos, $item->Isolic_item_id).'
+                      '.form_dropdown('procedimentos[]', $dataProcSecundarios, $item->Isolic_item_id).'
                     </td>
                     <td>
                       <label>Quantidade*:</label><br>
@@ -165,6 +184,8 @@ $(document).ready(function() {
               Solic_cid10causas:     $("#cid10Causas").val(),
               Solic_obs:             $("#obs").val(),
               Solic_CPF_Profissional:$("#profissional").val(),
+              Proc_Id:               $("#procPrincipal").val(),
+              Proc_Quantidade:       $("#quantidadePrincipal").val(),
               procedimentos:         procedimentos,
               quantidades:           quantidades,
               idItens:               idItens

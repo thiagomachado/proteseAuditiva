@@ -52,6 +52,14 @@
             'maxlength'     => '11'
     );
 
+    $dataQuantidadePrincipal = array(
+            'name'          => 'quantidadePrincipal',
+            'id'            => 'quantidadePrincipal',
+            'required'      => '',
+            'size'          => '10',
+            'maxlength'     => '11'
+    );
+
     $dataDiagnostico = array(
             'name'          => 'diagnostico',
             'id'            => 'diagnostico',
@@ -91,9 +99,13 @@
 
     $dataProcedimentos = array();
 
-    foreach ($procedimentos as $procedimento)
+    foreach ($procSecundarios as $procedimento)
     {
-      $dataProcedimentos[$procedimento->Proc_Id] = $procedimento->Proc_Codigo .' - '.$procedimento->Proc_Nome ;
+      $dataProcSecundarios[$procedimento->Proc_Id] = $procedimento->Proc_Codigo .' - '.$procedimento->Proc_Nome ;
+    }
+    foreach ($procPincipais as $procedimento)
+    {
+      $dataProcPrincipais[$procedimento->Proc_Id] = $procedimento->Proc_Codigo .' - '.$procedimento->Proc_Nome ;
     }
 
     foreach ($profissionais as $profissional)

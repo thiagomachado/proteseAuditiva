@@ -32,27 +32,48 @@
       </table>
       </fieldset>
 
-    <fieldset class="secaoFormulario">
-      <legend>Procedimentos</legend>
-      <div id="divProcedimentos" >
-        <div class="procedimento">
-          <table>
-            <tr>
-              <td>
-                <label>Procedimento Solicitado*:</label><br>
-                <?php echo form_dropdown('procedimentos[]', $dataProcedimentos);?>
-              </td>
-              <td>
-                <label>Quantidade*:</label><br>
-                <?php echo form_input($dataQuantidade); ?>
-              </td>
-            </tr>
-          </table>
-          <button class="clone">+</button>
-          <button class="remove">-</button>
+      <fieldset class="secaoFormulario">
+        <legend>Procedimento Principal</legend>
+        <div id="divProcedimentosPrincipais" >
+          <div class="procedimentoPrincipal">
+            <table>
+              <tr>
+                <td>
+                  <label>Procedimento Principal Solicitado*:</label><br>
+                  <?php echo form_dropdown('procPrincipal', $dataProcPrincipais,'','id="procPrincipal" required');?>
+                </td>
+                <td>
+                  <label>Quantidade*:</label><br>
+                  <?php echo form_input($dataQuantidadePrincipal); ?>
+                </td>
+              </tr>
+            </table>
+          </div>
         </div>
-      </div>
-    </fieldset>
+      </fieldset>
+
+
+      <fieldset class="secaoFormulario">
+        <legend>Procedimentos Secundários</legend>
+        <div id="divProcedimentos" >
+          <div class="procedimento">
+            <table>
+              <tr>
+                <td>
+                  <label>Procedimento Solicitado*:</label><br>
+                  <?php echo form_dropdown('procedimentos[]', $dataProcSecundarios);?>
+                </td>
+                <td>
+                  <label>Quantidade*:</label><br>
+                  <?php echo form_input($dataQuantidade); ?>
+                </td>
+              </tr>
+            </table>
+            <button class="clone">+</button>
+            <button class="remove">-</button>
+          </div>
+        </div>
+      </fieldset>
 
       <fieldset class="secaoFormulario">
         <legend>Justificativa do(s) procedimento(s) solicitado(s)</legend>
@@ -209,6 +230,8 @@ $(document).ready(function() {
               Solic_cid10causas:     $("#cid10Causas").val(),
               Solic_obs:             $("#obs").val(),
               Solic_CPF_Profissional:$("#profissional").val(),
+              Proc_Id:               $("#procPrincipal").val(),
+              Proc_Quantidade:       $("#quantidadePrincipal").val(),
               procedimentos:         procedimentos,
               quantidades:           quantidades
             },

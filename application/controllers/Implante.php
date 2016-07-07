@@ -31,9 +31,9 @@
           extract($_POST);
           $dataImplante = array(
             'Impl_Cod'     => $Impl_Cod,
-            'Impl_Desc'    => $Impl_Desc,
-            'Impl_Fabr'    => $Impl_Fabr,
-            'Impl_Clss'    => $Impl_Clss,
+            'Impl_Desc'    => $this->normalizarTexto($Impl_Desc),
+            'Impl_Fabr'    => $this->normalizarTexto($Impl_Fabr),
+            'Impl_Clss'    => $this->normalizarTexto($Impl_Clss),
             'Impl_Valor'   => $Impl_Valor,
             'Pc_CPF'       =>  "",
             'Impl_DataEnt' =>  $Impl_DataEnt
@@ -56,9 +56,9 @@
           extract($_POST);
           $dataImplante = array(
             'Impl_Cod'     => $Impl_Cod,
-            'Impl_Desc'    => $Impl_Desc,
-            'Impl_Fabr'    => $Impl_Fabr,
-            'Impl_Clss'    => $Impl_Clss,
+            'Impl_Desc'    => $this->normalizarTexto($Impl_Desc),
+            'Impl_Fabr'    => $this->normalizarTexto($Impl_Fabr),
+            'Impl_Clss'    => $this->normalizarTexto($Impl_Clss),
             'Impl_Valor'   => $Impl_Valor,
             'Impl_DataEnt' =>  $Impl_DataEnt
           );

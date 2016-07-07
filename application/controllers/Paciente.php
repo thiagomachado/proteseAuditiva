@@ -76,14 +76,14 @@
           extract($_POST);
           $dataPaciente = array(
             'Pc_CPF'          => $Pc_CPF,
-            'Pc_Nome'         => strtoupper($Pc_Nome),
+            'Pc_Nome'         => $this->normalizarTexto($Pc_Nome),
             'Pc_CartaoSus'    => $Pc_CartaoSus,
             'Pc_NumProntuario'=> $Pc_NumProntuario,
             'Pc_DtNascimento' => $Pc_DtNascimento,
             'Pc_Sexo'         => $Pc_Sexo,
             'Pc_Etnia'        => $Pc_Etnia,
-            'Pc_NomeMae'      => strtoupper($Pc_NomeMae),
-            'Pc_NomePai'      => strtoupper($Pc_NomePai),
+            'Pc_NomeMae'      => $this->normalizarTexto($Pc_NomeMae),
+            'Pc_NomePai'      => $this->normalizarTexto($Pc_NomePai),
             'Pc_GrauEscolar'  => $Pc_GrauEscolar,
             'Pc_SeTrabalha'   => $Pc_SeTrabalha,
             'Pc_Profissao'    => $Pc_Profissao,
@@ -92,7 +92,7 @@
 
           $dataEndereco = array(
             'Pc_CPF'         => $Pc_CPF,
-            'End_Logradouro' => $End_Logradouro,
+            'End_Logradouro' => $this->normalizarTexto($End_Logradouro),
             'End_UF'         => $End_UF,
             'End_CEP'        => $End_CEP,
             'End_CodIBGE'    => $End_CodIBGE
@@ -115,14 +115,14 @@
           extract($_POST);
           $dataPaciente = array(
             'Pc_CPF'          => $Pc_CPF,
-            'Pc_Nome'         =>strtoupper($Pc_Nome),
+            'Pc_Nome'         => $this->normalizarTexto($Pc_Nome),
             'Pc_CartaoSus'    => $Pc_CartaoSus,
             'Pc_NumProntuario'=> $Pc_NumProntuario,
             'Pc_DtNascimento' => $Pc_DtNascimento,
             'Pc_Sexo'         => $Pc_Sexo,
             'Pc_Etnia'        => $Pc_Etnia,
-            'Pc_NomeMae'      => strtoupper($Pc_NomeMae),
-            'Pc_NomePai'      => strtoupper($Pc_NomePai),
+            'Pc_NomeMae'      => $this->normalizarTexto($Pc_NomeMae),
+            'Pc_NomePai'      => $this->normalizarTexto($Pc_NomePai),
             'Pc_GrauEscolar'  => $Pc_GrauEscolar,
             'Pc_SeTrabalha'   => $Pc_SeTrabalha,
             'Pc_Profissao'    => $Pc_Profissao,
@@ -131,7 +131,7 @@
 
           $dataEndereco = array(
             'Pc_CPF'         => $Pc_CPF,
-            'End_Logradouro' => $End_Logradouro,
+            'End_Logradouro' => $this->normalizarTexto($End_Logradouro),
             'End_UF'         => $End_UF,
             'End_CEP'        => $End_CEP,
             'End_CodIBGE'    => $End_CodIBGE

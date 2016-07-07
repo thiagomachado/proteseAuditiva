@@ -33,7 +33,7 @@
           extract($_POST);
           $dataUsuario = array(
             'Us_CPF'       =>  $Us_CPF,
-            'Us_Nome'      =>  strtoupper($Us_Nome),
+            'Us_Nome'      =>  $this->normalizarTexto($Us_Nome),
             'Us_DtNasc'    =>  $Us_DtNasc,
             'Us_CRFA'      =>  $Us_CRFA,
             'Us_Cargo'     =>  $Us_Cargo,
@@ -53,7 +53,7 @@
           extract($_POST);
           $dataUsuario = array(
             'Us_CPF'    =>  $Us_CPF,
-            'Us_Nome'   =>  strtoupper($Us_Nome),
+            'Us_Nome'   =>  $this->normalizarTexto($Us_Nome),
             'Us_DtNasc' =>  $Us_DtNasc,
             'Us_CRFA'   =>  $Us_CRFA,
             'Us_Cargo'  =>  $Us_Cargo,
