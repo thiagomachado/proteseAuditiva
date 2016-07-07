@@ -277,6 +277,7 @@ body
   border-color: #CCC;
   border-style: solid;
   width: 940px;
+  overflow-x: auto;
   position: relative;
   right: 0;
   left: 0;

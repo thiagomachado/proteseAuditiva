@@ -31,7 +31,7 @@
     </fieldset>
 
     <fieldset class="secaoFormulario">
-      <legend>Procedimentos</legend>
+      <legend>Procedimentos Secundários</legend>
       <div id="divProcedimentos" >
         <div class="procedimento">
           <table>
