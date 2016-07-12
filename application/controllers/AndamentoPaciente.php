@@ -37,18 +37,19 @@
         public function edicaoAndamentoPaciente($cpf)
         {
 
-            $data["itens"]            = $this->item_solicitacao_model->recuperarItensPorPaciente($cpf);
-            $data["paciente"]         = $this->paciente_model->recuperarPacientePorCPF($cpf);
-            $data["procedimentos"]    = $this->procedimento_model->recuperarProcedimentos()["procedimentos"];
-            $data["andamento"]        = $this->andamento_paciente_model->recuperarAndamentoPacientePorCPF($cpf);
-            $data["consultas"]        = $this->consulta_model->recuperarConsultasPorCPF($cpf);
-            $data["proteses"]         = $this->protese_model->recuperarProtesesSemPacientes();
-            $data["protesesPaciente"] = $this->protese_model->recuperarProtesesPorPacientes($cpf);
-            $data["implantes"]        = $this->implante_model->recuperarImplantesSemPacientes();
-            $data["implantesPaciente"]= $this->implante_model->recuperarImplantesPorPacientes($cpf);
+            $dados["solicitacoes"]     = $this->solicitacao_model->recuperarSolicitacoesPorCPF($cpf);
+            $dados["itens"]            = $this->item_solicitacao_model->recuperarItensPorPaciente($cpf);
+            $dados["paciente"]         = $this->paciente_model->recuperarPacientePorCPF($cpf);
+            $dados["procedimentos"]    = $this->procedimento_model->recuperarProcedimentos()["procedimentos"];
+            $dados["andamento"]        = $this->andamento_paciente_model->recuperarAndamentoPacientePorCPF($cpf);
+            $dados["consultas"]        = $this->consulta_model->recuperarConsultasPorCPF($cpf);
+            $dados["proteses"]         = $this->protese_model->recuperarProtesesSemPacientes();
+            $dados["protesesPaciente"] = $this->protese_model->recuperarProtesesPorPacientes($cpf);
+            $dados["implantes"]        = $this->implante_model->recuperarImplantesSemPacientes();
+            $dados["implantesPaciente"]= $this->implante_model->recuperarImplantesPorPacientes($cpf);
 
             $this->template->set('title', 'ANDAMENTO DE PACIENTES');
-            $this->template->load('template','andamentoPaciente_edicao',$data);
+            $this->template->load('template','andamentoPaciente_edicao',$dados  );
 
         }
 
@@ -92,6 +93,19 @@
             $dataProtese = array('Pc_CPF' =>$Pc_CPF);
 
             $this->protese_model->editar($Andamento_protese,$dataProtese);
+          }
+
+          //editando as solicitações
+          $quantiadeSolicitacoes = sizeof($solicitacoes);
+          for ($i = 0; $i < $quantiadeSolicitacoes; $i++)
+          {
+            $Solic_Id = $solicitacoes[$i];
+            $solicitacao = array(
+              'Proc_Confirmado' =>$confirmadosPrincipais[$i],
+              'Proc_Descricao'  => $descricoesPrincipais[$i]
+            );
+
+            $this->solicitacao_model->editarSolicitacao($solicitacao,$Solic_Id);
           }
 
           //editando os itens das solicitações

@@ -26,9 +26,9 @@
         {
           $this->db->where('Pc_CPF', $cpf);
           $query = $this->db->get('tbl_solicitacao');
-          $solicitacao = $query->result();
+          $solicitacoes = $query->result();
 
-          return $solicitacao;
+          return $solicitacoes;
         }
 
         public function recuperarSolicitacaoPorId($id)

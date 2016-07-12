@@ -26,37 +26,98 @@
 
     <fieldset class="secaoFormulario">
       <legend>Solicitações</legend>
-      <table class="tabelaPDF">
-        <tr class="titulo">
-          <td>Procedimento:</td>
-          <td>Quantidade:</td>
-          <td>Confirmado:</td>
-          <td>Descrição:</td>
-        </tr>
+
       <?php
-          foreach ($itens as $item)
+          foreach ($solicitacoes as $solicitacao)
           {
-            $checked = '';
-            if($item->Isolic_confirmado == 1)
-            {
-              $checked = 'checked';
-            }
-            echo
-            '
-              <tr>
-                <td><input type="hidden" name="itens[]" readonly value="'.$item->Isolic_id.'"/>
-                '.$dataProcedimentos[$item->Isolic_item_id].'</td>
-                <td class="linhaCentralizada">'.$item->Isolic_quantidade.'</td>
-                <td class="linhaCentralizada"><input type="checkbox" name="confirmados[]" value="1" '.$checked.'/></td>
-                <td class="linhaCentralizada">
-                  <input type="text" maxlength=100 name="descricoes[]" size=45 value="'.$item->Isolic_descricao.'"/>
-                </td>
-              </tr>
-            ';
-          }
-       ?>
-     </table>
-    </fieldset>
+              $procedimentoPrincipal = "";
+              foreach ($procedimentos as $procedimento )
+              {
+                if($solicitacao->Proc_Id == $procedimento->Proc_Id)
+                {
+                  $procedimentoPrincipal = $procedimento;
+                }
+              }
+              $marcarProcedimentoPrincipal = '';
+              if($solicitacao->Proc_Confirmado == 1)
+              {
+                $marcarProcedimentoPrincipal = 'checked';
+              }
+              echo '<fieldset class="secaoFormulario"> <legend>'.date("d/m/Y", strtotime($solicitacao->Solic_data)).'</legend>';
+              echo '<table>
+                      <tr>
+                        <td>
+                          <input type="hidden" name="solicitacoes[]" readonly value="'.$solicitacao->Solic_id.'"/>
+                          <label class="titulo">Procedimento Principal:</label></br>
+                          '.$procedimentoPrincipal->Proc_Nome.'
+                        </td>
+                        <td>
+                          <label class="titulo">Código:</label></br>
+                          '.$procedimentoPrincipal->Proc_Codigo.'
+                        </td>
+                        <td class="linhaCentralizada">
+                          <label class="titulo">Quantidade:</label></br>
+                          '.$solicitacao->Proc_Quantidade.'
+                        </td>
+                        <td class="linhaCentralizada">
+                          <label class="titulo">Confirmado:</label></br>
+                          <input type="checkbox" name="confirmadosPrincipais[]" value="1" '.$marcarProcedimentoPrincipal.'/>
+                        </td>
+                        <td>
+                          <label class="titulo">Descrição:</label></br>
+                          <input type="text" maxlength=100 name="descricoesPrincipais[]" size=45 value="'.$solicitacao->Proc_Descricao.'"/>
+                        </td>
+                      </tr>
+                    </table>
+              ';
+
+              $itensSecundarios = new SplObjectStorage;
+              foreach ($itens as $item)
+              {
+                if($item->Solic_id == $solicitacao->Solic_id)
+                {
+                  $itensSecundarios->attach($item);
+                }
+              }
+              if(sizeof($itensSecundarios)> 0)
+              {
+                echo '<fieldset class="secaoFormulario"><legend>Procedimentos Secundários</legend>
+                <table class="tabelaPDF">
+                  <tr class="titulo">
+                    <td>Código - Nome:</td>
+                    <td>Quantidade:</td>
+                    <td>Confirmado:</td>
+                    <td>Descrição:</td>
+                  </tr>
+                ';
+                foreach ($itensSecundarios as $itemSecundario)
+                {
+                  $checked = '';
+                  if($itemSecundario->Isolic_confirmado == 1)
+                  {
+                    $checked = 'checked';
+                  }
+                  echo
+                  '
+                    <tr>
+                      <td><input type="hidden" name="itens[]" readonly value="'.$itemSecundario->Isolic_id.'"/>
+                      '.$dataProcedimentos[$itemSecundario->Isolic_item_id].'</td>
+                      <td class="linhaCentralizada">'.$itemSecundario->Isolic_quantidade.'</td>
+                      <td class="linhaCentralizada"><input type="checkbox" name="confirmados[]" value="1" '.$checked.'/></td>
+                      <td class="linhaCentralizada">
+                        <input type="text" maxlength=100 name="descricoes[]" size=45 value="'.$itemSecundario->Isolic_descricao.'"/>
+                      </td>
+                    </tr>
+                  ';
+                }
+                echo '</table> </fieldset>';
+              }
+
+
+              echo '</fieldset>';
+          }echo '</fieldset>';
+      ?>
+
 
     <fieldset class="secaoFormulario">
       <legend>Consultas</legend>
@@ -355,8 +416,32 @@ $(document).ready(function() {
         var consultaEdicaoIds        = [];
         var consultaDatas            = [];
         var consultaDescricoes       = [];
+        var solicitacoes             = [];
+        var confirmadosPrincipais    = [];
+        var descricoesPrincipais     = [];
 
-        //montando vetor com os itens da solicitação a serem editados
+        //montando vetor com as solicitações a serem editadas
+        $("input[name='solicitacoes[]']").each(function()
+        {
+          solicitacoes.push($(this).val());
+        });
+        $("input[name='confirmadosPrincipais[]']").each(function()
+        {
+          if($(this).prop("checked"))
+          {
+            confirmadosPrincipais.push(1);
+          }
+          else
+          {
+            confirmadosPrincipais.push(0);
+          }
+        });
+        $("input[name='descricoesPrincipais[]']").each(function()
+        {
+            descricoesPrincipais.push($(this).val());
+        });
+
+        //montando vetor com os itens da solicitação (Procedimentos Secundarios) a serem editados
         $("input[name='confirmados[]']").each(function()
         {
           if($(this).prop("checked"))
@@ -412,6 +497,9 @@ $(document).ready(function() {
             dataType: 'json',
             data:
             {
+              solicitacoes:             solicitacoes,
+              confirmadosPrincipais:    confirmadosPrincipais,
+              descricoesPrincipais:     descricoesPrincipais,
               confirmados:              confirmados,
               descricoes:               descricoes,
               itens:                    itens,
