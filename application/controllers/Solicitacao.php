@@ -105,18 +105,20 @@
           );
 
           $idSolicitacao = $this->solicitacao_model->cadastrarSolicitacao($dataSolicitacao);
-
-          $quantidadeItens = sizeof($procedimentos);
-
-          for($i = 0; $i < $quantidadeItens; $i++)
+          if ($existeProcSecundario > 0)
           {
-            $dataItemSolicitacao = array(
-              'Solic_id'          => $idSolicitacao,
-              'Isolic_item_id'    => $procedimentos[$i],
-              'Isolic_quantidade' => $quantidades[$i],
-              'Isolic_confirmado' => 0
-            );
-            $this->item_solicitacao_model->cadastrarItemSolicitacao($dataItemSolicitacao);
+            $quantidadeItens = sizeof($procedimentos);
+
+            for($i = 0; $i < $quantidadeItens; $i++)
+            {
+              $dataItemSolicitacao = array(
+                'Solic_id'          => $idSolicitacao,
+                'Isolic_item_id'    => $procedimentos[$i],
+                'Isolic_quantidade' => $quantidades[$i],
+                'Isolic_confirmado' => 0
+              );
+              $this->item_solicitacao_model->cadastrarItemSolicitacao($dataItemSolicitacao);
+            }
           }
 
           //cadastro andamento do paciente (somente se ja não tiver cadastrado antes)
@@ -172,17 +174,21 @@
             'Solic_obs'             => $Solic_obs
           );
            $alterar = $this->solicitacao_model->editarSolicitacao($dataSolicitacao, $Solic_id);
-
-           $quantidadeItens = sizeof($procedimentos);
-
-           for($i = 0; $i < $quantidadeItens; $i++)
+           //altera os itens da solicitação somente se existirem
+           if (isset($procedimentos))
            {
-             $dataItemSolicitacao = array(
-              'Isolic_item_id'    => $procedimentos[$i],
-              'Isolic_quantidade' => $quantidades[$i]
-             );
-             $this->item_solicitacao_model->editarItemSolicitacao($dataItemSolicitacao,$idItens[$i]);
+             $quantidadeItens = sizeof($procedimentos);
+
+             for($i = 0; $i < $quantidadeItens; $i++)
+             {
+               $dataItemSolicitacao = array(
+                'Isolic_item_id'    => $procedimentos[$i],
+                'Isolic_quantidade' => $quantidades[$i]
+               );
+               $this->item_solicitacao_model->editarItemSolicitacao($dataItemSolicitacao,$idItens[$i]);
+             }
            }
+
            $arr = array('Proc_Id' => $alterar);
 
            echo json_encode($arr);

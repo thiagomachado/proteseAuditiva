@@ -50,10 +50,13 @@
             </table>
           </div>
         </div>
+        <label>Possui Procedimentos Secundários?</label>
+        <input type="radio" name="procedimentoSecundario" value="1" checked/><label>Sim</label>
+        <input type="radio" name="procedimentoSecundario" value="0" /><label>Não</label>
       </fieldset>
 
 
-      <fieldset class="secaoFormulario">
+      <fieldset class="secaoFormulario" id="areaProcedimentosSecundarios">
         <legend>Procedimentos Secundários</legend>
         <div id="divProcedimentos" >
           <div class="procedimento">
@@ -195,6 +198,30 @@
     $(".clone").on("click", clone);
 
     $(".remove").on("click", remove);
+
+    function mostrarProcedimentosSecundarios()
+    {
+      if($("input[name='procedimentoSecundario']:checked").val() == "1")
+      {
+        $('#areaProcedimentosSecundarios').css("display", "block");
+        $("input[name='quantidade[]']").each(function()
+        {
+            $(this).prop("required", true);
+        });
+      }
+      else {
+        $('#areaProcedimentosSecundarios').css("display", "none");
+        $("input[name='quantidade[]']").each(function()
+        {
+            $(this).removeAttr("required");
+        });
+      }
+    }
+
+    $("input[name='procedimentoSecundario']").on("click", mostrarProcedimentosSecundarios);
+
+    window.onload = mostrarProcedimentosSecundarios();
+
 </script>
 
 
@@ -202,6 +229,8 @@
 <script type="text/javascript">
 // Ajax post
 $(document).ready(function() {
+
+
     $("#formSolicitacao").on('submit', function(event) {
         event.preventDefault();
         var procedimentos = [];
@@ -232,6 +261,7 @@ $(document).ready(function() {
               Solic_CPF_Profissional:$("#profissional").val(),
               Proc_Id:               $("#procPrincipal").val(),
               Proc_Quantidade:       $("#quantidadePrincipal").val(),
+              existeProcSecundario:  $("input[name='procedimentoSecundario']:checked").val(),
               procedimentos:         procedimentos,
               quantidades:           quantidades
             },

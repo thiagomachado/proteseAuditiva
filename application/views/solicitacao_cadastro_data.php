@@ -48,6 +48,7 @@
             'name'          => 'quantidade[]',
             'id'            => 'quantidade',
             'required'      => '',
+            'type'          => 'number',
             'size'          => '10',
             'maxlength'     => '11'
     );
@@ -55,6 +56,7 @@
     $dataQuantidadePrincipal = array(
             'name'          => 'quantidadePrincipal',
             'id'            => 'quantidadePrincipal',
+            'type'          => 'number',
             'required'      => '',
             'size'          => '10',
             'maxlength'     => '11'
@@ -64,7 +66,7 @@
             'name'          => 'diagnostico',
             'id'            => 'diagnostico',
             'required'      => '',
-            'size'          => '60',
+            'size'          => '58',
             'maxlength'     => '150'
     );
 
