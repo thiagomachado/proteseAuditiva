@@ -53,6 +53,10 @@
                       <label>Quantidade*:</label><br>
                       '.form_input($dataQuantidade).'
                     </td>
+                    <td>
+                      <br>
+                      <button value='.$item->Isolic_id.' name="botaoExcluirProcedimentoSec" class="remove">-</button>
+                    </td>
                   </tr>
                 ';
               }
@@ -119,7 +123,6 @@
       </div>
     </div>
 
-
     <div class="modal" id="modalSucesso">
       <div class="textoModal">
         <h1>Sucesso!</h1>
@@ -142,14 +145,53 @@
         <input class="botao" onclick="esconderModal('#modalErro')" value="Ok"/>
       </div>
     </div>
+
+    <div class="modal" id="modalExluirItem">
+      <div class="textoModal">
+        <h1>Excluir!</h1>
+        <p>Deseja realmente excluir o procedimento?</p>
+      </div>
+
+      <div class="botoesModal">
+        <input id="confirmarExclusaoProcSecundario" type="button" class="botao" value="Sim"/>
+        <input class="botao" onclick="esconderModal('#modalExluirItem')" value="Não"/>
+      </div>
+    </div>
   </div>
 
 <?php echo form_close(); ?>
 </div>
 
 <script type="text/javascript">
-// Ajax post
+var idExcluirItemSolicitacao;
+$("button[name='botaoExcluirProcedimentoSec']").on('click', function(event){
+
+    event.preventDefault();
+    mostrarModal('#modalExluirItem');
+    idExcluirItemSolicitacao = $(this).val();
+    console.log(idExcluirItemSolicitacao);
+
+});
+
+$("#confirmarExclusaoProcSecundario").on('click', function(event){
+    jQuery.ajax({
+      type: "POST",
+      url: "<?php echo base_url(); ?>" + "index.php/excluirItemSolicitacao/"+idExcluirItemSolicitacao,
+      dataType: 'json',
+      data:
+      {
+
+      },
+      success:function(res)
+      {
+        console.log(res);
+        location.reload();
+      }
+    });
+});
+
 $(document).ready(function() {
+
     $("#formSolicitacao").on('submit', function(event) {
         event.preventDefault();
         var procedimentos = [];

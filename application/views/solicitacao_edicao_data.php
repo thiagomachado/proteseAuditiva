@@ -19,6 +19,7 @@
     $dataQuantidadePrincipal = array(
             'name'          => 'quantidadePrincipal',
             'id'            => 'quantidadePrincipal',
+            'type'          => 'number',
             'required'      => '',
             'size'          => '10',
             'value'         => $solicitacao->Proc_Quantidade,
@@ -28,6 +29,7 @@
     $dataQuantidade = array(
             'name'          => 'quantidade[]',
             'id'            => 'quantidade',
+            'type'          => 'number',
             'required'      => '',
             'size'          => '10',
             'maxlength'     => '11'
@@ -71,7 +73,7 @@
     $dataCid10Causas = array(
             'name'          => 'cid10Causas',
             'id'            => 'cid10Causas',
-            'size'          => '20',
+            'size'          => '18',
             'value'         => $solicitacao->Solic_cid10causas,
             'maxlength'     => '30'
     );

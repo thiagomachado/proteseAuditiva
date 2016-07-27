@@ -100,6 +100,7 @@ $route['consultaSolicitacao/(:num)']     = 'solicitacao/consultaSolicitacaoPorPa
 $route['edicaoSolicitacao/(:num)']       = 'solicitacao/edicaoSolicitacao/$1';
 $route['editarSolicitacao']              = 'solicitacao/editarSolicitacao';
 $route['emitirLaudoSolicitacao/(:num)']  = 'solicitacao/emitirLaudoPDF/$1';
+$route['excluirItemSolicitacao/(:num)']  = 'solicitacao/excluirItem/$1';
 
 
 //-------------------ANDAMENTO DE PACIENTES -------------------------------------------

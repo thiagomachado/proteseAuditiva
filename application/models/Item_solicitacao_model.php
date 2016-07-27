@@ -25,6 +25,12 @@
           return false;
         }
 
+        public function excluirItemSolicitacao($id)
+        {
+          $where = array('Isolic_id' => $id);
+          $this->db->delete('tbl_item_solicitacao', $where);
+        }
+
         public function recuperarItensPorSolicitacao($idSolicitacao)
         {
           $this->db->where('Solic_id', $idSolicitacao);

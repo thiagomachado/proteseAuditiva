@@ -195,6 +195,13 @@
            return json_encode($arr);
         }
 
+        public function excluirItem($id)
+        {
+          $arr = array('ID' => $id);
+          $this->item_solicitacao_model->excluirItemSolicitacao($id);
+          echo json_encode($arr);
+        }
+
         public function emitirLaudoPDF($idSolicitacao)
         {
           $dados['solicitacao']     = $this->solicitacao_model->recuperarSolicitacaoPorId($idSolicitacao);
