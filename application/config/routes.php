@@ -103,36 +103,40 @@ $route['emitirLaudoSolicitacao/(:num)']  = 'solicitacao/emitirLaudoPDF/$1';
 $route['excluirItemSolicitacao/(:num)']  = 'solicitacao/excluirItem/$1';
 
 
-//-------------------ANDAMENTO DE PACIENTES -------------------------------------------
+//-------------------ANDAMENTO DE PACIENTES ------------------------------------
 $route['andamentoPaciente']          = 'andamentoPaciente/selecionarPaciente';
 $route['andamentoPaciente/(:num)']   = 'andamentoPaciente/edicaoAndamentoPaciente/$1';
 $route['atualizarAndamentoPaciente'] = 'andamentoPaciente/editar';
 $route['excluirConsulta/(:num)']     = 'andamentoPaciente/excluirConsulta/$1';
 
 
-//-------------------IMPLANTE-----------------------------------------------------------
+//-------------------IMPLANTE---------------------------------------------------
 $route['estoqueImplantes']        = 'implante';
 $route['cadastroImplante']        = 'implante/cadastro';
 $route['cadastrarImplante']       = 'implante/cadastrar';
 $route['edicaoImplante/(:num)']   = 'implante/edicao/$1';
 $route['editarImplante']          = 'implante/editar';
 
-//-------------------PROTESE-----------------------------------------------------------
+//-------------------PROTESE----------------------------------------------------
 $route['estoqueProteses']        = 'protese';
 $route['cadastroProtese']        = 'protese/cadastro';
 $route['cadastrarProtese']       = 'protese/cadastrar';
 $route['edicaoProtese/(:num)']   = 'protese/edicao/$1';
 $route['editarProtese']          = 'protese/editar';
 
-//-------------------PROCEDIMENTO-----------------------------------------------------------
+//-------------------PROCEDIMENTO-----------------------------------------------
 $route['procedimento']                = 'procedimento';
 $route['cadastroProcedimento']        = 'procedimento/cadastro';
 $route['cadastrarProcedimento']       = 'procedimento/cadastrar';
 $route['edicaoProcedimento/(:num)']   = 'procedimento/edicao/$1';
 $route['editarProcedimento']          = 'procedimento/editar';
 
-//------------------Usuarios-----------------------------------------------------------
+//------------------Usuarios----------------------------------------------------
 $route['cadastroUsuario']     = 'usuario/cadastroUsuario';
 $route['cadastrarUsuario']    = 'usuario/cadastrar';
 $route['meusDados']           = 'usuario/edicaoUsuario';
 $route['editarUsuario']       = 'usuario/editar';
+
+
+//-------------------RELATORIO FINANCEIRO---------------------------------------
+$route['relatorioFinanceiro'] = 'relatorioFinanceiro';

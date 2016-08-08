@@ -16,7 +16,7 @@
         <?php
             if($nivel == 1)
             {
-                echo '<a href=""><li>RELATÓRIO FINANCEIRO</li></a>';
+                echo '<a href="'.site_url("relatorioFinanceiro").'"><li>RELATÓRIO FINANCEIRO</li></a>';
             }
         ?>
         <?php
