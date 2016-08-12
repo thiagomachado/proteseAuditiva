@@ -118,11 +118,11 @@ $route['edicaoImplante/(:num)']   = 'implante/edicao/$1';
 $route['editarImplante']          = 'implante/editar';
 
 //-------------------PROTESE----------------------------------------------------
-$route['estoqueProteses']        = 'protese';
-$route['cadastroProtese']        = 'protese/cadastro';
-$route['cadastrarProtese']       = 'protese/cadastrar';
-$route['edicaoProtese/(:num)']   = 'protese/edicao/$1';
-$route['editarProtese']          = 'protese/editar';
+$route['estoqueProteses']               = 'protese';
+$route['cadastroProtese']               = 'protese/cadastro';
+$route['cadastrarProtese']              = 'protese/cadastrar';
+$route['edicaoProtese/(:num)']          = 'protese/edicao/$1';
+$route['editarProtese']                 = 'protese/editar';
 
 //-------------------PROCEDIMENTO-----------------------------------------------
 $route['procedimento']                = 'procedimento';

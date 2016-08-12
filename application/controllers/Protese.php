@@ -9,6 +9,7 @@
             parent::__construct();
             $this->template->set('css', link_tag('assets/css/implante.css'));
             $this->load->model('protese_model');
+            $this->load->model('paciente_model');
         }
 
         public function index()
@@ -45,7 +46,12 @@
 
         public function edicao($id)
         {
-          $protese = $this->protese_model->recuperarProtesePorId($id);
+          $protese = $this->protese_model->recuperarProtesePorId($id);          
+          if($protese->Pc_CPF != '')
+          {
+              $data["paciente"] = $this->paciente_model->recuperarPacientePorCPF($protese->Pc_CPF);                  
+          }
+          
           $data["protese"] = $protese;
           $this->template->set('title', 'EDIÇÃO DE PRÓTESE');
           $this->template->load('template','protese_edicao',$data);
@@ -62,10 +68,16 @@
             'Prot_Valor'          => $Prot_Valor,
             'Prot_DataEntrada'    => $Prot_DataEntrada
           );
+          if(isset($Pc_CPF))
+          {
+              $dataProtese['Pc_CPF'] = $Pc_CPF;
+          }
 
           $id_inserido = $this->protese_model->editar($Prot_Id,$dataProtese);
           echo json_encode($id_inserido);
         }
+        
+ 
 
     }
 ?>
