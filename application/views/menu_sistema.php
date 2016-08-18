@@ -22,7 +22,7 @@
         <?php
           if($nivel == 1)
           {
-              echo '<a href="'.site_url("cadastroUsuario").'"><li>CADASTRO DE USUARIOS</li></a>';
+              echo '<a href="'.site_url("usuarios").'"><li>CONTROLE DE USUARIOS</li></a>';
           }          
         ?>
     </ul>

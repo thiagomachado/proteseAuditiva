@@ -17,6 +17,16 @@
             return $query->result();
         }
 
+        function recuperarUsuarioPorNomeEmailNivel($nome,$email,$nivel)
+        {
+
+            $query = $this->db->query("select u.Us_CPF, u.Us_Nome, u.Us_email, n.Nvl_Desc from bd_projpa.tbl_usuarios u
+inner join bd_projpa.tblnivel n on n.Nvl_Cod = u.Us_Nivel
+where u.Us_Nome like '".$nome."%' and u.Us_email like '".$email."%' and n.Nvl_Cod like '".$nivel."%'");
+
+            return $query->result();
+        }
+
         function verificarUsuario($usuario, $senha)
         {
           $query = $this->db->get_where('tbl_usuarios', array('Us_Login' => $usuario, 'Us_Senha' => $senha));

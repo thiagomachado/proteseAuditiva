@@ -8,6 +8,7 @@
   <?php
     echo form_open('usuario/cadastrar', $data_form);
     echo form_input($dataCPFHidden);
+    echo form_input($tipoEdicao);
   ?>
   <div class="areaFormulario">
     <fieldset class="secaoFormulario">
@@ -76,6 +77,12 @@
   </div>
   <div class="areaBotoesFormulario">
     <?php echo form_submit($dataSubmit) ?>
+    <?php
+        if($podeExcluir)
+        {
+            echo '<input class="botao" type="button" onclick="mostrarModal(\'#modalExcluir\')" value="Excluir"/>';
+        }
+    ?>
     <input class="botao" type="button" onclick="mostrarModal('#modalSairSemSalvar')" value="Cancelar"/>
   </div>
 
@@ -87,7 +94,7 @@
         <p>Deseja sair sem salvar?</p>
       </div>
       <div class="botoesModal">
-        <a href="<?php echo site_url("menu");?>"><input type="button" class="botao" value="Sim"/></a>
+        <a href="<?php echo site_url($botaoCancelar);?>"><input type="button" class="botao" value="Sim"/></a>
         <input class="botao" type="button" onclick="esconderModal('#modalSairSemSalvar')" value="Não"/>
       </div>
     </div>
@@ -96,11 +103,22 @@
     <div class="modal" id="modalSucesso">
       <div class="textoModal">
         <h1>Sucesso!</h1>
-        <p>Seus dados foram alterados.</p>
+        <p><?php echo $textoConcluir; ?></p>
       </div>
 
       <div class="botoesModal">
-        <a href="<?php echo site_url("menu");?>"><input class="botao" value="Concluir"/></a>
+        <a href="<?php echo site_url("$botaoConcluir");?>"><input class="botao" value="Concluir"/></a>
+      </div>
+    </div>
+
+    <div class="modal" id="modalExcluir">
+      <div class="textoModal">
+          <h1>EXCLUIR</h1>
+          <p>Deseja realmente EXCLUIR o usuário?</p>
+      </div>
+      <div class="botoesModal">
+          <input type="button" class="botao" value="Sim"/>
+          <input class="botao" type="button" onclick="esconderModal('#modalExcluir')" value="Não"/>
       </div>
     </div>
 
@@ -165,7 +183,8 @@ $(document).ready(function() {
               Us_Login:  $("#login").val(),
               Us_Senha:  $("#senha").val(),
               Us_email:  $("#email").val(),
-              cpf:       $('#cpfHidden').val()
+              cpf:       $('#cpfHidden').val(),
+              tipoEdicao:$('#tipoEdicao').val()
             },
             success: function(res)
             {

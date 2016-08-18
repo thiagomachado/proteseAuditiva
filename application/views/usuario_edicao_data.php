@@ -11,7 +11,7 @@
             'id'            => 'nomeUsuario',
             'size'          => '62',
             'required'      => '',
-            'value'         => $this->session->userdata("usuario")->Us_Nome,
+            'value'         => $usuario->Us_Nome,
             'maxlength'     => '45'
     );
 
@@ -22,7 +22,7 @@
             'required'      => '',
             'pattern'       => '\d{11}',
             'maxlength'     => '11',
-            'value'         => $this->session->userdata("usuario")->Us_CPF,
+            'value'         => $usuario->Us_CPF,
             'title'         => 'Digite apenas números no CPF'
     );
 
@@ -30,7 +30,14 @@
             'name'          => 'cpfHidden',
             'id'            => 'cpfHidden',
             'type'          => 'hidden',
-            'value'         => $this->session->userdata("usuario")->Us_CPF
+            'value'         => $usuario->Us_CPF
+    );
+
+    $tipoEdicao = array(
+        'name'          => 'tipoEdicao',
+        'id'            => 'tipoEdicao',
+        'type'          => 'hidden',
+        'value'         => $tipoEdicao
     );
 
     $dataCartaoSUS = array(
@@ -38,14 +45,14 @@
             'id'            => 'cartaoSUS',
             'size'          => '20',
             'maxlength'     => '45',
-            'value'         => $this->session->userdata("usuario")->Us_CartaoSUS
+            'value'         => $usuario->Us_CartaoSUS
     );
 
     $dataDataNascimento = array(
             'type'          => 'date',
             'name'          => 'dataNascimento',
             'id'            => 'dataNascimento',
-            'value'         => $this->session->userdata("usuario")->Us_DtNasc,
+            'value'         => $usuario->Us_DtNasc,
             'required'      => ''
     );
 
@@ -54,7 +61,7 @@
             'name'          => 'crfa',
             'id'            => 'crfa',
             'size'          => '30',
-            'value'         => $this->session->userdata("usuario")->Us_CRFA,
+            'value'         => $usuario->Us_CRFA,
             'maxlength'     => '45'
     );
 
@@ -63,7 +70,7 @@
             'id'            => 'cargo',
             'size'          => '40',
             'required'      => '',
-            'value'         => $this->session->userdata("usuario")->Us_Cargo,
+            'value'         => $usuario->Us_Cargo,
             'maxlength'     => '45'
     );
 
@@ -78,7 +85,7 @@
             'id'            => 'login',
             'size'          => '40',
             'required'      => '',
-            'value'         => $this->session->userdata("usuario")->Us_Login,
+            'value'         => $usuario->Us_Login,
             'maxlength'     => '10'
     );
 
@@ -87,7 +94,7 @@
             'id'            => 'email',
             'size'          => '58',
             'required'      => '',
-            'value'         => $this->session->userdata("usuario")->Us_email,
+            'value'         => $usuario->Us_email,
             'maxlength'     => '100'
     );
 
