@@ -120,5 +120,16 @@
 
             return $usuarios;
         }
+
+        public function excluir()
+        {
+            extract($_POST);
+            if(isset($cpf))
+            {
+                $this->usuario_model->excluirUsuario($cpf);
+                echo json_encode('user was deleted');
+            }
+
+        }
     }
 ?>

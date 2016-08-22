@@ -117,8 +117,18 @@
           <p>Deseja realmente EXCLUIR o usuário?</p>
       </div>
       <div class="botoesModal">
-          <input type="button" class="botao" value="Sim"/>
+          <input onclick="excluir()" type="button" class="botao" value="Sim"/>
           <input class="botao" type="button" onclick="esconderModal('#modalExcluir')" value="Não"/>
+      </div>
+    </div>
+
+    <div class="modal" id="modalExclusao">
+      <div class="textoModal">
+          <h1>SUCESSO</h1>
+          <p>Todos os registros do usuário foram removidos!</p>
+      </div>
+      <div class="botoesModal">
+          <a href="<?php echo site_url("$botaoConcluir");?>"><input class="botao" value="Concluir"/></a>
       </div>
     </div>
 
@@ -204,4 +214,28 @@ $(document).ready(function() {
         });
     });
 });
+
+function excluir()
+{
+    jQuery.ajax({
+        type: "POST",
+        url: "<?php echo site_url("excluirUsuario"); ?>",
+        dataType: 'json',
+        data:
+        {
+            cpf:$('#cpfHidden').val()
+        }, success: function()
+        {
+
+            mostrarModal('#modalExclusao');
+
+        },
+        error: function (xhr, ajaxOptions, thrownError)
+        {
+            mostrarModal('#modalErro');
+            console.log(xhr.status);
+            console.log(thrownError);
+        }
+    });
+}
 </script>

@@ -138,6 +138,7 @@ $route['meusDados']           = 'usuario/meusDados';
 $route['edicaoUsuario/(:num)']= 'usuario/edicaoUsuario/$1';
 $route['editarUsuario']       = 'usuario/editar';
 $route['usuarios']            = 'usuario';
+$route['excluirUsuario']      = 'usuario/excluir';
 
 //-------------------RELATORIO FINANCEIRO---------------------------------------
 $route['relatorioFinanceiro'] = 'relatorioFinanceiro';

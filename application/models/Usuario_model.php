@@ -85,5 +85,10 @@ where u.Us_Nome like '".$nome."%' and u.Us_email like '".$email."%' and n.Nvl_Co
           $this->db->update('tbl_usuarios', $usuario, array('Us_CPF' => $cpf));
           return true;
         }
+
+        public function excluirUsuario($cpf)
+        {
+            $this->db->delete('tbl_usuarios', array('Us_CPF' => $cpf));
+        }
     }
 ?>
