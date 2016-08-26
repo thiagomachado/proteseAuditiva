@@ -42,7 +42,7 @@
             $dados['procSecundarios']= $this->procedimento_model->recuperarProcedimentosSecundarios();
             $dados['procPincipais']  = $this->procedimento_model->recuperarProcedimentosPrincipais();
 
-            $this->template->set('title', 'CADASTRO DE SOLICITAÇÃO');
+            $this->template->set('title', 'CADASTRO DE LAUDO');
             $this->template->load('template','solicitacao_cadastro',$dados);
         }
 
@@ -56,7 +56,7 @@
             $dados["procSecundarios"] = $this->procedimento_model->recuperarProcedimentosSecundarios();
             $dados['procPincipais']   = $this->procedimento_model->recuperarProcedimentosPrincipais();
 
-            $this->template->set('title', 'EDIÇÃO DE SOLICITACÃO');
+            $this->template->set('title', 'EDIÇÃO DE LAUDO');
             $this->template->load('template','solicitacao_edicao',$dados);
 
         }
@@ -67,10 +67,10 @@
           $listaPacientes                  = $this->consultarPacientesComSolicitacao();
           $listaPacientes['formAction']    = 'consultaSolicitacao' ;
           $listaPacientes['cadastro']      = "cadastroSolicitacao";
-          $listaPacientes['textoCadastro'] = "Solicitação";
+          $listaPacientes['textoCadastro'] = "NOVO";
 
           $this->template->set('script', $jsConsulta );
-          $this->template->set('title', 'CONSULTA DE SOLICITAÇÃO');
+          $this->template->set('title', 'CONSULTA DE LAUDO');
           $this->template->load('template','consulta_generica',$listaPacientes);
 
         }
@@ -84,7 +84,7 @@
           $dados["solicitacoes"] = $solicitacoes;
 
           $this->template->set('script', $jsConsulta );
-          $this->template->set('title', 'SOLICITAÇÕES DO PACIENTE');
+          $this->template->set('title', 'LAUDOS DO PACIENTE');
           $this->template->load('template','consulta_solicitacao',$dados);
         }
 

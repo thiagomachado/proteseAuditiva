@@ -13,7 +13,7 @@
             }
         ?>
 
-        <a href="<?php echo site_url("cadastroSolicitacao");?>"><li>REALIZAR SOLICITAÇÃO</li></a>
+        <a href="<?php echo site_url("cadastroSolicitacao");?>"><li>REALIZAR LAUDO</li></a>
     </ul>
 </div>
 
@@ -21,7 +21,7 @@
     <ul>
         <a href="<?php echo site_url("consultaPaciente"); ?>"><li>CONSULTAR PACIENTE</li></a>
         <a href="<?php echo site_url("consultaCaracterizacao"); ?>"><li>CONSULTAR DADOS AUDIOLÓGICOS</li></a>
-        <a href="<?php echo site_url("consultaSolicitacao");?>"><li>CONSULTAR SOLICITAÇÃO</li></a>
+        <a href="<?php echo site_url("consultaSolicitacao");?>"><li>CONSULTAR LAUDO</li></a>
     </ul>
 </div>
 
