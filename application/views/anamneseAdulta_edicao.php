@@ -21,7 +21,7 @@
              <?php echo form_input($dataNomePaciente); ?>
            </td>
            <td>
-             <label>Encaminhado por*:</label><br>
+             <label>Encaminhado por:</label><br>
              <?php echo form_input($dataEncaminhado); ?>
            </td>
          </tr>
@@ -33,13 +33,13 @@
        <table>
          <tr>
            <td>
-             <label>Queixa Principal*:</label><br>
+             <label>Queixa Principal:</label><br>
              <?php echo form_input($dataQueixaPrincipal); ?>
            </td>
          </tr>
          <tr>
            <td>
-             <label>Histórico da Queixa*:</label><br>
+             <label>Histórico da Queixa:</label><br>
              <?php echo form_textarea($dataHistoricoQueixa); ?>
            </td>
          </tr>
@@ -52,7 +52,7 @@
          <tr>
            <td>
              <fieldset class="subsecaoFormulario">
-               <legend>Dor de Ouvido*?</legend>
+               <legend>Dor de Ouvido?</legend>
                <?php echo form_input($dataDorDeOuvidoS);?><label>Sim</label>
                <?php echo form_input($dataDorDeOuvidoN);?><label>Não</label>
              </fieldset>
@@ -60,7 +60,7 @@
 
            <td>
              <fieldset class="subsecaoFormulario">
-               <legend>Cirurgia otológica*</legend>
+               <legend>Cirurgia otológica</legend>
                <?php echo form_input($dataCirurgiaOtologicaS);?><label>Sim</label>
                <?php echo form_input($dataCirurgiaOtologicaN);?><label>Não</label><br>
                <?php echo form_checkbox($dataCirurgiaOtologicaOD);?><label>OD</label>
@@ -88,7 +88,7 @@
          <tr>
            <td>
              <fieldset class="subsecaoFormulario">
-               <legend>Histórico de otite*</legend>
+               <legend>Histórico de otite</legend>
                <?php echo form_input($dataHistoricoOtiteS);?><label>Sim</label>
                <?php echo form_input($dataHistoricoOtiteN);?><label>Não</label><br>
                <?php echo form_checkbox($dataHistoricoOtiteOD);?><label>OD</label>
@@ -100,7 +100,7 @@
 
            <td>
              <fieldset class="subsecaoFormulario">
-               <legend>Alguém na família<br> com perda auditiva*?</legend>
+               <legend>Alguém na família<br> com perda auditiva?</legend>
                <?php echo form_input($dataPerdaAuditivaNaFamiliaS);?><label>Sim</label>
                <?php echo form_input($dataPerdaAuditivaNaFamiliaN);?><label>Não</label><br>
                <label>Quem?</label><br>
@@ -110,14 +110,14 @@
 
           <td>
             <fieldset class="subsecaoFormulario">
-              <legend>Fez ou faz uso de medicamento prolongado*?</legend>
+              <legend>Fez ou faz uso de medicamento prolongado?</legend>
               <?php echo form_input($dataUsoMedicacaoS);?><label>Sim</label>
               <?php echo form_input($dataUsoMedicacaoN);?><label>Não</label><br>
               <label>Qual e para que?</label><?php echo form_input($dataMedicacao);?>
             </fieldset>
               <br>
             <fieldset class="subsecaoFormulario">
-              <legend>Exposição à ruídos ocupacionais*?</legend>
+              <legend>Exposição à ruídos ocupacionais?</legend>
               <?php echo form_input($dataRuidoOcupacionalS);?><label>Sim</label>
               <?php echo form_input($dataRuidoOcupacionalN);?><label>Não</label><br>
               <label>Quais?</label><?php echo form_input($dataRuidoOcupacionalDesc);?>
@@ -134,7 +134,7 @@
        <table>
          <tr>
            <td>
-             <label>A quanto tempo vem sentindo perda de audição*:</label>
+             <label>A quanto tempo vem sentindo perda de audição:</label>
              <?php echo form_input($dataTempoPerdaAudicao); ?>
            </td>
          </tr>
@@ -142,7 +142,7 @@
          <tr>
            <td>
              <fieldset class="subsecaoFormulario">
-               <legend>Quanto a Habilidade para compreender a fala*:</legend>
+               <legend>Quanto a Habilidade para compreender a fala:</legend>
                <table>
                  <tr>
                    <td><?php echo form_input($dataCompreendeFalaNaoEntende);?><label>Ouve, mas não entende.</label></td>
@@ -160,7 +160,7 @@
          <tr>
            <td>
              <fieldset class="subsecaoFormulario">
-               <legend>Zumbido*?</legend>
+               <legend>Zumbido?</legend>
                <table>
                  <tr>
                    <td><?php echo form_input($dataZumbidoS);?><label>Sim</label></td>
@@ -188,7 +188,7 @@
          <tr>
            <td>
              <fieldset class="subsecaoFormulario">
-               <legend>Vertigem*?</legend>
+               <legend>Vertigem?</legend>
                <table>
                  <tr>
                    <td><?php echo form_input($dataVertigemS);?><label>Sim</label></td>
@@ -205,7 +205,7 @@
          <tr>
            <td>
              <fieldset class="subsecaoFormulario">
-               <legend>Incômodo a sons intensos*?</legend>
+               <legend>Incômodo a sons intensos?</legend>
                <table>
                  <tr>
                    <td><?php echo form_input($dataIncomodoS);?><label>Sim</label></td>

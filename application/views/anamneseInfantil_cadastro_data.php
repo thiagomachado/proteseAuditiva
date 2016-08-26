@@ -22,14 +22,12 @@
             'name'          => 'encaminhado',
             'id'            => 'encaminhado',
             'size'          => '45',
-            'required'      => '',
             'maxlength'     => '45'
     );
     $dataQueixaPrincipal = array(
             'name'          => 'queixaPrincipal',
             'id'            => 'queixaPrincipal',
             'size'          => '109',
-            'required'      => '',
             'maxlength'     => '250'
     );
     $dataHistoricoQueixa = array(
@@ -37,7 +35,6 @@
             'id'            => 'historicoQueixa',
             'rows'          => '5',
             'cols'          => '108',
-            'required'      => '',
             'maxlength'     => '1000'
     );
 
@@ -46,7 +43,6 @@
             'name'          => 'alteracoesGravidez',
             'id'            => 'alteracoesGravidezS',
             'size'          => '30',
-            'required'      => '',
             'value'         => '1'
 
     );
@@ -63,7 +59,6 @@
             'name'          => 'descricaoAlteracao',
             'id'            => 'descricaoAlteracao',
             'size'          => '20',
-            'required'      => '',
             'maxlength'     => '250'
     );
 
@@ -155,7 +150,6 @@
             'name'          => 'historicoOtite',
             'id'            => 'historicoOtiteS',
             'size'          => '30',
-            'required'      => '',
             'value'         => '1'
     );
 
@@ -190,7 +184,6 @@
             'name'          => 'perdaAuditivaNaFamilia',
             'id'            => 'perdaAuditivaNaFamiliaS',
             'size'          => '30',
-            'required'      => '',
             'value'         => '1'
 
     );
@@ -216,7 +209,6 @@
             'name'          => 'usoMedicacao',
             'id'            => 'usoMedicacaoS',
             'size'          => '30',
-            'required'      => '',
             'value'         => '1'
 
     );
@@ -242,7 +234,6 @@
             'name'          => 'consaguinidade',
             'id'            => 'consaguinidadeS',
             'size'          => '30',
-            'required'      => '',
             'value'         => '1'
 
     );
@@ -259,7 +250,6 @@
     $dataTempoDificuldadeAuditiva = array(
             'name'          => 'tempoDificuldadeAuditiva',
             'id'            => 'tempoDificuldadeAuditiva',
-            'required'      => '',
             'size'          => '60',
             'maxlength'     => '45'
     );

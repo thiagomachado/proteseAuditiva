@@ -22,7 +22,6 @@
             'name'          => 'encaminhado',
             'id'            => 'encaminhado',
             'size'          => '45',
-            'required'      => '',
             'maxlength'     => '45',
             'value'         => $anamnese->AnmAdt_EncaminhadoPor
     );
@@ -30,7 +29,6 @@
             'name'          => 'queixaPrincipal',
             'id'            => 'queixaPrincipal',
             'size'          => '109',
-            'required'      => '',
             'maxlength'     => '250',
             'value'         => $anamnese->AnmAdt_PrincQueixa
     );
@@ -39,7 +37,6 @@
             'id'            => 'historicoQueixa',
             'rows'          => '5',
             'cols'          => '108',
-            'required'      => '',
             'maxlength'     => '1000',
             'value'         => $anamnese->AnmAdt_HistQueixa
     );
@@ -48,7 +45,6 @@
             'name'          => 'dorDeOuvido',
             'id'            => 'dorDeOuvidoS',
             'size'          => '30',
-            'required'      => '',
             'value'         => '1'
     );
     $dataDorDeOuvidoN = array(
@@ -64,7 +60,6 @@
             'name'          => 'cirurgiaOtologica',
             'id'            => 'cirurgiaOtologicaS',
             'size'          => '30',
-            'required'      => '',
             'value'         => '1'
     );
     $dataCirurgiaOtologicaN = array(
@@ -103,7 +98,6 @@
             'name'          => 'historicoOtite',
             'id'            => 'historicoOtiteS',
             'size'          => '30',
-            'required'      => '',
             'value'         => '1'
     );
 
@@ -141,7 +135,6 @@
             'name'          => 'perdaAuditivaNaFamilia',
             'id'            => 'perdaAuditivaNaFamiliaS',
             'size'          => '30',
-            'required'      => '',
             'value'         => '1'
 
     );
@@ -221,7 +214,6 @@
             'name'          => 'usoMedicacao',
             'id'            => 'usoMedicacaoS',
             'size'          => '30',
-            'required'      => '',
             'value'         => '1'
 
     );
@@ -248,7 +240,6 @@
             'name'          => 'ruidoOcupacional',
             'id'            => 'ruidoOcupacionalS',
             'size'          => '30',
-            'required'      => '',
             'value'         => '1'
 
     );
@@ -281,7 +272,6 @@
     $dataTempoPerdaAudicao = array(
             'name'          => 'tempoPerdaAudicao',
             'id'            => 'tempoPerdaAudicao',
-            'required'      => '',
             'size'          => '70',
             'maxlength'     => '45',
             'value'         => $anamnese->AnmAdt_TempoDificulAud
@@ -293,7 +283,6 @@
             'name'          => 'compreendeFala',
             'id'            => 'compreendeFalaNaoEntende',
             'size'          => '30',
-            'required'      => '',
             'value'         => '0'
 
     );
@@ -329,7 +318,6 @@
             'name'          => 'zumbido',
             'id'            => 'zumbidoS',
             'size'          => '30',
-            'required'      => '',
             'value'         => '1'
 
     );
@@ -386,7 +374,6 @@
             'name'          => 'vertigem',
             'id'            => 'vertigemS',
             'size'          => '30',
-            'required'      => '',
             'value'         => '1'
 
     );
@@ -413,7 +400,6 @@
             'name'          => 'incomodo',
             'id'            => 'incomodoS',
             'size'          => '30',
-            'required'      => '',
             'value'         => '1'
 
     );

@@ -121,6 +121,46 @@
           {
             $AnmAdt_ZumbTipo = 0;
           }
+            if(!isset($AnmAdt_DorOuvido))
+            {
+                $AnmAdt_DorOuvido = 0;
+            }
+            if(!isset($AnmAdt_HistOtite))
+            {
+                $AnmAdt_HistOtite = 0;
+            }
+            if(!isset($AnmAdt_CirurgiaOtologica))
+            {
+                $AnmAdt_CirurgiaOtologica = 0;
+            }
+            if(!isset($AnmAdt_PerdaAudNaFamilia))
+            {
+                $AnmAdt_PerdaAudNaFamilia = 0;
+            }
+            if(!isset($AnmAdt_UsoMedicacao))
+            {
+                $AnmAdt_UsoMedicacao = 0;
+            }
+            if(!isset($AnmAdt_SeRuidosOcup))
+            {
+                $AnmAdt_SeRuidosOcup = 0;
+            }
+            if(!isset($AnmAdt_CompreenderFala))
+            {
+                $AnmAdt_CompreenderFala = 0;
+            }
+            if(!isset($AnmAdt_Zumbido))
+            {
+                $AnmAdt_Zumbido = 0;
+            }
+            if(!isset($AnmAdt_Vertigem))
+            {
+                $AnmAdt_Vertigem = 0;
+            }
+            if(!isset($AnmAdt_IncomSonsIntensos))
+            {
+                $AnmAdt_IncomSonsIntensos = 0;
+            }
 
           $anamnese = array(
             'Pc_CPF'                   =>  $cpf,
@@ -183,6 +223,27 @@
         private function extrairDadosAnamneseInfantil()
         {
           extract($_POST);
+
+            if(!isset($AnmInf_GestAlteracao))
+            {
+               $AnmInf_GestAlteracao = 0;
+            }
+            if(!isset($AnmInf_HistOtite))
+            {
+                $AnmInf_HistOtite = 0;
+            }
+            if(!isset($AnmInf_PerdaAudNaFamilia))
+            {
+               $AnmInf_PerdaAudNaFamilia = 0;
+            }
+            if(!isset($AnmInf_UsoMedicacao))
+            {
+               $AnmInf_UsoMedicacao = 0;
+            }
+            if(!isset($AnmInf_PaisConsag))
+            {
+                $AnmInf_PaisConsag = 0;
+            }
           $anamnese = array(
             'Pc_CPF'                      => $cpf,
             'AnmInf_EncaminhaPor'         => $AnmInf_EncaminhaPor,
