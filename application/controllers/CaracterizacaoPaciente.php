@@ -47,7 +47,7 @@
         {
           $jsConsulta                   = '<script language="JavaScript" type="text/javascript" src="'.base_url().'assets/js/consultaCaracterizacao.js"></script>';
           $listaPacientes               = $this->consultarCaracterizao();
-          $listaPacientes['formAction'] = 'paciente/' ;
+          $listaPacientes['formAction'] = 'consultaCaracterizacao' ;
           $listaPacientes['cadastro']      = "cadastroCaracterizacaoPaciente";
           $listaPacientes['textoCadastro'] = "NOVO";
 
