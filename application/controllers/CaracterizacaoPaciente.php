@@ -38,7 +38,7 @@
             $dados['paciente']       = $paciente;
             $dados['profissionais']  = $profissionais;
 
-            $this->template->set('title', 'CARACTERIZAÇÃO DO PACIENTE');
+            $this->template->set('title', 'DADOS AUDIOLÓGICOS');
             $this->template->load('template','caracterizacaoPaciente_cadastro',$dados);
 
         }
@@ -49,10 +49,10 @@
           $listaPacientes               = $this->consultarCaracterizao();
           $listaPacientes['formAction'] = 'paciente/' ;
           $listaPacientes['cadastro']      = "cadastroCaracterizacaoPaciente";
-          $listaPacientes['textoCadastro'] = "Caracterização";
+          $listaPacientes['textoCadastro'] = "NOVO";
 
           $this->template->set('script', $jsConsulta );
-          $this->template->set('title', 'CONSULTA DE CARACTERIZAÇÃO');
+          $this->template->set('title', 'DADOS AUDIOLÓGICOS');
           $this->template->load('template','consulta_generica',$listaPacientes);
 
         }
@@ -77,7 +77,7 @@
           $dados['testeCaracterizacao'] = $testeCaracterizacao;
           $dados['testeAASI']           = $testeAASI;
 
-          $this->template->set('title', 'EDIÇÃO DE CARACTERIZAÇÃO');
+          $this->template->set('title', 'DADOS AUDIOLÓGICOS');
           $this->template->load('template','caracterizacaoPaciente_edicao',$dados);
         }
 

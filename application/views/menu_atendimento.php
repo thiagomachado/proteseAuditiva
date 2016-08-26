@@ -9,7 +9,7 @@
         <?php
             if($nivel == 1 || $nivel == 2)
             {
-                echo '<a href="'.site_url("cadastroCaracterizacaoPaciente").'"><li>CADASTRAR CARACTERIZAÇÃO</li></a>';
+                echo '<a href="'.site_url("cadastroCaracterizacaoPaciente").'"><li>CADASTRAR DADOS AUDIOLÓGICOS</li></a>';
             }
         ?>
 
@@ -20,7 +20,7 @@
 <div class="menuEsquerdo">
     <ul>
         <a href="<?php echo site_url("consultaPaciente"); ?>"><li>CONSULTAR PACIENTE</li></a>
-        <a href="<?php echo site_url("consultaCaracterizacao"); ?>"><li>CONSULTAR CARACTERIZAÇÃO</li></a>
+        <a href="<?php echo site_url("consultaCaracterizacao"); ?>"><li>CONSULTAR DADOS AUDIOLÓGICOS</li></a>
         <a href="<?php echo site_url("consultaSolicitacao");?>"><li>CONSULTAR SOLICITAÇÃO</li></a>
     </ul>
 </div>
