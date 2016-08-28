@@ -14,7 +14,7 @@
 
         public function index()
         {
-            $proteses  = $this->protese_model->recuperarProteses();
+            $proteses = $this->consultar();
             $jsConsulta = '<script language="JavaScript" type="text/javascript" src="'.base_url().'assets/js/consultaProteses.js"></script>';
             $this->template->set('title', 'ESTOQUE DE PRÓTESES');
             $this->template->set('script', $jsConsulta );
@@ -76,7 +76,18 @@
           $id_inserido = $this->protese_model->editar($Prot_Id,$dataProtese);
           echo json_encode($id_inserido);
         }
-        
+
+
+        public function consultar()
+        {
+            $nome            = $this->input->post('nomeProtese');
+            $classe          = $this->input->post('classe');
+            $disponibilidade = $this->input->post('disponibilidade');
+
+            $proteses  = $this->protese_model->recuperarProtesesPorNomeClasseDisponibilidade($nome,$classe,$disponibilidade);
+
+            return $proteses;
+        }
  
 
     }
