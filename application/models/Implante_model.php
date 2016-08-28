@@ -19,6 +19,25 @@
           return $listaImplantes;
         }
 
+        public function recuperarImplantesPorNomeClasseDisponibilidade($nome,$classe,$disponibilidade)
+        {
+            $this->db->like('Impl_Desc', $nome);
+            $this->db->like('Impl_Clss', $classe);
+            if($disponibilidade == 0)
+            {
+                $this->db->where('Pc_CPF', '');
+            }
+            elseif($disponibilidade == 1)
+            {
+                $this->db->where('Pc_CPF !=', '');
+            }
+            $query  = $this->db->get('tbl_implantes');
+
+            $listaImplantes["implantes"] = $query->result();
+
+            return $listaImplantes;
+        }
+
         public function recuperarImplantesSemPacientes()
         {
           $this->db->where('Pc_CPF', '');

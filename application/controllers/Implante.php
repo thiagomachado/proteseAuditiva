@@ -13,7 +13,7 @@
 
         public function index()
         {
-            $implantes  = $this->implante_model->recuperarImplantes();
+            $implantes  = $this->consultar();
             $jsConsulta = '<script language="JavaScript" type="text/javascript" src="'.base_url().'assets/js/consultaImplantes.js"></script>';
             $this->template->set('title', 'ESTOQUE DE IMPLANTES');
             $this->template->set('script', $jsConsulta );
@@ -67,5 +67,15 @@
           echo json_encode($id_inserido);
         }
 
+        public function consultar()
+        {
+            $nome            = $this->input->post('nomeImplante');
+            $classe          = $this->input->post('classe');
+            $disponibilidade = $this->input->post('disponibilidade');
+
+            $implantes  = $this->implante_model->recuperarImplantesPorNomeClasseDisponibilidade($nome,$classe,$disponibilidade);
+
+            return $implantes;
+        }
     }
 ?>

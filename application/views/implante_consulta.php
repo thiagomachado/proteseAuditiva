@@ -3,6 +3,37 @@
     $nivel = $this->session->userdata("nivel");
 ?>
 <div class="conteudo">
+  <div class="filtro">
+    <?php
+    echo form_open("implante/", 'name="consultaImplante"');
+    ?>
+    <table class="formulario">
+      <tr>
+        <td colspan="2">
+          <label>Nome:</label><br>
+          <input type="text" size="62" name="nomeImplante">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Classe:</label><br>
+          <input name="classe" type="text" size="30">
+        </td>
+        <td>
+          <label>Disponibilidade:</label><br>
+          <select name="disponibilidade">
+            <option value="0">Disponível</option>
+            <option value="1">Indisponível</option>
+          </select>
+        </td>
+      </tr>
+
+    </table>
+    <div class="areaBotoesFiltro">
+      <input type="submit" value="Consultar" class="botao"/>
+    </div>
+    <?php echo form_close();?>
+  </div>
   <div class="resultado" id="resultadoImplantes">
     <table class="tabelaResultado">
       <tr class="first">
