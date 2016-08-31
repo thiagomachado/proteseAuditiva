@@ -280,7 +280,7 @@
           $nProntuario  = $this->input->post('nProntuario');
           $cartaoSUS    = $this->input->post('cartaoSUS');
           //retorna somente os pacientes que não possuem caracterização cadastrada
-          $pacientes    = $this->paciente_model->recuperarPacienteSemCaracterizacaoPorNomeNprontuarioCartaoSUS($nomePaciente,$nProntuario,$cartaoSUS);
+          $pacientes    = $this->paciente_model->recuperarPacientePorNomeNprontuarioCartaoSUS($nomePaciente,$nProntuario,$cartaoSUS);
           //salva os pacientes em um vetor, para poder passar os dados para view
           $listaPacientes["pacientes"] = $pacientes;
           return $listaPacientes;
