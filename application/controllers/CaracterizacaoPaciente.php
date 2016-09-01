@@ -57,13 +57,27 @@
 
         }
 
-        public function edicaoCaracterizacao($cpf)
+        public function consultaCaracterizacaoPorPaciente($cpf)
         {
-          $caracterizacao = $this->caracterizacao_paciente_model->recuperarCaracterizacaoPacientePorCPF($cpf);
+            $jsConsulta           = '<script language="JavaScript" type="text/javascript" src="'.base_url().'assets/js/consultaCaracterizacaoPaciente.js"></script>';
+            $caracterizacoes      = $this->caracterizacao_paciente_model->recuperarCaracterizacaoPacientePorCPF($cpf);
+            $paciente             = $this->paciente_model->recuperarPacientePorCPF($cpf);
+            $dados["paciente"]     = $paciente;
+            $dados["caracterizacoes"] = $caracterizacoes;
+
+            $this->template->set('script', $jsConsulta );
+            $this->template->set('title', 'DADOS DO PACIENTE');
+            $this->template->load('template','consulta_caracterizacao',$dados);
+        }
+
+        public function edicaoCaracterizacao($numeroCaracterizacao)
+        {
+          $caracterizacao = $this->caracterizacao_paciente_model->recuperarCaracterizacaoPacientePorNumero($numeroCaracterizacao);
           if(sizeof($caracterizacao)== 0)
           {
-            redirect('/cadastroCaracterizacaoPaciente'.'/'.$cpf, 'refresh');
+            redirect('/cadastroCaracterizacaoPaciente', 'refresh');
           }
+          $cpf                     = $caracterizacao->Pc_CPF;
           $paciente                = $this->paciente_model->recuperarPacientePorCPF($cpf);
           $cpfProfissional         = $caracterizacao->Caract_Cpf_Profissional;
           $profissionais           = $this->usuario_model->recuperarProfissionais();

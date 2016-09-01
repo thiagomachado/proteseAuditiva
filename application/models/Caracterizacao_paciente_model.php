@@ -32,10 +32,27 @@
           }
           else
           {
-            $caracterizacao = $array[0];
+            $caracterizacao = $array;
           }
 
           return $caracterizacao;
+        }
+
+        public function recuperarCaracterizacaoPacientePorNumero($numero)
+        {
+            $this->db->where('Caract_Numero', $numero);
+            $query = $this->db->get('tbl_caracterizacao_paciente');
+            $array = $query->result();
+            if(sizeof($array)==0)
+            {
+                $caracterizacao = [];
+            }
+            else
+            {
+                $caracterizacao = $array[0];
+            }
+
+            return $caracterizacao;
         }
     }
 ?>

@@ -234,7 +234,7 @@
         <p>Deseja sair sem salvar?</p>
       </div>
       <div class="botoesModal">
-        <a href="<?php echo site_url('consultaCaracterizacao');?>"><input class="botao" type="button" value="Sim"/></a>
+        <a href="<?php echo site_url('consultaCaracterizacao/'.$paciente->Pc_CPF);?>"><input class="botao" type="button" value="Sim"/></a>
         <input class="botao" type="button" onclick="esconderModal('#modalSairSemSalvar')" value="Não"/>
       </div>
     </div>

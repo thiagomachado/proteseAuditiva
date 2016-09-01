@@ -64,3 +64,48 @@
     background-color: #0066AA;
     color: white;
 }
+
+
+.areaDescricaoPaciente
+{
+    border-width: 2px;
+    border-color: #CCC;
+    border-style: solid;
+    width: 620px;
+    position: relative;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin:auto;
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+
+#resultadoConsultaSolicitacao
+{
+    width: 700px;
+}
+
+.areaDescricaoPaciente legend
+{
+    font-weight: bold;
+    font-style: italic;
+}
+
+#tabelaResultado .linhaResultado
+{
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+    background-color: #ADEBFF;
+    text-align: center;
+
+}
+
+#tabelaResultado .linhaResultado:hover
+{
+    background-color: #0000ff;
+    color: #FDFDFF;
+
+}
