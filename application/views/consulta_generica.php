@@ -72,7 +72,13 @@
 
   </div>
   <div class="areaBotoesResultado">
-    <a href="<?php echo site_url($cadastro);?>"><input type="button" class="botao" value="<?php echo $textoCadastro ?>"></a>
+    <?php
+      if(isset($cadastro))
+      {
+        echo '<a href="'.site_url($cadastro).'"><input type="button" class="botao" value="'.$textoCadastro.'"></a>';
+      }
+    ?>
+
     <a href="<?php echo site_url("atendimento");?>"><input type="button" class="botao" value="Voltar"></a>
   </div>
 </div>

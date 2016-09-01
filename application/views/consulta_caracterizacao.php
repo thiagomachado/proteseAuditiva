@@ -62,6 +62,7 @@
 
   </div>
   <div class="areaBotoesResultado">
+    <a href="<?php echo site_url("cadastroCaracterizacaoPaciente/".$paciente->Pc_CPF);?>"><input type="button" class="botao" value="Novo"></a>
     <a href="<?php echo site_url("consultaCaracterizacao");?>"><input type="button" class="botao" value="Voltar"></a>
   </div>
 </div>

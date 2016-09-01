@@ -135,6 +135,7 @@
     <!-- <input class="botao" type="button" onclick="mostrarModal('#modalExcluirPaciente')" value="Excluir"/> -->
     <a href="<?php echo base_url().'index.php/edicaoAnamnese/'.$paciente->Pc_CPF;?>"><input class="botao" type="button" value="Anamnese"/></a>
     <input class="botao" type="button" onclick="mostrarModal('#modalSairSemSalvar')" value="Cancelar"/>
+    <a href="<?php echo site_url('cadastroCaracterizacaoPaciente/'.$paciente->Pc_CPF);?>"><input class="botao" style="width:auto;" type="button" value="Adicionar Dados Audiológicos"/></a>
   </div>
 
   <div class="fundoModal" id="fundoModal">

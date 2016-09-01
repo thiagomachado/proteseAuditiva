@@ -48,8 +48,6 @@
           $jsConsulta                   = '<script language="JavaScript" type="text/javascript" src="'.base_url().'assets/js/consultaCaracterizacao.js"></script>';
           $listaPacientes               = $this->consultarCaracterizao();
           $listaPacientes['formAction'] = 'consultaCaracterizacao' ;
-          $listaPacientes['cadastro']      = "cadastroCaracterizacaoPaciente";
-          $listaPacientes['textoCadastro'] = "NOVO";
 
           $this->template->set('script', $jsConsulta );
           $this->template->set('title', 'DADOS AUDIOLÓGICOS');
