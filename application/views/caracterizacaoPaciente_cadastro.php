@@ -109,24 +109,25 @@
       <legend>Caracterização da Perda Auditiva</legend>
       <table>
         <tr>
-          <td>Tipo de Perda Auditiva:</td>
-          <td><?php echo form_input($dataTipoPerdaAuditiva); ?></td>
-          <td>Duração:</td>
-          <td><?php echo form_input($dataDuracao); ?></td>
-          <td>Zumbido:</td>
-          <td><?php echo form_input($dataZumbido); ?></td>
+          <td>Tipo de Perda Auditiva:</br><?php echo form_input($dataTipoPerdaAuditiva); ?></td>
         </tr>
         <tr>
-          <td>Grau de Perda:</td>
-          <td><?php echo form_input($dataGrauPerda); ?></td>
-          <td>Progressão:</td>
-          <td><?php echo form_input($dataProgressao); ?></td>
-          <td>Configuração:</td>
-          <td><?php echo form_input($dataConfiguracao); ?></td>
+          <td>Duração:</br><?php echo form_input($dataDuracao); ?></td>
         </tr>
         <tr>
-          <td>Recrutamento:</td>
-          <td><?php echo form_input($dataRecrutamento); ?></td>
+          <td>Zumbido:</br><?php echo form_input($dataZumbido); ?></td>
+        </tr>
+        <tr>
+          <td>Grau de Perda:</br><?php echo form_input($dataGrauPerda); ?></td>
+        </tr>
+        <tr>
+          <td>Progressão:</br><?php echo form_input($dataProgressao); ?></td>
+        </tr>
+        <tr>
+          <td>Configuração:</br><?php echo form_input($dataConfiguracao); ?></td>
+        </tr>
+        <tr>
+          <td>Recrutamento:</br><?php echo form_input($dataRecrutamento); ?></td>
         </tr>
       </table>
 

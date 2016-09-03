@@ -275,57 +275,57 @@
     $dataTipoPerdaAuditiva = array(
             'name'          => 'tipoPerdaAuditiva',
             'id'            => 'tipoPerdaAuditiva',
-            'size'          => '22',
+            'size'          => '109',
             'value'         => $caracterizacao->Caract_TipoPerda,
-            'maxlength'     => '25'
+            'maxlength'     => '250'
     );
 
     $dataDuracao = array(
             'name'          => 'duracao',
             'id'            => 'duracao',
-            'size'          => '22',
+            'size'          => '109',
             'value'         => $caracterizacao->Caract_Duracao,
-            'maxlength'     => '25'
+            'maxlength'     => '250'
     );
 
     $dataZumbido = array(
             'name'          => 'zumbido',
             'id'            => 'zumbido',
-            'size'          => '22',
+            'size'          => '109',
             'value'         => $caracterizacao->Caract_Zumbido,
-            'maxlength'     => '25'
+            'maxlength'     => '250'
     );
 
     $dataGrauPerda = array(
             'name'          => 'grauPerda',
             'id'            => 'grauPerda',
-            'size'          => '22',
+            'size'          => '109',
             'value'         => $caracterizacao->Caract_GrauPerda,
-            'maxlength'     => '25'
+            'maxlength'     => '250'
     );
 
     $dataProgressao = array(
             'name'          => 'progressao',
             'id'            => 'progressao',
-            'size'          => '22',
+            'size'          => '109',
             'value'         => $caracterizacao->Caract_Progress,
-            'maxlength'     => '25'
+            'maxlength'     => '250'
     );
 
     $dataConfiguracao = array(
             'name'          => 'configuracao',
             'id'            => 'configuracao',
-            'size'          => '22',
+            'size'          => '109',
             'value'         => $caracterizacao->Caract_Config,
-            'maxlength'     => '25'
+            'maxlength'     => '250'
     );
 
     $dataRecrutamento = array(
             'name'          => 'recrutamento',
             'id'            => 'recrutamento',
-            'size'          => '22',
+            'size'          => '109',
             'value'         => $caracterizacao->Caract_Recrut,
-            'maxlength'     => '25'
+            'maxlength'     => '250'
     );
 
     $dataExamesComplementares = array(
