@@ -35,7 +35,7 @@
           </td>
           <td>
             <label>Classe*:</label><br>
-            <?php echo form_input($dataClasse); ?>
+            <?php echo form_dropdown('classe', $dataClasse,1, 'id="classe" required'); ?>
           </td>
           <td>
             <label>Data de Entrada*:</label><br>
@@ -106,7 +106,7 @@ $(document).ready(function() {
               Prot_Cod:            $("#codigo").val(),
               Prot_Nome:           $("#nomeItem").val(),
               Prot_Fabricante:     $("#fabricante").val(),
-              Prot_Classe:         $("#classe").val(),
+              classe_id:           $("#classe").val(),
               Prot_Valor:          $("#valor").val(),
               Prot_DataEntrada:    $("#dataEntrada").val()
             },

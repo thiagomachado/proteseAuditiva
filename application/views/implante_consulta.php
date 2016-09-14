@@ -1,6 +1,12 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
     $nivel = $this->session->userdata("nivel");
+    $dataClasse = array();
+    $dataClasse[''] = "";
+    foreach ($classes as $classe)
+    {
+      $dataClasse[$classe->classe_id] = $classe->classe_nome;
+    }
 ?>
 <div class="conteudo">
   <div class="filtro">
@@ -16,8 +22,8 @@
       </tr>
       <tr>
         <td>
-          <label>Classe:</label><br>
-          <input name="classe" type="text" size="30">
+            <label>Classe:</label><br>
+            <?php echo form_dropdown('classe', $dataClasse,0, 'id="classe" ') ?>
         </td>
         <td>
           <label>Disponibilidade:</label><br>
@@ -61,7 +67,7 @@
               echo '<td>'.$implante->Impl_Cod.'</td>';
               echo '<td>'.$implante->Impl_Desc.'</td>';
               echo '<td>'.$implante->Impl_Fabr.'</td>';
-              echo '<td>'.$implante->Impl_Clss.'</td>';
+              echo '<td>'.$dataClasse[$implante->classe_id].'</td>';
               echo '<td>'.$implante->Impl_Valor.'</td>';
               echo '<td>'.date("d/m/Y", strtotime($implante->Impl_DataEnt)).'</td>';
               echo '<td>'.$implante->Pc_CPF.'</td>';

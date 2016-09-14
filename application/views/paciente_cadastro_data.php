@@ -134,10 +134,11 @@
       $dataEstado[$estado->UF_Cod] = $estado->UF_Cod;
     }
 
+
     $dataMunicipio = array();
     foreach ($municipios as $municipio)
     {
-      $dataMunicipio[$municipio->Mun_Cod] = $municipio->Mun_Nome;
+        $dataMunicipio[$municipio->Mun_Cod] = $municipio->Mun_Nome;
     }
 
     $dataCodIBGE = array(

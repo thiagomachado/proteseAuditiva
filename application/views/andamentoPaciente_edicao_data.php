@@ -39,54 +39,6 @@
             'maxlength'     => '11'
     );
 
-
-    $dataConsultaData = array(
-            'name'  => 'consultaData[]',
-            'id'    => 'consultaData',
-            'type'  => 'date'
-    );
-
-    $dataConsultaDescricao = array(
-            'name'       => 'consultaDescricao[]',
-            'id'         => 'consultaDescricao',
-            'maxlength'  => '200',
-            'size'       => 85
-    );
-
-    $dataConsultaEdicaoData = array(
-            'name'  => 'consultaEdicaoData[]',
-            'id'    => 'consultaEdicaoData',
-            'type'  => 'date'
-    );
-
-    $dataConsultaEdicaoDescricao = array(
-            'name'       => 'consultaEdicaoDescricao[]',
-            'id'         => 'consultaEdicaoDescricao',
-            'maxlength'  => '200',
-            'size'       => 85
-    );
-
-    $dataConsultaEdicaoId = array(
-            'name'       => 'consultaEdicaoId[]',
-            'id'         => 'consultaEdicaoId',
-            'type'       => 'hidden'
-    );
-
-    $dataImplante = array(
-            'name'          => 'implante',
-            'id'            => 'implante',
-            'size'          => '39',
-            'maxlength'     => '100',
-            'value'         => $andamento->Andamento_implante
-    );
-    $dataProtese = array(
-            'name'          => 'protese',
-            'id'            => 'protese',
-            'size'          => '39',
-            'maxlength'     => '100',
-            'value'         => $andamento->Andamento_protese
-    );
-
     $dataObs = array(
             'name'          => 'obs',
             'id'            => 'obs',
@@ -104,24 +56,17 @@
     }
 
 
-    $dataProteses = array('0' => '');
-
-    foreach ($proteses as $protese)
-    {
-      $dataProteses[$protese->Prot_Id] = $protese->Prot_Nome;
-    }
-
-    $dataImplantes = array('0' => '');
-
-    foreach ($implantes as $implante)
-    {
-      $dataImplantes[$implante->Impl_Id] = $implante->Impl_Desc;
-    }
-
     $dataSubmit = array(
             'type'          => 'submit',
             'value'         => 'Atualizar',
             'id'            => 'btnCadastrarSolicitacao',
             'class'         => 'botao'
     );
+
+    $dataClasse = array();
+
+    foreach ($classes as $classe)
+    {
+        $dataClasse[$classe->classe_id] = $classe->classe_nome;
+    }
   ?>

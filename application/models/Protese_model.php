@@ -22,7 +22,7 @@
         public function recuperarProtesesPorNomeClasseDisponibilidade($nome,$classe,$disponibilidade)
         {
             $this->db->like('Prot_Nome', $nome);
-            $this->db->like('Prot_Classe', $classe);
+            $this->db->like('classe_id', $classe);
             if($disponibilidade == 0)
             {
                 $this->db->where('Pc_CPF', '');
@@ -32,9 +32,9 @@
                 $this->db->where('Pc_CPF !=', '');
             }
             $query  = $this->db->get('tbl_proteses');
-            $listaProteses["proteses"]  = $query->result();
+            $proteses= $query->result();
 
-            return $listaProteses;
+            return $proteses;
         }
 
         public function recuperarProtesesSemPacientes()
@@ -89,6 +89,16 @@
           }
 
           return $protese;
+        }
+
+        public function recuperarProtesePorClasseId($classe)
+        {
+            $this->db->where('classe_id', $classe);
+            $this->db->order_by("Prot_Nome", "asc");
+            $query    = $this->db->get('tbl_proteses');
+            $proteses = $query->result();
+
+            return $proteses;
         }
 
         public function editar($id, $protese)

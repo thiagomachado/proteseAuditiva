@@ -30,13 +30,13 @@
             'maxlength'     => '45',
             'size'          => '22'
     );
-    $dataClasse = array(
-            'name'          => 'classe',
-            'id'            => 'classe',
-            'required'      => '',
-            'maxlength'     => '45',
-            'size'          => '22'
-    );
+
+    $dataClasse = array();
+
+    foreach ($classes as $classe)
+    {
+        $dataClasse[$classe->classe_id] = $classe->classe_nome;
+    }
 
     $dataValor = array(
             'name'          => 'valor',

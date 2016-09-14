@@ -22,7 +22,7 @@
         public function recuperarImplantesPorNomeClasseDisponibilidade($nome,$classe,$disponibilidade)
         {
             $this->db->like('Impl_Desc', $nome);
-            $this->db->like('Impl_Clss', $classe);
+            $this->db->like('classe_id', $classe);
             if($disponibilidade == 0)
             {
                 $this->db->where('Pc_CPF', '');
@@ -33,7 +33,7 @@
             }
             $query  = $this->db->get('tbl_implantes');
 
-            $listaImplantes["implantes"] = $query->result();
+            $listaImplantes = $query->result();
 
             return $listaImplantes;
         }
@@ -87,16 +87,25 @@
           $this->db->where('Pc_CPF', $cpf);
           $this->db->order_by("Impl_DataSaida", "asc");
           $query    = $this->db->get('tbl_implantes');
-          $proteses = $query->result();
+          $implantes = $query->result();
 
-          return $proteses;
+          return $implantes;
+        }
+
+        public function recuperarImplantesPorClasseId($classe)
+        {
+            $this->db->where('classe_id', $classe);
+            $this->db->order_by("Impl_Desc", "asc");
+            $query    = $this->db->get('tbl_implantes');
+            $implantes = $query->result();
+
+            return $implantes;
         }
 
         public function editar($id, $implante)
         {
           $this->db->update('tbl_implantes',$implante, array('Impl_Id' => $id));
         }
-
 
         public function cadastrar($implante)
         {

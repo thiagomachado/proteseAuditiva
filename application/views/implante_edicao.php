@@ -31,8 +31,8 @@
 
         <tr>
           <td>
-            <label>Classe*:</label><br>
-            <?php echo form_input($dataClasse); ?>
+              <label>Classe*:</label><br>
+              <?php echo form_dropdown('classe', $dataClasse,$implante->classe_id, 'id="classe" required'); ?>
           </td>
           <td>
             <label>Valor*:</label><br>
@@ -107,7 +107,7 @@ $(document).ready(function() {
               Impl_Id:       $("#id").val(),
               Impl_Desc:     $("#nomeItem").val(),
               Impl_Fabr:     $("#fabricante").val(),
-              Impl_Clss:     $("#classe").val(),
+              classe_id:     $("#classe").val(),
               Impl_Valor:    $("#valor").val(),
               Impl_DataEnt:  $("#dataEntrada").val(),
               Impl_Cod:      $("#codigo").val()

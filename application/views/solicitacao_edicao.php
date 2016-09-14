@@ -103,6 +103,31 @@
         </table>
       </fieldset>
 
+      <fieldset class="secaoFormulario" <?php if($produto["exibir"]==0){echo 'style="display:none"';} ?>>
+          <legend><?php echo $produto["tipo"]; ?></legend>
+          <table>
+              <tr>
+                  <td>
+                      <label>Codigo:</label><br>
+                      <input type="text" size="10" disabled value="<?php echo $produto["codigo"]; ?>">
+                  </td>
+                  <td>
+                      <label>Classe:</label><br>
+                      <input type="text" size="5" disabled value="<?php echo $produto["classe"]; ?>">
+                  </td>
+                  <td>
+                      <label>Nome do Item:</label><br>
+                      <input type="text" size="45" disabled value="<?php echo $produto["nome"]; ?>">
+                  </td>
+                  <td>
+                      <label>Fabricante:</label><br>
+                      <input type="text" size="40" disabled value="<?php echo $produto["fabricante"]; ?>">
+                  </td>
+              </tr>
+          </table>
+
+      </fieldset>
+
   </div>
   <div class="areaBotoesFormulario">
     <?php echo form_submit($dataSubmit) ?>

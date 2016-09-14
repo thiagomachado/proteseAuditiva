@@ -24,7 +24,7 @@
       </table>
     </fieldset>
 
-    <fieldset class="secaoFormulario">
+    <fieldset class="secaoFormulario" <?php if(sizeof($solicitacoes)<= 0){echo 'style="display:none;"';}?>>
       <legend>Solicitações</legend>
 
       <?php
@@ -118,62 +118,6 @@
           }echo '</fieldset>';
       ?>
 
-
-    <fieldset class="secaoFormulario">
-      <legend>Consultas</legend>
-      <div id="divEditarConsultas">
-        <?php
-            if(sizeof($consultas)> 0)
-            {
-              echo "<table>";
-              foreach ($consultas as $consulta)
-              {
-                //adiciona no value dos inputs o valor recuperado
-                $dataConsultaEdicaoData["value"]      = $consulta->Consulta_data;
-                $dataConsultaEdicaoDescricao["value"] = $consulta->Consulta_descricao;
-                $dataConsultaEdicaoId["value"]        = $consulta->Consulta_id;
-                echo
-                "
-                  <tr>
-                    <td>".form_input($dataConsultaEdicaoId)."
-                      <label>Data da Consulta:</label><br>
-                      ".form_input($dataConsultaEdicaoData)."
-                    </td>
-                    <td>
-                      <label>Descrição:</label><br>
-                      ".form_input($dataConsultaEdicaoDescricao)."
-                    </td>
-                    <td>
-                    </br>
-                      <button onclick='atualizarLinkRemoverConsulta(".$consulta->Consulta_id."); mostrarModal(\"#modalExcluirConsulta\")'
-                      class='remove linhaCentralizada'>-</button>
-                    </td>
-                  </tr>
-                ";
-              }
-              echo "</table>";
-            }
-         ?>
-      </div>
-      <div id="divConsultas" >
-        <div class="consulta">
-          <table>
-            <tr>
-              <td>
-                <label>Data da Consulta:</label><br>
-                <?php echo form_input($dataConsultaData);?>
-              </td>
-              <td>
-                <label>Descrição:</label><br>
-                <?php echo form_input($dataConsultaDescricao); ?>
-              </td>
-            </tr>
-          </table>
-          <button class="clone">+</button>
-          <button class="remove">-</button>
-        </div>
-      </div>
-    </fieldset>
     <?php
       if(sizeof($protesesPaciente)>0)
       {
@@ -201,7 +145,7 @@
           echo '<td>'.$protese->Prot_Cod.'</td>';
           echo '<td>'.$protese->Prot_Nome.'</td>';
           echo '<td>'.$protese->Prot_Fabricante.'</td>';
-          echo '<td>'.$protese->Prot_Classe.'</td>';
+          echo '<td>'.$dataClasse[$protese->classe_id].'</td>';
           echo '<td>'.date("d/m/Y", strtotime($protese->Prot_DataEntrada)).'</td>';
           echo '</tr>';
         }
@@ -240,7 +184,7 @@
             <td>'.$implante->Impl_Cod.'</td>
             <td>'.$implante->Impl_Desc.'</td>
             <td>'.$implante->Impl_Fabr.'</td>
-            <td>'.$implante->Impl_Clss.'</td>
+            <td>'.$dataClasse[$implante->classe_id].'</td>
             <td>'.date_format(date_create($implante->Impl_DataSaida), 'd/m/Y').'</td>
 
           </tr></a>';
@@ -251,21 +195,28 @@
           </fieldset>
         ';
       }
-
-
      ?>
-    <fieldset class="secaoFormulario">
-      <legend>Adicionar Implante ou Prótese</legend>
-      <table>
-        <tr>
-          <td>Prótese Auditiva:</td>
-          <td>Implante Coclear:</td>
-        </tr>
-        <tr>
-          <td><?php echo form_dropdown('protese', $dataProteses,'','id="protese"'); ?></td>
-          <td><?php echo form_dropdown('implante', $dataImplantes,'','id="implante"'); ?></td>
-        </tr>
-      </table>
+    <fieldset class="secaoFormulario" <?php if(sizeof($caracterizacoes) <= 0){echo 'style="display:none;"';} ?>>
+        <legend>Dados Audilógicos</legend>
+        <table class="tabelaResultado" id="tabelaResultadoDadosAudiologicos">
+            <tr class="first">
+                <th>Nº dos Dados Audiológicos </th>
+                <th>Data</th>
+            </tr>
+            <?php
+            if(sizeof($caracterizacoes) > 0)
+            {
+                foreach ($caracterizacoes as $caracterizacao )
+                {
+                    echo '<tr class="linhaResultado">';
+                    echo '<td>'.$caracterizacao->Caract_Numero.'</td>';
+                    echo '<td>'.date_format(date_create($caracterizacao->Caract_Data), 'd/m/Y').'</td>';
+                    echo '</tr>';
+                }
+            }
+
+            ?>
+        </table>
     </fieldset>
 
 
@@ -339,52 +290,6 @@
 </div>
 
 
-<script type="text/javascript">
-    var regex          = /^(.+?)(\d+)$/i;
-    var cloneIndex     = $(".consulta").length;
-    var numberOfClones = $(".consulta").length;
-
-    function clone()
-    {
-      event.preventDefault();
-      $(this).parents(".consulta").clone()
-          .appendTo("#divConsultas")
-          .attr("id", "clonedInput" +  cloneIndex)
-          .each(function()
-          {
-              var id = this.id || "";
-              var match = id.match(regex) || [];
-              if (match.length == 3)
-              {
-                  this.id = match[1] + (cloneIndex);
-              }
-          })
-          .on('click', 'button.clone', clone)
-          .on('click', 'button.remove', remove);
-      cloneIndex++;
-      numberOfClones++;
-    }
-    function remove()
-    {
-      event.preventDefault();
-      if (numberOfClones > 1)
-      {
-        $(this).parents(".consulta").remove();
-        numberOfClones --;
-      }
-    }
-    $(".clone").on("click", clone);
-
-    $(".remove").on("click", remove);
-
-    function atualizarLinkRemoverConsulta(idConsulta)
-    {
-      event.preventDefault();
-      var link = "<?php echo site_url('excluirConsulta');?>/"
-      $('#botaoExcluirConsulta').attr("href", link + idConsulta);
-    }
-
-</script>
 
 <script>
 $(document).ready(function()
@@ -399,6 +304,11 @@ $(document).ready(function()
   		var id = $(this).children('.id').val();
   		window.location.href = "/proteseAuditiva/index.php/edicaoImplante/"+id;
 		})
+    $('#tabelaResultadoDadosAudiologicos tr:gt(0)').click(function()
+    {
+        var id =  $(this).children('td:eq(0)').text();
+        window.location.href = "/proteseAuditiva/index.php/edicaoCaracterizacao/"+id;
+    })
 
 }).attr('unselectable', 'on').css('user-select', 'none').on('selectstart', false);
 </script>
@@ -411,11 +321,6 @@ $(document).ready(function() {
         var confirmados              = [];
         var descricoes               = [];
         var itens                    = [];
-        var consultaEdicaoDatas      = [];
-        var consultaEdicaoDescricoes = [];
-        var consultaEdicaoIds        = [];
-        var consultaDatas            = [];
-        var consultaDescricoes       = [];
         var solicitacoes             = [];
         var confirmadosPrincipais    = [];
         var descricoesPrincipais     = [];
@@ -464,32 +369,6 @@ $(document).ready(function() {
             itens.push($(this).val());
         });
 
-        //Montando vetor com as consultas a serem editadas
-        $("input[name='consultaEdicaoId[]']").each(function()
-        {
-            consultaEdicaoIds.push($(this).val());
-        });
-
-        $("input[name='consultaEdicaoDescricao[]']").each(function()
-        {
-            consultaEdicaoDescricoes.push($(this).val());
-        });
-
-        $("input[name='consultaEdicaoData[]']").each(function()
-        {
-            consultaEdicaoDatas.push($(this).val());
-        });
-
-        //montando vetor com as consultas a serem inseridas
-        $("input[name='consultaDescricao[]']").each(function()
-        {
-            consultaDescricoes.push($(this).val());
-        });
-
-        $("input[name='consultaData[]']").each(function()
-        {
-            consultaDatas.push($(this).val());
-        });
 
         jQuery.ajax({
             type: "POST",
@@ -503,13 +382,6 @@ $(document).ready(function() {
               confirmados:              confirmados,
               descricoes:               descricoes,
               itens:                    itens,
-              consultaEdicaoIds:        consultaEdicaoIds,
-              consultaEdicaoDescricoes: consultaEdicaoDescricoes,
-              consultaEdicaoDatas:      consultaEdicaoDatas,
-              consultaDatas:            consultaDatas,
-              consultaDescricoes:       consultaDescricoes,
-              Andamento_protese:        $('#protese').val(),
-              Andamento_implante:       $('#implante').val(),
               Andamento_obs:            $('#obs').val(),
               Pc_CPF:                   $('#cpfHidden').val()
             },

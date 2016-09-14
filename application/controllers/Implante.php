@@ -9,21 +9,24 @@
             parent::__construct();
             $this->template->set('css', link_tag('assets/css/implante.css'));
             $this->load->model('implante_model');
+            $this->load->model('classe_model');
         }
 
         public function index()
         {
-            $implantes  = $this->consultar();
+            $data["implantes"]  = $this->consultar();
+            $data["classes"] = $this->classe_model->get_all();
             $jsConsulta = '<script language="JavaScript" type="text/javascript" src="'.base_url().'assets/js/consultaImplantes.js"></script>';
             $this->template->set('title', 'ESTOQUE DE IMPLANTES');
             $this->template->set('script', $jsConsulta );
-            $this->template->load('template','implante_consulta', $implantes);
+            $this->template->load('template','implante_consulta', $data);
         }
 
         public function cadastro()
         {
-          $this->template->set('title', 'CADASTRO DE IMPLANTES');
-          $this->template->load('template','implante_cadastro');
+            $data["classes"] = $this->classe_model->get_all();
+            $this->template->set('title', 'CADASTRO DE IMPLANTES');
+            $this->template->load('template','implante_cadastro', $data);
         }
 
         public function cadastrar()
@@ -33,7 +36,7 @@
             'Impl_Cod'     => $Impl_Cod,
             'Impl_Desc'    => $this->normalizarTexto($Impl_Desc),
             'Impl_Fabr'    => $this->normalizarTexto($Impl_Fabr),
-            'Impl_Clss'    => $this->normalizarTexto($Impl_Clss),
+            'classe_id'    => $classe_id,
             'Impl_Valor'   => $Impl_Valor,
             'Pc_CPF'       =>  "",
             'Impl_DataEnt' =>  $Impl_DataEnt
@@ -45,10 +48,11 @@
 
         public function edicao($id)
         {
-          $implante = $this->implante_model->recuperarImplantePorId($id);
-          $data["implante"] = $implante;
-          $this->template->set('title', 'EDIÇÃO DE IMPLANTE');
-          $this->template->load('template','implante_edicao',$data);
+            $implante = $this->implante_model->recuperarImplantePorId($id);
+            $data["implante"] = $implante;
+            $data["classes"] = $this->classe_model->get_all();
+            $this->template->set('title', 'EDIÇÃO DE IMPLANTE');
+            $this->template->load('template','implante_edicao',$data);
         }
 
         public function editar()
@@ -58,7 +62,7 @@
             'Impl_Cod'     => $Impl_Cod,
             'Impl_Desc'    => $this->normalizarTexto($Impl_Desc),
             'Impl_Fabr'    => $this->normalizarTexto($Impl_Fabr),
-            'Impl_Clss'    => $this->normalizarTexto($Impl_Clss),
+            'classe_id'    => $classe_id,
             'Impl_Valor'   => $Impl_Valor,
             'Impl_DataEnt' =>  $Impl_DataEnt
           );

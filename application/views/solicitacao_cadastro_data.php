@@ -121,4 +121,24 @@
             'id'            => 'btnCadastrarSolicitacao',
             'class'         => 'botao'
     );
-  ?>
+
+    $dataClasses = array();
+
+    foreach ($classes as $classe)
+    {
+        $dataClasses[$classe->classe_id] = $classe->classe_nome;
+    }
+
+    $dataProteses = array();
+    foreach ($proteses as $protese)
+    {
+        $dataProteses[$protese->Prot_Id] = $protese->Prot_Fabricante.' - '.$protese->Prot_Nome;
+    }
+
+    $dataImplantes = array();
+    foreach ($implantes as $implante)
+    {
+        $dataImplantes[$implante->Impl_Id] = $implante->Impl_Fabr.' - '.$implante->Impl_Desc;
+    }
+
+?>

@@ -54,6 +54,17 @@
         return $query->result();
       }
 
+      public function recuperarPacienteComAndamentoPorNomeNprontuarioCartaoSUS($nome, $nprontuario, $sus)
+      {
+          $this->db->like('Pc_Nome', $nome);
+          $this->db->like('Pc_NumProntuario', $nprontuario);
+          $this->db->like('Pc_CartaoSus', $sus);
+          $this->db->where('exists(select 1 from tbl_andamento_paciente ap where ap.Pc_CPF = tbl_paciente.Pc_CPF )', null, false);
+          $this->db->order_by("Pc_nome", "asc");
+          $query = $this->db->get('tbl_paciente');
+          return $query->result();
+      }
+
       public function recuperarPacientePorCPF($cpf)
       {
         $this->db->where('Pc_CPF', $cpf);

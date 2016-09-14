@@ -79,6 +79,33 @@
       </fieldset>
 
       <fieldset class="secaoFormulario">
+          <legend>Adicionar Implante ou Prótese</legend>
+          <table>
+              <tr>
+                  <td>Selecione:</td>
+                  <td><input type="radio" name="implanteProtese" onclick="exibirAreaProteseImplante()" checked value="nop"/>Não adicionar</td>
+                  <td><input type="radio" name="implanteProtese" onclick="exibirAreaProteseImplante()" value="protese"/>Prótese Auditiva</td>
+                  <td><input type="radio" name="implanteProtese" onclick="exibirAreaProteseImplante()" value="implante"/>Implante Coclear</td>
+              </tr>
+
+          </table>
+          <table>
+              <tr id="linhaProtese" style="display: none">
+                  <td >Classe:</td>
+                  <td><?php echo form_dropdown('classeProtese', $dataClasses,0,'onchange="mudarProteses()" id="classeProtese"'); ?></td>
+                  <td>Fabricante - Prótese:</td>
+                  <td><?php echo form_dropdown('Protese', $dataProteses,0,'id="proteses"'); ?></td>
+              </tr>
+              <tr id="linhaImplante" style="display: none">
+                  <td>Classe:</td>
+                  <td><?php echo form_dropdown('classeImplante', $dataClasses,0,'onchange="mudarImplantes()" id="classeImplante"'); ?></td>
+                  <td>Fabricante - Implante:</td>
+                  <td><?php echo form_dropdown('Implante', $dataImplantes,0,'id="implantes" '); ?></td>
+              </tr>
+          </table>
+      </fieldset>
+
+      <fieldset class="secaoFormulario">
         <legend>Justificativa do(s) procedimento(s) solicitado(s)</legend>
         <table>
           <tr>
@@ -113,6 +140,7 @@
           </tr>
         </table>
       </fieldset>
+
 
   </div>
   <div class="areaBotoesFormulario">
@@ -252,18 +280,21 @@ $(document).ready(function() {
             dataType: 'json',
             data:
             {
-              Pc_CPF:                $("#cpf").val(),
-              Solic_descricao:       $("#diagnostico").val(),
-              Solic_cid10principal:  $("#cid10Principal").val(),
-              Solic_cid10sec:        $("#cid10Sec").val(),
-              Solic_cid10causas:     $("#cid10Causas").val(),
-              Solic_obs:             $("#obs").val(),
-              Solic_CPF_Profissional:$("#profissional").val(),
-              Proc_Id:               $("#procPrincipal").val(),
-              Proc_Quantidade:       $("#quantidadePrincipal").val(),
-              existeProcSecundario:  $("input[name='procedimentoSecundario']:checked").val(),
-              procedimentos:         procedimentos,
-              quantidades:           quantidades
+                Pc_CPF:                $("#cpf").val(),
+                Solic_descricao:       $("#diagnostico").val(),
+                Solic_cid10principal:  $("#cid10Principal").val(),
+                Solic_cid10sec:        $("#cid10Sec").val(),
+                Solic_cid10causas:     $("#cid10Causas").val(),
+                Solic_obs:             $("#obs").val(),
+                Solic_CPF_Profissional:$("#profissional").val(),
+                Proc_Id:               $("#procPrincipal").val(),
+                Proc_Quantidade:       $("#quantidadePrincipal").val(),
+                existeProcSecundario:  $("input[name='procedimentoSecundario']:checked").val(),
+                addProteseImplante:    $("input[name='implanteProtese']:checked").val(),
+                Prot_Id:               $('#proteses').val(),
+                Impl_Id:               $('#implantes').val(),
+                procedimentos:         procedimentos,
+                quantidades:           quantidades
             },
             success: function(res)
             {

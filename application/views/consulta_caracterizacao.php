@@ -40,7 +40,7 @@
 
     <table class="tabelaResultado" id="tabelaResultado">
       <tr class="first">
-        <th>Nº da Caracterização</th>
+        <th>Nº dos Dados Audiológicos </th>
         <th>Data</th>
       </tr>
       <?php
@@ -56,7 +56,7 @@
           }
 
        ?>
-    </table
+    </table>
 
 
 

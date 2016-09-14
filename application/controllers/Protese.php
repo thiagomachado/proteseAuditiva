@@ -10,21 +10,24 @@
             $this->template->set('css', link_tag('assets/css/implante.css'));
             $this->load->model('protese_model');
             $this->load->model('paciente_model');
+            $this->load->model('classe_model');
         }
 
         public function index()
         {
-            $proteses = $this->consultar();
+            $data["proteses"] = $this->consultar();
+            $data["classes"] = $this->classe_model->get_all();
             $jsConsulta = '<script language="JavaScript" type="text/javascript" src="'.base_url().'assets/js/consultaProteses.js"></script>';
             $this->template->set('title', 'ESTOQUE DE PRÓTESES');
             $this->template->set('script', $jsConsulta );
-            $this->template->load('template','protese_consulta', $proteses);
+            $this->template->load('template','protese_consulta', $data);
         }
 
         public function cadastro()
         {
-          $this->template->set('title', 'CADASTRO DE PRÓTESE');
-          $this->template->load('template','protese_cadastro');
+            $data["classes"] = $this->classe_model->get_all();
+            $this->template->set('title', 'CADASTRO DE PRÓTESE');
+            $this->template->load('template','protese_cadastro',$data);
         }
 
         public function cadastrar()
@@ -33,8 +36,8 @@
           $dataProtese = array(
             'Prot_Cod'            => $Prot_Cod,
             'Prot_Nome'           => $this->normalizarTexto($Prot_Nome),
-            'Prot_Fabricante'     => $Prot_Fabricante,
-            'Prot_Classe'         => $Prot_Classe,
+            'Prot_Fabricante'     => $this->normalizarTexto($Prot_Fabricante),
+            'classe_id'           => $classe_id,
             'Prot_Valor'          => $Prot_Valor,
             'Pc_CPF'              =>  "",
             'Prot_DataEntrada'    => $Prot_DataEntrada
@@ -53,6 +56,7 @@
           }
           
           $data["protese"] = $protese;
+          $data["classes"] = $this->classe_model->get_all();
           $this->template->set('title', 'EDIÇÃO DE PRÓTESE');
           $this->template->load('template','protese_edicao',$data);
         }
@@ -63,8 +67,8 @@
           $dataProtese = array(
             'Prot_Cod'            => $Prot_Cod,
             'Prot_Nome'           => $this->normalizarTexto($Prot_Nome),
-            'Prot_Fabricante'     => $Prot_Fabricante,
-            'Prot_Classe'         => $Prot_Classe,
+            'Prot_Fabricante'     => $this->normalizarTexto($Prot_Fabricante),
+            'classe_id'           => $classe_id,
             'Prot_Valor'          => $Prot_Valor,
             'Prot_DataEntrada'    => $Prot_DataEntrada
           );

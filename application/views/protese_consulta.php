@@ -1,6 +1,12 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
     $nivel = $this->session->userdata("nivel");
+    $dataClasse = array();
+    $dataClasse[''] = "";
+    foreach ($classes as $classe)
+    {
+        $dataClasse[$classe->classe_id] = $classe->classe_nome;
+    }
 ?>
 <div class="conteudo">
   <div class="filtro">
@@ -17,7 +23,7 @@
       <tr>
         <td>
           <label>Classe:</label><br>
-          <input name="classe" type="text" size="30">
+          <?php echo form_dropdown('classe', $dataClasse,0, 'id="classe" ') ?>
         </td>
         <td>
           <label>Disponibilidade:</label><br>
@@ -61,7 +67,7 @@
               echo '<td>'.$protese->Prot_Cod.'</td>';
               echo '<td>'.$protese->Prot_Nome.'</td>';
               echo '<td>'.$protese->Prot_Fabricante.'</td>';
-              echo '<td>'.$protese->Prot_Classe.'</td>';
+              echo '<td>'.$dataClasse[$protese->classe_id].'</td>';
               echo '<td>'.$protese->Prot_Valor.'</td>';
               echo '<td>'.date("d/m/Y", strtotime($protese->Prot_DataEntrada)).'</td>';
               echo '<td>'.$protese->Pc_CPF.'</td>';

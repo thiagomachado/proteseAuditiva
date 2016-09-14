@@ -13,6 +13,7 @@
             $this->load->model('caracterizacao_paciente_model');
             $this->load->model('teste_caracterizacao_model');
             $this->load->model('teste_aasi_model');
+            $this->load->model('andamento_paciente_model');
             $this->load->helper('url');
             $this->load->library('pdf');
         }
@@ -186,6 +187,15 @@
           );
 
           $this->teste_aasi_model->cadastrarTesteAASI($testeAASI);
+
+            //cadastro andamento do paciente (somente se ja não tiver cadastrado antes)
+            $andamentoCadastradoAnteriormente = $this->andamento_paciente_model->recuperarAndamentoPacientePorCPF($cpf);
+            if(sizeof($andamentoCadastradoAnteriormente) == 0) //verifica se ja foi cadastrado andamento para esse paciente
+            {
+                $dataAndamento = array('Pc_CPF' => $cpf);
+
+                $this->andamento_paciente_model->cadastrarAndamentoPaciente($dataAndamento);
+            }
           echo json_encode($numCaracterizacao);
         }
 

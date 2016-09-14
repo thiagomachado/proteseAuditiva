@@ -11,11 +11,12 @@
             $this->load->model('solicitacao_model');
             $this->load->model('item_solicitacao_model');
             $this->load->model('andamento_paciente_model');
-            $this->load->model('consulta_model');
             $this->load->model('paciente_model');
             $this->load->model('procedimento_model');
             $this->load->model('protese_model');
             $this->load->model('implante_model');
+            $this->load->model('classe_model');
+            $this->load->model('caracterizacao_paciente_model');
 
         }
 
@@ -23,7 +24,7 @@
         {
             $jsConsulta                      = '<script language="JavaScript" type="text/javascript"
             src="'.base_url().'assets/js/consultaAndamentoPaciente.js"></script>';
-            $listaPacientes                  = $this->consultarPacientesComSolicitacao();
+            $listaPacientes                  = $this->consultarPacientesComAndamento();
             $listaPacientes['formAction']    = 'andamentoPaciente' ;
             $listaPacientes['cadastro']      = "cadastroSolicitacao";
             $listaPacientes['textoCadastro'] = "Solicitacao";
@@ -42,11 +43,10 @@
             $dados["paciente"]         = $this->paciente_model->recuperarPacientePorCPF($cpf);
             $dados["procedimentos"]    = $this->procedimento_model->recuperarProcedimentos()["procedimentos"];
             $dados["andamento"]        = $this->andamento_paciente_model->recuperarAndamentoPacientePorCPF($cpf);
-            $dados["consultas"]        = $this->consulta_model->recuperarConsultasPorCPF($cpf);
-            $dados["proteses"]         = $this->protese_model->recuperarProtesesSemPacientes();
             $dados["protesesPaciente"] = $this->protese_model->recuperarProtesesPorPacientes($cpf);
-            $dados["implantes"]        = $this->implante_model->recuperarImplantesSemPacientes();
             $dados["implantesPaciente"]= $this->implante_model->recuperarImplantesPorPacientes($cpf);
+            $dados["classes"]          = $this->classe_model->get_all();
+            $dados["caracterizacoes"]  = $this->caracterizacao_paciente_model->recuperarCaracterizacaoPacientePorCPF($cpf);
 
             $this->template->set('title', 'ANDAMENTO DE PACIENTES');
             $this->template->load('template','andamentoPaciente_edicao',$dados  );
@@ -60,8 +60,6 @@
           extract($_POST);
           //editando os campos do andamento (o andamento é cadastrado junto com a solicitação)
           $dataAndamento = array(
-            'Andamento_protese' => $Andamento_protese,
-            'Andamento_implante'=> $Andamento_implante,
             'Andamento_obs'     => $Andamento_obs
           );
 
@@ -72,100 +70,43 @@
             'cpf' => $Pc_CPF
           );
 
-          //Editando o paciente no implante e/ou protese
-          if($Andamento_protese <> "0")
-          {
-            $dataProtese = array('Pc_CPF' =>$Pc_CPF, 'Prot_DataSaida'=> date('Y-m-d'));
-
-            $this->protese_model->editar($Andamento_protese,$dataProtese);
-          }
-
-          if($Andamento_implante <> "0")
-          {
-            $dataImplante = array('Pc_CPF' =>$Pc_CPF, 'Impl_DataSaida'=> date('Y-m-d'));
-
-            $this->implante_model->editar($Andamento_implante,$dataImplante);
-          }
-
-          //Editando o paciente no implante e/ou protese
-          if($Andamento_protese <> 0)
-          {
-            $dataProtese = array('Pc_CPF' =>$Pc_CPF);
-
-            $this->protese_model->editar($Andamento_protese,$dataProtese);
-          }
-
           //editando as solicitações
-          $quantiadeSolicitacoes = sizeof($solicitacoes);
-          for ($i = 0; $i < $quantiadeSolicitacoes; $i++)
-          {
-            $Solic_Id = $solicitacoes[$i];
-            $solicitacao = array(
-              'Proc_Confirmado' =>$confirmadosPrincipais[$i],
-              'Proc_Descricao'  => $descricoesPrincipais[$i]
-            );
-
-            $this->solicitacao_model->editarSolicitacao($solicitacao,$Solic_Id);
-          }
-
-          //editando os itens das solicitações
-          $quantidadeItens = sizeof($itens);
-
-          for($i = 0; $i < $quantidadeItens; $i++)
-          {
-            $Isolic_id = $itens[$i];
-
-            $dataItemSolicitacao = array(
-              'Isolic_descricao'  => $descricoes[$i],
-              'Isolic_confirmado' => $confirmados[$i]
-            );
-            if($this->item_solicitacao_model->editarItemSolicitacao($dataItemSolicitacao, $Isolic_id))
+            if(isset($solicitacoes))
             {
-              $resposta[$Isolic_id] = true;
-            }
-            else
-            {
-              $resposta[$Isolic_id] = false;
-            }
-          }
+                $quantiadeSolicitacoes = sizeof($solicitacoes);
+                for ($i = 0; $i < $quantiadeSolicitacoes; $i++)
+                {
+                    $Solic_Id = $solicitacoes[$i];
+                    $solicitacao = array(
+                        'Proc_Confirmado' =>$confirmadosPrincipais[$i],
+                        'Proc_Descricao'  => $descricoesPrincipais[$i]
+                    );
 
-          //Editando as consultas
-          if(isset($consultaEdicaoIds))
-          {
-            $quantidadeConsultasEdicao = sizeof($consultaEdicaoIds);
+                    $this->solicitacao_model->editarSolicitacao($solicitacao,$Solic_Id);
+                }
+                //editando os itens das solicitações
+                $quantidadeItens = sizeof($itens);
 
-            for ($i=0; $i < $quantidadeConsultasEdicao ; $i++)
-            {
-              $consulta_id  = $consultaEdicaoIds[$i];
-              $dataConsultaEdicao = array(
-                'Consulta_data'      => $consultaEdicaoDatas[$i],
-                'Consulta_descricao' => $consultaEdicaoDescricoes[$i]
-              );
+                for($i = 0; $i < $quantidadeItens; $i++)
+                {
+                    $Isolic_id = $itens[$i];
 
-              $this->consulta_model->editarConsulta($dataConsultaEdicao,$consulta_id);
+                    $dataItemSolicitacao = array(
+                        'Isolic_descricao'  => $descricoes[$i],
+                        'Isolic_confirmado' => $confirmados[$i]
+                    );
+                    if($this->item_solicitacao_model->editarItemSolicitacao($dataItemSolicitacao, $Isolic_id))
+                    {
+                        $resposta[$Isolic_id] = true;
+                    }
+                    else
+                    {
+                        $resposta[$Isolic_id] = false;
+                    }
+                }
 
             }
-          }
 
-          //cadastrando as novas consultas
-          $quantidadeConsultas = sizeof($consultaDescricoes);
-
-          for ($i=0; $i < $quantidadeConsultas; $i++)
-          {
-            if(!($consultaDatas[$i]=="") and !($consultaDescricoes[$i]=="") )
-            {
-
-              $dataConsulta = array(
-                'Pc_CPF'             => $Pc_CPF,
-                'Consulta_data'      => $consultaDatas[$i],
-                'Consulta_descricao' => $consultaDescricoes[$i]
-              );
-              $idConsulta = $this->consulta_model->cadastrarConsulta($dataConsulta);
-              $resposta["consulta"] = $idConsulta;
-            }
-
-
-          }
 
           //enviando json com os resultados (somente para debug)
           echo json_encode($resposta);
@@ -183,13 +124,13 @@
           return $listaPacientes;
         }
 
-        private function consultarPacientesComSolicitacao()
+        private function consultarPacientesComAndamento()
         {
           $nomePaciente = $this->input->post('nomePaciente');
           $nProntuario  = $this->input->post('nProntuario');
           $cartaoSUS    = $this->input->post('cartaoSUS');
 
-          $pacientes    = $this->paciente_model->recuperarPacienteComSolicitacaoPorNomeNprontuarioCartaoSUS($nomePaciente,$nProntuario,$cartaoSUS);
+          $pacientes    = $this->paciente_model->recuperarPacienteComAndamentoPorNomeNprontuarioCartaoSUS($nomePaciente,$nProntuario,$cartaoSUS);
           $listaPacientes["pacientes"] = $pacientes;
           return $listaPacientes;
 

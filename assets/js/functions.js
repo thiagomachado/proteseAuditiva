@@ -10,7 +10,7 @@ function esconderModal(idModal)
   $(idModal).css("visibility", "hidden");
 }
 
-function mudarCidades(url)
+function mudarCidades()
 {
 
   var estado_cod = $('#estado').val();
