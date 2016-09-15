@@ -21,11 +21,14 @@
             <?php echo form_input($dataCNS); echo form_input($dataCPF);?>
           </td>
         </tr>
+          <tr>
+              <td><b><a style="text-decoration: underline; color:#0066FF;" href="<?php echo site_url("edicaoPaciente/".$paciente->Pc_CPF); ?>">Ir para ficha de cadastro do paciente</a> </b></td>
+          </tr>
       </table>
     </fieldset>
 
     <fieldset class="secaoFormulario" <?php if(sizeof($solicitacoes)<= 0){echo 'style="display:none;"';}?>>
-      <legend>Solicitações</legend>
+      <legend>Laudos</legend>
 
       <?php
           foreach ($solicitacoes as $solicitacao)
@@ -43,7 +46,7 @@
               {
                 $marcarProcedimentoPrincipal = 'checked';
               }
-              echo '<fieldset class="secaoFormulario"> <legend>'.date("d/m/Y", strtotime($solicitacao->Solic_data)).'</legend>';
+              echo '<fieldset class="secaoFormulario"><legend><a style="text-decoration: underline; color:#0066FF;" href="'.site_url("edicaoSolicitacao/".$solicitacao->Solic_id).'">'.date("d/m/Y", strtotime($solicitacao->Solic_data)).'</a></legend>';
               echo '<table>
                       <tr>
                         <td>
