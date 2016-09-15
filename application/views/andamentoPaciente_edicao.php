@@ -146,7 +146,7 @@
           echo '<td>'.$protese->Prot_Nome.'</td>';
           echo '<td>'.$protese->Prot_Fabricante.'</td>';
           echo '<td>'.$dataClasse[$protese->classe_id].'</td>';
-          echo '<td>'.date("d/m/Y", strtotime($protese->Prot_DataEntrada)).'</td>';
+          echo '<td>'.date("d/m/Y", strtotime($protese->Prot_DataSaida)).'</td>';
           echo '</tr>';
         }
 
