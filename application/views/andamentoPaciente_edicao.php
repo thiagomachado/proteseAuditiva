@@ -233,14 +233,14 @@
   </div>
   <div class="areaBotoesFormulario">
     <?php echo form_submit($dataSubmit) ?>
-    <input class="botao" type="button" onclick="mostrarModal('#modalSairSemSalvar')" value="Cancelar"/>
+    <input class="botao" type="button" onclick="mostrarModal('#modalSairSemSalvar')" value="Sair"/>
   </div>
 
   <div class="fundoModal" id="fundoModal">
 
     <div class="modal" id="modalSairSemSalvar">
       <div class="textoModal">
-        <h1>CANCELAR</h1>
+        <h1>Sair</h1>
         <p>Deseja sair sem salvar?</p>
       </div>
       <div class="botoesModal">
