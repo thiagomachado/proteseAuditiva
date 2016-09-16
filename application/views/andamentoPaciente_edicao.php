@@ -12,18 +12,22 @@
       <legend>Paciente</legend>
       <table>
         <tr>
-          <td >
-            <label>Nome:</label><br>
-            <?php echo form_input($dataNomePaciente); ?>
-          </td>
-          <td >
-            <label>Carteira Nacional de Saúde(CNS):</label><br>
-            <?php echo form_input($dataCNS); echo form_input($dataCPF);?>
-          </td>
+            <td >
+                <label>Nome:</label><br>
+                <?php echo form_input($dataNomePaciente); ?>
+            </td>
+            <td >
+                <label>Carteira Nacional de Saúde(CNS):</label><br>
+                <?php echo form_input($dataCNS); echo form_input($dataCPF);?>
+            </td>
+            <td >
+                <label>Data de Cadastro:</label><br>
+                <input type="text" size="12" value="<?php echo date("d/m/Y", strtotime($paciente->Pc_DataCadastro));?>" disabled/>
+            </td>
         </tr>
-          <tr>
-              <td><b><a style="text-decoration: underline; color:#0066FF;" href="<?php echo site_url("edicaoPaciente/".$paciente->Pc_CPF); ?>">Ir para ficha de cadastro do paciente</a> </b></td>
-          </tr>
+        <tr>
+          <td><b><a style="text-decoration: underline; color:#0066FF;" href="<?php echo site_url("edicaoPaciente/".$paciente->Pc_CPF); ?>">Ir para ficha de cadastro do paciente</a> </b></td>
+        </tr>
       </table>
     </fieldset>
 

@@ -10,7 +10,8 @@
     $dataNomePaciente = array(
             'name'          => 'nomePaciente',
             'id'            => 'nomePaciente',
-            'size'          => '72',
+            'size'          => '65',
+            'disabled'      => '',
             'readonly'      => '',
             'maxlength'     => '100',
             'value'         => $paciente->Pc_Nome
@@ -26,7 +27,8 @@
     $dataCNS = array(
             'name'          => 'cpf',
             'id'            => 'cpf',
-            'size'          => '30',
+            'size'          => '25',
+            'disabled'      => '',
             'readonly'      => '',
             'value'         => $paciente->Pc_CartaoSus
     );
