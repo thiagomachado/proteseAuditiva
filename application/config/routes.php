@@ -88,7 +88,7 @@ $route['consultaCaracterizacao']                = 'caracterizacaoPaciente/consul
 $route['consultaCaracterizacao/(:num)']         = 'caracterizacaoPaciente/consultaCaracterizacaoPorPaciente/$1';
 $route['edicaoCaracterizacao/(:num)']           = 'caracterizacaoPaciente/edicaoCaracterizacao/$1';
 $route['editarCaracterizacaoPaciente']          = 'caracterizacaoPaciente/editar';
-$route['emitirLaudo/(:num)']                    = 'caracterizacaoPaciente/emitirLaudoPDF/$1';
+$route['emitirLaudo/(:num)/(:num)']             = 'caracterizacaoPaciente/emitirLaudoPDF/$1/$2';
 
 
 //-------------------SOLICITAÇÃO------------------------------------

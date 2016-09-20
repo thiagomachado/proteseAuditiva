@@ -319,9 +319,9 @@
           return $listaPacientes;
         }
 
-        public function emitirLaudoPDF($cpf)
+        public function emitirLaudoPDF($numero,$cpf)
         {
-          $caracterizacao          = $this->caracterizacao_paciente_model->recuperarCaracterizacaoPacientePorCPF($cpf);
+          $caracterizacao          = $this->caracterizacao_paciente_model->recuperarCaracterizacaoPacientePorNumero($numero);
           $paciente                = $this->paciente_model->recuperarPacientePorCPF($cpf);
           $cpfProfissional         = $caracterizacao->Caract_Cpf_Profissional;
           $profissional            = $this->usuario_model->recuperarDadosUsuarioPorCPF($cpfProfissional);
@@ -341,7 +341,7 @@
           $this->pdf->stream(trim($paciente->Pc_Nome).".pdf");
 
           //exibe o laudo como pagina web
-          // echo $this->load->view('caracterizacaoPaciente_laudo', $dados, true);
+          //echo $this->load->view('caracterizacaoPaciente_laudo', $dados, true);
         }
     }
 ?>

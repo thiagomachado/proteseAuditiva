@@ -223,7 +223,7 @@
   </div>
   <div class="areaBotoesFormulario">
     <?php echo form_submit($dataSubmit) ?>
-    <a target="_blank" href="<?php $emitirLaudo ='emitirLaudo/'.$paciente->Pc_CPF;  echo site_url($emitirLaudo);?>"><input class="botao" type="button" value="Emitir PDF"/></a>
+    <a target="_blank" href="<?php $emitirLaudo ='emitirLaudo/'.$caracterizacao->Caract_Numero.'/'.$paciente->Pc_CPF;  echo site_url($emitirLaudo);?>"><input class="botao" type="button" value="Emitir PDF"/></a>
     <input class="botao" type="button" onclick="mostrarModal('#modalSairSemSalvar')" value="Cancelar"/>
   </div>
 
