@@ -80,7 +80,7 @@
             '2'             => 'Branco',
             '3'             => 'Negro',
             '4'             => 'Pardo',
-            '5'             => 'Indigina'
+            '5'             => 'Indígena'
     );
     $dataNomeMaePaciente = array(
             'name'          => 'nomeMaePaciente',

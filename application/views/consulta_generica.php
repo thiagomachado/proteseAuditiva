@@ -75,7 +75,7 @@
     <?php
       if(isset($cadastro))
       {
-        echo '<a href="'.site_url($cadastro).'"><input type="button" class="botao" value="'.$textoCadastro.'"></a>';
+        echo '<a href="'.site_url($cadastro).'"><input type="button" class="botao" style="width:auto;" value="'.$textoCadastro.'"></a>';
       }
     ?>
 

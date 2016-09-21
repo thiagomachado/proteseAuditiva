@@ -27,7 +27,7 @@
             $listaPacientes                  = $this->consultarPacientesComAndamento();
             $listaPacientes['formAction']    = 'andamentoPaciente' ;
             $listaPacientes['cadastro']      = "cadastroSolicitacao";
-            $listaPacientes['textoCadastro'] = "Solicitacao";
+            $listaPacientes['textoCadastro'] = "Cadastrar Laudo";
 
             $this->template->set('script', $jsConsulta );
             $this->template->set('title', 'SELECIONE O PACIENTE');
