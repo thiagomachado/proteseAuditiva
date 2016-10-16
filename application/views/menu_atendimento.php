@@ -7,7 +7,7 @@
     <ul>
         <a href="cadastroPaciente"><li>CADASTRAR PACIENTE</li></a>
         <?php
-            if($nivel == 1 || $nivel == 2)
+            if($nivel == 1 || $nivel == 2 || $nivel == 6)
             {
                 echo '<a href="'.site_url("cadastroCaracterizacaoPaciente").'"><li>CADASTRAR DADOS AUDIOLÓGICOS</li></a>';
             }
