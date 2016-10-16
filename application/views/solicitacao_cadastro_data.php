@@ -100,6 +100,8 @@
     );
 
     $dataProcedimentos = array();
+    $dataProcPrincipais = array();
+    $dataProcSecundarios = array();
 
     foreach ($procSecundarios as $procedimento)
     {

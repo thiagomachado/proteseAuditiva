@@ -58,6 +58,10 @@ where u.Us_Nome like '".$nome."%' and u.Us_email like '".$email."%' and n.Nvl_Co
         public function recuperarProfissionais()
         {
           $query = $this->db->get_where('tbl_usuarios', array('Us_Nivel' => 2))->result();
+
+            $query = $this->db->query("select u.* from bd_projpa.tbl_usuarios u
+where u.Us_Nivel = 2 or u.Us_Nivel = 6")->result();
+
           if(sizeof($query) == 0)
           {
             $profissionais = [];
